@@ -10,6 +10,7 @@ import { ParcelDetail } from './ParcelDetail'
 import { EstateDetail } from './EstateDetail'
 import { WearableDetail } from './WearableDetail'
 import { ENSDetail } from './ENSDetail'
+import { BoardingpassDetail } from "./BoardingpassDetail"
 import { PictureFrameDetail } from './PictureFrameDetail'
 import './NFTPage.css'
 
@@ -22,13 +23,14 @@ const NFTPage = () => {
         <NFTProviderPage>
           {nft => {
             // TODO: Move this to components/vendor
-            const { parcel, estate, wearable, ens } = nft.data as any
+            const { parcel, estate, wearable, ens, boardingpass } = nft.data as any
             return (
               <>
                 {parcel ? <ParcelDetail nft={nft} /> : null}
                 {estate ? <EstateDetail nft={nft} /> : null}
                 {wearable ? <WearableDetail nft={nft} /> : null}
                 {ens ? <ENSDetail nft={nft} /> : null}
+                {boardingpass ? <BoardingpassDetail nft={nft} /> : null}
                 {nft.vendor !== Vendors.DECENTRALAND ? (
                   <PictureFrameDetail nft={nft} />
                 ) : null}

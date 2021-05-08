@@ -160,8 +160,8 @@ const BuyPage = (props: Props) => {
         </Button>
 
         {isDisabled ||
-        !isAboveMaxPercentage ||
-        (isAboveMaxPercentage && wantsToProceed) ? (
+          !isAboveMaxPercentage ||
+          (isAboveMaxPercentage && wantsToProceed) ? (
           <Button
             primary
             disabled={isDisabled || isLoading}

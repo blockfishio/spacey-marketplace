@@ -1,0 +1,27 @@
+.SMTTags {
+  display: flex;
+}
+
+.SMTTags .badge {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #37333d;
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 14px;
+  color: white;
+  padding: 4px 8px;
+}
+
+.SMTTags .no {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #37333d;
+  font-size: 12px;
+  line-height: 14px;
+  color: white;
+  padding: 4px 8px;
+}
+

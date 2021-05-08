@@ -7,7 +7,8 @@
     "codegen": "graph codegen --debug --output-dir src/entities/",
     "build": "graph build",
     "build-data": "ts-node ./scripts/buildData.ts",
-    "deploy": "ts-node ./scripts/deploy.ts"
+    "deploy": "ts-node ./scripts/deploy.ts",
+    "auth": "graph auth https://api.thegraph.com/deploy/ 6ecf0f5a3f864fed98cda2ff9a7b4226"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.16.0",

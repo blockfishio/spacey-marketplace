@@ -1,6 +1,6 @@
 import { log } from '@graphprotocol/graph-ts'
 import { Transfer } from '../entities/templates/ERC721/ERC721'
-import { NFT, Parcel, Estate, Order, ENS, Wearable } from '../entities/schema'
+import { NFT, Parcel, Estate, Order, ENS, Wearable, Boardingpass } from '../entities/schema'
 import {
   isMint,
   getNFTId,
@@ -24,6 +24,7 @@ import {
   isWearableAccessory
 } from '../modules/wearable'
 import { buildENSFromNFT } from '../modules/ens'
+import { buildBoardingpassFromNFT, getBoardingpassImage } from '../modules/boardingpass'
 import { createAccount } from '../modules/wallet'
 import { toLowerCase } from '../modules/utils'
 import * as categories from '../modules/category/categories'
@@ -138,6 +139,21 @@ export function handleTransfer(event: Transfer): void {
       ens.owner = nft.owner
     }
     ens.save()
+  } else if (category == categories.BOARDINGPASS) {
+    let boardingpass: Boardingpass
+    if (isMint(event)) {
+      boardingpass = buildBoardingpassFromNFT(nft)
+      if (boardingpass.id != '') {
+        nft.boardingpass = id
+        nft.image = getBoardingpassImage(boardingpass)
+
+      }
+    } else {
+      boardingpass = new Boardingpass(nft.id)
+      boardingpass.owner = nft.owner
+    }
+    boardingpass.save()
+
   }
 
   createAccount(event.params.to)

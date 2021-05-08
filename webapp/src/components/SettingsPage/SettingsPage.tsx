@@ -167,7 +167,7 @@ const SettingsPage = (props: Props) => {
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
                           />
-                          <Authorization
+                          {/* <Authorization
                             checked={hasAuthorization(
                               authorizations!,
                               contractAddresses.MarketplaceAdapter,
@@ -180,7 +180,7 @@ const SettingsPage = (props: Props) => {
                             tokenContractAddress={contractAddresses.MANAToken}
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
-                          />
+                          /> */}
                         </div>
 
                         <div className="authorization-checks">
@@ -214,23 +214,23 @@ const SettingsPage = (props: Props) => {
                               return !privilege
                                 ? null
                                 : Object.keys(
-                                    privilege
-                                  ).map(tokenContractAddress => (
-                                    <Authorization
-                                      key={
-                                        contractAddress + tokenContractAddress
-                                      }
-                                      checked={privilege[tokenContractAddress]}
-                                      contractAddress={contractAddress}
-                                      tokenContractAddress={
-                                        tokenContractAddress
-                                      }
-                                      pendingTransactions={
-                                        pendingApproveTransactions
-                                      }
-                                      onChange={onApproveToken}
-                                    />
-                                  ))
+                                  privilege
+                                ).map(tokenContractAddress => (
+                                  <Authorization
+                                    key={
+                                      contractAddress + tokenContractAddress
+                                    }
+                                    checked={privilege[tokenContractAddress]}
+                                    contractAddress={contractAddress}
+                                    tokenContractAddress={
+                                      tokenContractAddress
+                                    }
+                                    pendingTransactions={
+                                      pendingApproveTransactions
+                                    }
+                                    onChange={onApproveToken}
+                                  />
+                                ))
                             }
                           )}
                         </div>

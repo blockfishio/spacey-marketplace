@@ -29,7 +29,6 @@ const MenuItem = <T extends unknown>(props: Props<T>) => {
   const handleOnClick = useCallback(() => {
     onClick(value)
   }, [value, onClick])
-
   return (
     <li className={classNames.join(' ')} onClick={handleOnClick}>
       {image && <Image alt={image} src={image} width="25" circular />}

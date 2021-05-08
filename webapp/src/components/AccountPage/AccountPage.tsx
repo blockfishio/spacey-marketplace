@@ -33,7 +33,6 @@ const AccountPage = (props: Props) => {
       onRedirect(locations.signIn())
     }
   }, [isCurrentAccount, isConnecting, wallet, onRedirect])
-
   return (
     <div className="AccountPage">
       <Navbar isFullscreen />

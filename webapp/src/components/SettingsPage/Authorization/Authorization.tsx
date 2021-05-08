@@ -50,8 +50,9 @@ const Authorizations = (props: Props) => {
         <Radio
           checked={checked}
           label={contractSymbols[tokenContractAddress]}
-          onClick={(_, data: CheckboxProps) =>
-            handleOnChange(tokenContractAddress, !!data.checked)
+          onClick={(_, data: CheckboxProps) => {
+            return handleOnChange(tokenContractAddress, !!data.checked)
+          }
           }
         />
         <div className="radio-description secondary-text">

@@ -33,7 +33,7 @@ const BuyPage = (props: Props) => {
                   notEnoughMana={
                     !!order &&
                     wallet.networks[Network.ETHEREUM].mana <
-                      +fromWei(order.price, 'ether')
+                    +fromWei(order.price, 'ether')
                   }
                 />
               )}

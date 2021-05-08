@@ -161,7 +161,6 @@ function* deriveCurrentOptions(
   let newOptions = { ...current }
 
   const nextCategory = getSearchCategory(current.section!)
-
   switch (nextCategory) {
     case NFTCategory.WEARABLE: {
       const prevCategory = getSearchCategory(previous.section!)
@@ -178,7 +177,6 @@ function* deriveCurrentOptions(
       }
     }
   }
-
   return newOptions
 }
 

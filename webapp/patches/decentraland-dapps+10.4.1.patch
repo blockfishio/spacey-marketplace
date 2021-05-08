@@ -1,0 +1,88 @@
+diff --git a/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js b/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js
+index a23bdf6..a554d92 100644
+--- a/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js
++++ b/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js
+@@ -1,14 +1,14 @@
+ "use strict";
+-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
++var __createBinding = (this && this.__createBinding) || (Object.create ? (function (o, m, k, k2) {
+     if (k2 === undefined) k2 = k;
+-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+-}) : (function(o, m, k, k2) {
++    Object.defineProperty(o, k2, { enumerable: true, get: function () { return m[k]; } });
++}) : (function (o, m, k, k2) {
+     if (k2 === undefined) k2 = k;
+     o[k2] = m[k];
+ }));
+-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
++var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function (o, v) {
+     Object.defineProperty(o, "default", { enumerable: true, value: v });
+-}) : function(o, v) {
++}) : function (o, v) {
+     o["default"] = v;
+ });
+ var __importStar = (this && this.__importStar) || function (mod) {
+@@ -32,12 +32,12 @@ class Navbar extends React.PureComponent {
+             return {
+                 menu: {
+                     marketplace: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.marketplace" }),
+-                    events: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.events" }),
+-                    agora: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.agora" }),
+-                    dao: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.dao" }),
+-                    docs: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.docs" }),
+-                    blog: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.blog" }),
+-                    builder: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.builder" })
++                    // events: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.events" }),
++                    // agora: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.agora" }),
++                    // dao: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.dao" }),
++                    // docs: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.docs" }),
++                    // blog: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.blog" }),
++                    // builder: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.builder" })
+                 },
+                 account: {
+                     connecting: React.createElement(utils_1.T, { id: "@dapps.navbar.account.connecting" }),
+diff --git a/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js b/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js
+index a2b585c..60f820a 100644
+--- a/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js
++++ b/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js
+@@ -5,7 +5,8 @@ const schemas_1 = require("@dcl/schemas");
+ const decentraland_connect_1 = require("decentraland-connect");
+ exports.MANA_GRAPH_BY_CHAIN_ID = {
+     [schemas_1.ChainId.ETHEREUM_MAINNET]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-mainnet',
+-    [schemas_1.ChainId.ETHEREUM_ROPSTEN]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-ropsten',
++    // [schemas_1.ChainId.ETHEREUM_ROPSTEN]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-ropsten',
++    [schemas_1.ChainId.ETHEREUM_ROPSTEN]: 'https://api.thegraph.com/subgraphs/name/silver211/spayropsten',
+     [schemas_1.ChainId.ETHEREUM_GOERLI]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-goerli',
+     [schemas_1.ChainId.ETHEREUM_RINKEBY]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-rinkeby',
+     [schemas_1.ChainId.MATIC_MAINNET]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-matic-mainnet',
+@@ -18,7 +19,7 @@ const NETWORK_MAPPING_BY_CHAIN_ID = {
+     },
+     [schemas_1.ChainId.ETHEREUM_ROPSTEN]: {
+         [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.ETHEREUM_ROPSTEN,
+-        [schemas_1.Network.MATIC]: schemas_1.ChainId.MATIC_MUMBAI
++        // [schemas_1.Network.MATIC]: schemas_1.ChainId.MATIC_MUMBAI
+     },
+     [schemas_1.ChainId.ETHEREUM_GOERLI]: {
+         [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.ETHEREUM_GOERLI,
+diff --git a/node_modules/decentraland-dapps/dist/modules/wallet/utils.js b/node_modules/decentraland-dapps/dist/modules/wallet/utils.js
+index d593abf..26949cf 100644
+--- a/node_modules/decentraland-dapps/dist/modules/wallet/utils.js
++++ b/node_modules/decentraland-dapps/dist/modules/wallet/utils.js
+@@ -18,7 +18,7 @@ const chainConfiguration_1 = require("../../lib/chainConfiguration");
+ const getManaBalanceQuery = (address) => `query {
+   accounts(where:{ id: "${address.toLowerCase()}" }) {
+     id
+-    mana
++    spay
+   }
+ }`;
+ exports.getManaBalanceQuery = getManaBalanceQuery;
+@@ -29,7 +29,7 @@ function fetchManaBalance(graphUrl, address) {
+             if (accounts.length === 0) {
+                 throw new Error(`No results for Graph URL "${graphUrl}" and address "${address}"`);
+             }
+-            return parseFloat(utils_1.fromWei(accounts[0].mana, 'ether'));
++            return parseFloat(utils_1.fromWei(accounts[0].spay, 'ether'));
+         }
+         catch (error) {
+             return 0;

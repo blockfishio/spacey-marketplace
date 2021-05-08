@@ -21,9 +21,12 @@ const VendorMenu = (props: Props) => {
   const isDisabled = !currentCount && !isOpen
 
   const handleToggleOpen = useCallback(() => {
-    if (!isDisabled) {
-      setIsOpen(!isOpen)
-    }
+    // alert("toggle open")
+    setIsOpen(!isOpen)
+
+    // if (!isDisabled) {
+    //   setIsOpen(!isOpen)
+    // }
   }, [isDisabled, isOpen, setIsOpen])
 
   useEffect(() => {
@@ -48,14 +51,14 @@ const VendorMenu = (props: Props) => {
     currentCount === undefined
       ? '...'
       : currentCount === 0
-      ? t('vendor_menu.no_assets')
-      : currentCount < getMaxQuerySize(vendor)
-      ? t('vendor_menu.assets_count', {
-          count: currentCount.toLocaleString()
-        })
-      : t('vendor_menu.more_than_assets_count', {
-          count: currentCount.toLocaleString()
-        })
+        ? t('vendor_menu.no_assets')
+        : currentCount < getMaxQuerySize(vendor)
+          ? t('vendor_menu.assets_count', {
+            count: currentCount.toLocaleString()
+          })
+          : t('vendor_menu.more_than_assets_count', {
+            count: currentCount.toLocaleString()
+          })
 
   const className = ['VendorMenu']
   if (isCurrentVendor) {

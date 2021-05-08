@@ -6,6 +6,7 @@ import { Estate } from '../../../nft/estate/types'
 import { Wearable } from '../../../nft/wearable/types'
 import { ENS } from '../../../nft/ens/types'
 import { orderFields, OrderFields } from '../order/fragments'
+import { Boardingpass } from '../../../nft/boardingpass/types'
 
 export const nftFields = () => gql`
   fragment nftFields on NFT {
@@ -44,6 +45,9 @@ export const nftFields = () => gql`
     ens {
       subdomain
     }
+    boardingpass {
+      id
+    }
   }
 `
 
@@ -64,6 +68,7 @@ export type NFTFields = Omit<NFT, 'activeOrderId' | 'owner'> & {
   estate?: Estate
   wearable?: Wearable
   ens?: ENS
+  boardingpass?: Boardingpass
 }
 export type NFTFragment = Omit<NFTFields, 'vendor'> & {
   activeOrder: OrderFields | null

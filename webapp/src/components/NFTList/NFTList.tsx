@@ -19,14 +19,13 @@ const NFTList = (props: Props) => {
     (nfts.length !== count || count === maxQuerySize) && page <= MAX_PAGE
 
   const isLoadingNewPage = isLoading && nfts.length >= PAGE_SIZE
-
   return (
     <>
       <Card.Group>
         {nfts.length > 0
           ? nfts.map((nft, index) => (
-              <NFTCard key={nft.id + '-' + index} nft={nft} />
-            ))
+            <NFTCard key={nft.id + '-' + index} nft={nft} />
+          ))
           : null}
 
         {isLoading ? (

@@ -11,7 +11,6 @@ class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
     const query = getNFTsQuery(params, filters)
     const variables = this.buildFetchVariables(params, filters)
-
     const { data } = await client.query<{ nfts: NFTFragment[] }>({
       query,
       variables

@@ -11,6 +11,7 @@
     "wearable": "Wearable",
     "ens": "Name",
     "art": "Art",
+    "boardingpass": "Boardingpass",
     "cancel": "Cancel",
     "proceed": "Proceed",
     "nft": "NFT",
@@ -25,7 +26,8 @@
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "makers_place": "MakersPlace",
-    "known_origin": "KnownOrigin"
+    "known_origin": "KnownOrigin",
+    "spacey2025": "SpaceY2025"
   },
   "navigation": {
     "decentraland": "Decentraland",
@@ -63,7 +65,9 @@
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "known_origin": "KnownOrigin",
-    "makers_place": "MakersPlace"
+    "makers_place": "MakersPlace",
+    "spacey2025": "SpaceY2025",
+    "boardingpass": "Boardingpass"
   },
   "vendor_menu": {
     "no_assets": "No assets",

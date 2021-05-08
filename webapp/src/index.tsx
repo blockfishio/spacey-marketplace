@@ -11,7 +11,10 @@ import './setup'
 import './modules/analytics/track'
 
 import * as locales from './modules/translation/locales'
-import { store, history } from './modules/store'
+import {
+  store,
+  history
+} from './modules/store'
 import { Routes } from './components/Routes'
 
 import { buildContracts } from './modules/contract/utils'

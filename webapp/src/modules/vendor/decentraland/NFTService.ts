@@ -34,11 +34,9 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
     const nfts: NFT<Vendors.DECENTRALAND>[] = []
     const accounts: Account[] = []
     const orders: Order[] = []
-
     for (const remoteNFT of remoteNFTs) {
       const nft = this.toNFT(remoteNFT)
       const order = this.toOrder(remoteNFT)
-
       if (order && !isExpired(order.expiresAt!)) {
         nft.activeOrderId = order.id
         orders.push(order)
@@ -53,7 +51,6 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
 
       nfts.push(nft)
     }
-
     return [removeBrokenNFTs(nfts), accounts, orders, total] as const
   }
 
@@ -112,7 +109,8 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
         parcel: nft.parcel,
         estate: nft.estate,
         wearable: nft.wearable,
-        ens: nft.ens
+        ens: nft.ens,
+        boardingpass: nft.boardingpass
       },
       category: nft.category,
       vendor: Vendors.DECENTRALAND

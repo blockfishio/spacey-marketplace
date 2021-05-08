@@ -28,13 +28,14 @@ const NFTImage = (props: Props) => {
     isSmall,
     showMonospace
   } = props
-  const { parcel, estate, wearable, ens } = (nft as NFT<
+  const { parcel, estate, wearable, ens, } = (nft as NFT<
     Vendors.DECENTRALAND
   >).data
 
   const estateSelection = useMemo(() => (estate ? getSelection(estate) : []), [
     estate
   ])
+
 
   switch (nft.category) {
     case NFTCategory.PARCEL: {
@@ -71,9 +72,8 @@ const NFTImage = (props: Props) => {
     }
 
     case NFTCategory.WEARABLE: {
-      const backgroundImage = `radial-gradient(${
-        RARITY_COLOR_LIGHT[wearable!.rarity]
-      }, ${RARITY_COLOR[wearable!.rarity]})`
+      const backgroundImage = `radial-gradient(${RARITY_COLOR_LIGHT[wearable!.rarity]
+        }, ${RARITY_COLOR[wearable!.rarity]})`
       return (
         <div
           className="rarity-background"
@@ -85,6 +85,23 @@ const NFTImage = (props: Props) => {
         </div>
       )
     }
+
+    case NFTCategory.BOARDNGPASS: {
+      const backgroundImage = `radial-gradient(${RARITY_COLOR_LIGHT["mythic"]
+        }, ${RARITY_COLOR["mythic"]})`
+      return (
+        <div
+          className="rarity-background"
+          style={{
+            backgroundImage
+          }}
+        >
+          <img alt="BoardingPass" className="image" src={nft.image} />
+        </div>
+      )
+    }
+
+
 
     case NFTCategory.ENS: {
       let name = ens!.subdomain

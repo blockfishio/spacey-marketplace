@@ -32,7 +32,6 @@ const NFTBrowse = (props: Props) => {
   // Kick things off
   useEffect(() => {
     onSetView(view)
-
     onFetchNFTsFromRoute({
       vendor,
       view,
@@ -53,7 +52,6 @@ const NFTBrowse = (props: Props) => {
   if (isMap) {
     classes.push('is-map')
   }
-
   return (
     <Page className={classes.join(' ')} isFullscreen={isFullscreen}>
       <Row>

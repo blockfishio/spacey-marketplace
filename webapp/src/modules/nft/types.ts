@@ -6,6 +6,7 @@ import { View } from '../ui/types'
 import { NFTsFetchFilters } from '../vendor/nft/types'
 import { Vendors } from '../vendor/types'
 import { SortDirection } from '../routing/types'
+import { Boardingpass } from './boardingpass/types'
 
 export enum NFTSortBy {
   NAME = 'name',
@@ -19,7 +20,8 @@ export enum NFTCategory {
   ESTATE = 'estate',
   WEARABLE = 'wearable',
   ENS = 'ens',
-  ART = 'art'
+  ART = 'art',
+  BOARDNGPASS = 'boardingpass'
 }
 
 // TODO: Move this to their own vendor folders
@@ -27,7 +29,8 @@ export type DecentralandNFT = {
   parcel?: Parcel
   estate?: Estate
   wearable?: Wearable
-  ens?: ENS
+  ens?: ENS,
+  boardingpass?: Boardingpass
 }
 export type SuperRareNFT = { description: string }
 export type MakersPlaceNFT = { description: string }

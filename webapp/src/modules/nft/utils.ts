@@ -46,6 +46,8 @@ export function getNFTName(
 
     case NFTCategory.ART:
       return t('global.art')
+    case NFTCategory.BOARDNGPASS:
+      return t('global.boardingpass')
 
     default:
       return t('global.nft')

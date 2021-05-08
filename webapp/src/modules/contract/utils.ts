@@ -18,6 +18,7 @@ export function buildContracts() {
     }),
     {} as ContractService['contractAddresses']
   ) as Record<ContractName, string>
+  // console.log(contractAddresses)
 
   contractSymbols = vendors.reduce(
     (obj, { contractService }) => ({

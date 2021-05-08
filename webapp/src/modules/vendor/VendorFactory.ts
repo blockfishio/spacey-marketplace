@@ -55,5 +55,5 @@ export class Vendor<V extends Vendors> {
     public nftService: NFTService<V>,
     public orderService: OrderService<V>,
     public bidService?: BidService<V>
-  ) {}
+  ) { }
 }

@@ -9,7 +9,10 @@ export function getCategory(contractAddress: string): string {
     category = categories.PARCEL
   } else if (contractAddress == addresses.EstateRegistry) {
     category = categories.ESTATE
-  } else if (contractAddress == addresses.DCLRegistrar) {
+  } else if (contractAddress == addresses.Boardingpass) {
+    category = categories.BOARDINGPASS
+  }
+  else if (contractAddress == addresses.DCLRegistrar) {
     category = categories.ENS
   } else if (
     contractAddress == addresses.BinanceUsCollection ||
@@ -56,6 +59,8 @@ export function getCategory(contractAddress: string): string {
     contractAddress == addresses.DGAtariDillonFrancis
   ) {
     category = categories.WEARABLE
+  } else if (contractAddress == addresses.Boardingpass) {
+    category = categories.BOARDINGPASS
   } else {
     log.warning('Contract address {} not being monitored', [contractAddress])
     category = contractAddress

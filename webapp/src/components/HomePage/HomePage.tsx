@@ -1,4 +1,7 @@
-import React, { useCallback, useEffect } from 'react'
+import React, {
+  useCallback,
+  useEffect
+} from 'react'
 import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 import { isMobile } from 'decentraland-dapps/dist/lib/utils'
 import { Page, Hero, Button } from 'decentraland-ui'
@@ -15,7 +18,10 @@ import { Props } from './HomePage.types'
 import './HomePage.css'
 
 const HomePage = (props: Props) => {
-  const { homepage, homepageLoading, onNavigate, onFetchNFTsFromRoute } = props
+  const { homepage,
+    homepageLoading,
+    onNavigate,
+    onFetchNFTsFromRoute } = props
 
   const sections = {
     [View.HOME_WEARABLES]: Section.WEARABLES,
@@ -38,6 +44,7 @@ const HomePage = (props: Props) => {
     let view: HomepageView
     for (view in homepage) {
       const section = sections[view]
+      console.log(section)
       onFetchNFTsFromRoute({
         vendor,
         section,

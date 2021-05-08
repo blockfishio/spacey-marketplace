@@ -12,8 +12,9 @@ import { Vendors } from '../../modules/vendor/types'
 import { NFTImage } from '../NFTImage'
 import { ParcelTags } from './ParcelTags'
 import { EstateTags } from './EstateTags'
-import { WearableTags } from './WearableTags'
+// import { WearableTags } from './WearableTags'
 import { ENSTags } from './ENSTags'
+import { SMTTags } from './SMTTags'
 import { Props } from './NFTCard.types'
 import './NFTCard.css'
 
@@ -21,7 +22,7 @@ const NFTCard = (props: Props) => {
   const { nft, order } = props
 
   const title = getNFTName(nft)
-  const { parcel, estate, wearable, ens } = (nft as NFT<
+  const { parcel, estate, ens, boardingpass } = (nft as NFT<
     Vendors.DECENTRALAND
   >).data
 
@@ -49,8 +50,9 @@ const NFTCard = (props: Props) => {
         ) : null}
         {parcel ? <ParcelTags nft={nft} /> : null}
         {estate ? <EstateTags nft={nft} /> : null}
-        {wearable ? <WearableTags nft={nft} /> : null}
+        {/* {wearable ? <WearableTags nft={nft} /> : null} */}
         {ens ? <ENSTags nft={nft} /> : null}
+        {boardingpass ? <SMTTags nft={nft} /> : null}
       </Card.Content>
     </Card>
   )

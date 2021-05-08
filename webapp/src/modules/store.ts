@@ -19,11 +19,11 @@ const anyWindow = window as any
 const composeEnhancers =
   isDev && anyWindow.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? anyWindow.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        stateSanitizer: (state: RootState) => {
-          const { tile, proximity, ...sanitized } = { ...state }
-          return sanitized
-        }
-      })
+      stateSanitizer: (state: RootState) => {
+        const { tile, proximity, ...sanitized } = { ...state }
+        return sanitized
+      }
+    })
     : compose
 
 export const history = require('history').createBrowserHistory()

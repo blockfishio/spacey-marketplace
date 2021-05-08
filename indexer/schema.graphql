@@ -12,6 +12,7 @@ type Count @entity {
   orderEstate: Int!
   orderWearable: Int!
   orderENS: Int!
+  orderBoardingpass: Int!
 
   parcelTotal: Int!
 
@@ -20,6 +21,8 @@ type Count @entity {
   wearableTotal: Int!
 
   ensTotal: Int!
+
+  boardingpassTotal:Int!
 
   started: Int!
 }
@@ -149,6 +152,7 @@ type NFT @entity {
   estate: Estate
   wearable: Wearable
   ens: ENS
+  boardingpass: Boardingpass
 
   createdAt: BigInt!
   updatedAt: BigInt!
@@ -185,8 +189,19 @@ type Account @entity {
   id: ID! # ETH addr
   address: Bytes!
   nfts: [NFT!] @derivedFrom(field: "owner")
-  mana: BigInt # Amount of mana owned
+  spay: BigInt # Amount of spay owned
 }
+
+type Boardingpass @entity{
+  id: ID!
+  owner: Account!
+  nft: NFT @derivedFrom(field: "boardingpass")
+  tokenId: BigInt!
+
+}
+
+
+
 
 # ---------------------------------------------------------
 # Enums ---------------------------------------------------
@@ -197,6 +212,7 @@ enum Category @entity {
   estate
   wearable
   ens
+  boardingpass
 }
 
 enum OrderStatus @entity {

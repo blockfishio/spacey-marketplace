@@ -6,7 +6,6 @@ export const DEFAULT_ID = 'all'
 
 export function buildCount(): Count {
   let count = Count.load(DEFAULT_ID)
-
   if (count == null) {
     count = new Count(DEFAULT_ID)
     count.orderTotal = 0
@@ -14,6 +13,7 @@ export function buildCount(): Count {
     count.orderEstate = 0
     count.orderWearable = 0
     count.orderENS = 0
+    count.orderBoardingpass = 0
 
     count.parcelTotal = 0
 
@@ -21,11 +21,14 @@ export function buildCount(): Count {
 
     count.wearableTotal = 0
 
+    count.boardingpassTotal = 0
+
+
     count.ensTotal = 0
 
     count.started = 0
-  }
 
+  }
   return count as Count
 }
 
@@ -41,6 +44,8 @@ export function buildCountFromNFT(nft: NFT): Count {
     count.wearableTotal += 1
   } else if (category == categories.ENS) {
     count.ensTotal += 1
+  } else if (category == categories.BOARDINGPASS) {
+    count.boardingpassTotal += 1
   }
 
   return count
@@ -59,6 +64,8 @@ export function buildCountFromOrder(order: Order): Count {
     count.orderWearable += 1
   } else if (category == categories.ENS) {
     count.orderENS += 1
+  } else if (category == categories.BOARDINGPASS) {
+    count.orderBoardingpass += 1
   }
   return count
 }
