@@ -20,16 +20,19 @@
     "update": "更新",
     "search": "搜寻",
     "apply": "应用",
-    "jump_in": "跳转"
+    "jump_in": "跳转",
+    "boardingpass": "船票"
   },
   "vendors": {
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "makers_place": "MakersPlace",
-    "known_origin": "KnownOrigin"
+    "known_origin": "KnownOrigin",
+    "spacey2025": "SpaceY2025"
   },
   "navigation": {
     "decentraland": "Decentraland",
+    "spacey2025": "SpaceY2025",
     "partners": "伙伴",
     "my_assets": "我的资产",
     "my_bids": "我的出价",

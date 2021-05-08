@@ -30,11 +30,12 @@
     "spacey2025": "SpaceY2025"
   },
   "navigation": {
-    "decentraland": "Decentraland",
+    "decentraland": "SpaceY2025",
     "partners": "Partners",
     "my_assets": "My Assets",
     "my_bids": "My Bids",
-    "activity": "Activity"
+    "activity": "Activity",
+    "spacey2025": "SpaceY2025"
   },
   "menu": {
     "all": "All Assets",
@@ -81,7 +82,7 @@
     "cheapest": "Cheapest"
   },
   "home_page": {
-    "title": "Decentraland Marketplace",
+    "title": "SpaceY2025 Marketplace",
     "subtitle": "Welcome to the virtual world’s one-stop-shop for the very best digital assets.",
     "get_started": "Start Browsing",
     "learn_more": "Learn More",

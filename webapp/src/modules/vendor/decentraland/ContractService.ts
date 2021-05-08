@@ -185,7 +185,7 @@ export class ContractService implements ContractServiceInterface {
   contractAddresses = contractAddresses
 
   contractSymbols = {
-    [MANAToken]: 'MANA',
+    [MANAToken]: 'SPAY',
     [LANDRegistry]: 'LAND',
     [EstateRegistry]: 'Estates',
     [Marketplace]: 'Marketplace',
