@@ -1,6 +1,6 @@
 # Marketplace Frontend
 
-Decentraland's Marketplace
+SpaceY2025's Marketplace
 
 ## Setup
 

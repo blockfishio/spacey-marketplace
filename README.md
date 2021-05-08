@@ -4,11 +4,11 @@ Decentraland's Marketplace
 
 ## Frontend
 
-It can be found under [/webapp](https://github.com/decentraland/marketplace/tree/master/webapp).
+It can be found under [/webapp](https://github.com/silver211/spacey-marketplace/tree/main/webapp).
 
 ## Backend
 
-It can be found under [/indexer](https://github.com/decentraland/marketplace/tree/master/indexer).
+It can be found under [/indexer](https://github.com/silver211/spacey-marketplace/tree/main/indexer).
 
 ## Copyright & License
 
