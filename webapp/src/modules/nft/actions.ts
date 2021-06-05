@@ -104,3 +104,33 @@ export const transferNFTFailure = (nft: NFT, address: string, error: string) =>
 export type TransferNFTRequestAction = ReturnType<typeof transferNFTRequest>
 export type TransferNFTSuccessAction = ReturnType<typeof transferNFTSuccess>
 export type TransferNFTFailureAction = ReturnType<typeof transferNFTFailure>
+
+//Rename NFT
+export const RENAME_NFT_REQUEST = '[Request] Rename NFT'
+export const RENAME_NFT_SUCCESS = '[Success] Rename NFT'
+export const RENAME_NFT_FAILURE = '[Failure] Rename NFT'
+
+export const renameNFTRequest = (nft: NFT, ownername: string) =>
+  action(RENAME_NFT_REQUEST, { nft, ownername })
+export const renameNFTSuccess = (
+  nft: NFT,
+  ownername: string,
+  chainId: ChainId,
+  txHash: string
+) =>
+  action(RENAME_NFT_SUCCESS, {
+    nft,
+    ownername,
+    ...buildTransactionPayload(chainId, txHash, {
+      tokenId: nft.tokenId,
+      contractAddress: nft.contractAddress,
+      name: getNFTName(nft),
+      ownername
+    })
+  })
+export const renameNFTFailure = (nft: NFT, ownername: string, error: string) =>
+  action(RENAME_NFT_FAILURE, { nft, ownername, error })
+
+export type RenameNFTRequestAction = ReturnType<typeof renameNFTRequest>
+export type RenameNFTSuccessAction = ReturnType<typeof renameNFTSuccess>
+export type RenameNFTFailureAction = ReturnType<typeof renameNFTFailure>

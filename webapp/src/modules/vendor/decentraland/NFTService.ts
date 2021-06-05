@@ -30,7 +30,6 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
       nftAPI.fetch(params, filters),
       this.count(params, filters)
     ])
-
     const nfts: NFT<Vendors.DECENTRALAND>[] = []
     const accounts: Account[] = []
     const orders: Order[] = []

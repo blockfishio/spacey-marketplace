@@ -18,15 +18,21 @@ import { Props } from './HomePage.types'
 import './HomePage.css'
 
 const HomePage = (props: Props) => {
-  const { homepage,
-    homepageLoading,
+  const { homepagenft,
+    homepageLoadingnft,
+    homepageAsset,
+    homepageLoadingAsset,
     onNavigate,
-    onFetchNFTsFromRoute } = props
+    onFetchNFTsFromRoute,
+    onFetchAssetsFromRoute } = props
 
   const sections = {
-    [View.HOME_WEARABLES]: Section.WEARABLES,
-    [View.HOME_LAND]: Section.LAND,
-    [View.HOME_ENS]: Section.ENS
+    // [View.HOME_WEARABLES]: Section.WEARABLES,
+    // [View.HOME_LAND]: Section.LAND,
+    // [View.HOME_ENS]: Section.ENS,
+    // [View.HOME_BOARDINGPASS]: Section.BOARDINGPASS,
+    [View.COMMUNITY]: Section.ALL,
+    [View.OFFICAL]: Section.ALL
   }
 
   const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
@@ -42,9 +48,8 @@ const HomePage = (props: Props) => {
 
   useEffect(() => {
     let view: HomepageView
-    for (view in homepage) {
+    for (view in homepagenft) {
       const section = sections[view]
-      console.log(section)
       onFetchNFTsFromRoute({
         vendor,
         section,
@@ -53,12 +58,12 @@ const HomePage = (props: Props) => {
         page: 1,
         onlyOnSale: true
       })
+      onFetchAssetsFromRoute()
     }
     // eslint-disable-next-line
-  }, [onFetchNFTsFromRoute])
+  }, [onFetchNFTsFromRoute, onFetchAssetsFromRoute])
 
-  const views = Object.keys(homepage) as HomepageView[]
-
+  const views = Object.keys(homepagenft) as HomepageView[]
   return (
     <>
       <Navbar isFullscreen isOverlay />
@@ -69,7 +74,7 @@ const HomePage = (props: Props) => {
           <div className="hero-image" />{' '}
         </Hero.Content>
         <Hero.Actions>
-          <Button primary onClick={handleGetStarted}>
+          <Button primary onClick={handleGetStarted} >
             {t('home_page.get_started')}
           </Button>
         </Hero.Actions>
@@ -79,8 +84,9 @@ const HomePage = (props: Props) => {
           <Slideshow
             key={view}
             title={t(`home_page.${view}`)}
-            nfts={homepage[view]}
-            isLoading={homepageLoading[view]}
+            nfts={homepagenft[view]}
+            assets={homepageAsset[view]}
+            isLoading={homepageLoadingnft[view] || homepageLoadingAsset[view]}
             onViewAll={() => handleViewAll(sections[view])}
           />
         ))}

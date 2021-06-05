@@ -97,7 +97,7 @@ const BuyPage = (props: Props) => {
   } else if (notEnoughMana) {
     subtitle = (
       <T
-        id={'buy_page.not_enough_mana'}
+        id={'buy_page.not_enough_spay'}
         values={{ name, amount: <Price price={order.price} /> }}
       />
     )

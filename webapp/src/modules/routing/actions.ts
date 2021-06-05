@@ -20,6 +20,14 @@ export const fetchNFTsFromRoute = (searchOptions: SearchOptions) =>
 
 export type FetchNFTsFromRouteAction = ReturnType<typeof fetchNFTsFromRoute>
 
+
+export const FETCH_ASSETS_FROM_ROUTE = 'Fetch Assets from route'
+
+export const fetchAssetsFromRoute = () =>
+  action(FETCH_ASSETS_FROM_ROUTE, {})
+
+export type FetchAssetsFromRouteAction = ReturnType<typeof fetchAssetsFromRoute>
+
 // Load More
 
 export const SET_IS_LOAD_MORE = 'Set is load more'

@@ -1,6 +1,6 @@
 import BN from 'bn.js'
 
-const MANA_SYMBOL = '⏣'
+const MANA_SYMBOL = '⎉'
 
 let oneEthInMANA: BN | undefined
 

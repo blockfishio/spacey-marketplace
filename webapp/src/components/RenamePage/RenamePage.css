@@ -1,0 +1,26 @@
+.RenamePage .ui.header {
+  margin-bottom: 8px;
+}
+
+.RenamePage .subtitle {
+  margin-bottom: 32px;
+}
+
+.RenamePage .subtitle.error {
+  color: var(--danger);
+}
+
+.RenamePage .warning {
+  color: var(--danger);
+  margin-bottom: 24px;
+}
+
+.RenamePage .message {
+  font-family: var(--font-family);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.RenamePage .form-fields {
+  width: 420px;
+}

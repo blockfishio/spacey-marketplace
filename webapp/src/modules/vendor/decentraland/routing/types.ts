@@ -27,5 +27,14 @@ export enum Section {
   WEARABLES_TOP_HEAD = 'wearables_top_head',
 
   ENS = 'ens',
-  BOARDINGPASS = 'boardingpass'
+  BOARDINGPASS = 'boardingpass',
+  COMMUNITY = "community",
+  OFFICAL = "offical"
+
+}
+
+export enum View {
+  COMMUNITY = "community",
+  OFFICAL = "offical",
+  ALL = "all"
 }

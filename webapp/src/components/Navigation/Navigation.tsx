@@ -10,31 +10,35 @@ const Navigation = (props: Props) => {
   return (
     <Tabs isFullscreen={isFullscreen}>
       <Tabs.Left>
-        <Link to={locations.browse()}>
-          <Tabs.Tab active={activeTab === NavigationTab.BROWSE}>
-            {t('navigation.spacey2025')}
-          </Tabs.Tab>
-        </Link>
-        {/* <Link to={locations.partners()}>
+
+        <Link to={locations.offical()}>
           <Tabs.Tab
             active={
-              activeTab === NavigationTab.PARTNERS ||
-              activeTab === NavigationTab.PARTNER
+              activeTab === NavigationTab.OFFICAL
             }
           >
-            {t('navigation.partners')}
+            {t('navigation.offical'
+            )}
           </Tabs.Tab>
-        </Link> */}
+        </Link>
+
+
+        <Link to={locations.community()}>
+          <Tabs.Tab active={activeTab === NavigationTab.COMMUNITY}>
+            {t('navigation.community')}
+          </Tabs.Tab>
+        </Link>
+
         <Link to={locations.currentAccount()}>
           <Tabs.Tab active={activeTab === NavigationTab.MY_ASSETS}>
             {t('navigation.my_assets')}
           </Tabs.Tab>
         </Link>
-        <Link to={locations.bids()}>
+        {/* <Link to={locations.bids()}>
           <Tabs.Tab active={activeTab === NavigationTab.MY_BIDS}>
             {t('navigation.my_bids')}
           </Tabs.Tab>
-        </Link>
+        </Link> */}
         <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
           <Link to={locations.activity()}>
             <Tabs.Tab active={activeTab === NavigationTab.ACTIVITY}>

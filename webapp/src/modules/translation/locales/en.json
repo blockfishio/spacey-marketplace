@@ -35,7 +35,9 @@
     "my_assets": "My Assets",
     "my_bids": "My Bids",
     "activity": "Activity",
-    "spacey2025": "SpaceY2025"
+    "spacey2025": "SpaceY2025",
+    "community": "Community Market",
+    "offical": "Offical Sales"
   },
   "menu": {
     "all": "All Assets",
@@ -68,7 +70,8 @@
     "known_origin": "KnownOrigin",
     "makers_place": "MakersPlace",
     "spacey2025": "SpaceY2025",
-    "boardingpass": "Boardingpass"
+    "boardingpass": "Boardingpass",
+    "community": "Community Market"
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -82,13 +85,16 @@
     "cheapest": "Cheapest"
   },
   "home_page": {
-    "title": "SpaceY2025 Marketplace",
-    "subtitle": "Welcome to the virtual world’s one-stop-shop for the very best digital assets.",
+    "title": "SpaceY Marketplace",
+    "subtitle": "Buy and sell your properties on Mars for SPAYs",
     "get_started": "Start Browsing",
     "learn_more": "Learn More",
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
-    "home_ens": "Names"
+    "home_ens": "Names",
+    "home_boardingpass": "Boardingpasses",
+    "community": "Community Market",
+    "offical": "Offical Sales"
   },
   "partners_page": {
     "partners": "Partners",
@@ -132,6 +138,7 @@
     "bid": "Bid",
     "update": "Update price",
     "transfer": "Transfer",
+    "rename": "Rename",
     "plaza": "Plaza",
     "road": "Road",
     "district": "District",
@@ -233,7 +240,7 @@
     "proceed_anyways": "Proceed anyways",
     "no_fingerprint": "Could not load fingerprint.",
     "is_owner": "You are the owner of {name}.",
-    "not_enough_mana": "You don't have enough MANA to buy {name} for {amount}."
+    "not_enough_spay": "You don't have enough SPAY to buy {name} for {amount}."
   },
   "bid_page": {
     "title": "Place a bid",
@@ -297,6 +304,16 @@
     "warning": "Remember that transferring is an irreversible operation.{br}Please check the address carefully.",
     "submit": "Transfer"
   },
+  "rename_page": {
+    "title": "Rename {category}",
+    "subtitle": "You are about to rename {name}.",
+    "for_sale": "{name} can't be renamed because it's on sale.",
+    "invalid_owner": "You are not the owner of {name}.",
+    "invalid_name": "Name can not be empty.",
+    "newname": "New name",
+    "warning": "Remember that transferring is an irreversible operation.{br}Please check the address carefully.",
+    "submit": "Rename"
+  },
   "activity_page": {
     "latest_activity": "Latest Activity",
     "clear_history": "Clear History",
@@ -334,5 +351,8 @@
   },
   "price_change_notice": {
     "message": "The price may fluctuate due to market changes"
+  },
+  "virtual_card": {
+    "Chest": "Chest"
   }
 }

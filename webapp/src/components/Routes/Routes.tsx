@@ -10,11 +10,16 @@ import { SettingsPage } from '../SettingsPage'
 import { NFTPage } from '../NFTPage'
 import { SellPage } from '../SellPage'
 import { BuyPage } from '../BuyPage'
-import { BidPage } from '../BidPage'
+// import { BidPage } from '../BidPage'
 import { CancelSalePage } from '../CancelSalePage'
 import { TransferPage } from '../TransferPage'
+// import { RenamePage } from '../RenamePage'
 import { ActivityPage } from '../ActivityPage'
 // import { PartnersPage } from '../PartnersPage'
+import { CommunityPage } from '../CommunityPage'
+import { OfficalPage } from '../OfficalPage'
+import { VirtualPage } from '../VirtualPage'
+
 import { HomePage } from '../HomePage'
 import { MyBidsPage } from '../MyBidsPage'
 import { LegacyNFTPage } from '../LegacyNFTPage'
@@ -36,16 +41,19 @@ const Routes = () => {
         <Route exact path={locations.signIn()} component={SignInPage} />
         <Route exact path={locations.sell()} component={SellPage} />
         <Route exact path={locations.buy()} component={BuyPage} />
-        <Route exact path={locations.bid()} component={BidPage} />
+        {/* <Route exact path={locations.bid()} component={BidPage} /> */}
         <Route exact path={locations.cancel()} component={CancelSalePage} />
         <Route exact path={locations.transfer()} component={TransferPage} />
         <Route exact path={locations.nft()} component={NFTPage} />
         <Route exact path={locations.settings()} component={SettingsPage} />
-        {/* <Route exact path={locations.partners()} component={PartnersPage} /> */}
+        <Route exact path={locations.community()} component={CommunityPage} />
+        <Route exact path={locations.offical()} component={OfficalPage} />
+        {/* <Route exact path={locations.rename()} component={RenamePage} /> */}
         <Route exact path={locations.activity()} component={ActivityPage} />
         <Route exact path={locations.root()} component={HomePage} />
         <Route exact path={locations.parcel()} component={LegacyNFTPage} />
         <Route exact path={locations.estate()} component={LegacyNFTPage} />
+        <Route exact path={locations.asset()} component={VirtualPage} />
         <Redirect
           from="/browse"
           to={locations.browse() + window.location.search}

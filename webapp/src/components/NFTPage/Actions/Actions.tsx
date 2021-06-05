@@ -50,11 +50,11 @@ const Actions = (props: Props) => {
             >
               {t('nft_page.buy')}
             </Button>
-            {canBid ? (
+            {/* {canBid ? (
               <Button as={Link} to={locations.bid(contractAddress, tokenId)}>
                 {t('nft_page.bid')}
               </Button>
-            ) : null}
+            ) : null} */}
           </>
         ) : (
           <Button onClick={() => setShowLeavingSiteModal(true)} primary>
@@ -69,15 +69,19 @@ const Actions = (props: Props) => {
         <Button onClick={() => setShowLeavingSiteModal(true)} primary>
           {t('nft_page.sell')}
         </Button>
-      ) : canBid ? (
-        <Button as={Link} to={locations.bid(contractAddress, tokenId)} primary>
-          {t('nft_page.bid')}
-        </Button>
-      ) : null}
-      {isOwner && !order ? (
+      ) : canBid ?
+        // (
+        //   <Button as={Link} to={locations.bid(contractAddress, tokenId)} primary>
+        //     {t('nft_page.bid')}
+        //   </Button>
+        // ) 
+        null
+        : null}
+      {isOwner && !order ? (<>
         <Button as={Link} to={locations.transfer(contractAddress, tokenId)}>
           {t('nft_page.transfer')}
         </Button>
+      </>
       ) : null}
 
       <Modal

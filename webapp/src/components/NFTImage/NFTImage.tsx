@@ -87,14 +87,14 @@ const NFTImage = (props: Props) => {
     }
 
     case NFTCategory.BOARDNGPASS: {
-      const backgroundImage = `radial-gradient(${RARITY_COLOR_LIGHT["mythic"]
-        }, ${RARITY_COLOR["mythic"]})`
+      // const backgroundImage = `radial-gradient(${RARITY_COLOR_LIGHT["mythic"]
+      //   }, ${RARITY_COLOR["mythic"]})`
       return (
         <div
           className="rarity-background"
-          style={{
-            backgroundImage
-          }}
+        // style={{
+        //   backgroundImage
+        // }}
         >
           <img alt="BoardingPass" className="image" src={nft.image} />
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+// import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 import { Page, Responsive } from 'decentraland-ui'
 
 import { locations } from '../../modules/routing/locations'
@@ -13,12 +13,14 @@ import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Navigation } from '../Navigation'
 import { PartnersSidebar } from '../PartnersSidebar'
-import { Slideshow } from '../HomePage/Slideshow'
+// import { Slideshow } from '../HomePage/Slideshow'
 import { Props } from './PartnersPage.types'
 import './PartnersPage.css'
 
 const PartnersPage = (props: Props) => {
-  const { partners, partnersLoading, onNavigate, onFetchNFTsFromRoute } = props
+  const { partners,
+    // partnersLoading,
+    onNavigate, onFetchNFTsFromRoute } = props
 
   const handleOnNavigate = useCallback(
     (vendor: Vendors) => {
@@ -42,7 +44,7 @@ const PartnersPage = (props: Props) => {
     // eslint-disable-next-line
   }, [onFetchNFTsFromRoute])
 
-  const views = Object.keys(partners) as Vendors[]
+  // const views = Object.keys(partners) as Vendors[]
 
   return (
     <>
@@ -57,7 +59,7 @@ const PartnersPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            {views.map(view => (
+            {/* {views.map(view => (
               <Slideshow
                 key={view}
                 title={t('partners_page.latest_from', {
@@ -68,7 +70,7 @@ const PartnersPage = (props: Props) => {
                 isSubHeader={true}
                 onViewAll={() => handleOnNavigate(view)}
               />
-            ))}
+            ))} */}
           </Column>
         </Row>
       </Page>

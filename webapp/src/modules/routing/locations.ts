@@ -11,6 +11,14 @@ export const locations = {
     const params = getSearchParams(options)
     return params ? `/browse?${params.toString()}` : '/browse'
   },
+  community: (options?: SearchOptions) => {
+    const params = getSearchParams(options)
+    return params ? `/connumity?${params.toString()}` : '/community'
+  },
+  offical: (options?: SearchOptions) => {
+    const params = getSearchParams(options)
+    return params ? `/offical?${params.toString()}` : '/offical'
+  },
   currentAccount: (options?: SearchOptions) => {
     const params = getSearchParams(options)
     return params ? `/account?${params.toString()}` : '/account'
@@ -25,6 +33,9 @@ export const locations = {
     contractAddress: string = ':contractAddress',
     tokenId: string = ':tokenId'
   ) => `/contracts/${contractAddress}/tokens/${tokenId}`,
+  asset: (
+    optionId: string = ':optionId',
+  ) => `/asset/${optionId}`,
   parcel: (x: string = ':x', y: string = ':y') => `/parcels/${x}/${y}/detail`,
   estate: (estateId: string = ':estateId') => `/estates/${estateId}/detail`,
   sell: (
@@ -43,6 +54,10 @@ export const locations = {
     contractAddress: string = ':contractAddress',
     tokenId: string = ':tokenId'
   ) => `/contracts/${contractAddress}/tokens/${tokenId}/transfer`,
+  rename: (
+    contractAddress: string = ':contractAddress',
+    tokenId: string = ':tokenId'
+  ) => `/contracts/${contractAddress}/tokens/${tokenId}/rename`,
   bid: (
     contractAddress: string = ':contractAddress',
     tokenId: string = ':tokenId'

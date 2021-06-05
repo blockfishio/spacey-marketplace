@@ -75,7 +75,8 @@ const VendorMenu = (props: Props) => {
           className="vendor-menu-item"
           value={vendor}
           subtitle={subtitle}
-          image={`/${vendor}.png`}
+          // image={`/${vendor}.png`}
+          image={'spacey2025.png'}
           onClick={handleToggleOpen}
         />
         {isOpen ? (

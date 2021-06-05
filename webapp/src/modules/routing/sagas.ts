@@ -35,13 +35,17 @@ import {
   BrowseAction,
   FETCH_NFTS_FROM_ROUTE,
   FetchNFTsFromRouteAction,
-  setIsLoadMore
+  FETCH_ASSETS_FROM_ROUTE,
+  // FetchAssetsFromRouteAction,
+  setIsLoadMore,
 } from './actions'
 import { SearchOptions } from './types'
+import { fetchAssetsRequest } from '../asset/actions'
 
 export function* routingSaga() {
   yield takeEvery(FETCH_NFTS_FROM_ROUTE, handleFetchNFTsFromRoute)
   yield takeEvery(BROWSE, handleBrowse)
+  yield takeEvery(FETCH_ASSETS_FROM_ROUTE, handleFetchAssetsFromRoute)
 }
 
 function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
@@ -49,6 +53,11 @@ function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
     action.payload.searchOptions
   )
   yield fetchNFTsFromRoute(newSearchOptions)
+}
+
+function* handleFetchAssetsFromRoute() {
+
+  yield fetchAssetsFromRoute()
 }
 
 function* handleBrowse(action: BrowseAction) {
@@ -81,9 +90,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
 
   const [orderBy, orderDirection] = getSortOrder(sortBy)
   const category = getSearchCategory(section)
-
   yield put(setIsLoadMore(isLoadMore))
-
   if (isMap) {
     yield put(setView(view))
   } else {
@@ -107,6 +114,10 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   }
 }
 
+function* fetchAssetsFromRoute() {
+  yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND }))
+}
+
 function* getNewSearchOptions(current: SearchOptions) {
   let previous: SearchOptions = {
     address: yield getAddress(),
@@ -121,14 +132,12 @@ function* getNewSearchOptions(current: SearchOptions) {
     isFullscreen: yield select(getIsFullscreen)
   }
   current = yield deriveCurrentOptions(previous, current)
-
   const view = deriveView(previous, current)
   const vendor = deriveVendor(previous, current)
 
   if (shouldResetOptions(previous, current)) {
     previous = { page: 1 }
   }
-
   const defaults = getDefaultOptionsByView(view)
 
   return {

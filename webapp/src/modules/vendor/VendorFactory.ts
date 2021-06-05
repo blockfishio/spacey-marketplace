@@ -6,7 +6,8 @@ import {
   ContractService,
   NFTService,
   OrderService,
-  BidService
+  BidService,
+  AssetService
 } from './services'
 import { Vendors } from './types'
 
@@ -19,7 +20,8 @@ export class VendorFactory {
           new decentraland.ContractService(),
           new decentraland.NFTService(),
           new decentraland.OrderService(),
-          new decentraland.BidService()
+          new decentraland.BidService(),
+          new decentraland.AssetService()
         )
       case Vendors.SUPER_RARE:
         return new Vendor(
@@ -54,6 +56,7 @@ export class Vendor<V extends Vendors> {
     public contractService: ContractService,
     public nftService: NFTService<V>,
     public orderService: OrderService<V>,
-    public bidService?: BidService<V>
+    public bidService?: BidService<V>,
+    public assetService?: AssetService
   ) { }
 }

@@ -21,9 +21,10 @@ export const getHomepage = createSelector<
   Record<HomepageView, NFT[]>
 >(getState, getNFTData, (homepage, nftsById) => {
   const result: Record<string, NFT[]> = {}
-
   let view: HomepageView
+
   for (view in homepage) {
+
     result[view] = homepage[view].map(id => nftsById[id])
   }
 

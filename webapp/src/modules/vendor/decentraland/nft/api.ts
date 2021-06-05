@@ -15,7 +15,6 @@ class NFTAPI {
       query,
       variables
     })
-
     return data.nfts
   }
 
@@ -59,7 +58,8 @@ class NFTAPI {
     return {
       ...params,
       ...filters,
-      expiresAt: Date.now().toString()
+      expiresAt: Date.now().toString(),
+      a: '0xbab298d0dcb2589a1c24b6c88fb10bd08efe3265'
     }
   }
 }
@@ -72,6 +72,7 @@ const NFTS_FILTERS = `
 
   $expiresAt: String
   $address: String
+  $a:String
   $category: Category
   $wearableCategory: WearableCategory
   $isLand: Boolean
@@ -102,6 +103,7 @@ function getNFTsQuery(
 
   if (params.address) {
     extraWhere.push('owner: $address')
+    // extraWhere.push('owner_not: $officalAddr')
   }
 
   if (params.category) {
@@ -125,6 +127,12 @@ function getNFTsQuery(
 
   if (filters.isLand) {
     extraWhere.push('searchIsLand: $isLand')
+  }
+  if (filters.isOffical) {
+    extraWhere.push('owner: $a')
+  }
+  else {
+    extraWhere.push('owner_not: $a')
   }
 
   if (filters.isWearableHead) {

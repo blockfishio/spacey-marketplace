@@ -13,7 +13,7 @@ import {
   TRANSFER_NFT_REQUEST,
   TransferNFTRequestAction,
   transferNFTSuccess,
-  transferNFTFailure
+  transferNFTFailure,
 } from './actions'
 import { getAddress, getChainId } from '../wallet/selectors'
 import { locations } from '../routing/locations'
@@ -31,11 +31,11 @@ export function* nftSaga() {
 function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
   const { options, timestamp } = action.payload
   const { vendor, filters } = options
+
   const params = {
     ...DEFAULT_BASE_NFT_PARAMS,
-    ...action.payload.options.params
+    ...action.payload.options.params,
   }
-
   try {
     const { nftService } = VendorFactory.build(vendor)
     const [
@@ -93,3 +93,5 @@ function* handleTransferNFTRequest(action: TransferNFTRequestAction) {
     yield put(transferNFTFailure(nft, address, error.message))
   }
 }
+
+

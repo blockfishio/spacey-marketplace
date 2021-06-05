@@ -1,8 +1,42 @@
+diff --git a/node_modules/decentraland-ui/dist/components/Footer/Footer.css b/node_modules/decentraland-ui/dist/components/Footer/Footer.css
+index c9f6450..752f0c9 100644
+--- a/node_modules/decentraland-ui/dist/components/Footer/Footer.css
++++ b/node_modules/decentraland-ui/dist/components/Footer/Footer.css
+@@ -73,6 +73,12 @@
+   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14' viewBox='0 0 16 14'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M-2-3h20v20H-2z'/%3E%3Cpath fill='%23676370' fill-rule='nonzero' d='M15.778 1.919c-.552.28-1.197.466-1.841.466.644-.373 1.196-1.026 1.38-1.772-.644.373-1.288.653-2.024.746C12.74.706 11.912.333 10.99.333 9.243.333 7.77 1.825 7.77 3.597c0 .28 0 .467.092.746C5.192 4.25 2.799 2.945 1.235.986a3.252 3.252 0 0 0-.46 1.679c0 1.119.552 2.145 1.472 2.704-.552 0-1.012-.186-1.473-.373 0 1.586 1.105 2.891 2.578 3.171-.276.093-.553.093-.829.093-.184 0-.368 0-.644-.093.368 1.306 1.565 2.238 3.038 2.238-1.105.84-2.486 1.4-3.958 1.4H.222a8.866 8.866 0 0 0 4.879 1.491c5.89 0 9.112-4.942 9.112-9.232v-.467c.552-.373 1.105-1.025 1.565-1.678z'/%3E%3C/g%3E%3C/svg%3E");
+ }
+ 
++.dcl.footer .social-links .social-icon.telegram {
++  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDQ1NSA0NTUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1NSA0NTU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDsiIGQ9Ik0wLDB2NDU1aDQ1NVYwSDB6IE0zODQuODE0LDEwMC42OGwtNTMuNDU4LDI1Ny4xMzYNCgkJYy0xLjI1OSw2LjA3MS04LjM3OCw4LjgyMi0xMy40MDEsNS4xNzJsLTcyLjk3NS01Mi45ODFjLTQuNDMtMy4yMTctMTAuNDcxLTMuMDQ2LTE0LjcxMiwwLjQxMmwtNDAuNDYsMzIuOTgxDQoJCWMtNC42OTUsMy44NC0xMS43NzEsMS43LTEzLjU2OS00LjA4M2wtMjguMDk0LTkwLjM1MWwtNzIuNTgzLTI3LjA4OWMtNy4zNzMtMi43NjItNy40MzYtMTMuMTcxLTAuMDg0LTE2LjAwM0wzNzMuMzYsOTAuOTU5DQoJCUMzNzkuNjc1LDg4LjUxNywzODYuMTksOTQuMDQ5LDM4NC44MTQsMTAwLjY4eiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDsiIGQ9Ik0zMTMuNTY3LDE0Ny4xNzlsLTE0MS44NTQsODcuMzY3Yy01LjQzNywzLjM1NS03Ljk5Niw5LjkyMS02LjI0MiwxNi4wNjgNCgkJbDE1LjMzNyw1My44OTFjMS4wOTEsMy44MTgsNi42MzEsMy40MjgsNy4xNjItMC41MTdsMy45ODYtMjkuNTUzYzAuNzUzLTUuNTY0LDMuNDA2LTEwLjY5Myw3LjUyMi0xNC41MjJsMTE3LjA2OS0xMDguODIyDQoJCUMzMTguNzM5LDE0OS4wNjEsMzE2LjExNSwxNDUuNjE0LDMxMy41NjcsMTQ3LjE3OXoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K");
++}
++
++
++
+ .dcl.footer .copyright {
+   color: var(--secondary-text);
+ }
 diff --git a/node_modules/decentraland-ui/dist/components/Footer/Footer.js b/node_modules/decentraland-ui/dist/components/Footer/Footer.js
-index 06684a9..f7ee24a 100644
+index 06684a9..cff431c 100644
 --- a/node_modules/decentraland-ui/dist/components/Footer/Footer.js
 +++ b/node_modules/decentraland-ui/dist/components/Footer/Footer.js
-@@ -54,7 +54,7 @@ var Footer = /** @class */ (function (_super) {
+@@ -43,18 +43,18 @@ var Footer = /** @class */ (function (_super) {
+                     React.createElement("a", { href: "https://decentraland.org/ethics" }, i18n.links.ethics))),
+             React.createElement("div", { className: "secondary-footer" },
+                 React.createElement("div", { className: "social-links" },
+-                    React.createElement("a", { href: "https://dcl.gg/discord" },
++                    React.createElement("a", { href: "https://discord.com/invite/cUeNS8UzGW" },
+                         React.createElement("i", { className: "social-icon discord" })),
+-                    React.createElement("a", { href: "https://reddit.com/r/decentraland" },
+-                        React.createElement("i", { className: "social-icon reddit" })),
+-                    React.createElement("a", { href: "https://github.com/decentraland" },
+-                        React.createElement("i", { className: "social-icon github" })),
+-                    React.createElement("a", { href: "https://twitter.com/decentraland" },
++                    React.createElement("a", { href: "https://t.me/Spacey2025" },
++                        React.createElement("i", { className: "social-icon telegram" })),
++                    React.createElement("a", { href: "https://medium.com/@spacey2025" },
++                        React.createElement("i", { className: "social-icon medium" })),
++                    React.createElement("a", { href: "https://twitter.com/spacey2025" },
+                         React.createElement("i", { className: "social-icon twitter" }))),
                  React.createElement("div", { className: "copyright" },
                      "\u00A9 ",
                      new Date().getFullYear(),
@@ -25,6 +59,28 @@ index 618aee2..086dbd1 100644
    background-size: contain;
  }
  
+diff --git a/node_modules/decentraland-ui/dist/components/Mana/Mana.js b/node_modules/decentraland-ui/dist/components/Mana/Mana.js
+index 636182d..f15a490 100644
+--- a/node_modules/decentraland-ui/dist/components/Mana/Mana.js
++++ b/node_modules/decentraland-ui/dist/components/Mana/Mana.js
+@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
+     };
+ })();
+ var __assign = (this && this.__assign) || function () {
+-    __assign = Object.assign || function(t) {
++    __assign = Object.assign || function (t) {
+         for (var s, i = 1, n = arguments.length; i < n; i++) {
+             s = arguments[i];
+             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+@@ -49,7 +49,7 @@ var Mana = /** @class */ (function (_super) {
+         var _a = this.props, size = _a.size, className = _a.className, inline = _a.inline, children = _a.children, network = _a.network, rest = __rest(_a, ["size", "className", "inline", "children", "network"]);
+         var classes = ("dcl mana " + (inline ? 'inline ' : '') + className).trim();
+         return (React.createElement(Header_1.Header, __assign({ size: size, className: classes }, rest),
+-            React.createElement("i", { className: "symbol" }, network !== schemas_1.Network.ETHEREUM ? (React.createElement("i", { className: network.toLowerCase() })) : ('⏣')),
++            React.createElement("i", { className: "symbol" }, network !== schemas_1.Network.ETHEREUM ? (React.createElement("i", { className: network.toLowerCase() })) : ('⎉')),
+             children));
+     };
+     Mana.defaultProps = {
 diff --git a/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js b/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js
 index 9580baa..952a0e5 100644
 --- a/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js
@@ -61,6 +117,75 @@ index 9580baa..952a0e5 100644
                              React.createElement(Logo_1.Logo, null)),
                          React.createElement(Header_1.Header, { size: "small", className: "dcl active-page " + (this.state.toggle ? 'caret-up' : 'caret-down'), onClick: this.handleToggle }, activePage))),
                  React.createElement("div", { className: "dcl navbar-account" }, this.renderRightMenu())),
+diff --git a/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js b/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js
+index 7ce910d..d82be21 100644
+--- a/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js
++++ b/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js
+@@ -46,7 +46,7 @@ var UserMenu = /** @class */ (function (_super) {
+             React.createElement(Menu_1.default.Item, { className: isActivity ? 'activity-bell active' : 'activity-bell' }, onClickActivity ? (React.createElement(Icon_1.default, { className: hasActivity ? 'pending' : '', name: "bell", onClick: onClickActivity })) : null),
+             React.createElement("div", { className: "dcl user-menu", onBlur: this.handleClose, tabIndex: 0 },
+                 isSignedIn && (React.createElement(React.Fragment, null,
+-                    React.createElement("span", { className: "dcl account-wrapper" }, Object.keys(manaBalances).map(function (network) { return (React.createElement(Mana_1.Mana, { key: network, network: network, size: "small", title: manaBalances[network].toLocaleString() + " MANA" }, parseInt(manaBalances[network].toFixed(0), 10).toLocaleString())); })),
++                    React.createElement("span", { className: "dcl account-wrapper" }, Object.keys(manaBalances).map(function (network) { return (React.createElement(Mana_1.Mana, { key: network, network: network, size: "small", title: manaBalances[network].toLocaleString() + " SPAY" }, parseInt(manaBalances[network].toFixed(0), 10).toLocaleString())); })),
+                     React.createElement("div", { className: "toggle", onClick: this.handleToggle },
+                         React.createElement(AvatarFace_1.AvatarFace, { size: "medium", avatar: avatar })),
+                     React.createElement("div", { className: "menu " + (isOpen ? 'open' : '') },
+diff --git a/node_modules/decentraland-ui/lib/spacey-theme.css b/node_modules/decentraland-ui/lib/spacey-theme.css
+new file mode 100644
+index 0000000..ac9277e
+--- /dev/null
++++ b/node_modules/decentraland-ui/lib/spacey-theme.css
+@@ -0,0 +1,50 @@
++:root {
++  /* global */
++  --background: #040b13;
++  --danger: #ffa900;
++  --error: #ff0000;
++
++  /* buttons */
++  /* --primary: #ff2d55; */
++  --primary: #00b6ff;
++  --secondary: #242129;
++  /* --primary-hover: #ff3d61; */
++  --primary-hover: #74dfff;
++  --secondary-hover: #28262c;
++
++  /* within modals */
++  --secondary-on-modal: #67637033;
++  --secondary-on-modal-hover: #6763704d;
++  --card-on-modal: #67637033;
++
++  /* text */
++  --text: #ffffff;
++  --secondary-text: #676370;
++  --text-on-primary: #ffffff;
++  --text-on-secondary: #ffffff;
++
++  /* ui */
++  --divider: #67637033;
++  --dropdown: #676370;
++  --dropdown-hover: #24212933;
++  --popup: #676370;
++  --popup-text: #ffffff;
++  --navbar-popup: #242129;
++  --navbar-popup-hover: #67637033;
++  --card: #161E35;
++  --outline: 1px solid #00000005;
++  --modal: #242129;
++  --dimmer: #000000dd;
++
++  /* shadows */
++  --shadow-1: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
++  --shadow-2: 0px 10px 20px 0px rgba(0, 0, 0, 0.24);
++  --shadow-3: 0px 16px 32px 0px rgba(0, 0, 0, 0.32);
++
++  --shadow-color-1: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
++  --shadow-color-2: 0px 10px 20px 0px rgba(0, 0, 0, 0.24);
++  --shadow-color-3: 0px 16px 32px 0px rgba(0, 0, 0, 0.32);
++
++  /* svgs */
++  --brightness: brightness(100); /* black svgs */
++}
 diff --git a/node_modules/decentraland-ui/lib/styles.css b/node_modules/decentraland-ui/lib/styles.css
 index ef573d9..2623b87 100644
 --- a/node_modules/decentraland-ui/lib/styles.css
@@ -74,3 +199,16 @@ index ef573d9..2623b87 100644
    background-size: contain;
  }
  
+diff --git a/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx b/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx
+index bbabbfa..6f61ed7 100644
+--- a/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx
++++ b/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx
+@@ -105,7 +105,7 @@ export class UserMenu extends React.Component<UserMenuProps, UserMenuState> {
+                     key={network}
+                     network={network as Network}
+                     size="small"
+-                    title={`${manaBalances[network].toLocaleString()} MANA`}
++                    title={`${manaBalances[network].toLocaleString()} SPAY`}
+                   >
+                     {parseInt(
+                       manaBalances[network].toFixed(0),

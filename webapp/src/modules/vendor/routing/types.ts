@@ -16,3 +16,10 @@ export const Section = {
   [Vendors.MAKERS_PLACE]: { ...makersPlace.Section },
   [Vendors.KNOWN_ORIGIN]: { ...knownOrigin.Section }
 } as const
+
+export type View =
+  | decentraland.View
+
+export const View = {
+  [Vendors.DECENTRALAND]: { ...decentraland.View }
+} as const

@@ -2,7 +2,7 @@
 import 'decentraland-ui/lib/styles.css'
 
 // Theme
-import 'decentraland-ui/lib/dark-theme.css'
+import 'decentraland-ui/lib/spacey-theme.css'
 
 // Overrides
 import './components/Button.css'

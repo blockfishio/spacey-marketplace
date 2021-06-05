@@ -55,7 +55,6 @@ const SettingsPage = (props: Props) => {
 
   const hasEmptyAuthorizations =
     authorizations === undefined || Object.keys(authorizations).length === 0
-
   return (
     <>
       <Navbar isFullscreen />
@@ -183,7 +182,7 @@ const SettingsPage = (props: Props) => {
                           /> */}
                         </div>
 
-                        <div className="authorization-checks">
+                        {/* <div className="authorization-checks">
                           <label className="secondary-text">
                             {t('settings_page.for_bidding')}
                           </label>
@@ -199,7 +198,7 @@ const SettingsPage = (props: Props) => {
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
                           />
-                        </div>
+                        </div> */}
 
                         <div className="authorization-checks">
                           <label className="secondary-text">

@@ -197,6 +197,7 @@ type Boardingpass @entity{
   owner: Account!
   nft: NFT @derivedFrom(field: "boardingpass")
   tokenId: BigInt!
+  name: String!
 
 }
 

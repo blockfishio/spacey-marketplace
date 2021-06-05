@@ -4,6 +4,9 @@ import {
   NFTsFetchParams,
   NFTsCountParams
 } from '../nft/types'
+import {
+  Asset,
+} from '../asset/types'
 import { Account } from '../account/types'
 import { Bid } from '../bid/types'
 import { OrderStatus, Order } from '../order/types'
@@ -29,7 +32,7 @@ export interface NFTService<V extends Vendors> {
     nft: NFT<V>
   ) => Promise<string>
 }
-export class NFTService<V> {}
+export class NFTService<V> { }
 
 export interface OrderService<V extends Vendors> {
   fetchByNFT: (nft: NFT<V>) => Promise<Order[]>
@@ -48,7 +51,7 @@ export interface OrderService<V extends Vendors> {
   cancel: (nft: NFT<V>, fromAddress: string) => Promise<string>
   canSell(): boolean
 }
-export class OrderService<V> {}
+export class OrderService<V> { }
 
 export interface BidService<V extends Vendors> {
   fetchBySeller: (seller: string) => Promise<Bid[]>
@@ -64,7 +67,7 @@ export interface BidService<V extends Vendors> {
   accept: (bid: Bid, fromAddress: string) => Promise<string>
   cancel: (bid: Bid, fromAddress: string) => Promise<string>
 }
-export class BidService<V> {}
+export class BidService<V> { }
 
 export interface ContractService {
   contractAddresses: Record<string, string>
@@ -73,4 +76,14 @@ export interface ContractService {
   contractCategories: Record<string, NFTCategory>
   getTransferType: (address: string) => TransferType
 }
-export class ContractService {}
+export class ContractService { }
+
+
+export interface AssetService {
+  fetch: (
+  ) => Promise<readonly [Asset[]]>
+  fetchOne: (
+    optionId: string
+  ) => Promise<readonly [Asset]>
+
+}

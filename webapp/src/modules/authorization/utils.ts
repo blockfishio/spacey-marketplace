@@ -14,7 +14,6 @@ export async function getAuthorizations(
   ) => Promise<boolean>
 ) {
   const result: Privileges = {}
-
   for (const contractAddress in definition) {
     const tokenContractAddresses = definition[contractAddress]
 

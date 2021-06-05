@@ -146,7 +146,7 @@ export function handleTransfer(event: Transfer): void {
       if (boardingpass.id != '') {
         nft.boardingpass = id
         nft.image = getBoardingpassImage(boardingpass)
-
+        nft.name = boardingpass.name
       }
     } else {
       boardingpass = new Boardingpass(nft.id)
