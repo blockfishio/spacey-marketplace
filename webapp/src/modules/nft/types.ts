@@ -7,6 +7,7 @@ import { NFTsFetchFilters } from '../vendor/nft/types'
 import { Vendors } from '../vendor/types'
 import { SortDirection } from '../routing/types'
 import { Boardingpass } from './boardingpass/types'
+import { AssetCategory } from '../asset/types'
 
 export enum NFTSortBy {
   NAME = 'name',
@@ -21,7 +22,8 @@ export enum NFTCategory {
   WEARABLE = 'wearable',
   ENS = 'ens',
   ART = 'art',
-  BOARDNGPASS = 'boardingpass'
+  BOARDNGPASS = 'boardingpass',
+  CHEST = 'chest',
 }
 
 // TODO: Move this to their own vendor folders
@@ -67,7 +69,7 @@ export type NFTsFetchParams = {
   skip: number
   orderBy?: NFTSortBy
   orderDirection?: SortDirection
-  category?: NFTCategory
+  category?: NFTCategory | AssetCategory
   address?: string
   onlyOnSale?: boolean
   search?: string

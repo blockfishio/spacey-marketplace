@@ -14,6 +14,7 @@ const contractAddresses = {
     EstateRegistry: '0x124bf28a423b2ca80b3846c3aa0eb944fe7ebb95',
     // Marketplace: '0x5424912699dabaa5f2998750c1c66e73d67ad219',
     Marketplace: '0x565b515e3872135c7d3af714542769ea50b59f6e',
+    AssetSale: '0x0f15Cc2c55314ee48cC40cc1833e131509E4e535',
 
     Bids: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f',
     DCLRegistrar: '0xeb6f5d94d79f0750781cc962908b161b95192f53',
@@ -73,6 +74,7 @@ const contractAddresses = {
     Marketplace: '0x8e5660b4ab70168b5a6feea0e0315cb49c8cd539',
     Bids: '0xe479dfd9664c693b2e2992300930b00bfde08233',
     DCLRegistrar: '0x2a187453064356c898cae034eaed119e1663acb8',
+    AssetSale: '0x0000000000000000000000000000000000000000',
 
     AtariLaunch: '0x4c290f486bae507719c562b6b524bdb71a2570c9',
     BinanceUsCollection: '0xa8ee490e4c4da48cc1653502c1a77479d4d818de',
@@ -126,12 +128,13 @@ const contractAddresses = {
 
 const {
   MANAToken,
+
   LANDRegistry,
   EstateRegistry,
   Marketplace,
   Bids,
   DCLRegistrar,
-
+  AssetSale,
   AtariLaunch,
   BinanceUsCollection,
   ChinaFlyingCollection,
@@ -191,6 +194,7 @@ export class ContractService implements ContractServiceInterface {
     [Marketplace]: 'Marketplace',
     [Bids]: 'Bids',
     [DCLRegistrar]: 'Names',
+    [AssetSale]: 'Asset Sale',
 
     [AtariLaunch]: 'Atari Launch',
     [BinanceUsCollection]: 'Binance Us',
@@ -244,7 +248,7 @@ export class ContractService implements ContractServiceInterface {
     [DCLRegistrar]: 'DCLRegistrar',
     [Marketplace]: 'Marketplace',
     [Bids]: 'ERC721Bid',
-
+    [AssetSale]: 'AssetSale',
     [AtariLaunch]: 'AtariLaunch',
     [BinanceUsCollection]: 'BinanceUsCollection',
     [ChinaFlyingCollection]: 'ChinaFlyingCollection',
@@ -293,6 +297,7 @@ export class ContractService implements ContractServiceInterface {
   contractCategories = {
     [LANDRegistry]: NFTCategory.PARCEL,
     [EstateRegistry]: NFTCategory.ESTATE,
+    // [AssetSale]: NFTCategory.CHEST,
     // [DCLRegistrar]: NFTCategory.ENS,
 
     // [AtariLaunch]: NFTCategory.WEARABLE,

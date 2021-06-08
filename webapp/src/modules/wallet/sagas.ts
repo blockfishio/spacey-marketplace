@@ -33,7 +33,9 @@ function* handleWallet(
 ) {
   const { address } = action.payload.wallet
 
-  const { MANAToken, Marketplace, MarketplaceAdapter, Bids } = contractAddresses
+  const { MANAToken, Marketplace,
+    // MarketplaceAdapter, Bids,
+    AssetSale } = contractAddresses
 
   // TODO: VendorFactory.build().contractService.getAllowances()
   // TODO: VendorFactory.build().contractService.getApprovals()
@@ -41,8 +43,9 @@ function* handleWallet(
   const authorization: AuthorizationsRequest = {
     allowances: {
       [Marketplace]: [MANAToken],
-      [MarketplaceAdapter]: [MANAToken],
-      [Bids]: [MANAToken]
+      // [MarketplaceAdapter]: [MANAToken],
+      // [Bids]: [MANAToken],
+      [AssetSale]: [MANAToken]
     },
     approvals: {
       [Marketplace]: Object.keys(contractCategories).filter(

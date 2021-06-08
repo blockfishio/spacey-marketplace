@@ -2,6 +2,7 @@ import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 // import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
 // import { Vendors } from '../vendor/types'
 import { NFTCategory } from '../nft/types'
+import { AssetCategory } from '../asset/types'
 // import { SortDirection, SortBy } from '../routing/types'
 import { contractCategories } from '../contract/utils'
 // import { addressEquals } from '../wallet/utils'
@@ -27,6 +28,8 @@ export function getAssetName(
 
 
   switch (asset.Category) {
+    case AssetCategory.CHEST:
+      return t('global.Chest')
 
 
     default:

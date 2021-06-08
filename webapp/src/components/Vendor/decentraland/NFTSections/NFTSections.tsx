@@ -105,6 +105,12 @@ const NFTSections = (props: Props) => {
         currentValue={section}
         onClick={onSectionClick}
       />
+      <MenuItem
+        value={Section.CHEST}
+        currentValue={section}
+        onClick={onSectionClick}
+      />
+
 
     </Menu>
   )

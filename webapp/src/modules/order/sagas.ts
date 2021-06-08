@@ -13,16 +13,22 @@ import {
   CANCEL_ORDER_REQUEST,
   CancelOrderRequestAction,
   cancelOrderSuccess,
-  cancelOrderFailure
+  cancelOrderFailure,
+  EXECUTE_ASSETORDER_REQUEST,
+  executeAssetOrderSuccess,
+  executeAssetOrderFailure,
+  ExecuteAssetOrderRequestAction
 } from './actions'
 import { getAddress, getChainId } from '../wallet/selectors'
 import { locations } from '../routing/locations'
 import { VendorFactory } from '../vendor/VendorFactory'
+import { Vendors } from '../vendor'
 
 export function* orderSaga() {
   yield takeEvery(CREATE_ORDER_REQUEST, handleCreateOrderRequest)
   yield takeEvery(EXECUTE_ORDER_REQUEST, handleExecuteOrderRequest)
   yield takeEvery(CANCEL_ORDER_REQUEST, handleCancelOrderRequest)
+  yield takeEvery(EXECUTE_ASSETORDER_REQUEST, handleExecuteAssetOrderRequest)
 }
 
 function* handleCreateOrderRequest(action: CreateOrderRequestAction) {
@@ -60,6 +66,24 @@ function* handleExecuteOrderRequest(action: ExecuteOrderRequestAction) {
     yield put(push(locations.activity()))
   } catch (error) {
     yield put(executeOrderFailure(order, nft, error.message))
+  }
+}
+function* handleExecuteAssetOrderRequest(action: ExecuteAssetOrderRequestAction) {
+  const { asset } = action.payload
+  try {
+
+    const { orderService } = VendorFactory.build(Vendors.DECENTRALAND)
+
+    const address: ReturnType<typeof getAddress> = yield select(getAddress)
+    const txHash: string = yield call(() =>
+      orderService.executeAsset ? orderService.executeAsset(asset, address!) : "err"
+    )
+
+    const chainId: ChainId = yield select(getChainId)
+    yield put(executeAssetOrderSuccess(asset, chainId, txHash))
+    yield put(push(locations.activity()))
+  } catch (error) {
+    yield put(executeAssetOrderFailure(asset, error.message))
   }
 }
 

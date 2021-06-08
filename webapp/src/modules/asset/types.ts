@@ -1,7 +1,8 @@
 
-// import { View } from '../ui/types'
+import { View } from '../ui/types'
 // import { NFTsFetchFilters } from '../vendor/nft/types'
 import { Vendors } from '../vendor/types'
+import { NFTCategory } from '../nft/types'
 // import { SortDirection } from '../routing/types'
 
 export enum NFTSortBy {
@@ -12,7 +13,9 @@ export enum NFTSortBy {
 }
 
 export enum AssetCategory {
-  CHEST = 'Chest'
+  CHEST = 'Chest',
+  ALL = 'All',
+  HIDE = 'Hide'
 }
 
 // TODO: Move this to their own vendor folders
@@ -34,7 +37,14 @@ export type Asset = {
   OptionID: string
 }
 
+export type AssetsFetchParams = {
+
+  category?: AssetCategory | NFTCategory
+
+}
 
 export type AssetsFetchOptions = {
-  vendor: Vendors
+  vendor: Vendors,
+  view?: View,
+  params: AssetsFetchParams
 }

@@ -24,7 +24,7 @@ const Actions = (props: Props) => {
 
       <Button
         as={Link}
-        to={locations.buy("kkkk", OptionID)}
+        to={locations.buyasset(OptionID)}
         primary
       >
         {t('nft_page.buy')}

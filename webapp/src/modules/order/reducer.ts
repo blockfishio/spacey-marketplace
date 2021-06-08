@@ -14,6 +14,17 @@ import {
   FETCH_NFT_SUCCESS
 } from '../nft/actions'
 
+import {
+  FetchAssetsRequestAction,
+  FetchAssetsSuccessAction,
+  FetchAssetsFailureAction,
+  FETCH_ASSETS_REQUEST,
+  // FETCH_ASSETS_SUCCESS,
+  FETCH_ASSETS_FAILURE,
+  FetchAssetSuccessAction,
+  // FETCH_ASSET_SUCCESS
+} from '../asset/actions'
+
 export type OrderState = {
   data: Record<string, Order>
   loading: LoadingState
@@ -31,6 +42,10 @@ type OrderReducerAction =
   | FetchNFTsSuccessAction
   | FetchNFTsFailureAction
   | FetchNFTSuccessAction
+  | FetchAssetsRequestAction
+  | FetchAssetsSuccessAction
+  | FetchAssetsFailureAction
+  | FetchAssetSuccessAction
 
 export function orderReducer(
   state: OrderState = INITIAL_STATE,
@@ -77,6 +92,21 @@ export function orderReducer(
       }
       return state
     }
+    case FETCH_ASSETS_REQUEST: {
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action)
+      }
+    }
+
+    case FETCH_ASSETS_FAILURE: {
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        error: action.payload.error
+      }
+    }
+
     default:
       return state
   }

@@ -48,6 +48,10 @@ export interface OrderService<V extends Vendors> {
     fromAddress: string,
     fingerprint?: string
   ) => Promise<string>
+  executeAsset?: (
+    asset: Asset,
+    address: string
+  ) => Promise<string>
   cancel: (nft: NFT<V>, fromAddress: string) => Promise<string>
   canSell(): boolean
 }

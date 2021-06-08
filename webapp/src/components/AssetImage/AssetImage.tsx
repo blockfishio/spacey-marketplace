@@ -3,8 +3,8 @@ import { Loader } from 'decentraland-ui'
 import { LazyImage } from 'react-lazy-images'
 
 
-import { Props } from './VirtualImage.types'
-import './VirtualImage.css'
+import { Props } from './AssetImage.types'
+import './AssetImage.css'
 
 // 1x1 transparent pixel
 const PIXEL =

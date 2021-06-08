@@ -5,7 +5,7 @@ import { NFTCard } from '../../NFTCard'
 // import { VirtualCard } from '../../VirtualCard'
 import { Props } from './Slideshow.types'
 import './Slideshow.css'
-import { VirtualCard } from '../../VirtualCard'
+import { AssetCard } from '../../AssetCard'
 
 const Slideshow = (props: Props) => {
   const { title, nfts, isSubHeader, isLoading, assets, onViewAll } = props
@@ -14,7 +14,7 @@ const Slideshow = (props: Props) => {
     nfts.map((nft, index) => <NFTCard key={index} nft={nft} />)
   // const isOffial = title === t('home_page.offical')
   const renderAssets = () =>
-    assets.map((asset, index) => <VirtualCard key={index} asset={asset} />)
+    assets.map((asset, index) => <AssetCard key={index} asset={asset} />)
 
   return (
     <div className="Slideshow">

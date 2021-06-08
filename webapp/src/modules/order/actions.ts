@@ -2,10 +2,14 @@ import { action } from 'typesafe-actions'
 import { buildTransactionPayload } from 'decentraland-dapps/dist/modules/transaction/utils'
 
 import { NFT } from '../nft/types'
+import { Asset } from '../asset/types'
 import { Order } from './types'
 import { getNFTName } from '../nft/utils'
+import { getAssetName } from '../asset/utils'
+
 import { formatMANA } from '../../lib/mana'
 import { ChainId } from '@dcl/schemas'
+import { contractAddresses } from '../contract/utils'
 
 // Create Order (aka Sell)
 
@@ -111,3 +115,35 @@ export const cancelOrderFailure = (order: Order, nft: NFT, error: string) =>
 export type CancelOrderRequestAction = ReturnType<typeof cancelOrderRequest>
 export type CancelOrderSuccessAction = ReturnType<typeof cancelOrderSuccess>
 export type CancelOrderFailureAction = ReturnType<typeof cancelOrderFailure>
+
+
+// Execute Asset Order (aka Buy Asset)
+
+export const EXECUTE_ASSETORDER_REQUEST = '[Request] Execute Asset Order'
+export const EXECUTE_ASSETORDER_SUCCESS = '[Success] Execute Asset Order'
+export const EXECUTE_ASSETORDER_FAILURE = '[Failure] Execute Asset Order'
+
+export const executeAssetOrderRequest = (
+
+  asset: Asset,
+) => action(EXECUTE_ASSETORDER_REQUEST, { asset })
+export const executeAssetOrderSuccess = (
+  asset: Asset,
+  chainId: ChainId,
+  txHash: string
+) =>
+  action(EXECUTE_ASSETORDER_SUCCESS, {
+    asset,
+    ...buildTransactionPayload(chainId, txHash, {
+      tokenId: asset.OptionID,
+      contractAddress: contractAddresses.AssetSale,
+      name: getAssetName(asset),
+      price: formatMANA(asset.Price)
+    })
+  })
+export const executeAssetOrderFailure = (asset: Asset, error: string) =>
+  action(EXECUTE_ASSETORDER_FAILURE, { asset, error })
+
+export type ExecuteAssetOrderRequestAction = ReturnType<typeof executeAssetOrderRequest>
+export type ExecuteAssetOrderSuccessAction = ReturnType<typeof executeAssetOrderSuccess>
+export type ExecuteAssetOrderFailureAction = ReturnType<typeof executeAssetOrderFailure>

@@ -4,10 +4,11 @@ import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 
 import { getMaxQuerySize, MAX_PAGE, PAGE_SIZE } from '../../modules/vendor/api'
 import { NFTCard } from '../NFTCard'
+import { AssetCard } from '../AssetCard'
 import { Props } from './NFTList.types'
 
 const NFTList = (props: Props) => {
-  const { vendor, nfts, page, count, isLoading, onBrowse } = props
+  const { vendor, nfts, page, count, isLoading, assets, onBrowse } = props
 
   const handleLoadMore = useCallback(() => {
     onBrowse({ page: page + 1 })
@@ -27,6 +28,12 @@ const NFTList = (props: Props) => {
             <NFTCard key={nft.id + '-' + index} nft={nft} />
           ))
           : null}
+        {assets.length > 0
+          ? assets.map((asset, index) => (
+            <AssetCard key={asset.OptionID + '-' + index} asset={asset} />
+          ))
+          : null}
+
 
         {isLoading ? (
           <>
@@ -36,7 +43,7 @@ const NFTList = (props: Props) => {
         ) : null}
       </Card.Group>
 
-      {nfts.length === 0 && !isLoading ? (
+      {nfts.length === 0 && assets.length === 0 && !isLoading ? (
         <div className="empty">{t('nft_list.empty')}</div>
       ) : null}
 

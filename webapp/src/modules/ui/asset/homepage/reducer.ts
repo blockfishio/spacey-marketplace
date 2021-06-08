@@ -31,9 +31,7 @@ export function homepageReducer(
 ) {
   switch (action.type) {
     case FETCH_ASSETS_SUCCESS: {
-      console.log("success")
       const assetIds = action.payload.assets.map(asset => asset.OptionID)
-      console.log(assetIds, state)
       return {
         ...state,
         [View.OFFICAL]: assetIds

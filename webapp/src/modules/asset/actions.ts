@@ -31,12 +31,13 @@ export const fetchAssetsRequest = (options: AssetsFetchOptions) =>
 export const fetchAssetsSuccess = (
   options: AssetsFetchOptions,
   assets: Asset[],
-
+  count: number,
   timestamp: number
 ) =>
   action(FETCH_ASSETS_SUCCESS, {
     options,
     assets,
+    count,
     timestamp
   })
 export const fetchAssetsFailure = (

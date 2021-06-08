@@ -43,7 +43,6 @@ const mapState = (state: RootState): MapStateProps => {
       isTransactionPending(transaction.status)
     )
   }
-
   return {
     wallet,
     authorizations,

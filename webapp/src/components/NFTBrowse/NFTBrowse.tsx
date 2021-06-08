@@ -23,6 +23,7 @@ const NFTBrowse = (props: Props) => {
     address,
     onSetView,
     onFetchNFTsFromRoute,
+    onFetchAssetsFromRoute,
     onBrowse,
     showOnSale
   } = props
@@ -38,8 +39,12 @@ const NFTBrowse = (props: Props) => {
       address,
       onlyOnSale
     })
+    onFetchAssetsFromRoute({
+      vendor,
+      view
+    })
     // eslint-disable-next-line
-  }, [vendor, onFetchNFTsFromRoute])
+  }, [vendor, onFetchNFTsFromRoute, onFetchAssetsFromRoute])
 
   // handlers
   const handleSetFullscreen = useCallback(

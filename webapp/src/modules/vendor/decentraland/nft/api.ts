@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost'
 
-import { NFTsFetchParams } from '../../../nft/types'
+import { NFTCategory, NFTsFetchParams } from '../../../nft/types'
 import { WearableGender } from '../../../nft/wearable/types'
 import { ContractService } from '../ContractService'
 import { client } from '../api'
@@ -106,7 +106,7 @@ function getNFTsQuery(
     // extraWhere.push('owner_not: $officalAddr')
   }
 
-  if (params.category) {
+  if (params.category && params.category in NFTCategory) {
     extraWhere.push('category: $category')
   }
 

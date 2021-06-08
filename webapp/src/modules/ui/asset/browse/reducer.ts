@@ -1,9 +1,9 @@
 import {
-  FetchNFTsSuccessAction,
-  FETCH_NFTS_SUCCESS,
-  FetchNFTsRequestAction,
-  FETCH_NFTS_REQUEST
-} from '../../../nft/actions'
+  FetchAssetsSuccessAction,
+  FETCH_ASSETS_SUCCESS,
+  FetchAssetsRequestAction,
+  FETCH_ASSETS_REQUEST
+} from '../../../asset/actions'
 import { BROWSE, BrowseAction } from '../../../routing/actions'
 import { SET_VIEW, SetViewAction } from '../../actions'
 import { View } from '../../types'
@@ -24,8 +24,8 @@ const INITIAL_STATE: BrowseUIState = {
 
 type UIReducerAction =
   | SetViewAction
-  | FetchNFTsRequestAction
-  | FetchNFTsSuccessAction
+  | FetchAssetsRequestAction
+  | FetchAssetsSuccessAction
   | BrowseAction
 
 export function browseReducer(
@@ -46,54 +46,30 @@ export function browseReducer(
         ids: view ? [] : [...state.ids]
       }
     }
-    case FETCH_NFTS_REQUEST: {
-      const { view } = action.payload.options
-      switch (view) {
-        case View.ATLAS:
-          return state
-        case View.LOAD_MORE:
-          return {
-            ...state,
-            ids: [...state.ids],
-            count: undefined
-          }
-        default:
-          return {
-            ...state,
-            ids: [],
-            count: undefined
-          }
+    case FETCH_ASSETS_REQUEST: {
+
+      return {
+        ...state,
+        ids: [],
+        count: undefined
       }
+
     }
-    case FETCH_NFTS_SUCCESS: {
+    case FETCH_ASSETS_SUCCESS: {
       if (action.payload.timestamp < state.lastTimestamp) {
         return state
       }
-      const view = action.payload.options.view
-      switch (view) {
-        case View.MARKET:
-        case View.COMMUNITY:
-        case View.OFFICAL:
-        case View.ACCOUNT: {
-          return {
-            ...state,
-            view,
-            ids: action.payload.nfts.map(nft => nft.id),
-            count: action.payload.count,
-            timestamp: action.payload.timestamp
-          }
-        }
-        case View.LOAD_MORE: {
-          return {
-            ...state,
-            ids: [...state.ids, ...action.payload.nfts.map(nft => nft.id)],
-            count: action.payload.count,
-            timestamp: action.payload.timestamp
-          }
-        }
-        default:
-          return state
+
+      return {
+        ...state,
+        ids: action.payload.assets.map(asset => asset.OptionID),
+        count: action.payload.count,
+        timestamp: action.payload.timestamp
       }
+
+
+
+
     }
     default:
       return state

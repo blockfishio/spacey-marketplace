@@ -20,7 +20,8 @@
     "accept": "Accept",
     "update": "Update",
     "search": "Search",
-    "apply": "Apply"
+    "apply": "Apply",
+    "Chest": "Chest"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -71,7 +72,8 @@
     "makers_place": "MakersPlace",
     "spacey2025": "SpaceY2025",
     "boardingpass": "Boardingpass",
-    "community": "Community Market"
+    "community": "Community Market",
+    "chest": "Chest"
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -333,6 +335,7 @@
       "create_order": "You listed {name} on sale for {price}.",
       "cancel_order": "You removed the listing of {name} for {price}.",
       "execute_order": "You bought {name} for {price}.",
+      "execute_assetorder": "You bought {name} for {price}",
       "transfer": "You transferred {name} to {address}.",
       "place_bid": "You placed a bid of {price} on {name}.",
       "accept_bid": "You accepted a bid of {price} on {name}.",

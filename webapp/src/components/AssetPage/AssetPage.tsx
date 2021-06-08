@@ -9,7 +9,7 @@ import { AssetProviderPage } from '../AssetProviderPage'
 // import { ChestDetail } from './ChestDetail'
 import { ChestDetail } from './ChestDetail'
 // import { Asset } from '../../modules/asset/types'
-import './VirtualPage.css'
+import './AssetPage.css'
 
 const VirtualPage = () => {
   return (

@@ -5,9 +5,9 @@ import { Card, Mana } from 'decentraland-ui'
 
 import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
-import { VirtualImage } from '../VirtualImage'
-import { Props } from './VirtualCard.types'
-import './VirtualCard.css'
+import { AssetImage } from '../AssetImage'
+import { Props } from './AssetCard.types'
+import './AssetCard.css'
 
 const VirtualCard = (props: Props) => {
   const { asset } = props
@@ -22,7 +22,7 @@ const VirtualCard = (props: Props) => {
       as={Link}
       to={locations.asset(asset.OptionID)}
     >
-      <VirtualImage image={asset.ImageURL} showMonospace />
+      <AssetImage image={asset.ImageURL} showMonospace />
       <Card.Content>
         <Card.Header>
           <div className="title">{title}</div>{' '}

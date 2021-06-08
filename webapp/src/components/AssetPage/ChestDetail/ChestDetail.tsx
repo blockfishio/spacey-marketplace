@@ -18,7 +18,7 @@ import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 // import { Section } from '../../../modules/vendor/decentraland/routing/types'
 import { PageHeader } from '../../PageHeader'
 // import { NFTImage } from '../../NFTImage'
-import { VirtualImage } from '../../VirtualImage'
+import { AssetImage } from '../../AssetImage'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
 import { Title } from '../../NFTPage/Title'
@@ -80,7 +80,7 @@ const ChestDetail = (props: Props) => {
   return (
     <div className="WearableDetail">
       <PageHeader>
-        <VirtualImage image={asset.ImageURL} />
+        <AssetImage image={asset.ImageURL} />
       </PageHeader>
       <Container>
         <Title

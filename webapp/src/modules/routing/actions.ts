@@ -23,8 +23,8 @@ export type FetchNFTsFromRouteAction = ReturnType<typeof fetchNFTsFromRoute>
 
 export const FETCH_ASSETS_FROM_ROUTE = 'Fetch Assets from route'
 
-export const fetchAssetsFromRoute = () =>
-  action(FETCH_ASSETS_FROM_ROUTE, {})
+export const fetchAssetsFromRoute = (searchOptions: SearchOptions) =>
+  action(FETCH_ASSETS_FROM_ROUTE, { searchOptions })
 
 export type FetchAssetsFromRouteAction = ReturnType<typeof fetchAssetsFromRoute>
 

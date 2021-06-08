@@ -46,6 +46,9 @@ export const locations = {
     contractAddress: string = ':contractAddress',
     tokenId: string = ':tokenId'
   ) => `/contracts/${contractAddress}/tokens/${tokenId}/buy`,
+  buyasset: (
+    optionId: string = ':optionId',
+  ) => `/asset/${optionId}/buy`,
   cancel: (
     contractAddress: string = ':contractAddress',
     tokenId: string = ':tokenId'

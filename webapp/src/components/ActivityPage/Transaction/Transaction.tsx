@@ -13,7 +13,8 @@ import {
 import {
   CREATE_ORDER_SUCCESS,
   CANCEL_ORDER_SUCCESS,
-  EXECUTE_ORDER_SUCCESS
+  EXECUTE_ORDER_SUCCESS,
+  EXECUTE_ASSETORDER_SUCCESS
 } from '../../../modules/order/actions'
 import { TRANSFER_NFT_SUCCESS } from '../../../modules/nft/actions'
 import {
@@ -23,7 +24,9 @@ import {
 } from '../../../modules/bid/actions'
 import { locations } from '../../../modules/routing/locations'
 import { NFTProvider } from '../../NFTProvider'
+import { AssetProvider } from '../../AssetProvider'
 import { TransactionDetail } from './TransactionDetail'
+import { AssetTransactionDetail } from './AssetTransactionDetail'
 import { Props } from './Transaction.types'
 
 const Transaction = (props: Props) => {
@@ -161,6 +164,32 @@ const Transaction = (props: Props) => {
             />
           )}
         </NFTProvider>
+      )
+    }
+    case EXECUTE_ASSETORDER_SUCCESS: {
+      const { tokenId, name, price } = tx.payload
+      return (
+        <AssetProvider optionId={tokenId}>
+          {asset => (
+            <AssetTransactionDetail
+              asset={asset}
+              text={
+                <T
+                  id="transaction.detail.execute_assetorder"
+                  values={{
+                    name: (
+                      <Link to={locations.asset(tokenId)}>
+                        {name}
+                      </Link>
+                    ),
+                    price: <Mana inline>{price.toLocaleString()}</Mana>
+                  }}
+                />
+              }
+              tx={tx}
+            />
+          )}
+        </AssetProvider>
       )
     }
     case TRANSFER_NFT_SUCCESS: {

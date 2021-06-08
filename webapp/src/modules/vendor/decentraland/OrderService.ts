@@ -2,8 +2,10 @@ import { toWei } from 'web3x-es/utils'
 import { Address } from 'web3x-es/address'
 
 import { Marketplace } from '../../../contracts/Marketplace'
+import { AssetSale } from '../../../contracts/AssetSale'
 import { ContractFactory } from '../../contract/ContractFactory'
 import { NFT } from '../../nft/types'
+import { Asset } from '../../asset/types'
 import { Order } from '../../order/types'
 import { orderAPI } from './order/api'
 import { Vendors } from '../types'
@@ -77,6 +79,27 @@ export class OrderService
     }
   }
 
+  async executeAsset(
+    asset: Asset,
+    fromAddress: string,
+  ) {
+    const marketplace = await this.getAssetSaleContract()
+    if (!fromAddress) {
+      throw new Error('Invalid address. Wallet must be connected.')
+    }
+    const from = Address.fromString(fromAddress)
+
+
+    return marketplace.methods
+      .buyAsset(
+        asset.OptionID,
+        1
+      )
+      .send({ from })
+      .getTxHash()
+
+  }
+
   async cancel(nft: NFT, fromAddress: string) {
     const marketplace = await this.getMarketplaceContract()
 
@@ -93,6 +116,9 @@ export class OrderService
 
   canSell() {
     return true
+  }
+  private getAssetSaleContract() {
+    return ContractFactory.build(AssetSale, ContractService.contractAddresses.AssetSale)
   }
 
   private getMarketplaceContract() {

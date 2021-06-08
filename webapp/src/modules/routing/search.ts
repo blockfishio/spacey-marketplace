@@ -1,6 +1,7 @@
 import { WearableCategory } from '../nft/wearable/types'
 import { View } from '../ui/types'
 import { NFTCategory } from '../nft/types'
+import { AssetCategory } from '../asset/types'
 import { Vendors } from '../vendor/types'
 import { Section } from '../vendor/routing/types'
 import { SearchOptions, SortBy } from './types'
@@ -101,6 +102,14 @@ export function getSearchCategory(section: Section) {
       return NFTCategory.ENS
     case DclSection.BOARDINGPASS:
       return NFTCategory.BOARDNGPASS
+    case DclSection.CHEST:
+      return AssetCategory.CHEST
+    case DclSection.ALL:
+      return AssetCategory.ALL
+    case DclSection.LAND:
+      return AssetCategory.HIDE
+
+
   }
 }
 

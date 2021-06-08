@@ -58,7 +58,10 @@ const HomePage = (props: Props) => {
         page: 1,
         onlyOnSale: true
       })
-      onFetchAssetsFromRoute()
+      onFetchAssetsFromRoute({
+        vendor,
+        view
+      })
     }
     // eslint-disable-next-line
   }, [onFetchNFTsFromRoute, onFetchAssetsFromRoute])

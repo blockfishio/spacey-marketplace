@@ -38,9 +38,12 @@ import {
   FETCH_ASSETS_FROM_ROUTE,
   // FetchAssetsFromRouteAction,
   setIsLoadMore,
+  FetchAssetsFromRouteAction,
 } from './actions'
 import { SearchOptions } from './types'
 import { fetchAssetsRequest } from '../asset/actions'
+import { AssetCategory } from '../asset/types'
+
 
 export function* routingSaga() {
   yield takeEvery(FETCH_NFTS_FROM_ROUTE, handleFetchNFTsFromRoute)
@@ -55,9 +58,9 @@ function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
   yield fetchNFTsFromRoute(newSearchOptions)
 }
 
-function* handleFetchAssetsFromRoute() {
+function* handleFetchAssetsFromRoute(action: FetchAssetsFromRouteAction) {
 
-  yield fetchAssetsFromRoute()
+  yield fetchAssetsFromRoute(action.payload.searchOptions)
 }
 
 function* handleBrowse(action: BrowseAction) {
@@ -65,6 +68,7 @@ function* handleBrowse(action: BrowseAction) {
     action.payload.searchOptions
   )
   yield fetchNFTsFromRoute(newSearchOptions)
+  yield fetchAssetsFromRoute(newSearchOptions)
 
   const { pathname }: ReturnType<typeof getLocation> = yield select(getLocation)
   const params = getSearchParams(newSearchOptions)
@@ -90,6 +94,10 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
 
   const [orderBy, orderDirection] = getSortOrder(sortBy)
   const category = getSearchCategory(section)
+  if (category && category in AssetCategory) {
+    return
+  }
+
   yield put(setIsLoadMore(isLoadMore))
   if (isMap) {
     yield put(setView(view))
@@ -114,8 +122,11 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   }
 }
 
-function* fetchAssetsFromRoute() {
-  yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND }))
+function* fetchAssetsFromRoute(searchOptions: SearchOptions) {
+  const { view } = searchOptions
+  const section = searchOptions.section!
+  const category = getSearchCategory(section)
+  yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND, view: view, params: { category } }))
 }
 
 function* getNewSearchOptions(current: SearchOptions) {

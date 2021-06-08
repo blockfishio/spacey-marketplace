@@ -13,6 +13,10 @@ import { VendorFactory } from '../vendor/VendorFactory'
 // import { contractVendors } from '../contract/utils'
 import { AwaitFn } from '../types'
 import { Vendors } from '../vendor'
+import { AssetCategory } from './types'
+import { View } from '../ui/types'
+// import { NFTCategory } from '../nft/types'
+
 
 export function* assetSaga() {
   yield takeEvery(FETCH_ASSETS_REQUEST, handleFetchAssetsRequest)
@@ -22,9 +26,8 @@ export function* assetSaga() {
 
 function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
   const { options, timestamp } = action.payload
-  // const { vendor } = options
-
-
+  const { params, view } = options
+  const { category } = params
   try {
     const { assetService } = VendorFactory.build(Vendors.DECENTRALAND)
     if (assetService) {
@@ -34,9 +37,16 @@ function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
         // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
         assetService.fetch()
       )
-      yield put(
-        fetchAssetsSuccess(options, assets, timestamp)
-      )
+      console.log(view, category)
+      if (view === View.OFFICAL && (category !== AssetCategory.HIDE) && (!category || category === AssetCategory.CHEST || category === AssetCategory.ALL)) {
+        yield put(
+          fetchAssetsSuccess(options, assets, assets.length, timestamp))
+      }
+      else {
+
+        yield put(fetchAssetsSuccess(options, [], 0, timestamp))
+      }
+
     }
   } catch (error) {
     yield put(fetchAssetsFailure(options, error.message, timestamp))

@@ -29,7 +29,9 @@ export enum Section {
   ENS = 'ens',
   BOARDINGPASS = 'boardingpass',
   COMMUNITY = "community",
-  OFFICAL = "offical"
+  OFFICAL = "offical",
+
+  CHEST = "chest"
 
 }
 
