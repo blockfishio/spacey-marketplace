@@ -1,11 +1,11 @@
 
 import { API_VIRTUAL_URL } from '../api'
-// import {
-//   Asset,
-// } from '../asset/types'
+
+import { AssetsFetchParams } from '../../../asset/types'
+
 class AssetAPI {
-  fetch = async () => {
-    const assetsArray = await fetch(API_VIRTUAL_URL + '/assets', {
+  fetch = async (params: AssetsFetchParams) => {
+    const assetsArray = await fetch(API_VIRTUAL_URL + `/assets?category=${params.category ? params.category.toLowerCase() : 'all'}`, {
       // mode: 'no-cors',
       method: "GET",
       headers: {

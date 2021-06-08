@@ -2,9 +2,8 @@
 import { View } from '../ui/types'
 // import { NFTsFetchFilters } from '../vendor/nft/types'
 import { Vendors } from '../vendor/types'
-import { NFTCategory } from '../nft/types'
 // import { SortDirection } from '../routing/types'
-
+import { NFTCategory } from '../nft/types'
 export enum NFTSortBy {
   NAME = 'name',
   CREATED_AT = 'createdAt',
@@ -14,7 +13,7 @@ export enum NFTSortBy {
 
 export enum AssetCategory {
   CHEST = 'Chest',
-  ALL = 'All',
+  ALL = 'all',
   HIDE = 'Hide'
 }
 

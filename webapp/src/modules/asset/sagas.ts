@@ -13,8 +13,8 @@ import { VendorFactory } from '../vendor/VendorFactory'
 // import { contractVendors } from '../contract/utils'
 import { AwaitFn } from '../types'
 import { Vendors } from '../vendor'
-import { AssetCategory } from './types'
-import { View } from '../ui/types'
+// import { AssetCategory } from './types'
+// import { View } from '../ui/types'
 // import { NFTCategory } from '../nft/types'
 
 
@@ -26,8 +26,7 @@ export function* assetSaga() {
 
 function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
   const { options, timestamp } = action.payload
-  const { params, view } = options
-  const { category } = params
+  const { params } = options
   try {
     const { assetService } = VendorFactory.build(Vendors.DECENTRALAND)
     if (assetService) {
@@ -35,17 +34,16 @@ function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
         assets
       ]: AwaitFn<typeof assetService.fetch> = yield call(() =>
         // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
-        assetService.fetch()
+        assetService.fetch(params)
       )
-      console.log(view, category)
-      if (view === View.OFFICAL && (category !== AssetCategory.HIDE) && (!category || category === AssetCategory.CHEST || category === AssetCategory.ALL)) {
-        yield put(
-          fetchAssetsSuccess(options, assets, assets.length, timestamp))
-      }
-      else {
+      // if (view === View.OFFICAL && (category !== AssetCategory.HIDE) && (!category || category === AssetCategory.CHEST || category === AssetCategory.ALL)) {
+      yield put(
+        fetchAssetsSuccess(options, assets, assets.length, timestamp))
+      // }
+      // else {
 
-        yield put(fetchAssetsSuccess(options, [], 0, timestamp))
-      }
+      //   yield put(fetchAssetsSuccess(options, [], 0, timestamp))
+      // }
 
     }
   } catch (error) {

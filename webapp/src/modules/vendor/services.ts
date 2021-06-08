@@ -5,6 +5,9 @@ import {
   NFTsCountParams
 } from '../nft/types'
 import {
+  AssetsFetchParams
+} from '../asset/types'
+import {
   Asset,
 } from '../asset/types'
 import { Account } from '../account/types'
@@ -84,7 +87,7 @@ export class ContractService { }
 
 
 export interface AssetService {
-  fetch: (
+  fetch: (params: AssetsFetchParams
   ) => Promise<readonly [Asset[]]>
   fetchOne: (
     optionId: string

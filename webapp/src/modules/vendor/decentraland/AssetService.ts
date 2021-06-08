@@ -5,12 +5,13 @@ import { AssetFragment } from './asset/fragments'
 import { AssetService as AssetServiceInterface } from '../services'
 // import { Vendors } from '../types'
 import { assetAPI } from './asset/api'
+import { AssetsFetchParams } from '../../asset/types'
 
 
 
 export class AssetService implements AssetServiceInterface {
-  async fetch() {
-    const remoteAssets = await assetAPI.fetch()
+  async fetch(params: AssetsFetchParams) {
+    const remoteAssets = await assetAPI.fetch(params)
     const assets: Asset[] = []
     for (const remoteAsset of remoteAssets) {
       const nft = this.toAsset(remoteAsset)

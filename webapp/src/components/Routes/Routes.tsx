@@ -58,7 +58,7 @@ const Routes = () => {
         <Route exact path={locations.asset()} component={AssetPage} />
         <Redirect
           from="/browse"
-          to={locations.browse() + window.location.search}
+          to={locations.offical() + window.location.search}
           push
         />
         <Redirect to={locations.root()} />

@@ -70,7 +70,6 @@ const BuyPage = (props: Props) => {
   const isDisabled =
 
     notEnoughMana
-  console.log(isDisabled)
   const name = <b>{getAssetName(asset)}</b>
   const Price = (props: { price: string }) => (
     <Mana inline>{formatMANA(props.price)}</Mana>

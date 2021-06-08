@@ -108,8 +108,6 @@ export function getSearchCategory(section: Section) {
       return AssetCategory.ALL
     case DclSection.LAND:
       return AssetCategory.HIDE
-
-
   }
 }
 

@@ -43,6 +43,7 @@ import {
 import { SearchOptions } from './types'
 import { fetchAssetsRequest } from '../asset/actions'
 import { AssetCategory } from '../asset/types'
+// import { AssetCategory } from '../asset/types'
 
 
 export function* routingSaga() {
@@ -93,10 +94,14 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const first = Math.min(page * PAGE_SIZE - skip, getMaxQuerySize(vendor))
 
   const [orderBy, orderDirection] = getSortOrder(sortBy)
-  const category = getSearchCategory(section)
-  if (category && category in AssetCategory) {
-    return
+  let category = getSearchCategory(section)
+  // console.log(category)
+  if (category === AssetCategory.ALL) {
+    category = undefined
   }
+  // if (category && !(category in NFTCategory)) {
+  //   return
+  // }
 
   yield put(setIsLoadMore(isLoadMore))
   if (isMap) {
@@ -126,7 +131,10 @@ function* fetchAssetsFromRoute(searchOptions: SearchOptions) {
   const { view } = searchOptions
   const section = searchOptions.section!
   const category = getSearchCategory(section)
+  // console.log(category, section, !category || category in AssetCategory)
+  // if (!category || category in AssetCategory) {
   yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND, view: view, params: { category } }))
+  // }
 }
 
 function* getNewSearchOptions(current: SearchOptions) {

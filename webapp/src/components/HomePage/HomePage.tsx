@@ -35,12 +35,12 @@ const HomePage = (props: Props) => {
     [View.OFFICAL]: Section.ALL
   }
 
-  const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
+  const handleGetStarted = useCallback(() => onNavigate(locations.offical()), [
     onNavigate
   ])
 
   const handleViewAll = useCallback(
-    (section: Section) => onNavigate(locations.browse({ section })),
+    (section: Section) => onNavigate(locations.offical({ section })),
     [onNavigate]
   )
 
@@ -50,6 +50,11 @@ const HomePage = (props: Props) => {
     let view: HomepageView
     for (view in homepagenft) {
       const section = sections[view]
+      onFetchAssetsFromRoute({
+        vendor,
+        view,
+        section
+      })
       onFetchNFTsFromRoute({
         vendor,
         section,
@@ -58,15 +63,13 @@ const HomePage = (props: Props) => {
         page: 1,
         onlyOnSale: true
       })
-      onFetchAssetsFromRoute({
-        vendor,
-        view
-      })
+
     }
     // eslint-disable-next-line
   }, [onFetchNFTsFromRoute, onFetchAssetsFromRoute])
 
   const views = Object.keys(homepagenft) as HomepageView[]
+  // console.log(homepagenft, homepageAsset)
   return (
     <>
       <Navbar isFullscreen isOverlay />
