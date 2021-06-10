@@ -1,3 +1,15 @@
+diff --git a/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js b/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js
+index 0b6f2f8..d906bed 100644
+--- a/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js
++++ b/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js
+@@ -27,6 +27,7 @@ var AvatarFace = /** @class */ (function (_super) {
+         var face;
+         if (avatar) {
+             face = React.createElement("img", { src: avatar.avatar.snapshots.face, alt: "" });
++            face = React.createElement("div", { className: "guest-face" });
+         }
+         else {
+             face = React.createElement("div", { className: "guest-face" });
 diff --git a/node_modules/decentraland-ui/dist/components/Footer/Footer.css b/node_modules/decentraland-ui/dist/components/Footer/Footer.css
 index c9f6450..752f0c9 100644
 --- a/node_modules/decentraland-ui/dist/components/Footer/Footer.css
@@ -117,11 +129,60 @@ index 9580baa..952a0e5 100644
                              React.createElement(Logo_1.Logo, null)),
                          React.createElement(Header_1.Header, { size: "small", className: "dcl active-page " + (this.state.toggle ? 'caret-up' : 'caret-down'), onClick: this.handleToggle }, activePage))),
                  React.createElement("div", { className: "dcl navbar-account" }, this.renderRightMenu())),
+diff --git a/node_modules/decentraland-ui/dist/components/Profile/Profile.js b/node_modules/decentraland-ui/dist/components/Profile/Profile.js
+index 6b065cb..dc25965 100644
+--- a/node_modules/decentraland-ui/dist/components/Profile/Profile.js
++++ b/node_modules/decentraland-ui/dist/components/Profile/Profile.js
+@@ -28,6 +28,7 @@ var Profile = /** @class */ (function (_super) {
+     Profile.prototype.render = function () {
+         var _a = this.props, address = _a.address, avatar = _a.avatar, textOnly = _a.textOnly, imageOnly = _a.imageOnly, hasPopup = _a.hasPopup, inline = _a.inline, size = _a.size, isDecentraland = _a.isDecentraland;
+         var name = (avatar && avatar.name) || address.slice(0, 6);
++        name = address.slice(0, 6)
+         if (isDecentraland) {
+             return (React.createElement("span", { className: "Profile decentraland " + size + " " + (inline ? 'inline' : ''), title: address },
+                 React.createElement(Logo_1.Logo, null),
+@@ -37,17 +38,21 @@ var Profile = /** @class */ (function (_super) {
+             return name;
+         }
+         else {
+-            return (React.createElement(Popup_1.Popup, { content: name, disabled: !hasPopup, position: "top center", trigger: avatar ? (React.createElement("span", { className: "Profile avatar " + size + " " + (inline ? 'inline' : ''), title: address },
++            return (React.createElement(Popup_1.Popup, {
++                content: name, disabled: !hasPopup, position: "top center", trigger: avatar ? (React.createElement("span", { className: "Profile avatar " + size + " " + (inline ? 'inline' : ''), title: address },
+                     React.createElement(AvatarFace_1.AvatarFace, { size: "tiny", inline: inline, avatar: avatar }),
+                     imageOnly ? null : React.createElement("span", { className: "name" }, name))) : (React.createElement("span", { className: "Profile blockie " + size + " " + (inline ? 'inline' : ''), title: address },
+-                    React.createElement(Blockie_1.Blockie, { seed: address, scale: size === 'large'
+-                            ? 5
+-                            : size === 'huge'
+-                                ? 7
+-                                : size === 'massive'
+-                                    ? 21
+-                                    : 3 }),
+-                    imageOnly ? null : React.createElement("span", { className: "name" }, name))) }));
++                        React.createElement(Blockie_1.Blockie, {
++                            seed: address, scale: size === 'large'
++                                ? 5
++                                : size === 'huge'
++                                    ? 7
++                                    : size === 'massive'
++                                        ? 21
++                                        : 3
++                        }),
++                        imageOnly ? null : React.createElement("span", { className: "name" }, name)))
++            }));
+         }
+     };
+     Profile.defaultProps = {
 diff --git a/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js b/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js
-index 7ce910d..d82be21 100644
+index 7ce910d..56c9033 100644
 --- a/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js
 +++ b/node_modules/decentraland-ui/dist/components/UserMenu/UserMenu.js
-@@ -46,7 +46,7 @@ var UserMenu = /** @class */ (function (_super) {
+@@ -41,12 +41,12 @@ var UserMenu = /** @class */ (function (_super) {
+     UserMenu.prototype.render = function () {
+         var _a = this.props, avatar = _a.avatar, manaBalances = _a.manaBalances, isSignedIn = _a.isSignedIn, isSigningIn = _a.isSigningIn, isActivity = _a.isActivity, hasActivity = _a.hasActivity, onSignOut = _a.onSignOut, onSignIn = _a.onSignIn, onClickProfile = _a.onClickProfile, onClickActivity = _a.onClickActivity, onClickSettings = _a.onClickSettings, i18n = _a.i18n, menuItems = _a.menuItems;
+         var isOpen = this.state.isOpen;
+-        var name = avatar ? avatar.name : null;
++        var name = avatar ? avatar.ethAddress.slice(0, 6) : null;
+         return (React.createElement(Row_1.Row, { className: "dcl user-menu-wrapper" },
              React.createElement(Menu_1.default.Item, { className: isActivity ? 'activity-bell active' : 'activity-bell' }, onClickActivity ? (React.createElement(Icon_1.default, { className: hasActivity ? 'pending' : '', name: "bell", onClick: onClickActivity })) : null),
              React.createElement("div", { className: "dcl user-menu", onBlur: this.handleClose, tabIndex: 0 },
                  isSignedIn && (React.createElement(React.Fragment, null,
