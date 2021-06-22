@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost'
 
-import { NFTCategory, NFTsFetchParams } from '../../../nft/types'
-import { WearableGender } from '../../../nft/wearable/types'
+import { NFTsFetchParams } from '../../../nft/types'
+// import { WearableGender } from '../../../nft/wearable/types'
 import { ContractService } from '../ContractService'
 import { client } from '../api'
 import { nftFragment, NFTFragment } from './fragments'
@@ -74,10 +74,7 @@ const NFTS_FILTERS = `
   $address: String
   $a:String
   $category: Category
-  $wearableCategory: WearableCategory
   $isLand: Boolean
-  $isWearableHead: Boolean
-  $isWearableAccessory: Boolean
 `
 
 const NFTS_ARGUMENTS = `
@@ -105,8 +102,7 @@ function getNFTsQuery(
     extraWhere.push('owner: $address')
     // extraWhere.push('owner_not: $officalAddr')
   }
-
-  if (params.category && params.category in NFTCategory) {
+  if (params.category) {
     extraWhere.push('category: $category')
   }
 
@@ -121,9 +117,9 @@ function getNFTsQuery(
     )
   }
 
-  if (filters.wearableCategory) {
-    extraWhere.push('searchWearableCategory: $wearableCategory')
-  }
+  // if (filters.wearableCategory) {
+  //   extraWhere.push('searchWearableCategory: $wearableCategory')
+  // }
 
   if (filters.isLand) {
     extraWhere.push('searchIsLand: $isLand')
@@ -135,36 +131,36 @@ function getNFTsQuery(
     extraWhere.push('owner_not: $a')
   }
 
-  if (filters.isWearableHead) {
-    extraWhere.push('searchIsWearableHead: $isWearableHead')
-  }
+  // if (filters.isWearableHead) {
+  //   extraWhere.push('searchIsWearableHead: $isWearableHead')
+  // }
 
-  if (filters.isWearableAccessory) {
-    extraWhere.push('searchIsWearableAccessory: $isWearableAccessory')
-  }
+  // if (filters.isWearableAccessory) {
+  //   extraWhere.push('searchIsWearableAccessory: $isWearableAccessory')
+  // }
 
-  if (filters.wearableRarities && filters.wearableRarities.length > 0) {
-    extraWhere.push(
-      `searchWearableRarity_in: [${filters.wearableRarities
-        .map(rarity => `"${rarity}"`)
-        .join(',')}]`
-    )
-  }
+  // if (filters.wearableRarities && filters.wearableRarities.length > 0) {
+  //   extraWhere.push(
+  //     `searchWearableRarity_in: [${filters.wearableRarities
+  //       .map(rarity => `"${rarity}"`)
+  //       .join(',')}]`
+  //   )
+  // }
 
-  if (filters.wearableGenders && filters.wearableGenders.length > 0) {
-    const hasMale = filters.wearableGenders.includes(WearableGender.MALE)
-    const hasFemale = filters.wearableGenders.includes(WearableGender.FEMALE)
+  // if (filters.wearableGenders && filters.wearableGenders.length > 0) {
+  //   const hasMale = filters.wearableGenders.includes(WearableGender.MALE)
+  //   const hasFemale = filters.wearableGenders.includes(WearableGender.FEMALE)
 
-    if (hasMale && !hasFemale) {
-      extraWhere.push(`searchWearableBodyShapes: [BaseMale]`)
-    } else if (hasFemale && !hasMale) {
-      extraWhere.push(`searchWearableBodyShapes: [BaseFemale]`)
-    } else if (hasMale && hasFemale) {
-      extraWhere.push(
-        `searchWearableBodyShapes_contains: [BaseMale, BaseFemale]`
-      )
-    }
-  }
+  //   if (hasMale && !hasFemale) {
+  //     extraWhere.push(`searchWearableBodyShapes: [BaseMale]`)
+  //   } else if (hasFemale && !hasMale) {
+  //     extraWhere.push(`searchWearableBodyShapes: [BaseFemale]`)
+  //   } else if (hasMale && hasFemale) {
+  //     extraWhere.push(
+  //       `searchWearableBodyShapes_contains: [BaseMale, BaseFemale]`
+  //     )
+  //   }
+  // }
 
   if (filters.contracts && filters.contracts.length > 0) {
     const { contractAddresses } = ContractService
@@ -182,7 +178,6 @@ function getNFTsQuery(
       nfts(
         where: {
           searchEstateSize_gt: 0
-          searchParcelIsInBounds: true
           ${extraWhere.join('\n')}
         }
         ${NFTS_ARGUMENTS}

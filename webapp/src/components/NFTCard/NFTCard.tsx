@@ -22,10 +22,11 @@ const NFTCard = (props: Props) => {
   const { nft, order } = props
 
   const title = getNFTName(nft)
-  const { parcel, estate, ens, boardingpass } = (nft as NFT<
+  const { parcel, estate, ens, boardingpass,
+    land, building, tower, trap
+  } = (nft as NFT<
     Vendors.DECENTRALAND
   >).data
-
   return (
     <Card
       className="NFTCard"
@@ -53,6 +54,12 @@ const NFTCard = (props: Props) => {
         {/* {wearable ? <WearableTags nft={nft} /> : null} */}
         {ens ? <ENSTags nft={nft} /> : null}
         {boardingpass ? <SMTTags nft={nft} /> : null}
+        {land ? <SMTTags nft={nft} /> : null}
+        {building ? <SMTTags nft={nft} /> : null}
+        {tower ? <SMTTags nft={nft} /> : null}
+        {trap ? <SMTTags nft={nft} /> : null}
+
+
       </Card.Content>
     </Card>
   )

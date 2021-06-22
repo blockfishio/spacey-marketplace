@@ -88,6 +88,29 @@ index a2b585c..60f820a 100644
      },
      [schemas_1.ChainId.ETHEREUM_GOERLI]: {
          [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.ETHEREUM_GOERLI,
+diff --git a/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json b/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json
+index f1fcda5..d6c2648 100644
+--- a/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json
++++ b/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json
+@@ -55,6 +55,18 @@
+                 }
+             }
+         },
++        "login": {
++            "modal": {
++                "title": "Sign In",
++                "subtitle": "Choose how you want to connect to Ethereum.",
++                "error": "Could not connect to wallet."
++            },
++            "option": {
++                "browser_extension": "Using a browser extension",
++                "email": "Using your email",
++                "mobile": "Using a mobile wallet"
++            }
++        },
+         "user_menu": {
+             "sign_in": "登入",
+             "sign_out": "登出",
 diff --git a/node_modules/decentraland-dapps/dist/modules/wallet/utils.js b/node_modules/decentraland-dapps/dist/modules/wallet/utils.js
 index d593abf..26949cf 100644
 --- a/node_modules/decentraland-dapps/dist/modules/wallet/utils.js

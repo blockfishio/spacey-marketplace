@@ -52,6 +52,8 @@ export function browseReducer(
         case View.ATLAS:
           return state
         case View.LOAD_MORE:
+        case View.OFFICAL_LOAD_MORE:
+        case View.COMMUNITY_LOAD_MORE:
           return {
             ...state,
             ids: [...state.ids],
@@ -83,6 +85,8 @@ export function browseReducer(
             timestamp: action.payload.timestamp
           }
         }
+        case View.OFFICAL_LOAD_MORE:
+        case View.COMMUNITY_LOAD_MORE:
         case View.LOAD_MORE: {
           return {
             ...state,

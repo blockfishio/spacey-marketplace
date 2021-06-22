@@ -75,7 +75,6 @@ const WearableDetail = (props: Props) => {
   //     })
   //   )
   // }, [onNavigate])
-
   return (
     <div className="WearableDetail">
       <PageHeader>

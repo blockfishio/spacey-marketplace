@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { Container, Page, Responsive } from 'decentraland-ui'
 
-import { getDefaultOptionsByView } from '../../modules/routing/search'
+// import { getDefaultOptionsByView } from '../../modules/routing/search'
 import { View } from '../../modules/ui/types'
 import { Atlas } from '../Atlas'
 import { AccountSidebar } from '../AccountSidebar'
@@ -28,8 +28,8 @@ const NFTBrowse = (props: Props) => {
     showOnSale
   } = props
 
-  const { onlyOnSale } = getDefaultOptionsByView(view)
-
+  // const { onlyOnSale } = getDefaultOptionsByView(view)
+  // console.log(showOnSale, onlyOnSale)
   // Kick things off
   useEffect(() => {
     onSetView(view)
@@ -37,7 +37,7 @@ const NFTBrowse = (props: Props) => {
       vendor,
       view,
       address,
-      onlyOnSale
+      onlyOnSale: showOnSale
     })
     onFetchAssetsFromRoute({
       vendor,

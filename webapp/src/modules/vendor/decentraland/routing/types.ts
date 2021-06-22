@@ -38,5 +38,7 @@ export enum Section {
 export enum View {
   COMMUNITY = "community",
   OFFICAL = "offical",
-  ALL = "all"
+  ALL = "all",
+  OFFICAL_LOAD_MORE = 'offical_load_more',
+  COMMUNITY_LOAD_MORE = 'community_load_more'
 }

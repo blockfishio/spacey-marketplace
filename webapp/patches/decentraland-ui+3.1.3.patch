@@ -1,3 +1,27 @@
+diff --git a/node_modules/decentraland-ui/dist/components/Atlas/Atlas.js b/node_modules/decentraland-ui/dist/components/Atlas/Atlas.js
+index 66f956c..e5b6ebf 100644
+--- a/node_modules/decentraland-ui/dist/components/Atlas/Atlas.js
++++ b/node_modules/decentraland-ui/dist/components/Atlas/Atlas.js
+@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
+     };
+ })();
+ var __assign = (this && this.__assign) || function () {
+-    __assign = Object.assign || function(t) {
++    __assign = Object.assign || function (t) {
+         for (var s, i = 1, n = arguments.length; i < n; i++) {
+             s = arguments[i];
+             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+@@ -33,8 +33,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+     });
+ };
+ var __generator = (this && this.__generator) || function (thisArg, body) {
+-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
++    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
++    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+     function verb(n) { return function (v) { return step([n, v]); }; }
+     function step(op) {
+         if (f) throw new TypeError("Generator is already executing.");
 diff --git a/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js b/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js
 index 0b6f2f8..d906bed 100644
 --- a/node_modules/decentraland-ui/dist/components/AvatarFace/AvatarFace.js
@@ -11,16 +35,22 @@ index 0b6f2f8..d906bed 100644
          else {
              face = React.createElement("div", { className: "guest-face" });
 diff --git a/node_modules/decentraland-ui/dist/components/Footer/Footer.css b/node_modules/decentraland-ui/dist/components/Footer/Footer.css
-index c9f6450..752f0c9 100644
+index c9f6450..0df097d 100644
 --- a/node_modules/decentraland-ui/dist/components/Footer/Footer.css
 +++ b/node_modules/decentraland-ui/dist/components/Footer/Footer.css
-@@ -73,6 +73,12 @@
+@@ -73,6 +73,18 @@
    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14' viewBox='0 0 16 14'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M-2-3h20v20H-2z'/%3E%3Cpath fill='%23676370' fill-rule='nonzero' d='M15.778 1.919c-.552.28-1.197.466-1.841.466.644-.373 1.196-1.026 1.38-1.772-.644.373-1.288.653-2.024.746C12.74.706 11.912.333 10.99.333 9.243.333 7.77 1.825 7.77 3.597c0 .28 0 .467.092.746C5.192 4.25 2.799 2.945 1.235.986a3.252 3.252 0 0 0-.46 1.679c0 1.119.552 2.145 1.472 2.704-.552 0-1.012-.186-1.473-.373 0 1.586 1.105 2.891 2.578 3.171-.276.093-.553.093-.829.093-.184 0-.368 0-.644-.093.368 1.306 1.565 2.238 3.038 2.238-1.105.84-2.486 1.4-3.958 1.4H.222a8.866 8.866 0 0 0 4.879 1.491c5.89 0 9.112-4.942 9.112-9.232v-.467c.552-.373 1.105-1.025 1.565-1.678z'/%3E%3C/g%3E%3C/svg%3E");
  }
  
-+.dcl.footer .social-links .social-icon.telegram {
-+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDQ1NSA0NTUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1NSA0NTU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDsiIGQ9Ik0wLDB2NDU1aDQ1NVYwSDB6IE0zODQuODE0LDEwMC42OGwtNTMuNDU4LDI1Ny4xMzYNCgkJYy0xLjI1OSw2LjA3MS04LjM3OCw4LjgyMi0xMy40MDEsNS4xNzJsLTcyLjk3NS01Mi45ODFjLTQuNDMtMy4yMTctMTAuNDcxLTMuMDQ2LTE0LjcxMiwwLjQxMmwtNDAuNDYsMzIuOTgxDQoJCWMtNC42OTUsMy44NC0xMS43NzEsMS43LTEzLjU2OS00LjA4M2wtMjguMDk0LTkwLjM1MWwtNzIuNTgzLTI3LjA4OWMtNy4zNzMtMi43NjItNy40MzYtMTMuMTcxLTAuMDg0LTE2LjAwM0wzNzMuMzYsOTAuOTU5DQoJCUMzNzkuNjc1LDg4LjUxNywzODYuMTksOTQuMDQ5LDM4NC44MTQsMTAwLjY4eiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDsiIGQ9Ik0zMTMuNTY3LDE0Ny4xNzlsLTE0MS44NTQsODcuMzY3Yy01LjQzNywzLjM1NS03Ljk5Niw5LjkyMS02LjI0MiwxNi4wNjgNCgkJbDE1LjMzNyw1My44OTFjMS4wOTEsMy44MTgsNi42MzEsMy40MjgsNy4xNjItMC41MTdsMy45ODYtMjkuNTUzYzAuNzUzLTUuNTY0LDMuNDA2LTEwLjY5Myw3LjUyMi0xNC41MjJsMTE3LjA2OS0xMDguODIyDQoJCUMzMTguNzM5LDE0OS4wNjEsMzE2LjExNSwxNDUuNjE0LDMxMy41NjcsMTQ3LjE3OXoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K");
++.dcl.footer .social-links .social-icon.medium {
++  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'%0Awidth='16' height='16'%0AviewBox='0 0 50 50'%0Astyle=' fill:%2356545f;'%3E%3Cpath d='M 46 13.5 L 44.894531 13.5 C 43.4375 13.507813 42.992188 14.179688 43 15.5 L 43 34 C 43.023438 35.074219 43.46875 35.480469 44.320313 35.5 L 46 35.5 L 46 40.5 L 31 40.5 L 31 35.5 L 34 35.5 L 34 15.5 L 26.105469 40.5 L 21.683594 40.5 L 14 15.5 L 14 35.5 L 16 35.5 L 16 40.5 L 4 40.5 L 4 35.5 L 5 35.5 C 6.492188 35.535156 7 34.128906 7 33.5 L 7 15.5 C 7.011719 14.484375 6.105469 13.472656 5 13.5 L 4 13.5 L 4.027344 7.5 L 19.5 7.5 L 25 25.964844 L 30.5 7.5 L 46 7.5 Z'%3E%3C/path%3E%3C/svg%3E");
 +}
++
++.dcl.footer .social-links .social-icon.telegram {
++  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'%0Awidth='16' height='16'%0AviewBox='0 0 50 50'%0Astyle=' fill:%2356545f;'%3E%3Cpath d='M46.137,6.552c-0.75-0.636-1.928-0.727-3.146-0.238l-0.002,0C41.708,6.828,6.728,21.832,5.304,22.445 c-0.259,0.09-2.521,0.934-2.288,2.814c0.208,1.695,2.026,2.397,2.248,2.478l8.893,3.045c0.59,1.964,2.765,9.21,3.246,10.758 c0.3,0.965,0.789,2.233,1.646,2.494c0.752,0.29,1.5,0.025,1.984-0.355l5.437-5.043l8.777,6.845l0.209,0.125 c0.596,0.264,1.167,0.396,1.712,0.396c0.421,0,0.825-0.079,1.211-0.237c1.315-0.54,1.841-1.793,1.896-1.935l6.556-34.077 C47.231,7.933,46.675,7.007,46.137,6.552z M22,32l-3,8l-3-10l23-17L22,32z'%3E%3C/path%3E%3C/svg%3E");
++}
++.dcl.footer .social-links .social-icon.facebook {
++  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'%0Awidth='16' height='16'%0AviewBox='0 0 50 50'%0Astyle=' fill:%2356545f;'%3E%3Cpath d='M32,11h5c0.552,0,1-0.448,1-1V3.263c0-0.524-0.403-0.96-0.925-0.997C35.484,2.153,32.376,2,30.141,2C24,2,20,5.68,20,12.368 V19h-7c-0.552,0-1,0.448-1,1v7c0,0.552,0.448,1,1,1h7v19c0,0.552,0.448,1,1,1h7c0.552,0,1-0.448,1-1V28h7.222 c0.51,0,0.938-0.383,0.994-0.89l0.778-7C38.06,19.518,37.596,19,37,19h-8v-5C29,12.343,30.343,11,32,11z'%3E%3C/path%3E%3C/svg%3E");}
 +
 +
 +
@@ -28,11 +58,24 @@ index c9f6450..752f0c9 100644
    color: var(--secondary-text);
  }
 diff --git a/node_modules/decentraland-ui/dist/components/Footer/Footer.js b/node_modules/decentraland-ui/dist/components/Footer/Footer.js
-index 06684a9..cff431c 100644
+index 06684a9..da49ac9 100644
 --- a/node_modules/decentraland-ui/dist/components/Footer/Footer.js
 +++ b/node_modules/decentraland-ui/dist/components/Footer/Footer.js
-@@ -43,18 +43,18 @@ var Footer = /** @class */ (function (_super) {
-                     React.createElement("a", { href: "https://decentraland.org/ethics" }, i18n.links.ethics))),
+@@ -36,25 +36,29 @@ var Footer = /** @class */ (function (_super) {
+             React.createElement("div", { className: "main-footer" },
+                 React.createElement(LanguageDropdown_1.LanguageDropdown, { locale: locale, locales: locales, onChange: onChange, upward: true, direction: "right", i18n: i18n.dropdown }),
+                 React.createElement("div", { className: "links" },
+-                    React.createElement("a", { href: "https://decentraland.org" }, i18n.links.home),
+-                    React.createElement("a", { href: "https://decentraland.org/privacy" }, i18n.links.privacy),
+-                    React.createElement("a", { href: "https://decentraland.org/terms" }, i18n.links.terms),
+-                    React.createElement("a", { href: "https://decentraland.org/content" }, i18n.links.content),
+-                    React.createElement("a", { href: "https://decentraland.org/ethics" }, i18n.links.ethics))),
++                    React.createElement("a", { href: "https://spacey2025.com" }, i18n.links.home),
++                    React.createElement("a", { href: "https://spacey2025/privacy" }, i18n.links.privacy),
++                    // React.createElement("a", { href: "https://spacey2025.com/terms" }, i18n.links.terms),
++                    // React.createElement("a", { href: "https://spacey2025.com/content" }, i18n.links.content),
++                    // React.createElement("a", { href: "https://spacey2025/ethics" }, i18n.links.ethics)
++                )),
              React.createElement("div", { className: "secondary-footer" },
                  React.createElement("div", { className: "social-links" },
 -                    React.createElement("a", { href: "https://dcl.gg/discord" },
@@ -43,12 +86,16 @@ index 06684a9..cff431c 100644
 -                    React.createElement("a", { href: "https://github.com/decentraland" },
 -                        React.createElement("i", { className: "social-icon github" })),
 -                    React.createElement("a", { href: "https://twitter.com/decentraland" },
+-                        React.createElement("i", { className: "social-icon twitter" }))),
 +                    React.createElement("a", { href: "https://t.me/Spacey2025" },
 +                        React.createElement("i", { className: "social-icon telegram" })),
 +                    React.createElement("a", { href: "https://medium.com/@spacey2025" },
 +                        React.createElement("i", { className: "social-icon medium" })),
 +                    React.createElement("a", { href: "https://twitter.com/spacey2025" },
-                         React.createElement("i", { className: "social-icon twitter" }))),
++                        React.createElement("i", { className: "social-icon twitter" })),
++                    React.createElement("a", { href: "https://www.facebook.com/SpaceY-2025-102636005328431" },
++                        React.createElement("i", { className: "social-icon facebook" })),
++                ),
                  React.createElement("div", { className: "copyright" },
                      "\u00A9 ",
                      new Date().getFullYear(),
@@ -260,6 +307,27 @@ index ef573d9..2623b87 100644
    background-size: contain;
  }
  
+diff --git a/node_modules/decentraland-ui/src/components/Footer/Footer.tsx b/node_modules/decentraland-ui/src/components/Footer/Footer.tsx
+index d3817df..d1b5461 100644
+--- a/node_modules/decentraland-ui/src/components/Footer/Footer.tsx
++++ b/node_modules/decentraland-ui/src/components/Footer/Footer.tsx
+@@ -77,11 +77,11 @@ export class Footer extends React.PureComponent<FooterProps> {
+             i18n={i18n.dropdown}
+           />
+           <div className="links">
+-            <a href="https://decentraland.org">{i18n.links.home}</a>
+-            <a href="https://decentraland.org/privacy">{i18n.links.privacy}</a>
+-            <a href="https://decentraland.org/terms">{i18n.links.terms}</a>
+-            <a href="https://decentraland.org/content">{i18n.links.content}</a>
+-            <a href="https://decentraland.org/ethics">{i18n.links.ethics}</a>
++            <a href="https://spacey2025.com">{i18n.links.home}</a>
++            <a href="https://spacey2025.com/privacy">{i18n.links.privacy}</a>
++            <a href="https://spacey2025.com/terms">{i18n.links.terms}</a>
++            <a href="https://spacey2025.com/content">{i18n.links.content}</a>
++            <a href="https://spacey2025.com/ethics">{i18n.links.ethics}</a>
+           </div>
+         </div>
+         <div className="secondary-footer">
 diff --git a/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx b/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx
 index bbabbfa..6f61ed7 100644
 --- a/node_modules/decentraland-ui/src/components/UserMenu/UserMenu.tsx

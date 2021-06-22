@@ -27,7 +27,6 @@ import { LegacyNFTPage } from '../LegacyNFTPage'
 
 const Routes = () => {
   const APP_ID = process.env.REACT_APP_INTERCOM_APP_ID
-
   return (
     <>
       <Switch>
@@ -58,6 +57,11 @@ const Routes = () => {
         <Route exact path={locations.asset()} component={AssetPage} />
         <Redirect
           from="/browse"
+          to={locations.offical() + window.location.search}
+          push
+        />
+        <Redirect
+          from="/offical"
           to={locations.offical() + window.location.search}
           push
         />

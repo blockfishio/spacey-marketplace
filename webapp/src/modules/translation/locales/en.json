@@ -21,7 +21,9 @@
     "update": "Update",
     "search": "Search",
     "apply": "Apply",
-    "Chest": "Chest"
+    "Chest": "Blueprint Chip",
+    "land": "Land",
+    "land_with_coords": "Land {x},{y}"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -73,7 +75,7 @@
     "spacey2025": "SpaceY2025",
     "boardingpass": "Boardingpass",
     "community": "Community Market",
-    "chest": "Chest"
+    "chest": "Blueprint Chip"
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -356,6 +358,6 @@
     "message": "The price may fluctuate due to market changes"
   },
   "virtual_card": {
-    "Chest": "Chest"
+    "Chest": "Blueprint Chip"
   }
 }

@@ -7,7 +7,10 @@ import { NFTsFetchFilters } from '../vendor/nft/types'
 import { Vendors } from '../vendor/types'
 import { SortDirection } from '../routing/types'
 import { Boardingpass } from './boardingpass/types'
-import { AssetCategory } from '../asset/types'
+import { Building } from './building/types'
+import { Land } from './land/types'
+import { Tower } from './tower/types'
+import { Trap } from './trap/types'
 
 export enum NFTSortBy {
   NAME = 'name',
@@ -24,15 +27,23 @@ export enum NFTCategory {
   ART = 'art',
   BOARDNGPASS = 'boardingpass',
   CHEST = 'chest',
+  LAND = 'land',
+  BUILDING = 'building',
+  TOWER = 'tower',
+  TRAP = 'trap'
 }
 
 // TODO: Move this to their own vendor folders
 export type DecentralandNFT = {
-  parcel?: Parcel
-  estate?: Estate
-  wearable?: Wearable
+  boardingpass?: Boardingpass,
+  land?: Land,
+  building?: Building,
+  tower?: Tower,
+  trap?: Trap,
+  parcel?: Parcel,
+  estate?: Estate,
   ens?: ENS,
-  boardingpass?: Boardingpass
+  wearable?: Wearable
 }
 export type SuperRareNFT = { description: string }
 export type MakersPlaceNFT = { description: string }
@@ -69,7 +80,7 @@ export type NFTsFetchParams = {
   skip: number
   orderBy?: NFTSortBy
   orderDirection?: SortDirection
-  category?: NFTCategory | AssetCategory
+  category?: NFTCategory
   address?: string
   onlyOnSale?: boolean
   search?: string

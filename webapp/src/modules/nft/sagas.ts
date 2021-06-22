@@ -31,7 +31,6 @@ export function* nftSaga() {
 function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
   const { options, timestamp } = action.payload
   const { vendor, filters } = options
-
   const params = {
     ...DEFAULT_BASE_NFT_PARAMS,
     ...action.payload.options.params,

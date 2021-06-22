@@ -17,6 +17,7 @@ import { locations } from './locations'
 import {
   getSearchParams,
   getSearchCategory,
+  getAssetSearchCategory,
   getDefaultOptionsByView
 } from './search'
 import {
@@ -42,8 +43,6 @@ import {
 } from './actions'
 import { SearchOptions } from './types'
 import { fetchAssetsRequest } from '../asset/actions'
-import { AssetCategory } from '../asset/types'
-// import { AssetCategory } from '../asset/types'
 
 
 export function* routingSaga() {
@@ -87,7 +86,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const sortBy = searchOptions.sortBy!
   const { search, onlyOnSale, isMap, address } = searchOptions
 
-  const isLoadMore = view === View.LOAD_MORE
+  const isLoadMore = (view === View.LOAD_MORE || view === View.OFFICAL_LOAD_MORE || view === View.COMMUNITY_LOAD_MORE)
 
   const offset = isLoadMore ? page - 1 : 0
   const skip = Math.min(offset, MAX_PAGE) * PAGE_SIZE
@@ -95,14 +94,6 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
 
   const [orderBy, orderDirection] = getSortOrder(sortBy)
   let category = getSearchCategory(section)
-  // console.log(category)
-  if (category === AssetCategory.ALL) {
-    category = undefined
-  }
-  // if (category && !(category in NFTCategory)) {
-  //   return
-  // }
-
   yield put(setIsLoadMore(isLoadMore))
   if (isMap) {
     yield put(setView(view))
@@ -130,7 +121,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
 function* fetchAssetsFromRoute(searchOptions: SearchOptions) {
   const { view } = searchOptions
   const section = searchOptions.section!
-  const category = getSearchCategory(section)
+  const category = getAssetSearchCategory(section)
   // console.log(category, section, !category || category in AssetCategory)
   // if (!category || category in AssetCategory) {
   yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND, view: view, params: { category } }))
@@ -155,7 +146,11 @@ function* getNewSearchOptions(current: SearchOptions) {
   const vendor = deriveVendor(previous, current)
 
   if (shouldResetOptions(previous, current)) {
-    previous = { page: 1 }
+    previous = {
+      page: 1,
+      onlyOnSale: previous.onlyOnSale,
+      sortBy: previous.sortBy
+    }
   }
   const defaults = getDefaultOptionsByView(view)
 
@@ -210,7 +205,7 @@ function* deriveCurrentOptions(
 
 function deriveView(previous: SearchOptions, current: SearchOptions) {
   return previous.page! < current.page!
-    ? View.LOAD_MORE
+    ? (previous.view === View.OFFICAL ? View.OFFICAL_LOAD_MORE : View.COMMUNITY_LOAD_MORE)
     : current.view || previous.view
 }
 

@@ -1,10 +1,11 @@
 import { log, BigInt } from '@graphprotocol/graph-ts'
 import { NFT, Order, Bid } from '../../entities/schema'
 import { ERC721, Transfer } from '../../entities/templates/ERC721/ERC721'
+import { Asset, DetailedTransfer } from '../../entities/templates/ERC721/Asset'
 import * as status from '../order/status'
 import * as addresses from '../../data/addresses'
 
-export function isMint(event: Transfer): boolean {
+export function isMint(event: DetailedTransfer): boolean {
   return event.params.from.toHexString() == addresses.Null
 }
 
@@ -16,9 +17,9 @@ export function getNFTId(
   return category + '-' + contractAddress + '-' + tokenId
 }
 
-export function getTokenURI(event: Transfer): string {
-  let erc721 = ERC721.bind(event.address)
-  let tokenURICallResult = erc721.try_tokenURI(event.params.tokenId)
+export function getTokenURI(event: DetailedTransfer): string {
+  let nft = Asset.bind(event.address)
+  let tokenURICallResult = nft.try_tokenURI(event.params.tokenId)
 
   let tokenURI = ''
 

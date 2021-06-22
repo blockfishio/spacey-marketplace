@@ -36,7 +36,9 @@
     "partners": "伙伴",
     "my_assets": "我的资产",
     "my_bids": "我的出价",
-    "activity": "活动"
+    "activity": "活动",
+    "community": "社区市场",
+    "offical": "官方售卖"
   },
   "menu": {
     "all": "所有资产",
@@ -65,7 +67,10 @@
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "known_origin": "KnownOrigin",
-    "makers_place": "MakersPlace"
+    "makers_place": "MakersPlace",
+    "chest": "蓝图",
+    "boardingpass": "船票",
+    "spacey2025": "SpaceY2025"
   },
   "vendor_menu": {
     "no_assets": "无资产",
@@ -79,13 +84,16 @@
     "cheapest": "最低价"
   },
   "home_page": {
-    "title": "Decentraland Marketplace",
-    "subtitle": "欢迎来到虚拟世界的一站式商店，获取最好的数字资产。",
+    "title": "SpaceY Marketplace",
+    "subtitle": "用SPAYs与其他玩家交易您的火星资产。",
     "get_started": "开始浏览",
     "learn_more": "学习更多",
     "home_wearables": "可穿戴",
     "home_land": "地块和产业",
-    "home_ens": "名称"
+    "home_ens": "名称",
+    "home_boardingpass": "船票",
+    "community": "社区市场",
+    "offical": "官方售卖"
   },
   "partners_page": {
     "partners": "伙伴",
@@ -133,8 +141,8 @@
     "road": "道路",
     "district": "区域",
     "leaving_decentraland": "离开Decentraland",
-    "leaving_decentraland_description": "您还无法将{vendor}资产发布或更新到Decentraland市场。您是否要继续{vendor_link}在此处发布？",
-    "leaving_decentraland_disclaimer": "您的NFT仍将列在Decentraland市场中"
+    "leaving_decentraland_description": "您还无法将{vendor}资产发布或更新到SpaceY 2025市场。您是否要继续{vendor_link}在此处发布？",
+    "leaving_decentraland_disclaimer": "您的NFT仍将列在SpaceY 2025市场中"
   },
   "proximity": {
     "adjacent": "相邻",
@@ -144,10 +152,10 @@
     "from": "从",
     "price": "价格",
     "time_left": "剩下时间",
-    "not_enough_mana_on_bid_received": "投标人没有足够的MANA来支付此投标",
+    "not_enough_mana_on_bid_received": "投标人没有足够的SPAY来支付此投标",
     "invalid_fingerprint_on_bid_received": "此资产自此出价以来已被修改，因此不再有效",
     "invalid_seller": "您不再拥有此资产",
-    "not_enough_mana_on_bid_placed": "您没有足够的MANA来支付此出价",
+    "not_enough_mana_on_bid_placed": "您没有足够的SPAY来支付此出价",
     "invalid_fingerprint_on_bid_placed": "此资产自出价后就已被修改，除非您对其进行更新，否则它将不再有效"
   },
   "transaction_history": {
@@ -228,7 +236,7 @@
     "proceed_anyways": "仍然继续",
     "no_fingerprint": "无法加载指纹。",
     "is_owner": "您是{name}的所有者。",
-    "not_enough_mana": "您没有足够的MANA来购买{name}。"
+    "not_enough_mana": "您没有足够的SPAY来购买{name}。"
   },
   "bid_page": {
     "title": "出价",
@@ -236,7 +244,7 @@
     "price": "价格",
     "expiration_date": "截止日期",
     "invalid_date": "这个日期已过期",
-    "not_enougn_mana": "您没有足够的MANA",
+    "not_enougn_mana": "您没有足够的SPAY",
     "submit": "出价"
   },
   "my_bids_page": {
@@ -329,5 +337,8 @@
   },
   "price_change_notice": {
     "message": "价格或因市场变化而波动"
+  },
+  "virtual_card": {
+    "Chest": "蓝图"
   }
 }

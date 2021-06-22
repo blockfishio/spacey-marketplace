@@ -17,8 +17,8 @@ export function getNFTId(contractAddress: string, tokenId: string) {
       `Could not find a valid category for contract ${contractAddress}`
     )
   }
-
-  return contractCategory + '-' + contractAddress + '-' + tokenId
+  return tokenId
+  // return contractCategory + '-' + contractAddress + '-' + tokenId
 }
 
 export function getNFTName(
@@ -48,6 +48,22 @@ export function getNFTName(
       return t('global.art')
     case NFTCategory.BOARDNGPASS:
       return t('global.boardingpass')
+    case NFTCategory.LAND:
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      const x = (nft as NFT<Vendors.DECENTRALAND>).data.land?.x
+      const y = (nft as NFT<Vendors.DECENTRALAND>).data.land?.y
+      return t(
+        'global.land_with_coords', {
+        x: x !== undefined ? alphabet.charAt(parseInt(x)) : '', y: y !== undefined ? y : ''
+      }
+      )
+    // return t('global.land')
+    case NFTCategory.BUILDING:
+      return t('global.building')
+    case NFTCategory.TOWER:
+      return t('global.tower')
+    case NFTCategory.TRAP:
+      return t('global.trap')
 
     default:
       return t('global.nft')

@@ -18,11 +18,11 @@ import {
 } from '../../../../modules/nft/wearable/types'
 import { NFTCategory } from '../../../../modules/nft/types'
 import { ContractName } from '../../../../modules/vendor/types'
-import { Section } from '../../../../modules/vendor/decentraland/routing/types'
+// import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { MAX_QUERY_SIZE } from '../../../../modules/vendor/decentraland/api'
 import { getSearchCategory } from '../../../../modules/routing/search'
 import { NFTSidebar } from '../../NFTSidebar'
-import { Chip } from '../../../Chip'
+// import { Chip } from '../../../Chip'
 import { TextFilter } from '../../NFTFilters/TextFilter'
 import { FiltersMenu } from '../../NFTFilters/FiltersMenu'
 import { Props } from './NFTFilters.types'
@@ -82,12 +82,12 @@ const NFTFilters = (props: Props) => {
     [onBrowse]
   )
 
-  const handleIsMapChange = useCallback(
-    (isMap: boolean) => {
-      onBrowse({ isMap, isFullscreen: false, search: '' })
-    },
-    [onBrowse]
-  )
+  // const handleIsMapChange = useCallback(
+  //   (isMap: boolean) => {
+  //     onBrowse({ isMap, isFullscreen: false, search: '' })
+  //   },
+  //   [onBrowse]
+  // )
 
   const handleDropdownChange = useCallback(
     (_, props: DropdownProps) => {
@@ -228,7 +228,7 @@ const NFTFilters = (props: Props) => {
           </div>
         </Responsive>
 
-        {section === Section.LAND ||
+        {/* {section === Section.LAND ||
           section === Section.PARCELS ||
           section === Section.ESTATES ? (
           <div className="topbar-filter">
@@ -247,7 +247,7 @@ const NFTFilters = (props: Props) => {
               />
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
 
       {showFiltersMenu ? (

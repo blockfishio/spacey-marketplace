@@ -26,6 +26,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
       Atlas.fetchTiles(ATLAS_URL + '/tiles')
     )
     yield put(fetchTilesSuccess(tiles))
+
   } catch (error) {
     yield put(fetchTilesFailure(error.message))
   }

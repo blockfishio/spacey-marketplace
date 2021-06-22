@@ -7,45 +7,37 @@ import { Wearable } from '../../../nft/wearable/types'
 import { ENS } from '../../../nft/ens/types'
 import { orderFields, OrderFields } from '../order/fragments'
 import { Boardingpass } from '../../../nft/boardingpass/types'
+import { Building } from '../../../nft/building/types'
+import { Land } from '../../../nft/land/types'
+import { Tower } from '../../../nft/tower/types'
+import { Trap } from '../../../nft/trap/types'
 
 export const nftFields = () => gql`
   fragment nftFields on NFT {
     id
     name
-    image
     contractAddress
     tokenId
     category
+    image
     owner {
       address
     }
-    parcel {
+    boardingpass {
+      id
+    }
+    land {
+      id
       x
       y
-      data {
-        description
-      }
     }
-    estate {
-      size
-      parcels {
-        x
-        y
-      }
-      data {
-        description
-      }
+    building {
+      id
     }
-    wearable {
-      description
-      category
-      rarity
-      bodyShapes
+    tower {
+      id
     }
-    ens {
-      subdomain
-    }
-    boardingpass {
+    trap {
       id
     }
   }
@@ -69,6 +61,11 @@ export type NFTFields = Omit<NFT, 'activeOrderId' | 'owner'> & {
   wearable?: Wearable
   ens?: ENS
   boardingpass?: Boardingpass
+  land?: Land
+  building?: Building
+  tower?: Tower
+  trap?: Trap
+
 }
 export type NFTFragment = Omit<NFTFields, 'vendor'> & {
   activeOrder: OrderFields | null

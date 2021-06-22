@@ -1,5 +1,5 @@
-import { NFTCategory } from '../nft/types'
-import { getSearchCategory, getSearchWearableCategory } from '../routing/search'
+// import { NFTCategory } from '../nft/types'
+// import { getSearchCategory, getSearchWearableCategory } from '../routing/search'
 import { SearchOptions } from '../routing/types'
 import { Section, View } from './routing/types'
 import { NFTsFetchFilters } from './nft/types'
@@ -17,25 +17,25 @@ export function getFilters(
       const currentView = View[Vendors.DECENTRALAND]
 
       const isLand = section === currentSection.LAND
-      const isOffical = view === currentView.OFFICAL
-      const isWearableHead = section === currentSection.WEARABLES_HEAD
-      const isWearableAccessory =
-        section === currentSection.WEARABLES_ACCESORIES
+      const isOffical = (view === currentView.OFFICAL || view === currentView.OFFICAL_LOAD_MORE)
+      // const isWearableHead = section === currentSection.WEARABLES_HEAD
+      // const isWearableAccessory =
+      //   section === currentSection.WEARABLES_ACCESORIES
 
-      const category = getSearchCategory(section!)
-      const wearableCategory =
-        !isWearableAccessory && category === NFTCategory.WEARABLE
-          ? getSearchWearableCategory(section!)
-          : undefined
+      // const category = getSearchCategory(section!)
+      // const wearableCategory =
+      //   !isWearableAccessory && category === NFTCategory.WEARABLE
+      //     ? getSearchWearableCategory(section!)
+      //     : undefined
 
       const { wearableRarities, wearableGenders, contracts } = searchOptions
 
       return {
         isLand,
         isOffical,
-        isWearableHead,
-        isWearableAccessory,
-        wearableCategory,
+        // isWearableHead,
+        // isWearableAccessory,
+        // wearableCategory,
         wearableRarities,
         wearableGenders,
         contracts

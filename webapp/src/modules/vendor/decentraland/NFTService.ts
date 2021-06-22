@@ -17,7 +17,7 @@ import { MAX_QUERY_SIZE } from './api'
 
 // TODO: remove this once TheGraph is working again as expected
 const isBroken = (nft: NFT<Vendors.DECENTRALAND>) => {
-  return nft.data[nft.category as keyof typeof nft.data] == null
+  return false && nft.data[nft.category as keyof typeof nft.data] == null
 }
 
 const removeBrokenNFTs = (nfts: NFT<Vendors.DECENTRALAND>[]) => {
@@ -109,7 +109,11 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
         estate: nft.estate,
         wearable: nft.wearable,
         ens: nft.ens,
-        boardingpass: nft.boardingpass
+        boardingpass: nft.boardingpass,
+        land: nft.land,
+        building: nft.building,
+        tower: nft.tower,
+        trap: nft.trap
       },
       category: nft.category,
       vendor: Vendors.DECENTRALAND

@@ -118,6 +118,13 @@ const NFTImage = (props: Props) => {
       )
     }
 
+    case NFTCategory.LAND: {
+      return (<>
+        <img alt="Land" className="image land" src={nft.image} />
+      </>
+      )
+    }
+
     default: {
       return (
         <LazyImage

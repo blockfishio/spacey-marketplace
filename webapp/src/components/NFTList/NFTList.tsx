@@ -18,21 +18,21 @@ const NFTList = (props: Props) => {
 
   const hasExtraPages =
     (nfts.length !== count || count === maxQuerySize) && page <= MAX_PAGE
-
   const isLoadingNewPage = isLoading && nfts.length >= PAGE_SIZE
   return (
     <>
       <Card.Group>
-        {nfts.length > 0
-          ? nfts.map((nft, index) => (
-            <NFTCard key={nft.id + '-' + index} nft={nft} />
-          ))
-          : null}
         {assets.length > 0
           ? assets.map((asset, index) => (
             <AssetCard key={asset.OptionID + '-' + index} asset={asset} />
           ))
           : null}
+        {nfts.length > 0
+          ? nfts.map((nft, index) => (
+            <NFTCard key={nft.id + '-' + index} nft={nft} />
+          ))
+          : null}
+
 
 
         {isLoading ? (

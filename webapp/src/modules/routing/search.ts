@@ -102,11 +102,22 @@ export function getSearchCategory(section: Section) {
       return NFTCategory.ENS
     case DclSection.BOARDINGPASS:
       return NFTCategory.BOARDNGPASS
+    case DclSection.LAND:
+      return NFTCategory.LAND
+    case DclSection.CHEST:
+      return NFTCategory.CHEST
+  }
+}
+
+export function getAssetSearchCategory(section: Section) {
+  // TODO: Move this to each vendor? Names shortened for brevity here
+  const DclSection = Section[Vendors.DECENTRALAND]
+  switch (section) {
     case DclSection.CHEST:
       return AssetCategory.CHEST
     case DclSection.ALL:
       return AssetCategory.ALL
-    case DclSection.LAND:
+    default:
       return AssetCategory.HIDE
   }
 }

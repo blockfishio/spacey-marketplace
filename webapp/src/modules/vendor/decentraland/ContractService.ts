@@ -12,8 +12,8 @@ const contractAddresses = {
 
     LANDRegistry: '0x7a73483784ab79257bb11b96fd62a2c3ae4fb75b',
     EstateRegistry: '0x124bf28a423b2ca80b3846c3aa0eb944fe7ebb95',
-    // Marketplace: '0x5424912699dabaa5f2998750c1c66e73d67ad219',
-    Marketplace: '0x565b515e3872135c7d3af714542769ea50b59f6e',
+    // Marketplace: '0x565b515e3872135c7d3af714542769ea50b59f6e',
+    Marketplace: '0xe497340bc9310843574043118b114d73cdc5be7f',
     AssetSale: '0x0f15Cc2c55314ee48cC40cc1833e131509E4e535',
 
     Bids: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f',
@@ -65,7 +65,8 @@ const contractAddresses = {
     Xmas2019Collection: '0x30ae57840b0e9b8ea55334083d53d80b2cfe80e0',
     Xmas2020Collection: '0x30ae57840b0e9b8ea55334083d53d80b2cfe80e0',
     XmashUp2020: '0x30ae57840b0e9b8ea55334083d53d80b2cfe80e0',
-    SMT: '0xc663de795c2651db14ab995dd7308f67250fb99f'
+    SMT: '0xc663de795c2651db14ab995dd7308f67250fb99f',
+    SpaceY2025: '0x11aff557bf2c052b4751628a878fd23e05f5d99d'
   },
   [Network.MAINNET]: {
     MANAToken: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942',
@@ -122,7 +123,9 @@ const contractAddresses = {
     Xmas2019Collection: '0xc3af02c0fd486c8e9da5788b915d6fff3f049866',
     Xmas2020Collection: '0xecf073f91101ce5628669c487aee8f5822a101b1',
     XmashUp2020: '0xdd9c7bc159dacb19c9f6b9d7e23948c87aa2397f',
-    SMT: '0xE82f293Ed202e12D1EbA5E334035eAb480A206aa'
+    SMT: '0xE82f293Ed202e12D1EbA5E334035eAb480A206aa',
+    SpaceY2025: '0x0cae95e302b11e29e29416023d2d1817595ddf26'
+
   }
 }[network]
 
@@ -177,7 +180,8 @@ const {
   Xmas2019Collection,
   Xmas2020Collection,
   XmashUp2020,
-  SMT
+  SMT,
+  SpaceY2025
 } = contractAddresses
 
 export type ContractName = keyof typeof contractAddresses
@@ -238,7 +242,8 @@ export class ContractService implements ContractServiceInterface {
     [Xmas2019Collection]: 'Xmas2019',
     [Xmas2020Collection]: 'Xmas2020',
     [XmashUp2020]: 'XmashUp',
-    [SMT]: 'SMT'
+    [SMT]: 'SMT',
+    [SpaceY2025]: 'SpaceY2025'
   } as const
 
   contractNames = {
@@ -291,12 +296,13 @@ export class ContractService implements ContractServiceInterface {
     [Xmas2019Collection]: 'Xmas2019Collection',
     [Xmas2020Collection]: 'Xmas2020Collection',
     [XmashUp2020]: 'XmashUp2020',
-    [SMT]: 'SMT'
+    [SMT]: 'SMT',
+    [SpaceY2025]: 'SpaceY2025 Assets'
   } as const
 
   contractCategories = {
-    [LANDRegistry]: NFTCategory.PARCEL,
-    [EstateRegistry]: NFTCategory.ESTATE,
+    // [LANDRegistry]: NFTCategory.PARCEL,
+    // [EstateRegistry]: NFTCategory.ESTATE,
     // [AssetSale]: NFTCategory.CHEST,
     // [DCLRegistrar]: NFTCategory.ENS,
 
@@ -342,7 +348,8 @@ export class ContractService implements ContractServiceInterface {
     // [Xmas2019Collection]: NFTCategory.WEARABLE,
     // [Xmas2020Collection]: NFTCategory.WEARABLE,
     // [XmashUp2020]: NFTCategory.WEARABLE,
-    [SMT]: NFTCategory.BOARDNGPASS
+    // [SMT]: NFTCategory.BOARDNGPASS,
+    [SpaceY2025]: NFTCategory.LAND
   } as const
 
   getTransferType(_address: string) {

@@ -13,6 +13,8 @@ export const View = {
   PARTNERS_MAKERS_PLACE: Vendors.MAKERS_PLACE,
   PARTNERS_KNOWN_ORIGIN: Vendors.KNOWN_ORIGIN,
   LOAD_MORE: 'load_more',
+  OFFICAL_LOAD_MORE: 'offical_load_more',
+  COMMUNITY_LOAD_MORE: 'community_load_more',
   ATLAS: 'atlas',
 } as const
 

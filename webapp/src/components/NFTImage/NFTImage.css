@@ -72,3 +72,18 @@
   white-space: nowrap;
   text-transform: lowercase;
 }
+
+.NFTImage .land {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 28px; */
+  height: 100%;
+  /* width: 100%; */
+  /* background-image: url('../../images/logo_dark.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #37333d;
+  color: white;
+  flex-direction: column; */
+}

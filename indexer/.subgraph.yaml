@@ -176,6 +176,34 @@ dataSources:
   #       - event: BidCancelled(bytes32,indexed address,indexed uint256,indexed address)
   #         handler: handleBidCancelled
 
+  # ---------------------------------------------------------
+  # ASSETS ----------------------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: Asset
+    network: {{network}}
+    source:
+      address: '{{address:Asset}}'
+      abi: ERC721Bid
+      startBlock: {{startBlock:Asset}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/handlers/bid.ts
+      entities:
+        - Bid
+      abis:
+        - name: ERC721Bid
+          file: ./abis/ERC721Bid.json
+      eventHandlers:
+        - event: BidCreated(bytes32,indexed address,indexed uint256,indexed address,uint256,uint256,bytes)
+          handler: handleBidCreated
+        - event: BidAccepted(bytes32,indexed address,indexed uint256,address,indexed address,uint256,uint256)
+          handler: handleBidAccepted
+        - event: BidCancelled(bytes32,indexed address,indexed uint256,indexed address)
+          handler: handleBidCancelled
+
   
 
 
