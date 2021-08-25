@@ -7,6 +7,7 @@ import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
 import { AssetImage } from '../AssetImage'
 import { Props } from './AssetCard.types'
+import { ChestTags } from './ChestTags'
 import './AssetCard.css'
 
 const VirtualCard = (props: Props) => {
@@ -28,6 +29,12 @@ const VirtualCard = (props: Props) => {
           <div className="title">{title}</div>{' '}
           <Mana inline>{formatMANA(asset.Price)}</Mana>
         </Card.Header>
+        <Card.Meta>
+          {t('nft_card.expires_at', {
+            date: "in 999 days"
+          })}
+        </Card.Meta>
+        <ChestTags asset={asset} />
 
       </Card.Content>
     </Card>

@@ -95,4 +95,27 @@ export function getCategoryByIndex(index: i32): string {
   }
   return category
 }
+export function getSubCategoryByIndex(index: i32): string {
+  let category = ''
+  switch (index) {
+    case 1:
+      category = '1'
+      break;
+    case 2:
+      category = '2'
+      break;
+    case 3:
+      category = '3'
+      break;
+    case 4:
+      category = '4'
+      break;
+    case 5:
+      category = '5'
+      break;
+    default:
+      break;
+  }
+  return category
+}
 

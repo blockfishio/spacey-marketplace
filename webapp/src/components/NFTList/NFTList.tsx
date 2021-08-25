@@ -17,7 +17,7 @@ const NFTList = (props: Props) => {
   const maxQuerySize = getMaxQuerySize(vendor)
 
   const hasExtraPages =
-    (nfts.length !== count || count === maxQuerySize) && page <= MAX_PAGE
+    ((count && (nfts.length + assets.length) < count) || count === maxQuerySize) && page <= MAX_PAGE
   const isLoadingNewPage = isLoading && nfts.length >= PAGE_SIZE
   return (
     <>

@@ -35,10 +35,11 @@ code {
 }
 
 /* TODO: this removes the AVATAR button from the Navbar. Remove this once we update to decentraland-ui@3.0.1 or higher. */
-.dcl.navbar .dcl.mana + .dcl.mana {
+/* .dcl.navbar .dcl.mana + .dcl.mana {
   display: none;
-}
+} */
 
 .dcl.navbar .dcl.user-menu .dcl.mana .symbol {
-  color: var(--text);
+  color: var(--primary);
+  font-weight: bold;
 }

@@ -10,6 +10,7 @@ import { Props, AuthorizationType } from './AuthorizationModal.types'
 
 const AuthorizationModal = (props: Props) => {
   const {
+    wallet,
     open,
     contractAddress,
     tokenAddress,
@@ -56,6 +57,7 @@ const AuthorizationModal = (props: Props) => {
       </Modal.Description>
       <Modal.Content>
         <Authorization
+          wallet={wallet}
           key={contractAddress}
           checked={isAuthorized}
           contractAddress={contractAddress}

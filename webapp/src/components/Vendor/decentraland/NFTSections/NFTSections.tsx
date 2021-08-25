@@ -10,7 +10,7 @@ const NFTSections = (props: Props) => {
   const { section, onSectionClick } = props
   return (
     <Menu className="NFTSections">
-      {[Section.ALL, Section.LAND].map(menuSection => (
+      {[Section.ALL, Section.CHEST, Section.LAND, Section.BOARDINGPASS, Section.BUILDING, Section.TOWER, Section.TRAP].map(menuSection => (
         <MenuItem
           key={menuSection}
           value={menuSection}
@@ -19,29 +19,11 @@ const NFTSections = (props: Props) => {
         />
       ))}
 
-      {/* {[Section.LAND, Section.PARCELS, Section.ESTATES].includes(section!)
-        ? [Section.PARCELS, Section.ESTATES].map(menuSection => (
-          <MenuItem
-            key={menuSection}
-            value={menuSection}
-            currentValue={section}
-            onClick={onSectionClick}
-            isSub
-          />
-        ))
-        : null} */}
 
 
-      <MenuItem
-        value={Section.BOARDINGPASS}
-        currentValue={section}
-        onClick={onSectionClick}
-      />
-      <MenuItem
-        value={Section.CHEST}
-        currentValue={section}
-        onClick={onSectionClick}
-      />
+
+
+
 
 
     </Menu>

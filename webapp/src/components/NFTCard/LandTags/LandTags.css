@@ -1,0 +1,33 @@
+.ParcelTags {
+  display: flex;
+}
+
+.ParcelTags .coords {
+  /* display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #ff8c00;
+  font-size: 12px;
+  line-height: 14px;
+  color: white;
+  padding: 4px 8px; */
+  font-size: 12px;
+  line-height: 18px;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background-color: #ff8c00;
+
+}
+
+.ParcelTags .coords .pin {
+  background-image: url(../../../images/pin-mini.svg);
+  width: 7px;
+  height: 10px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 6px;
+  background-size: contain;
+}

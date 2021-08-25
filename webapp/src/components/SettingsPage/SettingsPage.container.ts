@@ -22,6 +22,7 @@ import {
 } from './SettingsPage.types'
 import SettingsPage from './SettingsPage'
 
+
 const mapState = (state: RootState): MapStateProps => {
   const wallet = getWallet(state)
 

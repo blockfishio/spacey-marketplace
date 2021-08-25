@@ -1,5 +1,6 @@
 import { action } from 'typesafe-actions'
 import { buildTransactionPayload } from 'decentraland-dapps/dist/modules/transaction/utils'
+import { fromWei } from 'web3x-es/utils'
 
 import { NFT } from '../nft/types'
 import { Asset } from '../asset/types'
@@ -126,9 +127,11 @@ export const EXECUTE_ASSETORDER_FAILURE = '[Failure] Execute Asset Order'
 export const executeAssetOrderRequest = (
 
   asset: Asset,
-) => action(EXECUTE_ASSETORDER_REQUEST, { asset })
+  quantity: number
+) => action(EXECUTE_ASSETORDER_REQUEST, { asset, quantity })
 export const executeAssetOrderSuccess = (
   asset: Asset,
+  quantity: number,
   chainId: ChainId,
   txHash: string
 ) =>
@@ -137,8 +140,8 @@ export const executeAssetOrderSuccess = (
     ...buildTransactionPayload(chainId, txHash, {
       tokenId: asset.OptionID,
       contractAddress: contractAddresses.AssetSale,
-      name: getAssetName(asset),
-      price: formatMANA(asset.Price)
+      name: quantity.toString() + ' ' + getAssetName(asset),
+      price: (+fromWei(asset.Price, 'ether') * quantity).toString()
     })
   })
 export const executeAssetOrderFailure = (asset: Asset, error: string) =>

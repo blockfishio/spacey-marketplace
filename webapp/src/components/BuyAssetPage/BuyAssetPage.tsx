@@ -1,6 +1,4 @@
 import React from 'react'
-import { Network } from '@dcl/schemas'
-import { fromWei } from 'web3x-es/utils'
 import { Page } from 'decentraland-ui'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
@@ -28,10 +26,11 @@ const BuyAssetPage = (props: Props) => {
                     isLoading={isLoading}
                     onNavigate={onNavigate}
                     onExecuteOrder={onExecuteOrder}
-                    notEnoughMana={
-                      wallet.networks[Network.ETHEREUM].mana <
-                      +fromWei(asset.Price, 'ether')
-                    }
+                    wallet={wallet}
+                  // notEnoughMana={
+                  //   wallet.networks[Network.ETHEREUM].mana <
+                  //   +fromWei(asset.Price, 'ether')
+                  // }
                   />
                 )
               }}

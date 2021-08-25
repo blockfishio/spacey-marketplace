@@ -1,0 +1,27 @@
+.ChestTags {
+  display: flex;
+}
+
+.ChestTags .badge {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #263255;
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 14px;
+  color: white;
+  padding: 4px 8px;
+}
+
+.ChestTags .no {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #000000;
+  font-size: 12px;
+  line-height: 14px;
+  color: white;
+  padding: 4px 8px;
+}
+

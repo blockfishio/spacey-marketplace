@@ -1,6 +1,6 @@
 import { WearableCategory } from '../nft/wearable/types'
 import { View } from '../ui/types'
-import { NFTCategory } from '../nft/types'
+import { NFTCategory, NFTSortBy } from '../nft/types'
 import { AssetCategory } from '../asset/types'
 import { Vendors } from '../vendor/types'
 import { Section } from '../vendor/routing/types'
@@ -106,6 +106,12 @@ export function getSearchCategory(section: Section) {
       return NFTCategory.LAND
     case DclSection.CHEST:
       return NFTCategory.CHEST
+    case DclSection.BUILDING:
+      return NFTCategory.BUILDING
+    case DclSection.TOWER:
+      return NFTCategory.TOWER
+    case DclSection.TRAP:
+      return NFTCategory.TRAP
   }
 }
 
@@ -117,6 +123,7 @@ export function getAssetSearchCategory(section: Section) {
       return AssetCategory.CHEST
     case DclSection.ALL:
       return AssetCategory.ALL
+
     default:
       return AssetCategory.HIDE
   }
@@ -187,4 +194,29 @@ export function getURLParam<T extends string>(
 ) {
   const param = new URLSearchParams(search).get(paramName) as T | null
   return param
+}
+
+export function getNFTSortBy(orderBy: NFTSortBy) {
+  let sortBy: SortBy = SortBy.NEWEST
+
+  switch (orderBy) {
+    case NFTSortBy.NAME: {
+      sortBy = SortBy.NAME
+      break
+    }
+    case NFTSortBy.CREATED_AT: {
+      sortBy = SortBy.NEWEST
+      break
+    }
+    case NFTSortBy.ORDER_CREATED_AT: {
+      sortBy = SortBy.RECENTLY_LISTED
+      break
+    }
+    case NFTSortBy.PRICE: {
+      sortBy = SortBy.CHEAPEST
+      break
+    }
+  }
+
+  return sortBy
 }

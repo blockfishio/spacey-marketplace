@@ -15,6 +15,7 @@ import {
 export type Props = {
   vendor: Vendors
   view: View
+  viewInState?: View // This is used to know when the view prop has been set in the app state
   address?: string
   isMap?: boolean
   isFullscreen?: boolean
@@ -29,7 +30,7 @@ export type Props = {
 
 export type MapStateProps = Pick<
   Props,
-  'isMap' | 'isLoading' | 'showOnSale' | 'isFullscreen'
+  'isMap' | 'isLoading' | 'showOnSale' | 'isFullscreen' | 'viewInState'
 >
 export type MapDispatchProps = Pick<
   Props,

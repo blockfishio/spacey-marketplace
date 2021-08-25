@@ -51,14 +51,9 @@ export type KnownOriginNFT = { description: string; isEdition: boolean }
 
 export type Data<V extends Vendors> = V extends Vendors.DECENTRALAND
   ? DecentralandNFT
-  : V extends Vendors.SUPER_RARE
-  ? SuperRareNFT
-  : V extends Vendors.MAKERS_PLACE
-  ? MakersPlaceNFT
-  : V extends Vendors.KNOWN_ORIGIN
-  ? KnownOriginNFT
+
   : V extends void
-  ? DecentralandNFT | SuperRareNFT | MakersPlaceNFT | KnownOriginNFT
+  ? DecentralandNFT
   : never
 
 export type NFT<V extends Vendors = any> = {
@@ -70,6 +65,7 @@ export type NFT<V extends Vendors = any> = {
   name: string
   category: NFTCategory
   image: string
+  thumbnail?: string
   url: string
   vendor: Vendors
   data: Data<V>

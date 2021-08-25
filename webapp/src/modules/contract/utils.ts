@@ -3,13 +3,22 @@ import { ContractService } from '../vendor/services'
 import { ContractName, Vendors } from '../vendor/types'
 
 export let contractAddresses: ContractService['contractAddresses']
+export let contractAddressesAll: ContractService['contractAddressesAll']
+
 export let contractSymbols: ContractService['contractSymbols']
+export let contractSymbolsAll: ContractService['contractSymbolsAll']
 export let contractNames: ContractService['contractNames']
+export let contractNamesAll: ContractService['contractNamesAll']
 export let contractCategories: ContractService['contractCategories']
+export let contractCategoriesAll: ContractService['contractCategoriesAll']
 export let contractVendors: Record<string, Vendors>
 
 export function buildContracts() {
   const vendors = Object.values(Vendors).map(VendorFactory.build)
+  contractAddressesAll = vendors[0].contractService.contractAddressesAll
+  contractSymbolsAll = vendors[0].contractService.contractSymbolsAll
+  contractNamesAll = vendors[0].contractService.contractNamesAll
+  contractCategoriesAll = vendors[0].contractService.contractCategoriesAll
 
   contractAddresses = vendors.reduce(
     (obj, { contractService }) => ({
@@ -18,7 +27,6 @@ export function buildContracts() {
     }),
     {} as ContractService['contractAddresses']
   ) as Record<ContractName, string>
-  // console.log(contractAddresses)
 
   contractSymbols = vendors.reduce(
     (obj, { contractService }) => ({

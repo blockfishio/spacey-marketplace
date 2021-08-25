@@ -25,26 +25,41 @@ const NFTBrowse = (props: Props) => {
     onFetchNFTsFromRoute,
     onFetchAssetsFromRoute,
     onBrowse,
-    showOnSale
+    showOnSale,
+    viewInState
   } = props
 
   // const { onlyOnSale } = getDefaultOptionsByView(view)
   // console.log(showOnSale, onlyOnSale)
   // Kick things off
+
   useEffect(() => {
     onSetView(view)
-    onFetchNFTsFromRoute({
-      vendor,
-      view,
-      address,
-      onlyOnSale: showOnSale
-    })
-    onFetchAssetsFromRoute({
-      vendor,
-      view
-    })
     // eslint-disable-next-line
-  }, [vendor, onFetchNFTsFromRoute, onFetchAssetsFromRoute])
+  }, [view])
+
+  useEffect(() => {
+    if (viewInState === view) {
+      onFetchNFTsFromRoute({
+        vendor,
+        view,
+        address,
+        onlyOnSale: showOnSale
+      })
+    }
+  }, [viewInState, onFetchNFTsFromRoute])
+
+
+  useEffect(() => {
+    if (viewInState === view) {
+
+      onFetchAssetsFromRoute({
+        vendor,
+        view
+      })
+    }
+    // eslint-disable-next-line
+  }, [viewInState, onFetchAssetsFromRoute])
 
   // handlers
   const handleSetFullscreen = useCallback(

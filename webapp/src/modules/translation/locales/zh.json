@@ -21,7 +21,14 @@
     "search": "搜寻",
     "apply": "应用",
     "jump_in": "跳转",
-    "boardingpass": "船票"
+    "boardingpass": "船票",
+    "boardingpass_with_id": "船票 {id}",
+    "land": "土地",
+    "land_with_coords": "土地 {x},{y}",
+    "Chest": "蓝图芯片",
+    "building": "建筑",
+    "tower": "防御塔",
+    "trap": "陷阱"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -68,9 +75,12 @@
     "super_rare": "SuperRare",
     "known_origin": "KnownOrigin",
     "makers_place": "MakersPlace",
-    "chest": "蓝图",
+    "chest": "蓝图芯片",
     "boardingpass": "船票",
-    "spacey2025": "SpaceY2025"
+    "spacey2025": "SpaceY2025",
+    "building": "建筑",
+    "tower": "防御塔",
+    "trap": "陷阱"
   },
   "vendor_menu": {
     "no_assets": "无资产",
@@ -174,11 +184,11 @@
     "rarity": {
       "unique": "独特",
       "mythic": "神话",
-      "legendary": "传奇",
-      "epic": "史诗",
-      "rare": "稀有",
-      "uncommon": "罕见",
-      "common": "常见"
+      "5": "传奇",
+      "4": "史诗",
+      "3": "稀有",
+      "2": "罕见",
+      "1": "常见"
     },
     "rarity_tooltip": {
       "unique": "像圣杯一样：独一无二",
@@ -187,7 +197,12 @@
       "epic": "最大供应量：1000个",
       "rare": "最大供应量：5000个",
       "uncommon": "最大供应量：10,000个",
-      "common": "最大供应量：100,000个"
+      "common": "最大供应量：100,000个",
+      "5": "传奇",
+      "4": "史诗",
+      "3": "稀有",
+      "2": "罕见",
+      "1": "常见"
     },
     "category": {
       "body_shape": "身材",
@@ -319,6 +334,7 @@
       "create_order": "您列出了以{price}出售的{name}。",
       "cancel_order": "您删除了{价格}的{名称}列表。",
       "execute_order": "您以{price}购买了{name}。",
+      "execute_assetorder": "您以{price}购买了{name}。",
       "transfer": "您已将{name}转移到{address}。",
       "place_bid": "您对{name}出价了{price}。",
       "accept_bid": "您接受了{name}的{price}出价。",

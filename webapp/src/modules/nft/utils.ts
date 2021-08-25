@@ -6,6 +6,7 @@ import { SortDirection, SortBy } from '../routing/types'
 import { contractCategories } from '../contract/utils'
 import { addressEquals } from '../wallet/utils'
 import { NFT, NFTSortBy } from './types'
+import { offset } from '../constant/tilemap'
 
 export function getNFTId(contractAddress: string, tokenId: string) {
   // TODO: added "wearable" as fallback so when a new collection is added to TheGraph that hasn't been added to the frontend yet, we can handle it without blowing up
@@ -47,14 +48,18 @@ export function getNFTName(
     case NFTCategory.ART:
       return t('global.art')
     case NFTCategory.BOARDNGPASS:
-      return t('global.boardingpass')
+      const id = (nft as NFT<Vendors.DECENTRALAND>).tokenId
+      return t('global.boardingpass_with_id', { id })
     case NFTCategory.LAND:
       const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-      const x = (nft as NFT<Vendors.DECENTRALAND>).data.land?.x
-      const y = (nft as NFT<Vendors.DECENTRALAND>).data.land?.y
+      const landid = (nft as NFT<Vendors.DECENTRALAND>).tokenId
+      const x = (parseInt(landid) - offset) / 36
+      const y = (parseInt(landid) - offset) % 36
+      // const x = (nft as NFT<Vendors.DECENTRALAND>).data.land?.x
+      // const y = (nft as NFT<Vendors.DECENTRALAND>).data.land?.y
       return t(
         'global.land_with_coords', {
-        x: x !== undefined ? alphabet.charAt(parseInt(x)) : '', y: y !== undefined ? y : ''
+        x: x !== undefined ? alphabet.charAt(x) : '', y: y !== undefined ? y : ''
       }
       )
     // return t('global.land')

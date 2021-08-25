@@ -116,6 +116,7 @@ const BidModal = (props: Props) => {
         </div>
       </Form>
       <AuthorizationModal
+        wallet={wallet}
         open={showAuthorizationModal}
         contractAddress={contractAddresses.Bids}
         tokenAddress={contractAddresses.MANAToken}

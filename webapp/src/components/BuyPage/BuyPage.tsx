@@ -23,6 +23,7 @@ const BuyPage = (props: Props) => {
             <NFTProviderPage>
               {(nft, order) => (
                 <BuyModal
+                  wallet={wallet}
                   nft={nft}
                   order={order}
                   authorizations={authorizations}

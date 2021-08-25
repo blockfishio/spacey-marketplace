@@ -1,11 +1,14 @@
 import React, { useState, useCallback } from 'react'
-import { Header, Mana, Button } from 'decentraland-ui'
+// import { Network } from '@dcl/schemas'
+import { fromWei } from 'web3x-es/utils'
+import { Header, Form, Field, Button, Mana } from 'decentraland-ui'
+import { fromMANA } from '../../../lib/mana'
+
 import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { formatMANA } from '../../../lib/mana'
 import { locations } from '../../../modules/routing/locations'
 import { getAssetName } from '../../../modules/asset/utils'
 import { hasAuthorization } from '../../../modules/authorization/utils'
-import { contractAddresses } from '../../../modules/contract/utils'
+import { contractAddressesAll } from '../../../modules/contract/utils'
 // import { 
 //   useFingerprint, 
 //   useComputedPrice } from '../../../modules/nft/hooks'
@@ -22,7 +25,7 @@ const BuyPage = (props: Props) => {
     isLoading,
     onNavigate,
     onExecuteOrder,
-    notEnoughMana
+    wallet
   } = props
 
   // const [
@@ -31,17 +34,21 @@ const BuyPage = (props: Props) => {
   //   isAboveMaxPercentage
   // ] = useComputedPrice(nft, order)
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
-  const [wantsToProceed, setWantsToProceed] = useState(false)
+  const [quantity, setQuantity] = useState(1)
+
+  const notEnoughMana = () => {
+    return false
+    // return wallet.networks[Network.ETHEREUM].mana < +fromWei(asset.Price, 'ether') * quantity
+  }
 
   const handleExecuteOrder = useCallback(() => {
-    onExecuteOrder(asset)
-  }, [asset, onExecuteOrder])
+    onExecuteOrder(asset, quantity)
+  }, [asset, quantity, onExecuteOrder])
 
+  const contractAddresses = contractAddressesAll[wallet.chainId]
   const assetsaleAddress = contractAddresses.AssetSale
 
-  const handleToggleWantsToProceed = useCallback(() => {
-    setWantsToProceed(!wantsToProceed)
-  }, [wantsToProceed, setWantsToProceed])
+
 
   const handleSubmit = useCallback(() => {
     if (
@@ -68,20 +75,20 @@ const BuyPage = (props: Props) => {
   ])
 
   const isDisabled =
-
-    notEnoughMana
+    false
+  // notEnoughMana()
   const name = <b>{getAssetName(asset)}</b>
   const Price = (props: { price: string }) => (
-    <Mana inline>{formatMANA(props.price)}</Mana>
+    <Mana inline>{props.price}</Mana>
   )
 
   let subtitle = null
 
-  if (notEnoughMana) {
+  if (notEnoughMana()) {
     subtitle = (
       <T
         id={'buy_page.not_enough_spay'}
-        values={{ name, amount: <Price price={asset.Price} /> }}
+        values={{ name, amount: <Price price={(+fromWei(asset.Price, 'ether') * quantity).toString()} /> }}
       />
     )
   } else {
@@ -89,48 +96,61 @@ const BuyPage = (props: Props) => {
       <T
         id={'buy_page.subtitle'}
         values={{
-          name,
-          amount: <Price price={asset.Price} />
+          name: quantity.toString() + ' ' + getAssetName(asset),
+          amount: <Price price={(+fromWei(asset.Price, 'ether') * quantity).toString()} />
         }}
       />
     )
   }
-
   return (
     <AssetAction asset={asset}>
       <Header size="large">
         {t('buy_page.title', { category: t(`global.${asset.Category}`) })}
       </Header>
       <div className={isDisabled ? 'error' : ''}>{subtitle}</div>
-      <div className="buttons">
-        <Button
-          onClick={() =>
-            onNavigate(locations.asset(asset.OptionID))
-          }
-        >
-          {t('global.cancel')}
-        </Button>
 
-        {isDisabled === false ? (
+      <Form onSubmit={handleSubmit}>
+        <div className="form-fields">
+          <Field
+            label={t('buy_page.quantity')}
+            type="text"
+            placeholder={1}
+            value={quantity}
+            onChange={(_event, props) => {
+              const newQuantity = fromMANA(props.value)
+              setQuantity(newQuantity)
+            }}
+          />
+          <Field
+            label={t('buy_page.price')}
+            type="text"
+            value={+fromWei(asset.Price, "ether") * quantity}
+          />
+        </div>
+        <div className="buttons">
+          <Button
+            onClick={() =>
+              onNavigate(locations.asset(asset.OptionID))
+            }
+          >
+            {t('global.cancel')}
+          </Button>
+
           <Button
             primary
             disabled={isDisabled || isLoading}
-            onClick={handleSubmit}
+            type="submit"
             loading={isLoading}
           >
             {t('buy_page.buy')}
           </Button>
-        ) : (
-          <Button
-            primary
-            onClick={handleToggleWantsToProceed}
-            loading={isLoading}
-          >
-            {t('buy_page.proceed_anyways')}
-          </Button>
-        )}
-      </div>
+
+        </div>
+      </Form>
+
+
       <AuthorizationModal
+        wallet={wallet}
         open={showAuthorizationModal}
         contractAddress={assetsaleAddress}
         tokenAddress={contractAddresses.MANAToken}

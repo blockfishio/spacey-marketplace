@@ -7,6 +7,7 @@ import {
   AllowTokenRequestAction,
   ApproveTokenRequestAction
 } from '../../modules/authorization/actions'
+import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
 
 export enum AuthorizationType {
   ALLOWANCE = 'allowance',
@@ -14,6 +15,7 @@ export enum AuthorizationType {
 }
 
 export type Props = {
+  wallet: Wallet | null,
   open: boolean
   contractAddress: string
   tokenAddress: string

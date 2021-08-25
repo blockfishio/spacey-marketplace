@@ -12,6 +12,7 @@
     "ens": "Name",
     "art": "Art",
     "boardingpass": "Boardingpass",
+    "boardingpass_with_id": "Boardingpass {id}",
     "cancel": "Cancel",
     "proceed": "Proceed",
     "nft": "NFT",
@@ -23,7 +24,10 @@
     "apply": "Apply",
     "Chest": "Blueprint Chip",
     "land": "Land",
-    "land_with_coords": "Land {x},{y}"
+    "land_with_coords": "Land {x},{y}",
+    "building": "Building",
+    "tower": "tower",
+    "trap": "trap"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -75,7 +79,10 @@
     "spacey2025": "SpaceY2025",
     "boardingpass": "Boardingpass",
     "community": "Community Market",
-    "chest": "Blueprint Chip"
+    "chest": "Blueprint Chip",
+    "building": "Building",
+    "tower": "tower",
+    "trap": "trap"
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -182,11 +189,11 @@
     "rarity": {
       "unique": "Unique",
       "mythic": "Mythic",
-      "legendary": "Legendary",
-      "epic": "Epic",
-      "rare": "Rare",
-      "uncommon": "Uncommon",
-      "common": "Common"
+      "5": "Legendary",
+      "4": "Epic",
+      "3": "Rare",
+      "2": "Uncommon",
+      "1": "Common"
     },
     "rarity_tooltip": {
       "unique": "Grail-like: One-of-a-kind",
@@ -195,7 +202,12 @@
       "epic": "Max supply: 1000",
       "rare": "Max supply: 5000",
       "uncommon": "Max supply: 10,000",
-      "common": "Max supply: 100,000"
+      "common": "Max supply: 100,000",
+      "5": "Legendary",
+      "4": "Epic",
+      "3": "Rare",
+      "2": "Uncommon",
+      "1": "Common"
     },
     "category": {
       "body_shape": "Body Shape",
@@ -241,6 +253,8 @@
     "please_wait": "Please wait until prices normalize again",
     "actual_price": "The price above is an approximation, given current exchange rates you'll end up paying around {computedPrice}",
     "buy": "Buy",
+    "quantity": "Quantity",
+    "price": "Price",
     "proceed_anyways": "Proceed anyways",
     "no_fingerprint": "Could not load fingerprint.",
     "is_owner": "You are the owner of {name}.",

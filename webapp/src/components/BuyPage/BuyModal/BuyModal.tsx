@@ -16,6 +16,7 @@ import { Props } from './BuyModal.types'
 
 const BuyPage = (props: Props) => {
   const {
+    wallet,
     nft,
     order,
     authorizations,
@@ -181,6 +182,7 @@ const BuyPage = (props: Props) => {
         )}
       </div>
       <AuthorizationModal
+        wallet={wallet}
         open={showAuthorizationModal}
         contractAddress={marketplaceAddress}
         tokenAddress={contractAddresses.MANAToken}

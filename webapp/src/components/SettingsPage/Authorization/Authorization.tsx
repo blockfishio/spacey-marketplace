@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
 import { TransactionLink } from 'decentraland-dapps/dist/containers'
 import { Form, CheckboxProps, Radio, Loader, Popup } from 'decentraland-ui'
-import { contractSymbols } from '../../../modules/contract/utils'
+import { contractSymbols, contractSymbolsAll } from '../../../modules/contract/utils'
 import { locations } from '../../../modules/routing/locations'
 import { hasTransactionPending } from '../../../modules/transaction/utils'
 import { Props } from './Authorization.types'
@@ -11,6 +11,7 @@ import './Authorization.css'
 
 const Authorizations = (props: Props) => {
   const {
+    wallet,
     checked,
     tokenContractAddress,
     contractAddress,
@@ -61,10 +62,10 @@ const Authorizations = (props: Props) => {
             values={{
               contract_link: (
                 <TransactionLink address={contractAddress} txHash="">
-                  {contractSymbols[contractAddress]}
+                  {contractSymbolsAll[wallet ? wallet.chainId : 1][contractAddress]}
                 </TransactionLink>
               ),
-              symbol: contractSymbols[tokenContractAddress]
+              symbol: contractSymbolsAll[wallet ? wallet.chainId : 1][tokenContractAddress]
             }}
           />
         </div>

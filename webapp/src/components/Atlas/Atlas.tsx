@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Atlas as AtlasComponent, Color, Layer } from 'decentraland-ui'
 import { locations } from '../../modules/routing/locations'
 import { contractAddresses } from '../../modules/contract/utils'
-import { nftAPI } from '../../modules/vendor/decentraland/nft/api'
+// import { nftAPI } from '../../modules/vendor/decentraland/nft/api'
 import { Props, Tile } from './Atlas.types'
 import { Vendors } from '../../modules/vendor'
 import { NFT, NFTCategory } from '../../modules/nft/types'
@@ -45,6 +45,13 @@ const Atlas: React.FC<Props> = (props: Props) => {
       nfts.reduce((lands, nft) => {
         if (nft.vendor === Vendors.DECENTRALAND) {
           switch (nft.category) {
+            case NFTCategory.LAND: {
+              const land = (nft as NFT<Vendors.DECENTRALAND>).data.land!
+              lands.set(getCoords(land.x, land.y), {
+                color: Color.SUMMER_RED
+              })
+              break
+            }
             case NFTCategory.PARCEL: {
               const parcel = (nft as NFT<Vendors.DECENTRALAND>).data.parcel!
               lands.set(getCoords(parcel.x, parcel.y), {
@@ -139,17 +146,17 @@ const Atlas: React.FC<Props> = (props: Props) => {
       }
       if (tile.estate_id) {
         onNavigate(
-          locations.nft(contractAddresses.EstateRegistry, tile.estate_id)
+          locations.nft(contractAddresses.SpaceY2025, tile.estate_id)
         )
       } else {
-        try {
-          const tokenId = await nftAPI.fetchTokenId(tile.x, tile.y)
-          onNavigate(locations.nft(contractAddresses.LANDRegistry, tokenId))
-        } catch (error) {
-          console.warn(
-            `Couldn't fetch parcel ${tile.x},${tile.y}: ${error.message}`
-          )
-        }
+        // try {
+        //   const tokenId = await nftAPI.fetchTokenId(tile.x, tile.y)
+        //   onNavigate(locations.nft(contractAddresses.LANDRegistry, tokenId))
+        // } catch (error) {
+        //   console.warn(
+        //     `Couldn't fetch parcel ${tile.x},${tile.y}: ${error.message}`
+        //   )
+        // }
       }
     },
     [withNavigation, onNavigate, tiles]
@@ -227,7 +234,6 @@ const Atlas: React.FC<Props> = (props: Props) => {
   if (showOnSale) {
     layers.unshift(forSaleLayer)
   }
-
   return (
     <div className="atlas-wrapper" onMouseLeave={handleHidePopup}>
       <AtlasComponent
@@ -236,6 +242,13 @@ const Atlas: React.FC<Props> = (props: Props) => {
         onClick={handleClick}
         onHover={handleHover}
         layers={layers}
+        minX={0}
+        minY={0}
+        maxX={50}
+        maxY={50}
+        size={20}
+        x={25}
+        y={25}
       />
       {hoveredTile ? (
         <Popup

@@ -11,6 +11,11 @@ import { EstateDetail } from './EstateDetail'
 import { WearableDetail } from './WearableDetail'
 import { ENSDetail } from './ENSDetail'
 import { BoardingpassDetail } from "./BoardingpassDetail"
+import { BuildingDetail } from "./BuildingDetail"
+import { TowerDetail } from "./TowerDetail"
+import { TrapDetail } from "./TrapDetail"
+
+
 import { LandDetail } from "./LandDetail"
 import { PictureFrameDetail } from './PictureFrameDetail'
 import './NFTPage.css'
@@ -33,9 +38,9 @@ const NFTPage = () => {
                 {ens ? <ENSDetail nft={nft} /> : null}
                 {boardingpass ? <BoardingpassDetail nft={nft} /> : null}
                 {land ? <LandDetail nft={nft} /> : null}
-                {building ? <BoardingpassDetail nft={nft} /> : null}
-                {tower ? <BoardingpassDetail nft={nft} /> : null}
-                {trap ? <BoardingpassDetail nft={nft} /> : null}
+                {building ? <BuildingDetail nft={nft} /> : null}
+                {tower ? <TowerDetail nft={nft} /> : null}
+                {trap ? <TrapDetail nft={nft} /> : null}
 
                 {nft.vendor !== Vendors.DECENTRALAND ? (
                   <PictureFrameDetail nft={nft} />

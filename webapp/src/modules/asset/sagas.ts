@@ -27,6 +27,7 @@ export function* assetSaga() {
 function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
   const { options, timestamp } = action.payload
   const { params } = options
+  // console.log(view, view == View.OFFICAL)
   try {
     const { assetService } = VendorFactory.build(Vendors.DECENTRALAND)
     if (assetService) {
@@ -36,7 +37,7 @@ function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
         // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
         assetService.fetch(params)
       )
-      // if (view === View.OFFICAL && (category !== AssetCategory.HIDE) && (!category || category === AssetCategory.CHEST || category === AssetCategory.ALL)) {
+      // if (view == View.OFFICAL) {
       yield put(
         fetchAssetsSuccess(options, assets, assets.length, timestamp))
       // }

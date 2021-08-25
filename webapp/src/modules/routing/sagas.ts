@@ -52,6 +52,7 @@ export function* routingSaga() {
 }
 
 function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
+
   const newSearchOptions: SearchOptions = yield getNewSearchOptions(
     action.payload.searchOptions
   )
@@ -59,8 +60,10 @@ function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
 }
 
 function* handleFetchAssetsFromRoute(action: FetchAssetsFromRouteAction) {
-
-  yield fetchAssetsFromRoute(action.payload.searchOptions)
+  const newSearchOptions: SearchOptions = yield getNewSearchOptions(
+    action.payload.searchOptions
+  )
+  yield fetchAssetsFromRoute(newSearchOptions)
 }
 
 function* handleBrowse(action: BrowseAction) {
@@ -122,6 +125,7 @@ function* fetchAssetsFromRoute(searchOptions: SearchOptions) {
   const { view } = searchOptions
   const section = searchOptions.section!
   const category = getAssetSearchCategory(section)
+
   // console.log(category, section, !category || category in AssetCategory)
   // if (!category || category in AssetCategory) {
   yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND, view: view, params: { category } }))

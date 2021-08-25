@@ -30,6 +30,9 @@ export enum Section {
   BOARDINGPASS = 'boardingpass',
   COMMUNITY = "community",
   OFFICAL = "offical",
+  BUILDING = "building",
+  TOWER = "tower",
+  TRAP = "trap",
 
   CHEST = "chest"
 

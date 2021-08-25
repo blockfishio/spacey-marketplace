@@ -1,4 +1,3 @@
-import { Vendors } from '../vendor/types'
 
 export const View = {
   MARKET: 'market',
@@ -9,9 +8,6 @@ export const View = {
   HOME_BOARDINGPASS: "home_boardingpass",
   OFFICAL: "offical",
   COMMUNITY: "community",
-  PARTNERS_SUPER_RARE: Vendors.SUPER_RARE,
-  PARTNERS_MAKERS_PLACE: Vendors.MAKERS_PLACE,
-  PARTNERS_KNOWN_ORIGIN: Vendors.KNOWN_ORIGIN,
   LOAD_MORE: 'load_more',
   OFFICAL_LOAD_MORE: 'offical_load_more',
   COMMUNITY_LOAD_MORE: 'community_load_more',

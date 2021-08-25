@@ -4,7 +4,7 @@ import { ContractOptions } from 'web3x-es/contract'
 import { getConnectedProvider } from 'decentraland-dapps/dist/lib/eth'
 
 type ContractConstructor<T> = {
-  new (eth: Eth, address?: Address, options?: ContractOptions): T
+  new(eth: Eth, address?: Address, options?: ContractOptions): T
 }
 
 export class ContractFactory {

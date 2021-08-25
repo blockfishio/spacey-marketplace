@@ -1,15 +1,10 @@
 import * as decentraland from './decentraland'
-// import * as superRare from './super_rare'
-// import * as makersPlace from './makers_place'
-// import * as knownOrigin from './known_origin'
+
 
 // TODO: Rename to Vendor
 export enum Vendors {
-  // DECENTRALAND = 'decentraland',
   DECENTRALAND = 'spacey2025',
-  SUPER_RARE = 'super_rare',
-  MAKERS_PLACE = 'makers_place',
-  KNOWN_ORIGIN = 'known_origin'
+
 }
 
 export const Disabled = {}

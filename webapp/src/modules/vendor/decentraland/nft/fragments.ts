@@ -20,25 +20,34 @@ export const nftFields = () => gql`
     tokenId
     category
     image
+    thumbnail
     owner {
       address
     }
     boardingpass {
       id
+      description
     }
     land {
       id
       x
       y
+      description
     }
     building {
       id
+      description
+      rarity
     }
     tower {
       id
+      description
+      rarity
     }
     trap {
       id
+      description
+      rarity
     }
   }
 `

@@ -1,4 +1,4 @@
-import { takeEvery, all, put } from 'redux-saga/effects'
+import { takeEvery, all, put, select } from 'redux-saga/effects'
 import { createWalletSaga } from 'decentraland-dapps/dist/modules/wallet/sagas'
 import {
   ConnectWalletSuccessAction,
@@ -8,11 +8,19 @@ import {
   CHANGE_ACCOUNT,
   CHANGE_NETWORK
 } from 'decentraland-dapps/dist/modules/wallet/actions'
+import { ChainId } from '@dcl/schemas'
+import { getChainId } from 'decentraland-dapps/dist/modules/wallet/selectors'
+
 
 import { NFTCategory } from '../nft/types'
 import { fetchAuthorizationRequest } from '../authorization/actions'
 import { AuthorizationsRequest } from '../authorization/types'
-import { contractAddresses, contractCategories } from '../contract/utils'
+import {
+  // contractAddresses,
+  contractAddressesAll,
+  // contractCategories,
+  contractCategoriesAll
+} from '../contract/utils'
 
 const baseWalletSaga = createWalletSaga({
   CHAIN_ID: +(process.env.REACT_APP_CHAIN_ID || 1)
@@ -31,11 +39,15 @@ function* fullWalletSaga() {
 function* handleWallet(
   action: ConnectWalletSuccessAction | ChangeAccountAction | ChangeNetworkAction
 ) {
+  const chainId: ChainId = yield select(getChainId)
+
   const { address } = action.payload.wallet
 
+  // const { MANAToken, Marketplace,
+  //   AssetSale } = contractAddresses
+
   const { MANAToken, Marketplace,
-    // MarketplaceAdapter, Bids,
-    AssetSale } = contractAddresses
+    AssetSale } = contractAddressesAll[chainId]
 
   // TODO: VendorFactory.build().contractService.getAllowances()
   // TODO: VendorFactory.build().contractService.getApprovals()
@@ -48,8 +60,8 @@ function* handleWallet(
       [AssetSale]: [MANAToken]
     },
     approvals: {
-      [Marketplace]: Object.keys(contractCategories).filter(
-        key => contractCategories[key] !== NFTCategory.ART
+      [Marketplace]: Object.keys(contractCategoriesAll[chainId]).filter(
+        key => contractCategoriesAll[chainId][key] !== NFTCategory.ART
       )
     }
   }

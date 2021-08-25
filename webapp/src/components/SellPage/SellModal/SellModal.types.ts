@@ -7,7 +7,7 @@ import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
 export type Props = {
   nft: NFT
   order: Order | null
-  wallet: Wallet | null
+  wallet: Wallet
   authorizations: Authorizations
   isLoading: boolean
   onNavigate: (path: string) => void

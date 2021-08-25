@@ -6,6 +6,7 @@ export function buildBoardingpassFromNFT(nft: NFT): Boardingpass {
   let boardingpass = new Boardingpass(nft.id)
   boardingpass.tokenId = nft.tokenId
   boardingpass.owner = nft.owner
+  boardingpass.description = "Players who hold this will have advantages in the game."
 
   return boardingpass
 }
@@ -17,6 +18,16 @@ export function getTokenIdFromLabelHash(labelHash: Bytes): BigInt {
   labelHash.reverse()
 
   return tokenId
+}
+
+
+export function getBoardingpassName(boardingpass: Boardingpass): string {
+  return "Boardingpass " + boardingpass.tokenId.toString()
+}
+
+
+export function getBoardingpassThumbnail(boardingpass: Boardingpass): string {
+  return "https://spacey2025.s3.us-east-2.amazonaws.com/Assets/Boardingpass_thumbnail.png"
 }
 
 export function getBoardingpassImage(boardingpass: Boardingpass): string {

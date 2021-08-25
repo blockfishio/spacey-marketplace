@@ -16,8 +16,8 @@ const mapState = (state: RootState): MapStateProps => ({
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onNavigate: path => dispatch(push(path)),
-  onExecuteOrder: (asset) =>
-    dispatch(executeAssetOrderRequest(asset))
+  onExecuteOrder: (asset, quantity) =>
+    dispatch(executeAssetOrderRequest(asset, quantity))
 })
 
 export default connect(mapState, mapDispatch)(BuyAssetPage)

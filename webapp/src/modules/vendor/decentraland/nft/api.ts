@@ -1,21 +1,33 @@
 import { gql } from 'apollo-boost'
 
+import { BaseAPI } from 'decentraland-dapps/dist/lib/api'
 import { NFTsFetchParams } from '../../../nft/types'
 // import { WearableGender } from '../../../nft/wearable/types'
 import { ContractService } from '../ContractService'
+// import { contractAddressesAll } from '../../../contract/utils'
+
 import { client } from '../api'
 import { nftFragment, NFTFragment } from './fragments'
 import { NFTsFetchFilters } from './types'
+import { getNFTSortBy } from '../../../routing/search'
 
-class NFTAPI {
+
+export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
+export const OFFICAL_ADDRESS = process.env.REACT_APP_OFFICAL_ADDRESS!
+
+class NFTAPI extends BaseAPI {
+
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
-    const query = getNFTsQuery(params, filters)
-    const variables = this.buildFetchVariables(params, filters)
-    const { data } = await client.query<{ nfts: NFTFragment[] }>({
-      query,
-      variables
-    })
-    return data.nfts
+    // const query = getNFTsQuery(params, filters)
+    // const variables = this.buildFetchVariables(params, filters)
+    const queryParams = this.buildNFTQueryString(params, filters)
+    return this.request('get', `/nfts?${queryParams}`)
+
+    // const { data } = await client.query<{ nfts: NFTFragment[] }>({
+    //   query,
+    //   variables
+    // })
+    // return data.nfts
   }
 
   async count(params: NFTsFetchParams, filters?: NFTsFetchFilters) {
@@ -59,8 +71,57 @@ class NFTAPI {
       ...params,
       ...filters,
       expiresAt: Date.now().toString(),
-      a: '0xbab298d0dcb2589a1c24b6c88fb10bd08efe3265'
+      a: '0x7e307e41b6d31b8591145bd9625e3d1bcab55d95'
     }
+  }
+
+  private buildNFTQueryString(
+    params: NFTsFetchParams,
+    filters?: NFTsFetchFilters
+  ): string {
+    const queryParams = new URLSearchParams()
+    queryParams.append('first', params.first.toString())
+    queryParams.append('skip', params.skip.toString())
+    if (params.orderBy) {
+      queryParams.append('sortBy', getNFTSortBy(params.orderBy))
+    }
+    if (params.category) {
+      queryParams.append('category', params.category)
+    }
+    if (params.address) {
+      queryParams.append('owner', params.address)
+    }
+    if (params.onlyOnSale) {
+      queryParams.append('isOnSale', 'true')
+    }
+
+    if (params.search) {
+      queryParams.set('search', params.search)
+    }
+    if (filters) {
+
+      if (filters.isLand) {
+        queryParams.append('isLand', 'true')
+      }
+      if (filters.isOffical) {
+        queryParams.append('owner', OFFICAL_ADDRESS)
+      }
+
+
+
+      // if (filters.contracts) {
+      //   for (const address of filters.contracts) {
+      //     if (contractAddressesAll.some(contract => contract.address === address)) {
+      //       queryParams.append('contractAddress', address)
+      //     }
+      //   }
+      // }
+      if (filters.network) {
+        queryParams.append('network', filters.network)
+      }
+    }
+
+    return queryParams.toString()
   }
 }
 
@@ -124,43 +185,14 @@ function getNFTsQuery(
   if (filters.isLand) {
     extraWhere.push('searchIsLand: $isLand')
   }
-  if (filters.isOffical) {
+  if (filters.isOffical === true) {
     extraWhere.push('owner: $a')
   }
-  else {
+  else if (filters.isOffical === false) {
     extraWhere.push('owner_not: $a')
   }
 
-  // if (filters.isWearableHead) {
-  //   extraWhere.push('searchIsWearableHead: $isWearableHead')
-  // }
 
-  // if (filters.isWearableAccessory) {
-  //   extraWhere.push('searchIsWearableAccessory: $isWearableAccessory')
-  // }
-
-  // if (filters.wearableRarities && filters.wearableRarities.length > 0) {
-  //   extraWhere.push(
-  //     `searchWearableRarity_in: [${filters.wearableRarities
-  //       .map(rarity => `"${rarity}"`)
-  //       .join(',')}]`
-  //   )
-  // }
-
-  // if (filters.wearableGenders && filters.wearableGenders.length > 0) {
-  //   const hasMale = filters.wearableGenders.includes(WearableGender.MALE)
-  //   const hasFemale = filters.wearableGenders.includes(WearableGender.FEMALE)
-
-  //   if (hasMale && !hasFemale) {
-  //     extraWhere.push(`searchWearableBodyShapes: [BaseMale]`)
-  //   } else if (hasFemale && !hasMale) {
-  //     extraWhere.push(`searchWearableBodyShapes: [BaseFemale]`)
-  //   } else if (hasMale && hasFemale) {
-  //     extraWhere.push(
-  //       `searchWearableBodyShapes_contains: [BaseMale, BaseFemale]`
-  //     )
-  //   }
-  // }
 
   if (filters.contracts && filters.contracts.length > 0) {
     const { contractAddresses } = ContractService
@@ -203,10 +235,10 @@ const NFT_BY_ADDRESS_AND_ID_QUERY = gql`
 
 const PARCEL_TOKEN_ID_QUERY = gql`
   query ParcelTokenId($x: BigInt, $y: BigInt) {
-    parcels(where: { x: $x, y: $y }) {
+    lands(where: { x: $x, y: $y }) {
       tokenId
     }
   }
 `
 
-export const nftAPI = new NFTAPI()
+export const nftAPI = new NFTAPI(NFT_SERVER_URL)

@@ -5,7 +5,7 @@ import { RootState } from '../../modules/reducer'
 import { FETCH_NFTS_REQUEST } from '../../modules/nft/actions'
 import { FETCH_ASSETS_REQUEST } from '../../modules/asset/actions'
 import { browse } from '../../modules/routing/actions'
-import { getNFTs, getCount as getNFTCount } from '../../modules/ui/nft/browse/selectors'
+import { getNFTs, getCount as getNFTCount, getView } from '../../modules/ui/nft/browse/selectors'
 import { getAssets, getCount as getAssetCount } from '../../modules/ui/asset/browse/selectors'
 import { getVendor, getPage } from '../../modules/routing/selectors'
 import { getLoading as getNFTLoading } from '../../modules/nft/selectors'
@@ -14,6 +14,7 @@ import { MapStateProps, MapDispatch, MapDispatchProps } from './NFTList.types'
 import NFTList from './NFTList'
 
 const mapState = (state: RootState): MapStateProps => ({
+  viewInState: getView(state),
   vendor: getVendor(state),
   nfts: getNFTs(state),
   assets: getAssets(state),

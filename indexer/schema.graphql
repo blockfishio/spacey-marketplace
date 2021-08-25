@@ -110,6 +110,7 @@ type Land @entity {
   nft: NFT @derivedFrom(field: "land")
   x:Int!
   y:Int!
+  description:String
   # name:String!
 }
 
@@ -136,6 +137,7 @@ type Boardingpass @entity{
   owner: Account!
   nft: NFT @derivedFrom(field: "boardingpass")
   tokenId: BigInt!
+  description:String
   # name: String!
 
 }
@@ -144,14 +146,21 @@ type Building @entity{
   owner: Account!
   nft: NFT @derivedFrom(field: "building")
   tokenId: BigInt!
-  subCategory: String!
+  subCategory: BigInt!
+  description:String!
+  rarity:BigInt!
+
 }
 type Tower @entity{
   id: ID!
   owner: Account!
   nft: NFT @derivedFrom(field: "tower")
   tokenId: BigInt!
-  subCategory: String!
+  subCategory: BigInt!
+  rarity:BigInt!
+  description:String!
+
+
 }
 
 type Trap @entity{
@@ -159,7 +168,11 @@ type Trap @entity{
   owner: Account!
   nft: NFT @derivedFrom(field: "trap")
   tokenId: BigInt!
-  subCategory: String!
+  subCategory: BigInt!
+  rarity:BigInt!
+  description:String!
+
+
 }
 
 
@@ -193,7 +206,7 @@ type NFT @entity {
   tokenId: BigInt!
   contractAddress: Bytes!
   category: Category!
-  subcategory:String
+  subcategory:BigInt!
   owner: Account!
   tokenURI: String
 
@@ -203,6 +216,7 @@ type NFT @entity {
 
   name: String
   image: String
+  thumbnail:String
 
   # parcel: Parcel
   # estate: Estate
@@ -280,6 +294,7 @@ enum Category @entity {
   building
   tower
   trap
+  chest
 }
 
 enum OrderStatus @entity {

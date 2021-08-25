@@ -103,6 +103,7 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
       owner: nft.owner.address.toLowerCase(),
       name: nft.name,
       image: nft.image,
+      thumbnail: nft.thumbnail,
       url: locations.nft(nft.contractAddress, nft.tokenId),
       data: {
         parcel: nft.parcel,

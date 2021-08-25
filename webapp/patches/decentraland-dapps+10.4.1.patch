@@ -66,20 +66,29 @@ index a23bdf6..a554d92 100644
                  account: {
                      connecting: React.createElement(utils_1.T, { id: "@dapps.navbar.account.connecting" }),
 diff --git a/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js b/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js
-index a2b585c..60f820a 100644
+index a2b585c..bef13bb 100644
 --- a/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js
 +++ b/node_modules/decentraland-dapps/dist/lib/chainConfiguration.js
-@@ -5,7 +5,8 @@ const schemas_1 = require("@dcl/schemas");
+@@ -4,21 +4,22 @@ exports.getChainConfiguration = exports.MANA_GRAPH_BY_CHAIN_ID = void 0;
+ const schemas_1 = require("@dcl/schemas");
  const decentraland_connect_1 = require("decentraland-connect");
  exports.MANA_GRAPH_BY_CHAIN_ID = {
-     [schemas_1.ChainId.ETHEREUM_MAINNET]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-mainnet',
+-    [schemas_1.ChainId.ETHEREUM_MAINNET]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-mainnet',
 -    [schemas_1.ChainId.ETHEREUM_ROPSTEN]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-ropsten',
++    [schemas_1.ChainId.ETHEREUM_MAINNET]: 'https://api.thegraph.com/subgraphs/name/blockfishio/spay',
 +    // [schemas_1.ChainId.ETHEREUM_ROPSTEN]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-ropsten',
 +    [schemas_1.ChainId.ETHEREUM_ROPSTEN]: 'https://api.thegraph.com/subgraphs/name/silver211/spayropsten',
      [schemas_1.ChainId.ETHEREUM_GOERLI]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-goerli',
      [schemas_1.ChainId.ETHEREUM_RINKEBY]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-ethereum-rinkeby',
      [schemas_1.ChainId.MATIC_MAINNET]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-matic-mainnet',
-@@ -18,7 +19,7 @@ const NETWORK_MAPPING_BY_CHAIN_ID = {
+-    [schemas_1.ChainId.MATIC_MUMBAI]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-matic-mumbai'
++    [schemas_1.ChainId.MATIC_MUMBAI]: 'https://api.thegraph.com/subgraphs/name/decentraland/mana-matic-mumbai',
+ };
+ const NETWORK_MAPPING_BY_CHAIN_ID = {
+     [schemas_1.ChainId.ETHEREUM_MAINNET]: {
+         [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.ETHEREUM_MAINNET,
+-        [schemas_1.Network.MATIC]: schemas_1.ChainId.MATIC_MAINNET
++        // [schemas_1.Network.MATIC]: schemas_1.ChainId.MATIC_MAINNET
      },
      [schemas_1.ChainId.ETHEREUM_ROPSTEN]: {
          [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.ETHEREUM_ROPSTEN,
@@ -88,6 +97,25 @@ index a2b585c..60f820a 100644
      },
      [schemas_1.ChainId.ETHEREUM_GOERLI]: {
          [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.ETHEREUM_GOERLI,
+@@ -35,7 +36,8 @@ const NETWORK_MAPPING_BY_CHAIN_ID = {
+     [schemas_1.ChainId.MATIC_MUMBAI]: {
+         [schemas_1.Network.ETHEREUM]: schemas_1.ChainId.MATIC_MUMBAI,
+         [schemas_1.Network.MATIC]: schemas_1.ChainId.MATIC_MUMBAI
+-    }
++    },
++
+ };
+ const NETWORK_BY_CHAIN_ID = {
+     [schemas_1.ChainId.ETHEREUM_MAINNET]: schemas_1.Network.ETHEREUM,
+@@ -44,7 +46,7 @@ const NETWORK_BY_CHAIN_ID = {
+     [schemas_1.ChainId.ETHEREUM_KOVAN]: schemas_1.Network.ETHEREUM,
+     [schemas_1.ChainId.ETHEREUM_RINKEBY]: schemas_1.Network.ETHEREUM,
+     [schemas_1.ChainId.MATIC_MAINNET]: schemas_1.Network.MATIC,
+-    [schemas_1.ChainId.MATIC_MUMBAI]: schemas_1.Network.MATIC
++    [schemas_1.ChainId.MATIC_MUMBAI]: schemas_1.Network.MATIC,
+ };
+ function getChainConfiguration(chainId) {
+     return {
 diff --git a/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json b/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json
 index f1fcda5..d6c2648 100644
 --- a/node_modules/decentraland-dapps/dist/modules/translation/defaults/zh.json

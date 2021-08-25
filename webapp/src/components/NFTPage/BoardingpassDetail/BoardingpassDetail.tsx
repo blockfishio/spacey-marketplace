@@ -22,7 +22,7 @@ import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
 import { Title } from '../Title'
 import { Owner } from '../Owner'
-// import { Description } from '../Description'
+import { Description } from '../Description'
 import { OrderDetails } from '../OrderDetails'
 import { Actions } from '../Actions'
 // import { Highlight } from '../Highlight'
@@ -36,7 +36,7 @@ const WearableDetail = (props: Props) => {
   const { nft,
     // onNavigate 
   } = props
-  // const wearable = nft.data.wearable!
+  const boardingpass = nft.data.boardingpass!
 
   // const handleCategoryClick = useCallback(() => {
   //   const category = wearable.category
@@ -106,7 +106,7 @@ const WearableDetail = (props: Props) => {
           }
           right={<Owner nft={nft} />}
         />
-        {/* <Description text="1551" /> */}
+        <Description text={boardingpass.description} />
         <Row>
           <Column align="left" grow={true}>
             <OrderDetails nft={nft} />

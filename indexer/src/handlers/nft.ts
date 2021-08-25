@@ -17,29 +17,18 @@ import {
   cancelActiveOrder,
   clearNFTOrderProperties
 } from '../modules/nft'
-import { getCategory, getCategoryByIndex } from '../modules/category'
+import { getCategory, getCategoryByIndex, getSubCategoryByIndex } from '../modules/category'
 // import { buildEstateFromNFT, getEstateImage } from '../modules/estate'
 
 import { buildCountFromNFT } from '../modules/count'
-// import {
-//   buildParcelFromNFT,
-//   getParcelImage,
-//   getParcelText,
-//   isInBounds
-// } from '../modules/parcel'
-// import {
-//   buildWearableFromNFT,
-//   getWearableImage,
-//   isWearableHead,
-//   isWearableAccessory
-// } from '../modules/wearable'
-// import { buildENSFromNFT } from '../modules/ens'
+import { BigInt } from '@graphprotocol/graph-ts'
 
-import { buildBoardingpassFromNFT, getBoardingpassImage } from '../modules/boardingpass'
-import { buildLandFromNFT, getLandImage } from '../modules/land'
-import { buildBuildingFromNFT, getBuildingImage } from '../modules/building'
-import { buildTowerFromNFT, getTowerImage } from '../modules/tower'
-import { buildTrapFromNFT, getTrapImage } from '../modules/trap'
+
+import { buildBoardingpassFromNFT, getBoardingpassImage, getBoardingpassThumbnail, getBoardingpassName } from '../modules/boardingpass'
+import { buildLandFromNFT, getLandImage, getLandSearchText, getLandName } from '../modules/land'
+import { buildBuildingFromNFT, getBuildingImage, getBuildingName } from '../modules/building'
+import { buildTowerFromNFT, getTowerImage, getTowerName, getTowerThumbnail } from '../modules/tower'
+import { buildTrapFromNFT, getTrapImage, getTrapName, getTrapThumbnail } from '../modules/trap'
 
 import { createAccount } from '../modules/wallet'
 import { toLowerCase } from '../modules/utils'
@@ -188,6 +177,8 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
 
   let contractAddress = event.address.toHexString()
   let category = getCategoryByIndex(event.params.cateory)
+  // let subcategory = getSubCategoryByIndex(event.params.subcategory)
+  let subcategory = BigInt.fromI32(event.params.subcategory)
   let id = event.params.tokenId.toString()
 
   let nft = new NFT(id)
@@ -230,9 +221,13 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
   if (category == categories.BOARDINGPASS) {
     let boardingpass: Boardingpass
     if (isMint(event)) {
+      nft.subcategory = subcategory
       boardingpass = buildBoardingpassFromNFT(nft)
       nft.boardingpass = id
       nft.image = getBoardingpassImage(boardingpass)
+      nft.thumbnail = getBoardingpassThumbnail(boardingpass)
+      nft.searchText = id
+      nft.name = getBoardingpassName(boardingpass)
     } else {
       boardingpass = new Boardingpass(nft.id)
       boardingpass.owner = nft.owner
@@ -242,11 +237,15 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
   else if (category == categories.LAND) {
     let land: Land
     if (isMint(event)) {
+      nft.subcategory = subcategory
+
       land = buildLandFromNFT(nft)
       nft.land = id
       nft.searchIsLand = true
       nft.image = getLandImage()
-      // nft.name = land.name
+      nft.thumbnail = getLandImage()
+      nft.searchText = getLandSearchText(land)
+      nft.name = getLandName(land)
     } else {
       land = new Land(nft.id)
       land.owner = nft.owner
@@ -256,9 +255,15 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
   else if (category == categories.BUILDING) {
     let building: Building
     if (isMint(event)) {
+      nft.subcategory = subcategory
       building = buildBuildingFromNFT(nft)
       nft.building = id
       nft.image = getBuildingImage(building)
+      nft.thumbnail = getBuildingImage(building)
+      nft.name = getBuildingName(building)
+      nft.searchText = nft.name
+      building.rarity = BigInt.fromI32(event.params.rarity)
+
     } else {
       building = new Building(nft.id)
       building.owner = nft.owner
@@ -268,9 +273,14 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
   else if (category == categories.TOWER) {
     let tower: Tower
     if (isMint(event)) {
+      nft.subcategory = subcategory
       tower = buildTowerFromNFT(nft)
       nft.tower = id
       nft.image = getTowerImage(tower)
+      nft.thumbnail = getTowerThumbnail(tower)
+      nft.name = getTowerName(tower)
+      nft.searchText = nft.name
+      tower.rarity = BigInt.fromI32(event.params.rarity)
     } else {
       tower = new Tower(nft.id)
       tower.owner = nft.owner
@@ -280,9 +290,14 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
   else if (category == categories.TRAP) {
     let trap: Trap
     if (isMint(event)) {
+      nft.subcategory = subcategory
       trap = buildTrapFromNFT(nft)
       nft.trap = id
-      nft.trap = getTrapImage(trap)
+      nft.image = getTrapImage(trap)
+      nft.thumbnail = getTrapThumbnail(trap)
+      nft.name = getTrapName(trap)
+      nft.searchText = nft.name
+      trap.rarity = BigInt.fromI32(event.params.rarity)
     } else {
       trap = new Trap(nft.id)
       trap.owner = nft.owner

@@ -12,7 +12,7 @@ import {
 import { getNFTName, isOwnedBy } from '../../../modules/nft/utils'
 import { locations } from '../../../modules/routing/locations'
 import { hasAuthorization } from '../../../modules/authorization/utils'
-import { contractAddresses } from '../../../modules/contract/utils'
+import { contractAddressesAll } from '../../../modules/contract/utils'
 import { VendorFactory } from '../../../modules/vendor/VendorFactory'
 import { AuthorizationType } from '../../AuthorizationModal/AuthorizationModal.types'
 import { AuthorizationModal } from '../../AuthorizationModal'
@@ -53,7 +53,7 @@ const SellModal = (props: Props) => {
     if (
       hasAuthorization(
         authorizations,
-        contractAddresses.Marketplace,
+        contractAddressesAll[wallet.chainId].Marketplace,
         nft.contractAddress,
         AuthorizationType.APPROVAL
       )
@@ -186,8 +186,9 @@ const SellModal = (props: Props) => {
         </Form>
       </Modal>
       <AuthorizationModal
+        wallet={wallet}
         open={showAuthorizationModal}
-        contractAddress={contractAddresses.Marketplace}
+        contractAddress={contractAddressesAll[wallet.chainId].Marketplace}
         tokenAddress={nft.contractAddress}
         type={AuthorizationType.APPROVAL}
         onProceed={handleCreateOrder}

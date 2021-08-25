@@ -11,6 +11,7 @@ import { orderAPI } from './order/api'
 import { Vendors } from '../types'
 import { OrderService as OrderServiceInterface } from '../services'
 import { ContractService } from './ContractService'
+import { ChainId } from '../../contract/types'
 
 export class OrderService
   implements OrderServiceInterface<Vendors.DECENTRALAND> {
@@ -20,12 +21,13 @@ export class OrderService
   }
 
   async create(
+    chainId: ChainId,
     nft: NFT,
     price: number,
     expiresAt: number,
     fromAddress: string
   ) {
-    const marketplace = await this.getMarketplaceContract()
+    const marketplace = await this.getMarketplaceContract(chainId)
 
     if (!fromAddress) {
       throw new Error('Invalid address. Wallet must be connected.')
@@ -44,12 +46,13 @@ export class OrderService
   }
 
   async execute(
+    chainId: ChainId,
     nft: NFT,
     order: Order,
     fromAddress: string,
     fingerprint?: string
   ) {
-    const marketplace = await this.getMarketplaceContract()
+    const marketplace = await this.getMarketplaceContract(chainId)
     const { price } = order
 
     if (!fromAddress) {
@@ -80,28 +83,31 @@ export class OrderService
   }
 
   async executeAsset(
+    chainId: ChainId,
     asset: Asset,
+    quantity: number,
     fromAddress: string,
   ) {
-    const marketplace = await this.getAssetSaleContract()
+    const marketplace = await this.getAssetSaleContract(chainId)
     if (!fromAddress) {
       throw new Error('Invalid address. Wallet must be connected.')
     }
     const from = Address.fromString(fromAddress)
 
-
     return marketplace.methods
       .buyAsset(
         asset.OptionID,
-        1
+        quantity
       )
       .send({ from })
       .getTxHash()
 
   }
 
-  async cancel(nft: NFT, fromAddress: string) {
-    const marketplace = await this.getMarketplaceContract()
+  async cancel(
+    chainId: ChainId,
+    nft: NFT, fromAddress: string) {
+    const marketplace = await this.getMarketplaceContract(chainId)
 
     if (!fromAddress) {
       throw new Error('Invalid address. Wallet must be connected.')
@@ -117,14 +123,14 @@ export class OrderService
   canSell() {
     return true
   }
-  private getAssetSaleContract() {
-    return ContractFactory.build(AssetSale, ContractService.contractAddresses.AssetSale)
+  private getAssetSaleContract(chainId: ChainId) {
+    return ContractFactory.build(AssetSale, ContractService.contractAddressesAll[chainId].AssetSale)
   }
 
-  private getMarketplaceContract() {
+  private getMarketplaceContract(chainId: ChainId) {
     return ContractFactory.build(
       Marketplace,
-      ContractService.contractAddresses.Marketplace
+      ContractService.contractAddressesAll[chainId].Marketplace
     )
   }
 }

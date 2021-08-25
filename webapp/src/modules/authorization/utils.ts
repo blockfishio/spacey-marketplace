@@ -29,6 +29,7 @@ export async function getAuthorizations(
       }
     }
   }
+
   return result
 }
 
@@ -38,6 +39,7 @@ export async function callAllowance(
   contractAddress: string,
   walletAddress: string
 ) {
+
   const contract = new ERC20(eth, toAddress(tokenContractAddress))
   const result = await contract.methods
     .allowance(toAddress(walletAddress), toAddress(contractAddress))

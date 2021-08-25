@@ -1,6 +1,6 @@
 import { put, call, takeEvery, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
-import { ChainId } from '@dcl/schemas'
+import { ChainId } from '../contract/types'
 import {
   CREATE_ORDER_REQUEST,
   CreateOrderRequestAction,
@@ -37,10 +37,10 @@ function* handleCreateOrderRequest(action: CreateOrderRequestAction) {
     const { orderService } = VendorFactory.build(nft.vendor)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
-    const txHash: string = yield call(() =>
-      orderService.create(nft, price, expiresAt, address!)
-    )
     const chainId: ChainId = yield select(getChainId)
+    const txHash: string = yield call(() =>
+      orderService.create(chainId, nft, price, expiresAt, address!)
+    )
     yield put(createOrderSuccess(nft, price, expiresAt, chainId, txHash))
     yield put(push(locations.activity()))
   } catch (error) {
@@ -57,11 +57,12 @@ function* handleExecuteOrderRequest(action: ExecuteOrderRequestAction) {
     const { orderService } = VendorFactory.build(nft.vendor)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
+    const chainId: ChainId = yield select(getChainId)
+
     const txHash: string = yield call(() =>
-      orderService.execute(nft, order, address!, fingerprint)
+      orderService.execute(chainId, nft, order, address!, fingerprint)
     )
 
-    const chainId: ChainId = yield select(getChainId)
     yield put(executeOrderSuccess(order, nft, chainId, txHash))
     yield put(push(locations.activity()))
   } catch (error) {
@@ -69,18 +70,18 @@ function* handleExecuteOrderRequest(action: ExecuteOrderRequestAction) {
   }
 }
 function* handleExecuteAssetOrderRequest(action: ExecuteAssetOrderRequestAction) {
-  const { asset } = action.payload
+  const { asset, quantity } = action.payload
   try {
 
     const { orderService } = VendorFactory.build(Vendors.DECENTRALAND)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
+    const chainId: ChainId = yield select(getChainId)
     const txHash: string = yield call(() =>
-      orderService.executeAsset ? orderService.executeAsset(asset, address!) : "err"
+      orderService.executeAsset ? orderService.executeAsset(chainId, asset, quantity, address!) : "err"
     )
 
-    const chainId: ChainId = yield select(getChainId)
-    yield put(executeAssetOrderSuccess(asset, chainId, txHash))
+    yield put(executeAssetOrderSuccess(asset, quantity, chainId, txHash))
     yield put(push(locations.activity()))
   } catch (error) {
     yield put(executeAssetOrderFailure(asset, error.message))
@@ -96,8 +97,8 @@ function* handleCancelOrderRequest(action: CancelOrderRequestAction) {
     const { orderService } = VendorFactory.build(nft.vendor)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
-    const txHash: string = yield call(() => orderService.cancel(nft, address!))
     const chainId: ChainId = yield select(getChainId)
+    const txHash: string = yield call(() => orderService.cancel(chainId, nft, address!))
     yield put(cancelOrderSuccess(order, nft, chainId, txHash))
     yield put(push(locations.activity()))
   } catch (error) {

@@ -10,7 +10,7 @@ import { CLEAR_TRANSACTIONS } from 'decentraland-dapps/dist/modules/transaction/
 
 import { createRootReducer, RootState } from './reducer'
 import { rootSaga } from './sagas'
-// import { fetchTilesRequest } from './tile/actions'
+import { fetchTilesRequest } from './tile/actions'
 import { ARCHIVE_BID, UNARCHIVE_BID } from './bid/actions'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -55,16 +55,14 @@ const middleware = applyMiddleware(
 )
 const enhancer = composeEnhancers(middleware)
 const store = createStore(rootReducer, enhancer)
-
 sagasMiddleware.run(rootSaga)
 loadStorageMiddleware(store)
-
 if (isDev) {
   const _window = window as any
   _window.getState = store.getState
 }
 
 // fetch tiles
-// store.dispatch(fetchTilesRequest())
+store.dispatch(fetchTilesRequest())
 
 export { store }

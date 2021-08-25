@@ -15,6 +15,7 @@ import { Bid } from '../bid/types'
 import { OrderStatus, Order } from '../order/types'
 import { NFTsFetchFilters } from './nft/types'
 import { Vendors, TransferType } from './types'
+import { ChainId } from '../contract/types'
 
 export interface NFTService<V extends Vendors> {
   fetch: (
@@ -40,22 +41,27 @@ export class NFTService<V> { }
 export interface OrderService<V extends Vendors> {
   fetchByNFT: (nft: NFT<V>) => Promise<Order[]>
   create: (
+    chainId: ChainId,
     nft: NFT<V>,
     price: number,
     expiresAt: number,
     fromAddress: string
   ) => Promise<string>
   execute: (
+    chainId: ChainId,
     nft: NFT<V>,
     order: Order,
     fromAddress: string,
     fingerprint?: string
   ) => Promise<string>
   executeAsset?: (
+    chainId: ChainId,
     asset: Asset,
-    address: string
+    quantity: number,
+    address: string,
   ) => Promise<string>
-  cancel: (nft: NFT<V>, fromAddress: string) => Promise<string>
+  cancel: (chainId: ChainId,
+    nft: NFT<V>, fromAddress: string) => Promise<string>
   canSell(): boolean
 }
 export class OrderService<V> { }
@@ -78,9 +84,14 @@ export class BidService<V> { }
 
 export interface ContractService {
   contractAddresses: Record<string, string>
+  contractAddressesAll: Record<string, Record<string, string>>
   contractSymbols: Record<string, string>
+  contractSymbolsAll: Record<string, Record<string, string>>
   contractNames: Record<string, string>
+  contractNamesAll: Record<string, Record<string, string>>
   contractCategories: Record<string, NFTCategory>
+  contractCategoriesAll: Record<string, Record<string, string>>
+
   getTransferType: (address: string) => TransferType
 }
 export class ContractService { }

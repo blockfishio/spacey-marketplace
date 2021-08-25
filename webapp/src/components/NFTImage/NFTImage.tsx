@@ -125,6 +125,22 @@ const NFTImage = (props: Props) => {
       )
     }
 
+    case NFTCategory.TOWER:
+    case NFTCategory.TRAP:
+    case NFTCategory.BUILDING: {
+      const backgroundImage = `radial-gradient(${'#000000'},${'#000000'})`
+      return (
+        <div
+          className="rarity-background"
+          style={{
+            backgroundImage
+          }}
+        >
+          <img alt="" className="image" src={nft.thumbnail} />
+        </div>
+      )
+    }
+
     default: {
       return (
         <LazyImage

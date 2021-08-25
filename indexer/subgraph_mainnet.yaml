@@ -1,6 +1,6 @@
 specVersion: 0.0.2
-description: Decentraland's Marketplace
-repository: https://github.com/decentraland/decentraland
+description: Spacey2025's Marketplace
+repository: 
 schema:
   file: ./schema.graphql
 dataSources:
@@ -9,11 +9,11 @@ dataSources:
   # ---------------------------------------------------------
   # - kind: ethereum/contract
   #   name: LANDRegistry
-  #   network: mainnet
+  #   network: ropsten
   #   source:
-  #     address: '0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d'
+  #     address: '0x7a73483784ab79257bb11b96fd62a2c3ae4fb75b'
   #     abi: LANDRegistry
-  #     startBlock: 4944642
+  #     startBlock: 2482847
   #   mapping:
   #     kind: ethereum/events
   #     apiVersion: 0.0.3
@@ -38,11 +38,11 @@ dataSources:
   # ---------------------------------------------------------
   # - kind: ethereum/contract
   #   name: EstateRegistry
-  #   network: mainnet
+  #   network: ropsten
   #   source:
-  #     address: '0x959e104e1a4db6317fa58f8295f586e1a978c297'
+  #     address: '0x124bf28a423b2ca80b3846c3aa0eb944fe7ebb95'
   #     abi: EstateRegistry
-  #     startBlock: 6236547
+  #     startBlock: 3890399
   #   mapping:
   #     kind: ethereum/events
   #     apiVersion: 0.0.3
@@ -72,11 +72,11 @@ dataSources:
   # ---------------------------------------------------------
   # - kind: ethereum/contract
   #   name: MANAToken
-  #   network: mainnet
+  #   network: ropsten
   #   source:
-  #     address: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+  #     address: '0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb'
   #     abi: MANAToken
-  #     startBlock: 4162050
+  #     startBlock: 1891200
   #   mapping:
   #     kind: ethereum/events
   #     apiVersion: 0.0.3
@@ -98,42 +98,42 @@ dataSources:
   # ---------------------------------------------------------
   # ORDERS --------------------------------------------------
   # ---------------------------------------------------------
-  # - kind: ethereum/contract
-  #   name: Marketplace
-  #   network: mainnet
-  #   source:
-  #     address: '0x8e5660b4ab70168b5a6feea0e0315cb49c8cd539'
-  #     abi: Marketplace
-  #     startBlock: 6496012
-  #   mapping:
-  #     kind: ethereum/events
-  #     apiVersion: 0.0.3
-  #     language: wasm/assemblyscript
-  #     file: ./src/handlers/marketplace.ts
-  #     entities:
-  #       - Order
-  #       - NFT
-  #     abis:
-  #       - name: Marketplace
-  #         file: ./abis/Marketplace.json
-  #     eventHandlers:
-  #       - event: OrderCreated(bytes32,indexed uint256,indexed address,address,uint256,uint256)
-  #         handler: handleOrderCreated
-  #       - event: OrderSuccessful(bytes32,indexed uint256,indexed address,address,uint256,indexed address)
-  #         handler: handleOrderSuccessful
-  #       - event: OrderCancelled(bytes32,indexed uint256,indexed address,address)
-  #         handler: handleOrderCancelled
+  - kind: ethereum/contract
+    name: Marketplace
+    network: mainnet
+    source:
+      address: '0x9e78a8bdbdddE4bf49c241C0E37F524CFD4dAbBe'
+      abi: Marketplace
+      startBlock: 12000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/handlers/marketplace.ts
+      entities:
+        - Order
+        - NFT
+      abis:
+        - name: Marketplace
+          file: ./abis/Marketplace.json
+      eventHandlers:
+        - event: OrderCreated(bytes32,indexed uint256,indexed address,address,uint256,uint256)
+          handler: handleOrderCreated
+        - event: OrderSuccessful(bytes32,indexed uint256,indexed address,address,uint256,indexed address)
+          handler: handleOrderSuccessful
+        - event: OrderCancelled(bytes32,indexed uint256,indexed address,address)
+          handler: handleOrderCancelled
 
   # ---------------------------------------------------------
   # ENS -------------------------------------------------
   # ---------------------------------------------------------
   # - kind: ethereum/contract
   #   name: DCLRegistrar
-  #   network: mainnet
+  #   network: ropsten
   #   source:
-  #     address: '0x2a187453064356c898cae034eaed119e1663acb8'
+  #     address: '0xeb6f5d94d79f0750781cc962908b161b95192f53'
   #     abi: DCLRegistrar
-  #     startBlock: 9412979
+  #     startBlock: 7170497
   #   mapping:
   #     kind: ethereum/events
   #     apiVersion: 0.0.3
@@ -153,11 +153,11 @@ dataSources:
   # ---------------------------------------------------------
   # - kind: ethereum/contract
   #   name: ERC721Bid
-  #   network: mainnet
+  #   network: ropsten
   #   source:
-  #     address: '0xe479dfd9664c693b2e2992300930b00bfde08233'
+  #     address: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f'
   #     abi: ERC721Bid
-  #     startBlock: 7270906
+  #     startBlock: 5058246
   #   mapping:
   #     kind: ethereum/events
   #     apiVersion: 0.0.3
@@ -176,35 +176,58 @@ dataSources:
   #       - event: BidCancelled(bytes32,indexed address,indexed uint256,indexed address)
   #         handler: handleBidCancelled
 
-
-  # ---------------------------------------------------------
+  
+# ---------------------------------------------------------
   # SMTs ----------------------------------------------------
   # ---------------------------------------------------------
+  # - kind: ethereum/contract
+  #   name: SMT
+  #   network: ropsten
+  #   source:
+  #     address: '0xc663de795c2651db14ab995dd7308f67250fb99f'
+  #     abi: SMT
+  #     startBlock: 10000000
+  #   mapping:
+  #     kind: ethereum/events
+  #     apiVersion: 0.0.3
+  #     language: wasm/assemblyscript
+  #     file: ./src/handlers/smt.ts
+  #     entities:
+  #       - Boardingpass
+  #     abis:
+  #       - name: SMT
+  #         file: ./abis/SMT.json
+  #     # eventHandlers:
+  #     #   - event: Transfer(indexed address,indexed address,indexed uint256)
+  #     #     handler: handleTransfer
+  #     eventHandlers:
+  #       - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+  #         handler: handleRoleGranted
+
+
+# ---------------------------------------------------------
+  # ASSETS ----------------------------------------------------
+  # ---------------------------------------------------------
   - kind: ethereum/contract
-    name: SMT
+    name: Asset
     network: mainnet
     source:
-      address: '0xE82f293Ed202e12D1EbA5E334035eAb480A206aa'
-      abi: SMT
+      address: '0x46741B56c57b6c2470e9EAd3Cd6ee13BB2A4Fe7B'
+      abi: Asset
       startBlock: 12000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
       language: wasm/assemblyscript
-      file: ./src/handlers/smt.ts
+      file: ./src/handlers/asset.ts
       entities:
-        - Boardingpass
+        - Asset
       abis:
-        - name: SMT
-          file: ./abis/SMT.json
-      # eventHandlers:
-      #   - event: Transfer(indexed address,indexed address,indexed uint256)
-      #     handler: handleTransfer
+        - name: Asset
+          file: ./abis/Asset.json
       eventHandlers:
-        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleGranted
-
-
+        - event: AssetInitialized()
+          handler: handleAssetInitialized
 
 
 # ---------------------------------------------------------
@@ -215,7 +238,7 @@ templates:
     kind: ethereum/contract
     network: mainnet
     source:
-      abi: ERC721
+      abi: Asset
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -223,22 +246,20 @@ templates:
       file: ./src/handlers/nft.ts
       entities:
         - NFT
-        # - Parcel
-        # - Estate
-        # - Wearable
-        # - ENS
         - Boardingpass
+        - Land
+        - Building
+        - Tower
+        - Trap
+        - Chest
       abis:
         - name: ERC721
           file: ./abis/ERC721.json
-        - name: LANDRegistry
-          file: ./abis/LANDRegistry.json
+        - name: Asset
+          file: ./abis/Asset.json
+        # - name: LANDRegistry
+        #   file: ./abis/LANDRegistry.json
       eventHandlers:
-        - event: Transfer(indexed address,indexed address,indexed uint256,address,bytes,bytes)
-          handler: handleTransfer
-        - event: Transfer(indexed address,indexed address,indexed uint256,address,bytes)
-          handler: handleTransfer
-        - event: Transfer(indexed address,indexed address,indexed uint256)
-          handler: handleTransfer
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransfer
+        - event: DetailedTransfer(indexed address,indexed address,indexed uint256,uint8,uint8,uint8)
+          handler: handleDetailedTransfer
+       

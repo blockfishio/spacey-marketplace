@@ -7,7 +7,7 @@ import { Page, Grid, Blockie, Mana, Loader, Form } from 'decentraland-ui'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { locations } from '../../modules/routing/locations'
-import { contractAddresses } from '../../modules/contract/utils'
+import { contractAddressesAll } from '../../modules/contract/utils'
 import { hasAuthorization } from '../../modules/authorization/utils'
 import { shortenAddress } from '../../modules/wallet/utils'
 import { AuthorizationType } from '../AuthorizationModal/AuthorizationModal.types'
@@ -18,7 +18,9 @@ import { Props } from './SettingsPage.types'
 import './SettingsPage.css'
 import { Network } from '@dcl/schemas'
 
-const BUY_MANA_URL = process.env.REACT_APP_BUY_MANA_URL
+
+
+// const BUY_MANA_URL = process.env.REACT_APP_BUY_MANA_URL
 
 const SettingsPage = (props: Props) => {
   const {
@@ -108,12 +110,15 @@ const SettingsPage = (props: Props) => {
               <Grid.Column computer={12} mobile={16}>
                 <div className="balance">
                   <Mana inline>
-                    {parseInt(
+                    {wallet.networks[Network.ETHEREUM] ? parseInt(
                       wallet.networks[Network.ETHEREUM].mana.toFixed(0),
+                      10
+                    ).toLocaleString() : parseInt(
+                      wallet.networks[Network.BSC].mana.toFixed(0),
                       10
                     ).toLocaleString()}
                   </Mana>
-                  {BUY_MANA_URL ? (
+                  {/* {BUY_MANA_URL ? (
                     <a
                       className="buy-more"
                       href={BUY_MANA_URL}
@@ -122,7 +127,7 @@ const SettingsPage = (props: Props) => {
                     >
                       {t('settings_page.buy_more_mana')}
                     </a>
-                  ) : null}
+                  ) : null} */}
                 </div>
               </Grid.Column>
             </Grid.Row>
@@ -155,61 +160,69 @@ const SettingsPage = (props: Props) => {
                             {t('settings_page.for_buying')}
                           </label>
                           <Authorization
+                            wallet={wallet}
                             checked={hasAuthorization(
                               authorizations!,
-                              contractAddresses.Marketplace,
-                              contractAddresses.MANAToken,
+                              contractAddressesAll[wallet.chainId].Marketplace,
+                              contractAddressesAll[wallet.chainId].MANAToken,
                               AuthorizationType.ALLOWANCE
                             )}
-                            contractAddress={contractAddresses.Marketplace}
-                            tokenContractAddress={contractAddresses.MANAToken}
+                            contractAddress={contractAddressesAll[wallet.chainId].Marketplace}
+                            tokenContractAddress={contractAddressesAll[wallet.chainId].MANAToken}
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
                           />
                           <Authorization
+                            wallet={wallet}
                             checked={hasAuthorization(
                               authorizations!,
-                              contractAddresses.AssetSale,
-                              contractAddresses.MANAToken,
+                              contractAddressesAll[wallet.chainId].AssetSale,
+                              contractAddressesAll[wallet.chainId].MANAToken,
                               AuthorizationType.ALLOWANCE
                             )}
                             contractAddress={
-                              contractAddresses.AssetSale
+                              contractAddressesAll[wallet.chainId].AssetSale
                             }
-                            tokenContractAddress={contractAddresses.MANAToken}
+                            tokenContractAddress={contractAddressesAll[wallet.chainId].MANAToken}
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
                           />
                         </div>
 
-                        {/* <div className="authorization-checks">
-                          <label className="secondary-text">
-                            {t('settings_page.for_bidding')}
-                          </label>
-                          <Authorization
-                            checked={hasAuthorization(
-                              authorizations!,
-                              contractAddresses.Bids,
-                              contractAddresses.MANAToken,
-                              AuthorizationType.ALLOWANCE
-                            )}
-                            contractAddress={contractAddresses.Bids}
-                            tokenContractAddress={contractAddresses.MANAToken}
-                            pendingTransactions={pendingAllowTransactions}
-                            onChange={onAllowToken}
-                          />
-                        </div> */}
+
 
                         <div className="authorization-checks">
                           <label className="secondary-text">
                             {t('settings_page.for_selling')}
                           </label>
 
-                          {Object.keys(authorizations!.approvals).map(
+
+                          <Authorization
+                            wallet={wallet}
+                            checked={hasAuthorization(
+                              authorizations!,
+                              contractAddressesAll[wallet.chainId].Marketplace,
+                              contractAddressesAll[wallet.chainId].SpaceY2025,
+                              AuthorizationType.APPROVAL
+                            )}
+                            contractAddress={contractAddressesAll[wallet.chainId].Marketplace}
+                            tokenContractAddress={
+                              contractAddressesAll[wallet.chainId].SpaceY2025
+                            }
+                            pendingTransactions={
+                              pendingApproveTransactions
+                            }
+                            onChange={onApproveToken}
+                          />
+
+
+                          {/* {Object.keys(authorizations!.approvals).map(
                             contractAddress => {
                               const privilege = authorizations!.approvals[
                                 contractAddress
                               ]
+                              console.log(authorizations!.approvals)
+                              console.log(privilege)
                               return !privilege
                                 ? null
                                 : Object.keys(
@@ -231,7 +244,7 @@ const SettingsPage = (props: Props) => {
                                   />
                                 ))
                             }
-                          )}
+                          )} */}
                         </div>
                       </Form>
                     )}

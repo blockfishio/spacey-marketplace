@@ -62,11 +62,20 @@ export const getOnlyOnSale = createSelector<
   boolean | undefined
 >(getRouterSearch, getView, (search, view) => {
   const onlyOnSale = getURLParam(search, 'onlyOnSale')
-  return onlyOnSale === null
-    ? view
-      ? getDefaultOptionsByView(view).onlyOnSale
-      : undefined
-    : onlyOnSale === 'true'
+  let result: boolean
+  switch (onlyOnSale) {
+    case 'true':
+      result = true
+      break
+    case 'false':
+      result = false
+      break
+    default:
+      const defaultOptions = getDefaultOptionsByView(view)
+      result = defaultOptions.onlyOnSale!
+      break
+  }
+  return result
 })
 
 export const getIsMap = createSelector<RootState, string, boolean | undefined>(
