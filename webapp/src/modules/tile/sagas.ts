@@ -64,7 +64,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
     for (let i = 0; i < orders.length; i++) {
       const order = orders[i]
       if (order) {
-        const t = tileMap[parseInt(order.nftId) - offset]
+        const t = tileMap[parseInt(order.tokenId) - offset]
         const tile: any = { ...mytile[t], price: fromWei(order.price, 'ether') }
         mytile[t] = tile
       }

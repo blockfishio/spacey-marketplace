@@ -1,5 +1,5 @@
-import { NFTCategory } from '../nft/types'
-
+// import { NFTCategory } from '../nft/types'
+import { ChainId, Network } from '@dcl/schemas'
 export enum OrderStatus {
   OPEN = 'open',
   SOLD = 'sold',
@@ -8,16 +8,17 @@ export enum OrderStatus {
 
 export type Order = {
   id: string
-  nftId: string
-  category: NFTCategory
-  nftAddress: string
   marketAddress: string
+  contractAddress: string
+  tokenId: string
   owner: string
   buyer: string | null
   price: string
   ethPrice?: string
   status: OrderStatus
-  expiresAt?: string
-  createdAt: string
-  updatedAt: string
+  expiresAt: number
+  createdAt: number
+  updatedAt: number
+  network: Network
+  chainId: ChainId
 }

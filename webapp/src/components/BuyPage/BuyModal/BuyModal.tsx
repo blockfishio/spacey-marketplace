@@ -8,7 +8,7 @@ import { getNFTName } from '../../../modules/nft/utils'
 import { hasAuthorization } from '../../../modules/authorization/utils'
 import { contractAddresses } from '../../../modules/contract/utils'
 import { useFingerprint, useComputedPrice } from '../../../modules/nft/hooks'
-import { NFTCategory } from '../../../modules/nft/types'
+// import { NFTCategory } from '../../../modules/nft/types'
 import { NFTAction } from '../../NFTAction'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { AuthorizationType } from '../../AuthorizationModal/AuthorizationModal.types'
@@ -27,7 +27,9 @@ const BuyPage = (props: Props) => {
     notEnoughMana
   } = props
 
-  const [fingerprint, isFingerprintLoading] = useFingerprint(nft)
+  const [fingerprint,
+    // isFingerprintLoading
+  ] = useFingerprint(nft)
   const [
     computedPrice,
     percentageIncrease,
@@ -76,8 +78,9 @@ const BuyPage = (props: Props) => {
   const isDisabled =
     !order ||
     isOwner ||
-    notEnoughMana ||
-    (!fingerprint && order.category === NFTCategory.ESTATE)
+    notEnoughMana
+  // ||
+  // (!fingerprint && order.category === NFTCategory.ESTATE)
 
   const name = <b>{getNFTName(nft)}</b>
   const Price = (props: { price: string }) => (
@@ -87,13 +90,9 @@ const BuyPage = (props: Props) => {
   let subtitle = null
   if (!order) {
     subtitle = <T id={'buy_page.not_for_sale'} values={{ name }} />
-  } else if (
-    !fingerprint &&
-    order.category === NFTCategory.ESTATE &&
-    !isFingerprintLoading
-  ) {
-    subtitle = <T id={'buy_page.no_fingerprint'} />
-  } else if (isOwner) {
+  }
+  // 
+  else if (isOwner) {
     subtitle = <T id={'buy_page.is_owner'} values={{ name }} />
   } else if (notEnoughMana) {
     subtitle = (

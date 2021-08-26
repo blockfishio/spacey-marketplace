@@ -11,6 +11,7 @@ import { Building } from './building/types'
 import { Land } from './land/types'
 import { Tower } from './tower/types'
 import { Trap } from './trap/types'
+import { Network } from '@dcl/schemas'
 
 export enum NFTSortBy {
   NAME = 'name',
@@ -56,7 +57,7 @@ export type Data<V extends Vendors> = V extends Vendors.DECENTRALAND
   ? DecentralandNFT
   : never
 
-export type NFT<V extends Vendors = any> = {
+export type NFT<V extends Vendors = Vendors.DECENTRALAND> = {
   id: string
   contractAddress: string
   tokenId: string
@@ -69,6 +70,7 @@ export type NFT<V extends Vendors = any> = {
   url: string
   vendor: Vendors
   data: Data<V>
+  network?: Network
 }
 
 export type NFTsFetchParams = {

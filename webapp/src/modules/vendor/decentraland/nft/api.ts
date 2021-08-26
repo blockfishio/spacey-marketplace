@@ -2,13 +2,12 @@ import { gql } from 'apollo-boost'
 
 import { BaseAPI } from 'decentraland-dapps/dist/lib/api'
 import { NFTsFetchParams } from '../../../nft/types'
-// import { WearableGender } from '../../../nft/wearable/types'
 import { ContractService } from '../ContractService'
 // import { contractAddressesAll } from '../../../contract/utils'
 
 import { client } from '../api'
 import { nftFragment, NFTFragment } from './fragments'
-import { NFTsFetchFilters } from './types'
+import { NFTsFetchFilters, NFTResult, NFTResponse } from './types'
 import { getNFTSortBy } from '../../../routing/search'
 
 
@@ -42,15 +41,25 @@ class NFTAPI extends BaseAPI {
     return data.nfts.length
   }
 
-  async fetchOne(contractAddress: string, tokenId: string) {
-    const { data } = await client.query<{ nfts: NFTFragment[] }>({
-      query: NFT_BY_ADDRESS_AND_ID_QUERY,
-      variables: {
-        contractAddress,
-        tokenId
-      }
+  async fetchOne(contractAddress: string, tokenId: string): Promise<NFTResult> {
+    // const { data } = await client.query<{ nfts: NFTFragment[] }>({
+    //   query: NFT_BY_ADDRESS_AND_ID_QUERY,
+    //   variables: {
+    //     contractAddress,
+    //     tokenId
+    //   }
+    // })
+    // return data.nfts[0]
+    const response: NFTResponse = await this.request('get', '/nfts', {
+      contractAddress,
+      tokenId
     })
-    return data.nfts[0]
+
+    if (response.data.length === 0) {
+      throw new Error('Not found')
+    }
+
+    return response.data[0]
   }
 
   async fetchTokenId(x: number, y: number) {
@@ -221,17 +230,17 @@ function getNFTsQuery(
   `
 }
 
-const NFT_BY_ADDRESS_AND_ID_QUERY = gql`
-  query NFTByTokenId($contractAddress: String, $tokenId: String) {
-    nfts(
-      where: { contractAddress: $contractAddress, tokenId: $tokenId }
-      first: 1
-    ) {
-      ...nftFragment
-    }
-  }
-  ${nftFragment()}
-`
+// const NFT_BY_ADDRESS_AND_ID_QUERY = gql`
+//   query NFTByTokenId($contractAddress: String, $tokenId: String) {
+//     nfts(
+//       where: { contractAddress: $contractAddress, tokenId: $tokenId }
+//       first: 1
+//     ) {
+//       ...nftFragment
+//     }
+//   }
+//   ${nftFragment()}
+// `
 
 const PARCEL_TOKEN_ID_QUERY = gql`
   query ParcelTokenId($x: BigInt, $y: BigInt) {

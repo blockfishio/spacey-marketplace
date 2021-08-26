@@ -51,13 +51,18 @@ function* handleCreateOrderRequest(action: CreateOrderRequestAction) {
 function* handleExecuteOrderRequest(action: ExecuteOrderRequestAction) {
   const { order, nft, fingerprint } = action.payload
   try {
-    if (nft.id !== order.nftId) {
+    const chainId: ChainId = yield select(getChainId)
+
+    if (chainId !== order.chainId) {
+      throw new Error('The chain ID does not match ')
+    }
+    if (nft.contractAddress !== order.contractAddress &&
+      nft.tokenId !== order.tokenId) {
       throw new Error('The order does not match the NFT')
     }
     const { orderService } = VendorFactory.build(nft.vendor)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
-    const chainId: ChainId = yield select(getChainId)
 
     const txHash: string = yield call(() =>
       orderService.execute(chainId, nft, order, address!, fingerprint)
@@ -74,9 +79,9 @@ function* handleExecuteAssetOrderRequest(action: ExecuteAssetOrderRequestAction)
   try {
 
     const { orderService } = VendorFactory.build(Vendors.DECENTRALAND)
+    const chainId: ChainId = yield select(getChainId)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
-    const chainId: ChainId = yield select(getChainId)
     const txHash: string = yield call(() =>
       orderService.executeAsset ? orderService.executeAsset(chainId, asset, quantity, address!) : "err"
     )
@@ -91,13 +96,19 @@ function* handleExecuteAssetOrderRequest(action: ExecuteAssetOrderRequestAction)
 function* handleCancelOrderRequest(action: CancelOrderRequestAction) {
   const { order, nft } = action.payload
   try {
-    if (order.nftId !== nft.id) {
+    const chainId: ChainId = yield select(getChainId)
+
+    if (chainId !== order.chainId) {
+      throw new Error('The chain ID does not match ')
+    }
+    if (nft.contractAddress !== order.contractAddress &&
+      nft.tokenId !== order.tokenId) {
       throw new Error('The order does not match the NFT')
     }
+
     const { orderService } = VendorFactory.build(nft.vendor)
 
     const address: ReturnType<typeof getAddress> = yield select(getAddress)
-    const chainId: ChainId = yield select(getChainId)
     const txHash: string = yield call(() => orderService.cancel(chainId, nft, address!))
     yield put(cancelOrderSuccess(order, nft, chainId, txHash))
     yield put(push(locations.activity()))

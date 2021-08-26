@@ -50,3 +50,8 @@ export type NFTResult = {
   nft: Omit<NFT<Vendors.DECENTRALAND>, 'vendor'>
   order: Order | null
 }
+
+export type NFTResponse = {
+  data: NFTResult[]
+  total: number
+}
