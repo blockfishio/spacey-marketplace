@@ -22,7 +22,7 @@ const getHref = (tx: Transaction) => {
   if (tx.status === null) {
     return
   }
-  return getTransactionHref({ txHash: tx.replacedBy || tx.hash })
+  return getTransactionHref({ txHash: tx.replacedBy || tx.hash }, tx.chainId)
 }
 
 const TransactionDetail = (props: Props) => {
@@ -63,7 +63,7 @@ const TransactionDetail = (props: Props) => {
             <Icon name="warning sign" />
           ) : null}
           {tx.status === TransactionStatus.CONFIRMED ||
-          tx.status === TransactionStatus.REPLACED ? (
+            tx.status === TransactionStatus.REPLACED ? (
             <Icon name="check" />
           ) : null}
         </a>

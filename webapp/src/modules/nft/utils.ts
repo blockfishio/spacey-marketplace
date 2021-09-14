@@ -18,7 +18,7 @@ export function getNFTId(contractAddress: string, tokenId: string) {
       `Could not find a valid category for contract ${contractAddress}`
     )
   }
-  return tokenId
+  return contractAddress + '-' + tokenId
   // return contractCategory + '-' + contractAddress + '-' + tokenId
 }
 

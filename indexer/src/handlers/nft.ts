@@ -242,8 +242,8 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
       land = buildLandFromNFT(nft)
       nft.land = id
       nft.searchIsLand = true
-      nft.image = getLandImage()
-      nft.thumbnail = getLandImage()
+      nft.image = getLandImage(land)
+      nft.thumbnail = getLandImage(land)
       nft.searchText = getLandSearchText(land)
       nft.name = getLandName(land)
     } else {

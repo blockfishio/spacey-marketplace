@@ -109,7 +109,7 @@ const Atlas: React.FC<Props> = (props: Props) => {
       const tile = tiles[key]
       if (tile && 'price' in tile) {
         const { left, top, topLeft } = tile
-        return { color: '#00d3ff', left, top, topLeft }
+        return { color: '#00d3ff', left: !!left, top: !!top, topLeft: !!topLeft }
       }
       return null
     },
@@ -244,11 +244,11 @@ const Atlas: React.FC<Props> = (props: Props) => {
         layers={layers}
         minX={0}
         minY={0}
-        maxX={50}
-        maxY={50}
-        size={20}
-        x={25}
-        y={25}
+        maxX={200}
+        maxY={200}
+        // size={2}
+        x={100}
+        y={100}
       />
       {hoveredTile ? (
         <Popup

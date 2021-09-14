@@ -25,6 +25,8 @@ const Actions = (props: Props) => {
     isBiddable &&
     (!wallet || !bids.some(bid => bid.bidder === wallet.address))
 
+  const isDisabled = !wallet || (wallet.network !== nft.network)
+
   return (
     <>
       {order ? (
@@ -33,17 +35,23 @@ const Actions = (props: Props) => {
             <Button
               as={Link}
               to={locations.sell(contractAddress, tokenId)}
+              disabled={isDisabled}
               primary
             >
               {t('nft_page.update')}
             </Button>
-            <Button as={Link} to={locations.cancel(contractAddress, tokenId)}>
+            <Button
+              disabled={isDisabled}
+
+              as={Link} to={locations.cancel(contractAddress, tokenId)}>
               {t('nft_page.cancel_sale')}
             </Button>
           </>
         ) : !isOwner ? (
           <>
             <Button
+              disabled={isDisabled}
+
               as={Link}
               to={locations.buy(contractAddress, tokenId)}
               primary
@@ -57,16 +65,26 @@ const Actions = (props: Props) => {
             ) : null} */}
           </>
         ) : (
-          <Button onClick={() => setShowLeavingSiteModal(true)} primary>
+          <Button
+            disabled={isDisabled}
+
+            onClick={() => setShowLeavingSiteModal(true)} primary>
             {t('nft_page.see_listing')}
           </Button>
         )
       ) : isOwner && canSell ? (
-        <Button as={Link} to={locations.sell(contractAddress, tokenId)} primary>
+        <Button
+          disabled={isDisabled}
+
+          as={Link} to={locations.sell(contractAddress, tokenId)} primary>
           {t('nft_page.sell')}
         </Button>
       ) : isOwner && !canSell ? (
-        <Button onClick={() => setShowLeavingSiteModal(true)} primary>
+        <Button
+
+          disabled={isDisabled}
+
+          onClick={() => setShowLeavingSiteModal(true)} primary>
           {t('nft_page.sell')}
         </Button>
       ) : canBid ?
@@ -78,7 +96,10 @@ const Actions = (props: Props) => {
         null
         : null}
       {isOwner && !order ? (<>
-        <Button as={Link} to={locations.transfer(contractAddress, tokenId)}>
+        <Button
+          disabled={isDisabled}
+
+          as={Link} to={locations.transfer(contractAddress, tokenId)}>
           {t('nft_page.transfer')}
         </Button>
       </>

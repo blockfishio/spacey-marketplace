@@ -1,6 +1,7 @@
 import { BigInt } from '@graphprotocol/graph-ts'
 import { NFT, Land } from '../../entities/schema'
 import { tileMap } from '../../data/tilemap'
+import { landImage } from '../../data/lands'
 
 export function buildLandFromNFT(nft: NFT): Land {
   let land = new Land(nft.id)
@@ -14,10 +15,22 @@ export function buildLandFromNFT(nft: NFT): Land {
 }
 
 
-export function getLandImage(): string {
-  return (
-    'https://spacey2025.s3.us-east-2.amazonaws.com/Assets/Land.png'
-  )
+export function getLandImage(land: Land): string {
+  const tokenId = land.tokenId
+  const index: i32 = tokenId.toI32() - 101;
+  if (index < 72) {
+    return landImage[0]
+  }
+  else if (index < 144) {
+    return landImage[1]
+  }
+  else if (index < 216) {
+    return landImage[2]
+  }
+  else {
+    return landImage[3]
+  }
+
 }
 
 function getXFromId(id: BigInt): number {

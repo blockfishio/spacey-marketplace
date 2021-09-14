@@ -23,8 +23,9 @@ import { Owner } from '../Owner'
 import { Description } from '../Description'
 import { OrderDetails } from '../OrderDetails'
 import { Actions } from '../Actions'
-// import { Highlight } from '../Highlight'
-// import { Highlights } from '../Highlights'
+import { Status } from '../Status'
+import { Highlight } from '../Highlight'
+import { Components } from '../Components'
 import { Bids } from '../Bids'
 import { TransactionHistory } from '../TransactionHistory'
 import { Props } from './BuildingDetail.types'
@@ -105,6 +106,35 @@ const WearableDetail = (props: Props) => {
           right={<Owner nft={nft} />}
         />
         <Description text={building.description} />
+        <Row>
+          <Status /> </Row>
+        <Components >
+          <Row>
+            <Highlight
+              icon={<div className={"earring"} />}
+              name={"Grants each attack a 10% chance to create an illusion of the target for 8 seconds.\nThe target will receive 120% damages of its illusion damage taken."}
+            />
+          </Row>
+          <Row>
+            <Highlight
+              icon={<div className={"earring"} />}
+              name={"Attack range + 100."}
+            /> </Row>
+          <Row>
+            <Highlight
+              icon={<div className={"earring"} />}
+              name={"Attack range + 100."}
+            />
+          </Row>
+          <Row>
+            <Highlight
+              icon={<div className={"earring"} />}
+              name={"Attack range + 100."}
+            />
+          </Row>
+
+
+        </Components>
         <Row>
           <Column align="left" grow={true}>
             <OrderDetails nft={nft} />

@@ -37,7 +37,7 @@ const WearableDetail = (props: Props) => {
     // onNavigate 
   } = props
   const boardingpass = nft.data.boardingpass!
-
+  console.log(nft)
   // const handleCategoryClick = useCallback(() => {
   //   const category = wearable.category
   //   const section = getSearchWearableSection(category)

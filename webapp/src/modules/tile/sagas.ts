@@ -46,7 +46,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
       nfts,
       _,
       orders,
-      count
+      // count
     ]: AwaitFn<typeof nftService.fetch> = yield call(() =>
       // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
       nftService.fetch(DEFAULT_BASE_TILE_PARAMS, filter)
@@ -54,30 +54,58 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
     let mytile: Record<string, AtlasTile> = {}
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i]
-      const t = tileMap[parseInt(nft.id) - offset]
+      const t = tileMap[parseInt(nft.tokenId) - offset]
       const cord = t.split(',')
-      const x = parseInt(cord[0])
-      const y = parseInt(cord[1])
-      const tile: any = { x, y, type: 1, owner: nft.owner, estate_id: nft.id }
-      mytile[t] = tile
+      // const x = parseInt(cord[0])
+      // const y = parseInt(cord[1])
+      const center_x: number = parseInt(nft.data.land?.x || cord[0])
+      const center_y: number = parseInt(nft.data.land?.y || cord[1])
+
+      for (let i = -1; i < 2; i++) {
+        for (let j = -1; j < 2; j++) {
+          const x = center_x + i;
+          const y = center_y + j;
+          const cord_online = x.toString() + "," + y.toString()
+          const tile: any = { x, y, type: 1, owner: nft.owner, estate_id: nft.tokenId, top: 1, left: 1, topLeft: 1 }
+          mytile[cord_online] = tile
+
+        }
+      }
+      // const x = nft.data.land?.x || parseInt(cord[0])
+      // const y = nft.data.land?.y || parseInt(cord[1])
+
+
     }
     for (let i = 0; i < orders.length; i++) {
       const order = orders[i]
       if (order) {
         const t = tileMap[parseInt(order.tokenId) - offset]
-        const tile: any = { ...mytile[t], price: fromWei(order.price, 'ether') }
-        mytile[t] = tile
+        const cord = t.split(',')
+        const center_x = parseInt(cord[0])
+        const center_y = parseInt(cord[1])
+
+        for (let i = -1; i < 2; i++) {
+          for (let j = -1; j < 2; j++) {
+            const x = center_x + i;
+            const y = center_y + j;
+            const cord_online = x.toString() + "," + y.toString()
+            const tile: any = { ...mytile[cord_online], price: fromWei(order.price, 'ether') }
+            mytile[cord_online] = tile
+
+          }
+        }
       }
     }
-    tileMap.slice(count).forEach(t => {
-      const cord = t.split(',')
-      const x = parseInt(cord[0])
-      const y = parseInt(cord[1])
 
-      const tile: any = { x, y, type: 7, owner: "", name: "Center" }
-      mytile[t] = tile
+    // tileMap.slice(count).forEach(t => {
+    //   const cord = t.split(',')
+    //   const x = parseInt(cord[0])
+    //   const y = parseInt(cord[1])
 
-    })
+    //   const tile: any = { x, y, type: 7, owner: "", name: "Center" }
+    //   mytile[t] = tile
+
+    // })
     // yield put(fetchTilesSuccess(tiles))
     yield put(fetchTilesSuccess(mytile))
 

@@ -112,8 +112,11 @@ class NFTAPI extends BaseAPI {
       if (filters.isLand) {
         queryParams.append('isLand', 'true')
       }
-      if (filters.isOffical) {
+      if (filters.isOffical === true) {
         queryParams.append('owner', OFFICAL_ADDRESS)
+      }
+      else if (filters.isOffical === false) {
+        queryParams.append('ownernot', OFFICAL_ADDRESS)
       }
 
 

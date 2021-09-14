@@ -23,7 +23,8 @@ import {
 } from '../contract/utils'
 
 const baseWalletSaga = createWalletSaga({
-  CHAIN_ID: +(process.env.REACT_APP_CHAIN_ID || 1)
+  CHAIN_ID: +(process.env.REACT_APP_CHAIN_ID || 1),
+  ALLOWED_IDS: process.env.REACT_APP_ALLOWED_CHAIN_IDS?.split(", ").map(id => parseInt(id))
 })
 
 export function* walletSaga() {

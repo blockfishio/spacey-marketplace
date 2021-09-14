@@ -3,7 +3,11 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 import { Footer } from 'decentraland-dapps/dist/containers'
 import { isMobile } from 'decentraland-dapps/dist/lib/utils'
-import { Page, Grid, Blockie, Mana, Loader, Form } from 'decentraland-ui'
+import {
+  Page, Grid, Blockie,
+  //  Mana,
+  Loader, Form
+} from 'decentraland-ui'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { locations } from '../../modules/routing/locations'
@@ -16,7 +20,7 @@ import { Navigation } from '../Navigation'
 import { Authorization } from './Authorization'
 import { Props } from './SettingsPage.types'
 import './SettingsPage.css'
-import { Network } from '@dcl/schemas'
+// import { Network } from '@dcl/schemas'
 
 
 
@@ -99,7 +103,7 @@ const SettingsPage = (props: Props) => {
               </Grid.Column>
             </Grid.Row>
 
-            <Grid.Row>
+            {/* <Grid.Row>
               <Grid.Column
                 className="left-column secondary-text"
                 computer={4}
@@ -109,6 +113,8 @@ const SettingsPage = (props: Props) => {
               </Grid.Column>
               <Grid.Column computer={12} mobile={16}>
                 <div className="balance">
+
+                  
                   <Mana inline>
                     {wallet.networks[Network.ETHEREUM] ? parseInt(
                       wallet.networks[Network.ETHEREUM].mana.toFixed(0),
@@ -118,19 +124,10 @@ const SettingsPage = (props: Props) => {
                       10
                     ).toLocaleString()}
                   </Mana>
-                  {/* {BUY_MANA_URL ? (
-                    <a
-                      className="buy-more"
-                      href={BUY_MANA_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t('settings_page.buy_more_mana')}
-                    </a>
-                  ) : null} */}
+                  
                 </div>
               </Grid.Column>
-            </Grid.Row>
+            </Grid.Row> */}
 
             <Grid.Row>
               <Grid.Column

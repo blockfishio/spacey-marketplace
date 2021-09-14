@@ -37,8 +37,8 @@ const BuyPage = (props: Props) => {
   const [quantity, setQuantity] = useState(1)
 
   const notEnoughMana = () => {
-    return false
-    // return wallet.networks[Network.ETHEREUM].mana < +fromWei(asset.Price, 'ether') * quantity
+    // return false
+    return wallet.networks[wallet.network].mana < +fromWei(asset.Price, 'ether') * quantity
   }
 
   const handleExecuteOrder = useCallback(() => {

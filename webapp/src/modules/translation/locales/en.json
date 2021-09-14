@@ -368,6 +368,9 @@
   "highlights": {
     "title": "Highlights"
   },
+  "components": {
+    "title": "Components"
+  },
   "price_change_notice": {
     "message": "The price may fluctuate due to market changes"
   },
