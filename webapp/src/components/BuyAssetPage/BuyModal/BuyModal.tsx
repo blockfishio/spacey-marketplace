@@ -75,11 +75,10 @@ const BuyPage = (props: Props) => {
   ])
 
   const isDisabled =
-    false
-  // notEnoughMana()
+    notEnoughMana()
   const name = <b>{getAssetName(asset)}</b>
   const Price = (props: { price: string }) => (
-    <Mana inline>{props.price}</Mana>
+    <Mana network={wallet.network} inline>{props.price}</Mana>
   )
 
   let subtitle = null

@@ -35,7 +35,8 @@ const toEvent = (orderOrBid: UnionOrderBid): HistoryEvent => ({
   from: orderOrBid.owner! || orderOrBid.seller!,
   to: orderOrBid.buyer! || orderOrBid.bidder!,
   price: orderOrBid.price!,
-  updatedAt: orderOrBid.updatedAt!
+  updatedAt: orderOrBid.updatedAt!,
+  network: orderOrBid.network!
 })
 
 const TransactionHistory = (props: Props) => {
@@ -52,7 +53,7 @@ const TransactionHistory = (props: Props) => {
 
       setIsLoading(true)
       Promise.all([
-        orderService.fetchByNFT(nft),
+        orderService.fetchByNFT(nft, OrderStatus.SOLD),
         bidService ? bidService.fetchByNFT(nft, OrderStatus.SOLD) : []
       ])
         .then(([orders, bids]) => {
@@ -69,7 +70,6 @@ const TransactionHistory = (props: Props) => {
   const events: HistoryEvent[] = [...orders, ...bids]
     .sort(sortByUpdatedAt)
     .map(toEvent)
-
   return (
     <div className="TransactionHistory">
       {isLoading ? null : events.length > 0 ? (
@@ -111,7 +111,9 @@ const TransactionHistory = (props: Props) => {
                       {formatEventDate(event.updatedAt)}
                     </Table.Cell>
                     <Table.Cell>
-                      <Mana inline>{formatMANA(event.price)}</Mana>
+                      <Mana
+                        network={event.network}
+                        inline>{formatMANA(event.price)}</Mana>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -123,7 +125,10 @@ const TransactionHistory = (props: Props) => {
               {events.map((event, index) => (
                 <div className="mobile-tx-history-row" key={index}>
                   <div className="price">
-                    <Mana inline>{formatMANA(event.price)}</Mana>
+                    <Mana
+                      network={event.network}
+
+                      inline>{formatMANA(event.price)}</Mana>
                   </div>
                   <div className="when">{formatEventDate(event.updatedAt)}</div>
                 </div>

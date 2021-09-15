@@ -1,6 +1,7 @@
 import { NFT } from '../../../modules/nft/types'
 import { Bid } from '../../../modules/bid/types'
 import { Order } from '../../../modules/order/types'
+import { Network } from '@dcl/schemas'
 
 export type Props = {
   nft: NFT | null
@@ -11,6 +12,7 @@ export type HistoryEvent = {
   to: string
   price: string
   updatedAt: number
+  network: Network
 }
 
 export type UnionOrderBid = Partial<Order & Bid>

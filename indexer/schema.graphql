@@ -41,6 +41,7 @@ type Order @entity {
   category: Category!
   nft: NFT
   nftAddress: Bytes!
+  tokenId: BigInt!
   txHash: Bytes!
   owner: Bytes!
   buyer: Bytes

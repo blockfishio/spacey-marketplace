@@ -8,6 +8,8 @@ import { Navigation } from '../Navigation'
 import { AssetProviderPage } from '../AssetProviderPage'
 // import { ChestDetail } from './ChestDetail'
 import { ChestDetail } from './ChestDetail'
+import { Wallet } from '../Wallet'
+
 // import { Asset } from '../../modules/asset/types'
 import './AssetPage.css'
 
@@ -17,17 +19,25 @@ const VirtualPage = () => {
       <Navbar isFullscreen />
       <Navigation isFullscreen />
       <Page className="NFTPage" isFullscreen>
-        <AssetProviderPage>
-          {asset => {
-            // TODO: Move this to components/vendor
-            return (
-              <>
-                <ChestDetail asset={asset} />
+        <Wallet>{
+          wallet => (
+            <AssetProviderPage>
+              {asset => {
+                // TODO: Move this to components/vendor
+                return (
+                  <>
+                    <ChestDetail
+                      asset={asset}
+                      wallet={wallet}
+                    />
 
-              </>
-            )
-          }}
-        </AssetProviderPage>
+                  </>
+                )
+              }}
+            </AssetProviderPage>
+          )
+        }
+        </Wallet>
       </Page>
       <Footer />
     </>

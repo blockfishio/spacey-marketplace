@@ -34,7 +34,7 @@ import { Props } from './ChestDetail.types'
 import './ChestDetail.css'
 
 const ChestDetail = (props: Props) => {
-  const { asset
+  const { asset, wallet
     // onNavigate 
   } = props
   // const wearable = nft.data.wearable!
@@ -112,7 +112,7 @@ const ChestDetail = (props: Props) => {
         {/* <Description text="1551" /> */}
         <Row>
           <Column align="left" grow={true}>
-            <OrderDetails asset={asset} />
+            <OrderDetails asset={asset} wallet={wallet} />
           </Column>
           <Column align="right">
             <Actions asset={asset} />

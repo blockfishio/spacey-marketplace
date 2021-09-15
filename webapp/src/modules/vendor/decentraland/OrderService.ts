@@ -6,7 +6,7 @@ import { AssetSale } from '../../../contracts/AssetSale'
 import { ContractFactory } from '../../contract/ContractFactory'
 import { NFT } from '../../nft/types'
 import { Asset } from '../../asset/types'
-import { Order } from '../../order/types'
+import { Order, OrderStatus } from '../../order/types'
 import { orderAPI } from './order/api'
 import { Vendors } from '../types'
 import { OrderService as OrderServiceInterface } from '../services'
@@ -15,8 +15,17 @@ import { ChainId } from '../../contract/types'
 
 export class OrderService
   implements OrderServiceInterface<Vendors.DECENTRALAND> {
-  async fetchByNFT(nft: NFT) {
-    const orders = await orderAPI.fetchByNFT(nft.id)
+  // async fetchByNFT(nft: NFT) {
+  //   const orders = await orderAPI.fetchByNFT(nft.id)
+  //   return orders as Order[]
+  // }
+
+  async fetchByNFT(nft: NFT, status?: OrderStatus) {
+    const orders = await orderAPI.fetchByNFT(
+      nft.contractAddress,
+      nft.tokenId,
+      status
+    )
     return orders as Order[]
   }
 
