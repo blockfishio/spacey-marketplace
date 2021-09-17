@@ -6,12 +6,12 @@ import { formatMANA } from '../../../lib/mana'
 import { Props } from './OrderDetails.types'
 
 const OrderDetails = (props: Props) => {
-  const { asset, wallet } = props
+  const { asset } = props
   return (
     <>
 
       <Stats title={t('nft_page.price')}>
-        <Mana network={wallet.network}>{formatMANA(asset.Price)}</Mana>
+        <Mana >{formatMANA(asset.Price)}</Mana>
 
       </Stats>
 

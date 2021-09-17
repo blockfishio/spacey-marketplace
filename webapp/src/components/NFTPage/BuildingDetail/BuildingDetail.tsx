@@ -25,6 +25,8 @@ import { OrderDetails } from '../OrderDetails'
 import { Actions } from '../Actions'
 // import { Highlight } from '../Highlight'
 // import { Highlights } from '../Highlights'
+import { Network } from '../Network'
+
 import { Bids } from '../Bids'
 import { TransactionHistory } from '../TransactionHistory'
 import { Props } from './BuildingDetail.types'
@@ -107,6 +109,8 @@ const WearableDetail = (props: Props) => {
         <Description text={building.description} />
         <Row>
           <Column align="left" grow={true}>
+            <Network asset={nft} />
+
             <OrderDetails nft={nft} />
           </Column>
           <Column align="right">

@@ -27,7 +27,8 @@
     "land_with_coords": "Land {x},{y}",
     "building": "Building",
     "tower": "tower",
-    "trap": "trap"
+    "trap": "trap",
+    "network": "Network"
   },
   "vendors": {
     "decentraland": "Decentraland",

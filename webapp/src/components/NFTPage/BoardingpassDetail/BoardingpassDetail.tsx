@@ -25,6 +25,8 @@ import { Owner } from '../Owner'
 import { Description } from '../Description'
 import { OrderDetails } from '../OrderDetails'
 import { Actions } from '../Actions'
+import { Network } from '../Network'
+
 // import { Highlight } from '../Highlight'
 // import { Highlights } from '../Highlights'
 import { Bids } from '../Bids'
@@ -37,7 +39,6 @@ const WearableDetail = (props: Props) => {
     // onNavigate 
   } = props
   const boardingpass = nft.data.boardingpass!
-  console.log(nft)
   // const handleCategoryClick = useCallback(() => {
   //   const category = wearable.category
   //   const section = getSearchWearableSection(category)
@@ -109,6 +110,8 @@ const WearableDetail = (props: Props) => {
         <Description text={boardingpass.description} />
         <Row>
           <Column align="left" grow={true}>
+            <Network asset={nft} />
+
             <OrderDetails nft={nft} />
           </Column>
           <Column align="right">

@@ -23,6 +23,8 @@ import { Owner } from '../Owner'
 import { Description } from '../Description'
 import { OrderDetails } from '../OrderDetails'
 import { Actions } from '../Actions'
+import { Network } from '../Network'
+
 // import { Status } from '../Status'
 // import { Highlight } from '../Highlight'
 // import { Components } from '../Components'
@@ -101,6 +103,8 @@ const WearableDetail = (props: Props) => {
         </Components> */}
         <Row>
           <Column align="left" grow={true}>
+            <Network asset={nft} />
+
             <OrderDetails nft={nft} />
           </Column>
           <Column align="right">

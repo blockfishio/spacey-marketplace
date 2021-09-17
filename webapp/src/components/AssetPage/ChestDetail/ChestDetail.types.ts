@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
 import { Asset } from '../../../modules/asset/types'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
 
 // import { Vendors } from '../../../modules/vendor/types'
 // import {
@@ -13,7 +12,6 @@ export type Props = {
   // nft: NFT<Vendors.DECENTRALAND>
   onNavigate: (path: string) => void
   asset: Asset
-  wallet: Wallet
 
 }
 
