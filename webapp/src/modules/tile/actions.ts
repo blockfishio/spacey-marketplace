@@ -20,7 +20,7 @@ export type FetchTilesSuccessAction = ReturnType<typeof fetchTilesSuccess>
 export type FetchTilesFailureAction = ReturnType<typeof fetchTilesFailure>
 
 export const DEFAULT_BASE_TILE_PARAMS: NFTsFetchParams = {
-  first: 360,
+  first: 720,
   skip: 0,
   orderBy: NFTSortBy.CREATED_AT,
   orderDirection: SortDirection.DESC,

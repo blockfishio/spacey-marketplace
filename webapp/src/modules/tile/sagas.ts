@@ -66,11 +66,25 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
           const x = center_x + i;
           const y = center_y + j;
           const cord_online = x.toString() + "," + y.toString()
-          const tile: any = { x, y, type: 1, owner: nft.owner, estate_id: nft.tokenId, top: 1, left: 1, topLeft: 1 }
+          const tile: any = { x, y, type: 1, owner: nft.owner, contractaddress: nft.contractAddress, estate_id: nft.tokenId, top: 1, left: 1, topLeft: 1 }
+          if (mytile[cord_online]) {
+            if (
+              mytile[cord_online].owner.toLowerCase() == process.env.REACT_APP_OFFICAL_ADDRESS?.toLowerCase()) {
+              mytile[cord_online] = tile
+            }
+            if (tile.owner.toLowerCase() !== process.env.REACT_APP_OFFICAL_ADDRESS?.toLowerCase()) {
+              mytile[cord_online] = tile
+            }
+          }
+          else {
+            mytile[cord_online] = tile
+          }
           mytile[cord_online] = tile
 
         }
       }
+
+
       // const x = nft.data.land?.x || parseInt(cord[0])
       // const y = nft.data.land?.y || parseInt(cord[1])
 
@@ -89,7 +103,8 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
             const x = center_x + i;
             const y = center_y + j;
             const cord_online = x.toString() + "," + y.toString()
-            const tile: any = { ...mytile[cord_online], price: fromWei(order.price, 'ether') }
+
+            const tile: any = { ...mytile[cord_online], price: fromWei(order.price, 'ether'), contractaddress: order.contractAddress, network: order.network }
             mytile[cord_online] = tile
 
           }
@@ -97,16 +112,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
       }
     }
 
-    // tileMap.slice(count).forEach(t => {
-    //   const cord = t.split(',')
-    //   const x = parseInt(cord[0])
-    //   const y = parseInt(cord[1])
 
-    //   const tile: any = { x, y, type: 7, owner: "", name: "Center" }
-    //   mytile[t] = tile
-
-    // })
-    // yield put(fetchTilesSuccess(tiles))
     yield put(fetchTilesSuccess(mytile))
 
 
@@ -131,3 +137,7 @@ function* handleConnectWalletSuccess(action: ConnectWalletSuccessAction) {
     })
   )
 }
+
+
+
+

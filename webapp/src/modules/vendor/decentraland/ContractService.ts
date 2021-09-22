@@ -51,12 +51,19 @@ const contractAddressesAll = {
     AssetSale: '0xb7edde8207fd4a7214acf66deaf647182db360bc',
     SpaceY2025: '0x46741b56c57b6c2470e9ead3cd6ee13bb2a4fe7b'
   },
+  // [ChainId.BSC_MAINNET]: {
+  //   MANAToken: "0xEbf1CD092aB077bc9B61a8942D993122f7b7dAb8",
+  //   Marketplace: '0x732c6f9C7aCD67649750a6efA26fAF3D0d8Ff3e3',
+  //   AssetSale: '0x58FaD9E3C3AE54c9BA98c3f0E4bF88aB3E8Cf3c5',
+  //   Bids: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f',
+  //   SpaceY2025: '0x20198be8e4b0fe976af5c593416cbfcababf2880'
+  // },
   [ChainId.BSC_MAINNET]: {
     MANAToken: "0xEbf1CD092aB077bc9B61a8942D993122f7b7dAb8",
     Marketplace: '0x513c944c42a1345E993aE026d5c4acE70d425879',
     AssetSale: '0xb0FbC92561C1B0F336C5f9D91fe96c84C0b00853',
     Bids: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f',
-    SpaceY2025: '0x230185C3B02b897B89cb1e62717AD7772b8319DA'
+    SpaceY2025: '0x230185c3b02b897b89cb1e62717ad7772b8319da'
   },
   [ChainId.BSC_TESTNET]: {
     MANAToken: "0x8718a9E002A9c3EA453466eb5D8e6079e99F14A3",

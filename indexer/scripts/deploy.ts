@@ -3,7 +3,8 @@ import { spawn, SpawnOptions } from 'child_process'
 enum Network {
   MAINNET = 'mainnet',
   ROPSTEN = 'ropsten',
-  BSC = 'bsc'
+  BSC = 'bsc',
+  BSCTEST = 'bsctest'
 }
 
 const graphByNetwork: Record<Network, string> = {
@@ -11,7 +12,9 @@ const graphByNetwork: Record<Network, string> = {
   [Network.ROPSTEN]:
     process.env.GRAPH_NAME || 'silver211/marketplace-ropsten',
   [Network.BSC]:
-    process.env.GRAPH_NAME || 'blockfishio/marketplacebsc'
+    process.env.GRAPH_NAME || 'blockfishio/marketplacebsc',
+  [Network.BSCTEST]:
+    process.env.GRAPH_NAME || 'blockfishio/marketplacebsctest'
 }
 
 // TODO: Handle ctrl+C

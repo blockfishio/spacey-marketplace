@@ -21,30 +21,13 @@ import { MAX_QUERY_SIZE } from './api'
 
 export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
   async fetch(params: NFTsFetchParams, filters?: NFTsFetchFilters) {
-    // const [remoteNFTs:data, total] = await Promise.all([
-    //   nftAPI.fetch(params, filters),
-    //   this.count(params, filters)
-    // ])
+
     const { data: results, total } = await nftAPI.fetch(params, filters)
     const nfts: NFT[] = []
     const accounts: Account[] = []
     const orders: Order[] = []
     for (const result of results) {
-      // const nft = this.toNFT(remoteNFT)
-      // const order = this.toOrder(remoteNFT)
-      // if (order && !isExpired(order.expiresAt!)) {
-      //   nft.activeOrderId = order.id
-      //   orders.push(order)
-      // }
 
-      // const address = nft.owner
-      // let account = accounts.find(account => account.id === address)
-      // if (!account) {
-      //   account = this.toAccount(address)
-      // }
-      // account.nftIds.push(nft.id)
-
-      // nfts.push(nft)
       const address = result.nft.owner
       let account = accounts.find(account => account.id === address)
       if (!account) {

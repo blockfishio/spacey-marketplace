@@ -10,6 +10,7 @@ export default class Popup extends React.PureComponent<Props> {
   render() {
     const { x, y, visible, tile, position } = this.props
     const id = `${tile.x},${tile.y}`
+
     // const isEstate = !!tile.estate_id
     let tilename = ""
     if (tile.estate_id) {
@@ -55,7 +56,7 @@ export default class Popup extends React.PureComponent<Props> {
         {tile.price ? (
           <Section className="price">
             <Header sub>{t('nft_page.price')}</Header>
-            <Mana>{tile.price.toLocaleString()}</Mana>
+            <Mana network={tile.network!}>{tile.price.toLocaleString()}</Mana>
           </Section>
         ) : null}
       </div>

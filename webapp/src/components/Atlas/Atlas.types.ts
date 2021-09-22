@@ -2,12 +2,16 @@ import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
 import { AtlasTile, AtlasProps } from 'decentraland-ui'
 import { NFT } from '../../modules/nft/types'
+import { Network } from '@dcl/schemas'
+
 
 export type Tile = AtlasTile & {
   estate_id?: string
   price?: number
   owner?: string
   name?: string
+  contractaddress?: string
+  network?: Network
 }
 
 export type Props = Partial<AtlasProps> & {

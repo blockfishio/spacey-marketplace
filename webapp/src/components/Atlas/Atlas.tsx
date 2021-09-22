@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Atlas as AtlasComponent, Color, Layer } from 'decentraland-ui'
 import { locations } from '../../modules/routing/locations'
-import { contractAddresses } from '../../modules/contract/utils'
+// import { contractAddresses } from '../../modules/contract/utils'
 // import { nftAPI } from '../../modules/vendor/decentraland/nft/api'
 import { Props, Tile } from './Atlas.types'
 import { Vendors } from '../../modules/vendor'
@@ -146,7 +146,9 @@ const Atlas: React.FC<Props> = (props: Props) => {
       }
       if (tile.estate_id) {
         onNavigate(
-          locations.nft(contractAddresses.SpaceY2025, tile.estate_id)
+          // locations.nft(contractAddresses.SpaceY2025, tile.estate_id)
+          locations.nft(tile.contractaddress, tile.estate_id)
+
         )
       } else {
         // try {
