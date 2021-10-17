@@ -38,17 +38,21 @@ import {
   FetchNFTsFromRouteAction,
   FETCH_ASSETS_FROM_ROUTE,
   // FetchAssetsFromRouteAction,
+  FETCH_OWNERASSETS_FROM_ROUTE,
   setIsLoadMore,
   FetchAssetsFromRouteAction,
+  FetchOwnerAssetsFromRouteAction
 } from './actions'
 import { SearchOptions } from './types'
 import { fetchAssetsRequest } from '../asset/actions'
+import { fetchOwnerAssetsRequest } from '../ownerasset/actions'
 
 
 export function* routingSaga() {
   yield takeEvery(FETCH_NFTS_FROM_ROUTE, handleFetchNFTsFromRoute)
   yield takeEvery(BROWSE, handleBrowse)
   yield takeEvery(FETCH_ASSETS_FROM_ROUTE, handleFetchAssetsFromRoute)
+  yield takeEvery(FETCH_OWNERASSETS_FROM_ROUTE, handleFetchOwnerAssetsFromRoute)
 }
 
 function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
@@ -64,6 +68,13 @@ function* handleFetchAssetsFromRoute(action: FetchAssetsFromRouteAction) {
     action.payload.searchOptions
   )
   yield fetchAssetsFromRoute(newSearchOptions)
+}
+
+function* handleFetchOwnerAssetsFromRoute(action: FetchOwnerAssetsFromRouteAction) {
+  const newSearchOptions: SearchOptions = yield getNewSearchOptions(
+    action.payload.searchOptions
+  )
+  yield fetchOwnerAssetsFromRoute(newSearchOptions)
 }
 
 function* handleBrowse(action: BrowseAction) {
@@ -130,6 +141,13 @@ function* fetchAssetsFromRoute(searchOptions: SearchOptions) {
   // if (!category || category in AssetCategory) {
   yield put(fetchAssetsRequest({ vendor: Vendors.DECENTRALAND, view: view, params: { category } }))
   // }
+}
+
+function* fetchOwnerAssetsFromRoute(searchOptions: SearchOptions) {
+  const { address } = searchOptions
+
+
+  yield put(fetchOwnerAssetsRequest({ owner: address ? address : '' }))
 }
 
 function* getNewSearchOptions(current: SearchOptions) {

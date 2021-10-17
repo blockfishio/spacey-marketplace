@@ -15,6 +15,8 @@ import { getChainId } from 'decentraland-dapps/dist/modules/wallet/selectors'
 import { NFTCategory } from '../nft/types'
 import { fetchAuthorizationRequest } from '../authorization/actions'
 import { AuthorizationsRequest } from '../authorization/types'
+import { wsConnectRequest } from '../websocket/actions'
+
 import {
   // contractAddresses,
   contractAddressesAll,
@@ -42,7 +44,7 @@ function* handleWallet(
 ) {
   const chainId: ChainId = yield select(getChainId)
 
-  const { address } = action.payload.wallet
+  const { address, providerType } = action.payload.wallet
 
   // const { MANAToken, Marketplace,
   //   AssetSale } = contractAddresses
@@ -68,4 +70,5 @@ function* handleWallet(
   }
 
   yield put(fetchAuthorizationRequest(address, authorization))
+  yield put(wsConnectRequest(address, providerType))
 }

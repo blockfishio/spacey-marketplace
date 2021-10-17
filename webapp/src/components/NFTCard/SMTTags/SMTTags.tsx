@@ -10,7 +10,7 @@ const SMTTags = (
     <div className="SMTTags tags">
 
       <div className="no">
-        Lengendary
+        LEGENDARY
       </div>
     </div>
   )

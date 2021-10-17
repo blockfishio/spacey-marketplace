@@ -28,6 +28,16 @@ export const fetchAssetsFromRoute = (searchOptions: SearchOptions) =>
 
 export type FetchAssetsFromRouteAction = ReturnType<typeof fetchAssetsFromRoute>
 
+export const FETCH_OWNERASSETS_FROM_ROUTE = 'Fetch Owner Assets from route'
+
+export const fetchOwnerAssetsFromRoute = (searchOptions: SearchOptions) =>
+  action(FETCH_OWNERASSETS_FROM_ROUTE, { searchOptions })
+
+export type FetchOwnerAssetsFromRouteAction = ReturnType<typeof fetchOwnerAssetsFromRoute>
+
+
+
+
 // Load More
 
 export const SET_IS_LOAD_MORE = 'Set is load more'

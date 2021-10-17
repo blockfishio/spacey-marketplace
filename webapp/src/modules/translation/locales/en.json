@@ -45,7 +45,7 @@
     "activity": "Activity",
     "spacey2025": "SpaceY2025",
     "community": "Community Market",
-    "offical": "Offical Sales"
+    "offical": "Official Sales"
   },
   "menu": {
     "all": "All Assets",
@@ -381,6 +381,6 @@
   "networks": {
     "ethereum": "Ethereum",
     "matic": "Polygon",
-    "bsc": "Smart Chain"
+    "bsc": "Binance Smart Chain"
   }
 }

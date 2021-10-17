@@ -74,33 +74,7 @@ type Bid @entity {
   updatedAt: BigInt!
 }
 
-# ---------------------------------------------------------
-# NFTs ----------------------------------------------------
-# ---------------------------------------------------------
 
-# aka LAND
-#type Parcel @entity {
-#  id: ID!
-#  tokenId: BigInt!
-#  owner: Account!
-#  x: BigInt!
-#  y: BigInt!
-#  estate: Estate
-#  data: Data
-#  rawData: String
-#  nft: NFT @derivedFrom(field: "parcel")
-#}
-
-# type Estate @entity {
-#   id: ID!
-#   tokenId: BigInt!
-#   owner: Account!
-#   parcels: [Parcel!]
-#   size: Int
-#   data: Data
-#   rawData: String
-#   nft: NFT @derivedFrom(field: "estate")
-# }
 
 type Land @entity {
   id: ID!
@@ -177,30 +151,7 @@ type Trap @entity{
 }
 
 
-# type Wearable @entity {
-#   id: ID!
-#   owner: Account!
-#   representationId: String!
-#   collection: String!
-#   name: String!
-#   description: String!
-#   category: WearableCategory!
-#   rarity: WearableRarity!
-#   bodyShapes: [WearableBodyShape!]
-#   nft: NFT @derivedFrom(field: "wearable")
-# }
 
-# type ENS @entity {
-#   id: ID!
-#   tokenId: BigInt!
-#   owner: Account!
-#   caller: Bytes
-#   beneficiary: Bytes
-#   labelHash: Bytes
-#   subdomain: String
-#   createdAt: BigInt
-#   nft: NFT @derivedFrom(field: "ens")
-# }
 
 type NFT @entity {
   id: ID!
@@ -219,11 +170,7 @@ type NFT @entity {
   image: String
   thumbnail:String
 
-  # parcel: Parcel
-  # estate: Estate
-  # wearable: Wearable
-  # ens: ENS
-  # asset:Asset
+  
   boardingpass:Boardingpass
   land:Land
   building:Building
@@ -246,30 +193,17 @@ type NFT @entity {
 
   searchText: String
 
-  # searchParcelIsInBounds: Boolean
-  # searchParcelX: BigInt
-  # searchParcelY: BigInt
-  # searchParcelEstateId: String
+ 
 
   searchEstateSize: Int
 
-  # searchIsWearableHead: Boolean
-  # searchIsWearableAccessory: Boolean
-  # searchWearableRarity: String # We're using String instead of WearableRarity here so we can later query this field via ()_in
-  # searchWearableCategory: WearableCategory
-  # searchWearableBodyShapes: [WearableBodyShape!]
+ 
 }
 
-# ---------------------------------------------------------
-# Account (user) -------------------------------------------
-# ---------------------------------------------------------
-
-# type Asset @entity {
-#   id: ID!
-#   owner: Account!
-#   nft: NFT @derivedFrom(field: "asset")
-#   tokenId: BigInt!
-# }
+type Blindbox @entity {
+  id:ID!
+  price:BigInt!
+}
 
 
 type Account @entity {

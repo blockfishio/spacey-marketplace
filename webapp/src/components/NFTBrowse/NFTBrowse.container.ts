@@ -3,7 +3,7 @@ import { isLoadingType } from 'decentraland-dapps/dist/modules/loading/selectors
 
 import { RootState } from '../../modules/reducer'
 import { setView } from '../../modules/ui/actions'
-import { browse, fetchNFTsFromRoute, fetchAssetsFromRoute } from '../../modules/routing/actions'
+import { browse, fetchNFTsFromRoute, fetchAssetsFromRoute, fetchOwnerAssetsFromRoute } from '../../modules/routing/actions'
 import { FETCH_NFTS_REQUEST } from '../../modules/nft/actions'
 import { getLoading } from '../../modules/nft/selectors'
 import {
@@ -29,6 +29,8 @@ const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onSetView: view => dispatch(setView(view)),
   onFetchNFTsFromRoute: options => dispatch(fetchNFTsFromRoute(options)),
   onFetchAssetsFromRoute: options => dispatch(fetchAssetsFromRoute(options)),
+  onFetchOwnerAssetsFromRoute: options => dispatch(fetchOwnerAssetsFromRoute(options)),
+
   onBrowse: options => dispatch(browse(options))
 })
 

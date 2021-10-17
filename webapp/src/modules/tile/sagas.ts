@@ -58,6 +58,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
       const cord = t.split(',')
       // const x = parseInt(cord[0])
       // const y = parseInt(cord[1])
+
       const center_x: number = parseInt(nft.data.land?.x || cord[0])
       const center_y: number = parseInt(nft.data.land?.y || cord[1])
 
@@ -97,7 +98,6 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
         const cord = t.split(',')
         const center_x = parseInt(cord[0])
         const center_y = parseInt(cord[1])
-
         for (let i = -1; i < 2; i++) {
           for (let j = -1; j < 2; j++) {
             const x = center_x + i;

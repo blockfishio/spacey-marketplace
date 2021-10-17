@@ -5,7 +5,8 @@ import {
   NFTService,
   OrderService,
   BidService,
-  AssetService
+  AssetService,
+  OwnerAssetService
 } from './services'
 import { Vendors } from './types'
 
@@ -19,7 +20,8 @@ export class VendorFactory {
           new decentraland.NFTService(),
           new decentraland.OrderService(),
           new decentraland.BidService(),
-          new decentraland.AssetService()
+          new decentraland.AssetService(),
+          new decentraland.OwnerAssetService()
         )
 
       default:
@@ -36,5 +38,6 @@ export class Vendor<V extends Vendors> {
     public orderService: OrderService<V>,
     public bidService?: BidService<V>,
     public assetService?: AssetService,
+    public ownerassetService?: OwnerAssetService
   ) { }
 }

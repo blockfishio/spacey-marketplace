@@ -22,3 +22,10 @@ export type Order = {
   network: Network
   chainId: ChainId
 }
+
+export type ChestOrder = {
+  price: string
+  optionID: string
+  network?: Network
+  chainId?: ChainId
+}

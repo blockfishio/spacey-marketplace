@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { RootState } from '../../../../modules/reducer'
 import { getCount } from '../../../../modules/ui/nft/browse/selectors'
 import { getCount as getAssetCount } from '../../../../modules/ui/asset/browse/selectors'
+import { getCount as getOwnerAssetCount } from '../../../../modules/ui/ownerasset/browse/selectors'
 import {
   getSection,
   getSortBy,
@@ -25,6 +26,10 @@ const mapState = (state: RootState): MapStateProps => {
   let assetCount = getAssetCount(state)
   if (assetCount) {
     count += assetCount
+  }
+  let ownerassetCount = getOwnerAssetCount(state)
+  if (ownerassetCount) {
+    count += ownerassetCount
   }
   return ({
     count: count,

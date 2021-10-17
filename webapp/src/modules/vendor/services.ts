@@ -5,8 +5,12 @@ import {
   NFTsCountParams
 } from '../nft/types'
 import {
-  AssetsFetchParams
+  AssetsFetchParams,
 } from '../asset/types'
+import {
+  OwnerAsset, OwnerChest, OwnerAssetsFetchOptions
+
+} from '../ownerasset/types'
 import {
   Asset,
 } from '../asset/types'
@@ -103,5 +107,14 @@ export interface AssetService {
   fetchOne: (
     optionId: string
   ) => Promise<readonly [Asset]>
+
+}
+
+export interface OwnerAssetService {
+  fetch: (params: OwnerAssetsFetchOptions
+  ) => Promise<readonly [OwnerChest[], OwnerAsset[]]>
+  // fetchOne: (
+  //   optionId: string
+  // ) => Promise<readonly [Asset]>
 
 }

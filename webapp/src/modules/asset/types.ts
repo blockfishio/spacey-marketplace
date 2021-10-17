@@ -31,8 +31,8 @@ export type Data<V extends Vendors> = V extends Vendors.DECENTRALAND
 export type Asset = {
   Category: AssetCategory
   ImageURL: string
-  Price: string
-  PriceUnit: string
+  Price?: string
+  PriceUnit?: string
   OptionID: string
 }
 
@@ -47,3 +47,4 @@ export type AssetsFetchOptions = {
   view?: View,
   params: AssetsFetchParams
 }
+

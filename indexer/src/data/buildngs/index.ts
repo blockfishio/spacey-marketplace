@@ -1,17 +1,17 @@
 export const buildingName: string[] = [
   "dummy",
-  "Lab",
-  "Storage",
-  "Apartment",
-  "Energy Station",
+  "Mars Lab",
+  "Smelter",
+  "Chronosphere",
+  "Reactor",
   "Radar"
 ]
 
 export const buildingDescription: string[] = [
   "dummy",
-  "Laboratory for experimental research on Mars",
-  "Places for storing resources",
-  "Mars Apartment provides comfortable living space",
-  "Provide energy supply for human activities on Mars",
-  "Can broadcast/receive signals in the universe"
+  "Reduce resource costs and increase efficiency",
+  "Provide more effective smelting of Mars mineral resources",
+  "Teleportation device which can be used to transfer facilities from one spot to another",
+  "Generate more energy.",
+  "Multi-function radar which can scan and send signals in a super wide range."
 ]

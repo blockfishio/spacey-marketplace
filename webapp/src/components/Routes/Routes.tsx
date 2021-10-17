@@ -10,7 +10,7 @@ import { SettingsPage } from '../SettingsPage'
 import { NFTPage } from '../NFTPage'
 import { SellPage } from '../SellPage'
 import { BuyPage } from '../BuyPage'
-import { BuyAssetPage } from '../BuyAssetPage'
+// import { BuyAssetPage } from '../BuyAssetPage'
 // import { BidPage } from '../BidPage'
 import { CancelSalePage } from '../CancelSalePage'
 import { TransferPage } from '../TransferPage'
@@ -19,7 +19,7 @@ import { ActivityPage } from '../ActivityPage'
 // import { PartnersPage } from '../PartnersPage'
 import { CommunityPage } from '../CommunityPage'
 import { OfficalPage } from '../OfficalPage'
-import { AssetPage } from '../AssetPage'
+// import { AssetPage } from '../AssetPage'
 
 import { HomePage } from '../HomePage'
 import { MyBidsPage } from '../MyBidsPage'
@@ -41,7 +41,7 @@ const Routes = () => {
         <Route exact path={locations.signIn()} component={SignInPage} />
         <Route exact path={locations.sell()} component={SellPage} />
         <Route exact path={locations.buy()} component={BuyPage} />
-        <Route exact path={locations.buyasset()} component={BuyAssetPage} />
+        {/* <Route exact path={locations.buyasset()} component={BuyAssetPage} /> */}
         {/* <Route exact path={locations.bid()} component={BidPage} /> */}
         <Route exact path={locations.cancel()} component={CancelSalePage} />
         <Route exact path={locations.transfer()} component={TransferPage} />
@@ -54,7 +54,7 @@ const Routes = () => {
         <Route exact path={locations.root()} component={HomePage} />
         <Route exact path={locations.parcel()} component={LegacyNFTPage} />
         <Route exact path={locations.estate()} component={LegacyNFTPage} />
-        <Route exact path={locations.asset()} component={AssetPage} />
+        {/* <Route exact path={locations.asset()} component={AssetPage} /> */}
         <Redirect
           from="/browse"
           to={locations.offical() + window.location.search}

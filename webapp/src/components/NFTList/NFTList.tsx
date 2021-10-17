@@ -4,12 +4,14 @@ import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 
 import { getMaxQuerySize, MAX_PAGE, PAGE_SIZE } from '../../modules/vendor/api'
 import { NFTCard } from '../NFTCard'
-import { AssetCard } from '../AssetCard'
+// import { AssetCard } from '../AssetCard'
 import { Props } from './NFTList.types'
+// import { AssetCategory } from '../../modules/asset/types'
 
 const NFTList = (props: Props) => {
-  const { vendor, nfts, page, count, isLoading, assets, onBrowse } = props
-
+  const { vendor, nfts, page, count, isLoading, assets,
+    //  ownerassets, 
+    onBrowse } = props
   const handleLoadMore = useCallback(() => {
     onBrowse({ page: page + 1 })
   }, [onBrowse, page])
@@ -17,16 +19,31 @@ const NFTList = (props: Props) => {
   const maxQuerySize = getMaxQuerySize(vendor)
 
   const hasExtraPages =
-    ((count && (nfts.length + assets.length) < count) || count === maxQuerySize) && page <= MAX_PAGE
+    ((count && (nfts.length + assets.length
+      // + ownerassets.length
+    ) < count) || count === maxQuerySize) && page <= MAX_PAGE
   const isLoadingNewPage = isLoading && nfts.length >= PAGE_SIZE
   return (
     <>
       <Card.Group>
-        {assets.length > 0
+        {/* {assets.length > 0
           ? assets.map((asset, index) => (
             <AssetCard key={asset.OptionID + '-' + index} asset={asset} />
           ))
-          : null}
+          : null} */}
+        {/* {ownerassets.length > 0
+          ? ownerassets.map((asset, index) => (
+            <AssetCard key={asset.AssetID + '-' + index} asset={
+              {
+                Category: AssetCategory.CHEST,
+                ImageURL: "https://",
+
+                OptionID: "1"
+
+              }
+            } />
+          ))
+          : null} */}
         {nfts.length > 0
           ? nfts.map((nft, index) => (
             <NFTCard key={nft.id + '-' + index} nft={nft} />

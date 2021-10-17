@@ -9,11 +9,11 @@ const OrderDetails = (props: Props) => {
   const { asset } = props
   return (
     <>
-
-      <Stats title={t('nft_page.price')}>
-        <Mana >{formatMANA(asset.Price)}</Mana>
-
-      </Stats>
+      {asset.Price ?
+        <Stats title={t('nft_page.price')}>
+          <Mana >{formatMANA(asset.Price)}</Mana>
+        </Stats> : null
+      }
 
 
     </>

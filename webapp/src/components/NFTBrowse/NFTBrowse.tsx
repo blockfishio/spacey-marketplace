@@ -24,6 +24,7 @@ const NFTBrowse = (props: Props) => {
     onSetView,
     onFetchNFTsFromRoute,
     onFetchAssetsFromRoute,
+    onFetchOwnerAssetsFromRoute,
     onBrowse,
     showOnSale,
     viewInState
@@ -60,6 +61,18 @@ const NFTBrowse = (props: Props) => {
     }
     // eslint-disable-next-line
   }, [viewInState, onFetchAssetsFromRoute])
+
+  useEffect(() => {
+    if (viewInState === View.ACCOUNT) {
+
+      onFetchOwnerAssetsFromRoute({
+        vendor,
+        view,
+        address
+      })
+    }
+    // eslint-disable-next-line
+  }, [viewInState, onFetchOwnerAssetsFromRoute])
 
   // handlers
   const handleSetFullscreen = useCallback(

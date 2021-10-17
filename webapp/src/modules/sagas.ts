@@ -7,6 +7,7 @@ import { authorizationSaga } from './authorization/sagas'
 import { bidSaga } from './bid/sagas'
 import { nftSaga } from './nft/sagas'
 import { assetSaga } from './asset/sagas'
+import { ownerassetSaga } from './ownerasset/sagas'
 import { orderSaga } from './order/sagas'
 import { proximitySaga } from './proximity/sagas'
 import { routingSaga } from './routing/sagas'
@@ -14,6 +15,8 @@ import { tileSaga } from './tile/sagas'
 import { translationSaga } from './translation/sagas'
 import { uiSaga } from './ui/sagas'
 import { walletSaga } from './wallet/sagas'
+import { wsSaga } from './websocket/sagas'
+import { authenticateSaga } from './authenticate/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
 // const profileSaga = createProfileSaga({
@@ -28,6 +31,7 @@ export function* rootSaga() {
     bidSaga(),
     nftSaga(),
     assetSaga(),
+    ownerassetSaga(),
     orderSaga(),
     // profileSaga(),
     proximitySaga(),
@@ -35,6 +39,8 @@ export function* rootSaga() {
     tileSaga(),
     translationSaga(),
     uiSaga(),
-    walletSaga()
+    walletSaga(),
+    wsSaga(),
+    authenticateSaga()
   ])
 }

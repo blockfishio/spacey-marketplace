@@ -13,7 +13,7 @@ const ParcelTags = (
       <div className="coords">
         {/* <div className="pin" /> */}
         {/* {alphabet.charAt(parseInt(x))},{y} */}
-        Lengendary
+        LEGENDARY
       </div>
     </div>
 

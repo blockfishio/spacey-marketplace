@@ -9,7 +9,9 @@ import {
   fetchNFTsFromRoute,
   FetchNFTsFromRouteAction,
   fetchAssetsFromRoute,
-  FetchAssetsFromRouteAction
+  FetchAssetsFromRouteAction,
+  fetchOwnerAssetsFromRoute,
+  FetchOwnerAssetsFromRouteAction
 } from '../../modules/routing/actions'
 
 export type Props = {
@@ -23,7 +25,7 @@ export type Props = {
   onSetView: typeof setView
   onFetchNFTsFromRoute: typeof fetchNFTsFromRoute
   onFetchAssetsFromRoute: typeof fetchAssetsFromRoute
-
+  onFetchOwnerAssetsFromRoute: typeof fetchOwnerAssetsFromRoute
   onBrowse: typeof browse
   showOnSale?: boolean
 }
@@ -34,9 +36,9 @@ export type MapStateProps = Pick<
 >
 export type MapDispatchProps = Pick<
   Props,
-  'onSetView' | 'onFetchNFTsFromRoute' | 'onBrowse' | 'onFetchAssetsFromRoute'
+  'onSetView' | 'onFetchNFTsFromRoute' | 'onBrowse' | 'onFetchAssetsFromRoute' | 'onFetchOwnerAssetsFromRoute'
 >
 export type MapDispatch = Dispatch<
-  SetViewAction | FetchNFTsFromRouteAction | BrowseAction | FetchAssetsFromRouteAction
+  SetViewAction | FetchNFTsFromRouteAction | BrowseAction | FetchAssetsFromRouteAction | FetchOwnerAssetsFromRouteAction
 >
 export type OwnProps = Pick<Props, 'vendor' | 'address'>

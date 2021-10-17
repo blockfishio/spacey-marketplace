@@ -2,7 +2,10 @@ import {
   LoadingState,
   loadingReducer
 } from 'decentraland-dapps/dist/modules/loading/reducer'
-import { Order } from './types'
+import {
+  Order,
+  // ChestOrder 
+} from './types'
 import {
   FetchNFTsRequestAction,
   FetchNFTsSuccessAction,
@@ -106,6 +109,25 @@ export function orderReducer(
         error: action.payload.error
       }
     }
+
+    // case FETCH_ASSETS_SUCCESS: {
+    //   const { assets } = action.payload
+    //   if (assets) {
+    //     return {
+    //       ...state,
+    //       data: {
+    //         ...state.data,
+    //         ...assets.reduce((obj, asset) => {
+    //           obj[asset.OptionID] = {
+    //             price: asset.Price,
+    //             optionID: asset.OptionID
+    //           }
+    //           return obj
+    //         }, {} as Record<string, ChestOrder>)
+    //       }
+    //     }
+    //   }
+    // }
 
     default:
       return state

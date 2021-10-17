@@ -141,7 +141,7 @@ export const executeAssetOrderSuccess = (
       tokenId: asset.OptionID,
       contractAddress: contractAddresses.AssetSale,
       name: quantity.toString() + ' ' + getAssetName(asset),
-      price: (+fromWei(asset.Price, 'ether') * quantity).toString()
+      price: (+fromWei(asset.Price ? asset.Price : '', 'ether') * quantity).toString()
     })
   })
 export const executeAssetOrderFailure = (asset: Asset, error: string) =>

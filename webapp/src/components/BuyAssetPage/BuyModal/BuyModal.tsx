@@ -37,6 +37,9 @@ const BuyPage = (props: Props) => {
   const [quantity, setQuantity] = useState(1)
 
   const notEnoughMana = () => {
+    if (!asset.Price) {
+      return false
+    }
     // return false
     return wallet.networks[wallet.network].mana < +fromWei(asset.Price, 'ether') * quantity
   }
@@ -83,23 +86,26 @@ const BuyPage = (props: Props) => {
 
   let subtitle = null
 
-  if (notEnoughMana()) {
-    subtitle = (
-      <T
-        id={'buy_page.not_enough_spay'}
-        values={{ name, amount: <Price price={(+fromWei(asset.Price, 'ether') * quantity).toString()} /> }}
-      />
-    )
-  } else {
-    subtitle = (
-      <T
-        id={'buy_page.subtitle'}
-        values={{
-          name: quantity.toString() + ' ' + getAssetName(asset),
-          amount: <Price price={(+fromWei(asset.Price, 'ether') * quantity).toString()} />
-        }}
-      />
-    )
+  if (asset.Price) {
+    if (notEnoughMana()) {
+
+      subtitle = (
+        <T
+          id={'buy_page.not_enough_spay'}
+          values={{ name, amount: <Price price={(+fromWei(asset.Price, 'ether') * quantity).toString()} /> }}
+        />
+      )
+    } else {
+      subtitle = (
+        <T
+          id={'buy_page.subtitle'}
+          values={{
+            name: quantity.toString() + ' ' + getAssetName(asset),
+            amount: <Price price={(+fromWei(asset.Price, 'ether') * quantity).toString()} />
+          }}
+        />
+      )
+    }
   }
   return (
     <AssetAction asset={asset}>
@@ -107,46 +113,46 @@ const BuyPage = (props: Props) => {
         {t('buy_page.title', { category: t(`global.${asset.Category}`) })}
       </Header>
       <div className={isDisabled ? 'error' : ''}>{subtitle}</div>
+      {asset.Price ?
+        <Form onSubmit={handleSubmit}>
+          <div className="form-fields">
+            <Field
+              label={t('buy_page.quantity')}
+              type="text"
+              placeholder={1}
+              value={quantity}
+              onChange={(_event, props) => {
+                const newQuantity = fromMANA(props.value)
+                setQuantity(newQuantity)
+              }}
+            />
+            <Field
+              label={t('buy_page.price')}
+              type="text"
+              value={+fromWei(asset.Price, "ether") * quantity}
+            />
+          </div>
+          <div className="buttons">
+            <Button
+              onClick={() =>
+                onNavigate(locations.asset(asset.OptionID))
+              }
+            >
+              {t('global.cancel')}
+            </Button>
 
-      <Form onSubmit={handleSubmit}>
-        <div className="form-fields">
-          <Field
-            label={t('buy_page.quantity')}
-            type="text"
-            placeholder={1}
-            value={quantity}
-            onChange={(_event, props) => {
-              const newQuantity = fromMANA(props.value)
-              setQuantity(newQuantity)
-            }}
-          />
-          <Field
-            label={t('buy_page.price')}
-            type="text"
-            value={+fromWei(asset.Price, "ether") * quantity}
-          />
-        </div>
-        <div className="buttons">
-          <Button
-            onClick={() =>
-              onNavigate(locations.asset(asset.OptionID))
-            }
-          >
-            {t('global.cancel')}
-          </Button>
+            <Button
+              primary
+              disabled={isDisabled || isLoading}
+              type="submit"
+              loading={isLoading}
+            >
+              {t('buy_page.buy')}
+            </Button>
 
-          <Button
-            primary
-            disabled={isDisabled || isLoading}
-            type="submit"
-            loading={isLoading}
-          >
-            {t('buy_page.buy')}
-          </Button>
-
-        </div>
-      </Form>
-
+          </div>
+        </Form> : null
+      }
 
       <AuthorizationModal
         wallet={wallet}

@@ -27,12 +27,17 @@ const VirtualCard = (props: Props) => {
       <Card.Content>
         <Card.Header>
           <div className="title">{title}</div>{' '}
-          <Mana inline>{formatMANA(asset.Price)}</Mana>
+          {
+            asset.Price ?
+              <Mana inline>{formatMANA(asset.Price)}</Mana> : null
+          }
         </Card.Header>
         <Card.Meta>
-          {t('nft_card.expires_at', {
-            date: "in 999 days"
-          })}
+          {
+            asset.Price ?
+              t('nft_card.expires_at', {
+                date: "in 999 days"
+              }) : null}
         </Card.Meta>
         <ChestTags asset={asset} />
 

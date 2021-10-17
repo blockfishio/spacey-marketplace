@@ -116,6 +116,22 @@ const Atlas: React.FC<Props> = (props: Props) => {
     [tiles]
   )
 
+
+  const OfficalLayer: Layer = useCallback(
+    (x, y) => {
+      const key = getCoords(x, y)
+      const tile = tiles[key]
+      if (tile && tile.owner.toLowerCase() == process.env.REACT_APP_OFFICAL_ADDRESS?.toLowerCase()
+
+      ) {
+        const { left, top, topLeft } = tile
+        return { color: '#808080', left: !!left, top: !!top, topLeft: !!topLeft }
+      }
+      return null
+    },
+    [tiles]
+  )
+
   const selectedStrokeLayer: Layer = useCallback(
     (x, y) => {
       return isSelected(x, y) ? { color: '#ff0044', scale: 1.4 } : null
@@ -227,15 +243,17 @@ const Atlas: React.FC<Props> = (props: Props) => {
 
   // layers
   const layers = [
+
     userLayer,
     ...(props.layers || []),
     selectedStrokeLayer,
-    selectedFillLayer
+    selectedFillLayer,
   ]
 
   if (showOnSale) {
     layers.unshift(forSaleLayer)
   }
+  layers.unshift(OfficalLayer)
   return (
     <div className="atlas-wrapper" onMouseLeave={handleHidePopup}>
       <AtlasComponent

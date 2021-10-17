@@ -148,61 +148,33 @@ dataSources:
   #       - event: NameRegistered(indexed address,indexed address,indexed bytes32,string,uint256)
   #         handler: handleNameRegistered
 
-  # ---------------------------------------------------------
-  # BIDS ----------------------------------------------------
-  # ---------------------------------------------------------
-  # - kind: ethereum/contract
-  #   name: ERC721Bid
-  #   network: ropsten
-  #   source:
-  #     address: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f'
-  #     abi: ERC721Bid
-  #     startBlock: 5058246
-  #   mapping:
-  #     kind: ethereum/events
-  #     apiVersion: 0.0.3
-  #     language: wasm/assemblyscript
-  #     file: ./src/handlers/bid.ts
-  #     entities:
-  #       - Bid
-  #     abis:
-  #       - name: ERC721Bid
-  #         file: ./abis/ERC721Bid.json
-  #     eventHandlers:
-  #       - event: BidCreated(bytes32,indexed address,indexed uint256,indexed address,uint256,uint256,bytes)
-  #         handler: handleBidCreated
-  #       - event: BidAccepted(bytes32,indexed address,indexed uint256,address,indexed address,uint256,uint256)
-  #         handler: handleBidAccepted
-  #       - event: BidCancelled(bytes32,indexed address,indexed uint256,indexed address)
-  #         handler: handleBidCancelled
-
   
+
 # ---------------------------------------------------------
-  # SMTs ----------------------------------------------------
+  # BLINDBOXS ----------------------------------------------------
   # ---------------------------------------------------------
-  # - kind: ethereum/contract
-  #   name: SMT
-  #   network: ropsten
-  #   source:
-  #     address: '0xc663de795c2651db14ab995dd7308f67250fb99f'
-  #     abi: SMT
-  #     startBlock: 10000000
-  #   mapping:
-  #     kind: ethereum/events
-  #     apiVersion: 0.0.3
-  #     language: wasm/assemblyscript
-  #     file: ./src/handlers/smt.ts
-  #     entities:
-  #       - Boardingpass
-  #     abis:
-  #       - name: SMT
-  #         file: ./abis/SMT.json
-  #     # eventHandlers:
-  #     #   - event: Transfer(indexed address,indexed address,indexed uint256)
-  #     #     handler: handleTransfer
-  #     eventHandlers:
-  #       - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-  #         handler: handleRoleGranted
+  - kind: ethereum/contract
+    name: Blindbox
+    network: ropsten
+    source:
+      address: '0x5897C3B8472f1c4069A2e9Bf5e6DAFF5237F7a04'
+      abi: Blindbox
+      startBlock: 11100000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/handlers/blindbox.ts
+      entities:
+        - Asset
+      abis:
+        - name: Blindbox
+          file: ./abis/Blindbox.json
+      eventHandlers:
+        - event: SetAssetPrice()
+          handler: handleSetAssetPrice
+
+
 
 
 # ---------------------------------------------------------

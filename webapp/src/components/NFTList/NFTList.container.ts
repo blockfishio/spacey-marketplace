@@ -7,6 +7,7 @@ import { FETCH_ASSETS_REQUEST } from '../../modules/asset/actions'
 import { browse } from '../../modules/routing/actions'
 import { getNFTs, getCount as getNFTCount, getView } from '../../modules/ui/nft/browse/selectors'
 import { getAssets, getCount as getAssetCount } from '../../modules/ui/asset/browse/selectors'
+import { getOwnerAssets, getCount as getOwnerAssetCount } from '../../modules/ui/ownerasset/browse/selectors'
 import { getVendor, getPage } from '../../modules/routing/selectors'
 import { getLoading as getNFTLoading } from '../../modules/nft/selectors'
 import { getLoading as getAssetLoading } from '../../modules/asset/selectors'
@@ -18,8 +19,9 @@ const mapState = (state: RootState): MapStateProps => ({
   vendor: getVendor(state),
   nfts: getNFTs(state),
   assets: getAssets(state),
+  ownerassets: getOwnerAssets(state),
   page: getPage(state),
-  count: getNFTCount(state)! + getAssetCount(state)!,
+  count: getNFTCount(state)! + getAssetCount(state)! + getOwnerAssetCount(state)!,
   isLoading: isLoadingType(getNFTLoading(state), FETCH_NFTS_REQUEST) || isLoadingType
     (getAssetLoading(state), FETCH_ASSETS_REQUEST)
 })

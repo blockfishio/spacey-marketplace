@@ -61,7 +61,7 @@ export function getLandName(land: Land): string {
 
 export function getLandSearchText(land: Land): string {
   let res = ''
-  const alphabet = "ABCDEFGHGIJKLMNOPQRSTUVWXYZ"
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
   const x: i32 = (land.tokenId.toI32() - 101) / 36
   const y: i32 = (land.tokenId.toI32() - 101) % 36
 

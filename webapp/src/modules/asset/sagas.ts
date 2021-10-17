@@ -8,6 +8,7 @@ import {
   FetchAssetRequestAction,
   fetchAssetSuccess,
   fetchAssetFailure,
+
 } from './actions'
 import { VendorFactory } from '../vendor/VendorFactory'
 // import { contractVendors } from '../contract/utils'

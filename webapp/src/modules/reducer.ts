@@ -12,6 +12,7 @@ import { authorizationReducer as authorization } from './authorization/reducer'
 import { bidReducer as bid } from './bid/reducer'
 import { nftReducer as nft } from './nft/reducer'
 import { assetReducer as asset } from './asset/reducer'
+import { ownerassetReducer as ownerasset } from './ownerasset/reducer'
 import { orderReducer as order } from './order/reducer'
 import { proximityReducer as proximity } from './proximity/reducer'
 import { routingReducer as routing } from './routing/reducer'
@@ -25,6 +26,7 @@ export const createRootReducer = (history: History) =>
     bid,
     nft,
     asset,
+    ownerasset,
     order,
     profile,
     proximity,
