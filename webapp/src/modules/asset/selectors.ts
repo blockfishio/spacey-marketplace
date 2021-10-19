@@ -39,13 +39,24 @@ const assetDetailMatchSelector = createMatchSelector<
   }
 >(locations.asset(':optionId'))
 
+const ownerassetDetailMatchSelector = createMatchSelector<
+  RootState,
+  {
+    optionId: string
+  }
+>(locations.ownerasset(':optionId'))
+
 export const getOptionId = createSelector<
   RootState,
   ReturnType<typeof assetDetailMatchSelector>,
   string | null
 >(assetDetailMatchSelector, match => match?.params.optionId || null)
 
-
+export const getOwnerAssetOptionId = createSelector<
+  RootState,
+  ReturnType<typeof ownerassetDetailMatchSelector>,
+  string | null
+>(ownerassetDetailMatchSelector, match => match?.params.optionId || null)
 
 // export const getCurrentNFT = createSelector<
 //   RootState,

@@ -21,7 +21,7 @@ const VirtualCard = (props: Props) => {
       className="NFTCard"
       link
       as={Link}
-      to={locations.asset(asset.OptionID)}
+      to={asset.Price ? locations.asset(asset.OptionID) : locations.ownerasset(asset.OptionID)}
     >
       <AssetImage image={asset.ImageURL} showMonospace />
       <Card.Content>

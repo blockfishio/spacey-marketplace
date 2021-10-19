@@ -4,13 +4,13 @@ import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 
 import { getMaxQuerySize, MAX_PAGE, PAGE_SIZE } from '../../modules/vendor/api'
 import { NFTCard } from '../NFTCard'
-// import { AssetCard } from '../AssetCard'
+import { AssetCard } from '../AssetCard'
 import { Props } from './NFTList.types'
-// import { AssetCategory } from '../../modules/asset/types'
+import { AssetCategory } from '../../modules/asset/types'
 
 const NFTList = (props: Props) => {
   const { vendor, nfts, page, count, isLoading, assets,
-    //  ownerassets, 
+    ownerassets,
     onBrowse } = props
   const handleLoadMore = useCallback(() => {
     onBrowse({ page: page + 1 })
@@ -20,7 +20,7 @@ const NFTList = (props: Props) => {
 
   const hasExtraPages =
     ((count && (nfts.length + assets.length
-      // + ownerassets.length
+      + ownerassets.length
     ) < count) || count === maxQuerySize) && page <= MAX_PAGE
   const isLoadingNewPage = isLoading && nfts.length >= PAGE_SIZE
   return (
@@ -31,19 +31,19 @@ const NFTList = (props: Props) => {
             <AssetCard key={asset.OptionID + '-' + index} asset={asset} />
           ))
           : null} */}
-        {/* {ownerassets.length > 0
+        {ownerassets.length > 0
           ? ownerassets.map((asset, index) => (
             <AssetCard key={asset.AssetID + '-' + index} asset={
               {
                 Category: AssetCategory.CHEST,
-                ImageURL: "https://",
-
-                OptionID: "1"
+                ImageURL: "https://spacey2025.s3.us-east-2.amazonaws.com/xinpian2.png",
+                AssetID: asset.AssetID,
+                OptionID: asset.OptionID
 
               }
             } />
           ))
-          : null} */}
+          : null}
         {nfts.length > 0
           ? nfts.map((nft, index) => (
             <NFTCard key={nft.id + '-' + index} nft={nft} />

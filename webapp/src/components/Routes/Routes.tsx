@@ -20,6 +20,7 @@ import { ActivityPage } from '../ActivityPage'
 import { CommunityPage } from '../CommunityPage'
 import { OfficalPage } from '../OfficalPage'
 // import { AssetPage } from '../AssetPage'
+import { AssetPage as OwnerAssetPage } from '../OwnerAssetPage'
 
 import { HomePage } from '../HomePage'
 import { MyBidsPage } from '../MyBidsPage'
@@ -55,6 +56,8 @@ const Routes = () => {
         <Route exact path={locations.parcel()} component={LegacyNFTPage} />
         <Route exact path={locations.estate()} component={LegacyNFTPage} />
         {/* <Route exact path={locations.asset()} component={AssetPage} /> */}
+        <Route exact path={locations.ownerasset()} component={OwnerAssetPage} />
+
         <Redirect
           from="/browse"
           to={locations.offical() + window.location.search}

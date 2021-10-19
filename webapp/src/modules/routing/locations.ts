@@ -36,6 +36,9 @@ export const locations = {
   asset: (
     optionId: string = ':optionId',
   ) => `/asset/${optionId}`,
+  ownerasset: (
+    optionId: string = ':optionId',
+  ) => `/ownerasset/${optionId}`,
   parcel: (x: string = ':x', y: string = ':y') => `/parcels/${x}/${y}/detail`,
   estate: (estateId: string = ':estateId') => `/estates/${estateId}/detail`,
   sell: (

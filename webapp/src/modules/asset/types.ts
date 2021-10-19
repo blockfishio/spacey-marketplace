@@ -31,6 +31,7 @@ export type Data<V extends Vendors> = V extends Vendors.DECENTRALAND
 export type Asset = {
   Category: AssetCategory
   ImageURL: string
+  AssetID?: string
   Price?: string
   PriceUnit?: string
   OptionID: string
