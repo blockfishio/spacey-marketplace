@@ -11,7 +11,8 @@ import { fetchAssetRequest, FETCH_ASSET_REQUEST } from '../../modules/asset/acti
 import {
   getData as getAssets,
   getLoading,
-  getOwnerAssetOptionId
+  getOwnerAssetOptionId,
+  getOptionId
 } from '../../modules/asset/selectors'
 // import { getData as getOrders } from '../../modules/order/selectors'
 // import { getNFT } from '../../modules/nft/utils'
@@ -24,11 +25,18 @@ import {
 } from './AssetProvider.types'
 import NFTProvider from './AssetProvider'
 
-const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
-  console.log(ownProps.optionId)
-  const optionId = ownProps.optionId || getOwnerAssetOptionId(state)
+const mapState = (state: RootState,
+  ownProps: OwnProps
+): MapStateProps => {
+
+  const optionId = ownProps.optionId || getOwnerAssetOptionId(state) || getOptionId(state)
+  // console.log(optionId)
+  // console.log(ownProps)
+  // const optionId = '1'
   const assets = getAssets(state)
   const asset = getAsset(optionId, assets)
+  // const asset = getAsset('1', assets)
+
 
   return {
     optionId,

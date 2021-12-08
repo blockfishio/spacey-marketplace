@@ -97,7 +97,6 @@ function* handleCancelOrderRequest(action: CancelOrderRequestAction) {
   const { order, nft } = action.payload
   try {
     const chainId: ChainId = yield select(getChainId)
-
     if (chainId !== order.chainId) {
       throw new Error('The chain ID does not match ')
     }

@@ -22,7 +22,7 @@
     "update": "Update",
     "search": "Search",
     "apply": "Apply",
-    "Chest": "Blueprint Chip",
+    "Chest": "Loot Box",
     "land": "Land",
     "land_with_coords": "Land {x},{y}",
     "building": "Building",
@@ -80,7 +80,7 @@
     "spacey2025": "SpaceY2025",
     "boardingpass": "Boardingpass",
     "community": "Community Market",
-    "chest": "Blueprint Chip",
+    "chest": "Loot Box",
     "building": "Building",
     "tower": "tower",
     "trap": "trap"
@@ -377,7 +377,7 @@
     "message": "The price may fluctuate due to market changes"
   },
   "virtual_card": {
-    "Chest": "Blueprint Chip"
+    "Chest": "Loot Box"
   },
   "networks": {
     "ethereum": "Ethereum",

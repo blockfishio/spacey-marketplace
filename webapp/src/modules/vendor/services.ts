@@ -20,6 +20,7 @@ import { OrderStatus, Order } from '../order/types'
 import { NFTsFetchFilters } from './nft/types'
 import { Vendors, TransferType } from './types'
 import { ChainId } from '../contract/types'
+import { TowerStats } from '../nft/tower/types'
 
 export interface NFTService<V extends Vendors> {
   fetch: (
@@ -107,6 +108,9 @@ export interface AssetService {
   fetchOne: (
     optionId: string
   ) => Promise<readonly [Asset]>
+  fetchTowerstats: (
+    towerkey: string
+  ) => Promise<readonly [TowerStats]>
 
 }
 

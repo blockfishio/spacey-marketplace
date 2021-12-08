@@ -65,6 +65,7 @@ export type NFT<V extends Vendors = Vendors.DECENTRALAND> = {
   owner: string
   name: string
   category: NFTCategory
+  subcategory?: string
   image: string
   thumbnail?: string
   url: string

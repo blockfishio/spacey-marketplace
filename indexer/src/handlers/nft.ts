@@ -238,7 +238,6 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
     let land: Land
     if (isMint(event)) {
       nft.subcategory = subcategory
-
       land = buildLandFromNFT(nft)
       nft.land = id
       nft.searchIsLand = true
@@ -257,12 +256,12 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
     if (isMint(event)) {
       nft.subcategory = subcategory
       building = buildBuildingFromNFT(nft)
+      building.rarity = BigInt.fromI32(event.params.rarity)
       nft.building = id
       nft.image = getBuildingImage(building)
       nft.thumbnail = getBuildingImage(building)
       nft.name = getBuildingName(building)
       nft.searchText = nft.name
-      building.rarity = BigInt.fromI32(event.params.rarity)
 
     } else {
       building = new Building(nft.id)
@@ -275,12 +274,12 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
     if (isMint(event)) {
       nft.subcategory = subcategory
       tower = buildTowerFromNFT(nft)
+      tower.rarity = BigInt.fromI32(event.params.rarity)
       nft.tower = id
       nft.image = getTowerImage(tower)
       nft.thumbnail = getTowerThumbnail(tower)
       nft.name = getTowerName(tower)
       nft.searchText = nft.name
-      tower.rarity = BigInt.fromI32(event.params.rarity)
     } else {
       tower = new Tower(nft.id)
       tower.owner = nft.owner
@@ -292,12 +291,12 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
     if (isMint(event)) {
       nft.subcategory = subcategory
       trap = buildTrapFromNFT(nft)
+      trap.rarity = BigInt.fromI32(event.params.rarity)
       nft.trap = id
       nft.image = getTrapImage(trap)
       nft.thumbnail = getTrapThumbnail(trap)
       nft.name = getTrapName(trap)
       nft.searchText = nft.name
-      trap.rarity = BigInt.fromI32(event.params.rarity)
     } else {
       trap = new Trap(nft.id)
       trap.owner = nft.owner

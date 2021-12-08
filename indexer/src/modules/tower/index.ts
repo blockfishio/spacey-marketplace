@@ -14,11 +14,11 @@ export function buildTowerFromNFT(nft: NFT): Tower {
 }
 
 export function getTowerImage(tower: Tower): string {
-  return "https://spacey2025.s3.us-east-2.amazonaws.com/Assets/Tower" + tower.subCategory.toString() + "_0.png"
+  return "https://spacey2025.s3.us-east-2.amazonaws.com/Assets/Tower" + tower.subCategory.toString() + "_" + tower.rarity.toString() + ".png"
 }
 
 export function getTowerThumbnail(tower: Tower): string {
-  return "https://spacey2025.s3.us-east-2.amazonaws.com/Assets/Tower" + tower.subCategory.toString() + "_0.png"
+  return "https://spacey2025.s3.us-east-2.amazonaws.com/Assets/Tower" + tower.subCategory.toString() + "_" + tower.rarity.toString() + ".png"
 }
 
 export function getTowerName(tower: Tower): string {

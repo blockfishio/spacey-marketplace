@@ -9,7 +9,7 @@ const SMTTags = (
   return (
     <div className="SMTTags tags">
 
-      <div className="no">
+      <div className="rarity">
         LEGENDARY
       </div>
     </div>

@@ -35,6 +35,12 @@ export class AssetService implements AssetServiceInterface {
     return [asset] as const
   }
 
+
+  async fetchTowerstats(towerkey: string) {
+    const towerstats = await assetAPI.fetchTowerStats(towerkey)
+    return [towerstats] as const
+  }
+
   toAsset(asset: AssetFragment): Asset {
     return {
       Category: asset.Category,

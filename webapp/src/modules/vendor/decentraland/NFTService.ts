@@ -68,6 +68,9 @@ export class NFTService implements NFTServiceInterface<Vendors.DECENTRALAND> {
 
   }
 
+
+
+
   async transfer(fromAddress: string, toAddress: string, nft: NFT) {
     if (!fromAddress) {
       throw new Error('Invalid address. Wallet must be connected.')

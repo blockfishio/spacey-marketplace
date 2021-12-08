@@ -6,7 +6,7 @@ import { locations } from '../../../modules/routing/locations'
 import { isPartner } from '../../../modules/vendor/utils'
 import { getNFTName } from '../../../modules/nft/utils'
 import { hasAuthorization } from '../../../modules/authorization/utils'
-import { contractAddresses } from '../../../modules/contract/utils'
+import { contractAddresses, contractAddressesAll } from '../../../modules/contract/utils'
 import { useFingerprint, useComputedPrice } from '../../../modules/nft/hooks'
 // import { NFTCategory } from '../../../modules/nft/types'
 import { NFTAction } from '../../NFTAction'
@@ -45,7 +45,7 @@ const BuyPage = (props: Props) => {
   // TODO: VendorFactory.build().nftService.getMarketpaceAddress() ??
   const marketplaceAddress = isPartner(nft.vendor)
     ? contractAddresses.MarketplaceAdapter
-    : contractAddresses.Marketplace
+    : contractAddressesAll[wallet.chainId].Marketplace
 
   const handleToggleWantsToProceed = useCallback(() => {
     setWantsToProceed(!wantsToProceed)
@@ -56,7 +56,7 @@ const BuyPage = (props: Props) => {
       hasAuthorization(
         authorizations,
         marketplaceAddress,
-        contractAddresses.MANAToken,
+        contractAddressesAll[wallet.chainId].MANAToken,
         AuthorizationType.ALLOWANCE
       )
     ) {
@@ -184,7 +184,7 @@ const BuyPage = (props: Props) => {
         wallet={wallet}
         open={showAuthorizationModal}
         contractAddress={marketplaceAddress}
-        tokenAddress={contractAddresses.MANAToken}
+        tokenAddress={contractAddressesAll[wallet.chainId].MANAToken}
         type={AuthorizationType.ALLOWANCE}
         onProceed={handleExecuteOrder}
         onCancel={handleClose}

@@ -30,6 +30,18 @@ class AssetAPI {
     return asset
   }
 
+  fetchTowerStats = async (towerkey: string) => {
+    const towerstats = await fetch(API_VIRTUAL_URL + '/user/token/tower/' + towerkey, {
+      method: "GET",
+      headers: {
+        "Accept": "application/json"
+      }
+    }).then(response => {
+      return response.json()
+    })
+    return towerstats
+
+  }
 
 }
 

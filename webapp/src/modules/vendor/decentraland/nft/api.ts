@@ -61,7 +61,6 @@ class NFTAPI extends BaseAPI {
 
     return response.data[0]
   }
-
   async fetchTokenId(x: number, y: number) {
     const { data } = await client.query<{ parcels: { tokenId: string }[] }>({
       query: PARCEL_TOKEN_ID_QUERY,

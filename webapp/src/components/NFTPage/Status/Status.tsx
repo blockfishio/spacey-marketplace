@@ -8,6 +8,25 @@ import { Props } from './Status.types'
 import './Status.css'
 
 const Status = (props: Props) => {
+  const { towerStats } = props
+  if (towerStats) {
+    return (
+      <>
+        <Stats title='Attack'>
+          {towerStats.Attack}
+        </Stats>
+        <Stats title='Attack Speed'>
+          {towerStats.AttactSpeed}
+        </Stats>
+        <Stats title='Attack Range'>
+          {towerStats.AttackRange}
+        </Stats>
+        <Stats title='Durability'>
+          {towerStats.Durability}
+        </Stats>
+      </>
+    )
+  }
   return props ? (<>
     <Stats title='ATK'>
       113
