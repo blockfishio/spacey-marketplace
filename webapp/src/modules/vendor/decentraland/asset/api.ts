@@ -30,6 +30,19 @@ class AssetAPI {
     return asset
   }
 
+  countAsset = async (optionId: string) => {
+    const count = await fetch(API_VIRTUAL_URL + '/assetscount/' + optionId, {
+      // mode: 'no-cors',
+      method: "GET",
+      headers: {
+        "Accept": "application/json"
+      }
+    }).then(response => {
+      return response.json()
+    })
+    return count
+  }
+
   fetchTowerStats = async (towerkey: string) => {
     const towerstats = await fetch(API_VIRTUAL_URL + '/user/token/tower/' + towerkey, {
       method: "GET",

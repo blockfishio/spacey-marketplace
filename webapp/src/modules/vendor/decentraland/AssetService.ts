@@ -1,6 +1,6 @@
 
-import { Asset } from '../../asset/types'
-import { AssetFragment } from './asset/fragments'
+import { Asset, AssetCount } from '../../asset/types'
+import { AssetCountFragment, AssetFragment } from './asset/fragments'
 
 import { AssetService as AssetServiceInterface } from '../services'
 // import { Vendors } from '../types'
@@ -28,11 +28,22 @@ export class AssetService implements AssetServiceInterface {
 
     const asset = this.toAsset(remoteAsset)
 
-
+    console.log(asset)
 
 
 
     return [asset] as const
+  }
+
+  async countAsset(optionId: string) {
+    const count = await assetAPI.countAsset(optionId)
+    const assetCount = this.toAssetCount(count)
+
+
+
+
+
+    return [assetCount] as const
   }
 
 
@@ -47,8 +58,16 @@ export class AssetService implements AssetServiceInterface {
       ImageURL: asset.ImageURL,
       Price: asset.Price,
       PriceUnit: asset.PriceUnit,
-      OptionID: asset.OptionID
+      OptionID: asset.OptionID,
+      Count: asset.Count
 
+    }
+  }
+
+  toAssetCount(assetCount: AssetCountFragment): AssetCount {
+    return {
+      OptionID: assetCount.OptionID,
+      Count: assetCount.Count
     }
   }
 

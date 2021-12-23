@@ -88,7 +88,7 @@ const ChestDetail = (props: Props) => {
             <Header size="large">
               <div className="text">
                 {/* {getNFTName(nft)} */}
-                {t(`virtual_card.${asset.Category}`)}
+                {t(`virtual_card.${asset.Category}`)} Ver.{asset.OptionID}
                 {/* <Popup
                   position="top center"
                   content={t(`wearable.rarity_tooltip.epic`)}

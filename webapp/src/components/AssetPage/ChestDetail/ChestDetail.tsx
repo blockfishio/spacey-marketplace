@@ -3,6 +3,8 @@ import React, {
 } from 'react'
 import {
   Container, Header,
+  // Popup,
+  Stats,
   //  Popup
 } from 'decentraland-ui'
 import { t } from 'decentraland-dapps/dist/modules/translation/utils'
@@ -34,9 +36,15 @@ import { Props } from './ChestDetail.types'
 import './ChestDetail.css'
 
 const ChestDetail = (props: Props) => {
-  const { asset
-    // onNavigate 
+  const { asset,
+    // onNavigate ,
+
   } = props
+
+
+
+
+
   // const wearable = nft.data.wearable!
 
   // const handleCategoryClick = useCallback(() => {
@@ -88,19 +96,20 @@ const ChestDetail = (props: Props) => {
             <Header size="large">
               <div className="text">
                 {/* {getNFTName(nft)} */}
-                {t(`virtual_card.${asset.Category}`)}
+                {t(`virtual_card.${asset.Category}`)} Ver.{asset.OptionID}
                 {/* <Popup
                   position="top center"
-                  content={t(`wearable.rarity_tooltip.epic`)}
+                  // content={t(`wearable.rarity_tooltip.epic`)}
                   trigger={
                     <div
-                      className="rarity"
-                      // style={{
-                      //   backgroundColor: RARITY_COLOR['epic']
-                      // }}
-                      onClick={handleRarityClick}
+                    // className="rarity"
+                    // style={{
+                    //   backgroundColor: RARITY_COLOR['epic']
+                    // }}
+                    // onClick={handleRarityClick}
                     >
                       {t(`wearable.rarity.epic`)}
+                      Ver.{asset.OptionID}
                     </div>
                   }
                 /> */}
@@ -110,6 +119,22 @@ const ChestDetail = (props: Props) => {
           right={<>
           </>} />
         {/* <Description text="1551" /> */}
+
+
+        <Row>
+          <Column align="left" grow={true}>
+            <Stats title="Gacha Rate">
+              <a href="https://spacey2025.s3.us-east-2.amazonaws.com/LootBoxes_DropRate.png" target="_blank">Click Here</a>
+
+            </Stats>
+          </Column>
+          <Column align="right">
+            <Stats title="In Stock">
+              {asset.Count ? Math.max(0, 15000 - asset.Count) : 15000}
+              /15000
+            </Stats>
+          </Column>
+        </Row>
         <Row>
           <Column align="left" grow={true}>
             <OrderDetails asset={asset} />

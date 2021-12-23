@@ -1,17 +1,17 @@
 export const towerName: string[] = [
   "dummy",
   "Sentry",
-  "Rocket Launcher",
+  "Missile Launcher",
   "Mortar",
   "Shock Wave",
-  "Laser"
+  "Laser Turret"
 ]
 
 export const towerDescription: string[] = [
   "dummy",
-  "Very basic defensive turret that target one enemy",
-  "Attack 3 targets at the same time and causing doubled damage to the enemy in the air",
-  "Has ultra-long attack range with AOE damage. But attack speed is slow",
+  "Cost-effective tower that target one enemy.",
+  "Attack 3 targets at the same time.",
+  "Has ultra-long attack range with high AOE damages. But cannot target close enemies.",
   "Shock enemies around a certain area. Deal AOE damages.",
-  "Attack enemies with straight penetrating laser beam"
+  "Attacks enemies with a powerful energy laser beam."
 ]

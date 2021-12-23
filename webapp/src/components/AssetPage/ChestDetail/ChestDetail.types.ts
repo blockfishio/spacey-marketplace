@@ -13,6 +13,7 @@ export type Props = {
   onNavigate: (path: string) => void
   asset: Asset
 
+
 }
 
 export type MapStateProps = {}

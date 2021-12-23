@@ -1,28 +1,26 @@
 diff --git a/node_modules/@dcl/schemas/dist/dapps/chain-id.d.ts b/node_modules/@dcl/schemas/dist/dapps/chain-id.d.ts
-index 16025a7..0bb5765 100644
+index 16025a7..6ce13f1 100644
 --- a/node_modules/@dcl/schemas/dist/dapps/chain-id.d.ts
 +++ b/node_modules/@dcl/schemas/dist/dapps/chain-id.d.ts
-@@ -10,7 +10,9 @@ export declare enum ChainId {
+@@ -10,7 +10,8 @@ export declare enum ChainId {
      ETHEREUM_GOERLI = 5,
      ETHEREUM_KOVAN = 42,
      MATIC_MAINNET = 137,
 -    MATIC_MUMBAI = 80001
 +    MATIC_MUMBAI = 80001,
 +    BSC_MAINNET = 56,
-+    BSC_TESTNET = 97
  }
  /**
   * @alpha
 diff --git a/node_modules/@dcl/schemas/dist/dapps/chain-id.js b/node_modules/@dcl/schemas/dist/dapps/chain-id.js
-index 54fc276..65280fe 100644
+index 54fc276..a6add19 100644
 --- a/node_modules/@dcl/schemas/dist/dapps/chain-id.js
 +++ b/node_modules/@dcl/schemas/dist/dapps/chain-id.js
-@@ -15,6 +15,9 @@ var ChainId;
+@@ -15,6 +15,8 @@ var ChainId;
      ChainId[ChainId["ETHEREUM_KOVAN"] = 42] = "ETHEREUM_KOVAN";
      ChainId[ChainId["MATIC_MAINNET"] = 137] = "MATIC_MAINNET";
      ChainId[ChainId["MATIC_MUMBAI"] = 80001] = "MATIC_MUMBAI";
 +    ChainId[ChainId["BSC_MAINNET"] = 56] = "BSC_MAINNET";
-+    ChainId[ChainId["BSC_TESTNET"] = 97] = "BSC_TESTNET";
 +
  })(ChainId = exports.ChainId || (exports.ChainId = {}));
  /**

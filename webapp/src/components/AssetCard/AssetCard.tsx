@@ -35,9 +35,11 @@ const VirtualCard = (props: Props) => {
         <Card.Meta>
           {
             asset.Price ?
-              t('nft_card.expires_at', {
-                date: "in 999 days"
-              }) : null}
+              // t('nft_card.expires_at', {
+              //   date: "in 999 days"
+              // }) 
+              "On Sale"
+              : null}
         </Card.Meta>
         <ChestTags asset={asset} />
 

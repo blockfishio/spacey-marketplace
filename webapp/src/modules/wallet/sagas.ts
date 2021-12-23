@@ -50,7 +50,7 @@ function* handleWallet(
   //   AssetSale } = contractAddresses
 
   const { MANAToken, Marketplace,
-    AssetSale } = contractAddressesAll[chainId]
+    AssetSale, DepositGMars, METAMARSToken } = contractAddressesAll[chainId]
 
   // TODO: VendorFactory.build().contractService.getAllowances()
   // TODO: VendorFactory.build().contractService.getApprovals()
@@ -60,7 +60,8 @@ function* handleWallet(
       [Marketplace]: [MANAToken],
       // [MarketplaceAdapter]: [MANAToken],
       // [Bids]: [MANAToken],
-      [AssetSale]: [MANAToken]
+      [AssetSale]: [MANAToken],
+      [DepositGMars]: [METAMARSToken],
     },
     approvals: {
       [Marketplace]: Object.keys(contractCategoriesAll[chainId]).filter(

@@ -22,7 +22,7 @@ type Count @entity {
   buildingTotal:Int!
   towerTotal:Int!
   trapTotal:Int!
-  # chestTotal:Int!
+  blindboxTotal:Int!
   # assetTotal:Int!
 
 
@@ -202,7 +202,11 @@ type NFT @entity {
 
 type Blindbox @entity {
   id:ID!
-  price:BigInt!
+  owner:String
+  blockNumber:BigInt
+  txHash:Bytes
+  optionId:String
+  createdAt: BigInt
 }
 
 

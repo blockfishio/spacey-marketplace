@@ -8,7 +8,8 @@
     "build": "graph build",
     "build-data": "ts-node ./scripts/buildData.ts",
     "deploy": "ts-node ./scripts/deploy.ts",
-    "auth": "graph auth https://api.thegraph.com/deploy/ 6ecf0f5a3f864fed98cda2ff9a7b4226"
+    "authtest": "graph auth https://api.thegraph.com/deploy/ 6ecf0f5a3f864fed98cda2ff9a7b4226",
+    "auth": "graph auth https://api.thegraph.com/deploy/ 24322a2b99924cf09799d4da36ad1ac4"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.16.0",

@@ -14,6 +14,8 @@ import { routingSaga } from './routing/sagas'
 import { tileSaga } from './tile/sagas'
 import { translationSaga } from './translation/sagas'
 import { uiSaga } from './ui/sagas'
+import { claimSaga } from './claim/sagas'
+import { depositSaga } from './deposit/sagas'
 import { walletSaga } from './wallet/sagas'
 import { wsSaga } from './websocket/sagas'
 import { authenticateSaga } from './authenticate/sagas'
@@ -41,6 +43,8 @@ export function* rootSaga() {
     uiSaga(),
     walletSaga(),
     wsSaga(),
-    authenticateSaga()
+    authenticateSaga(),
+    claimSaga(),
+    depositSaga()
   ])
 }

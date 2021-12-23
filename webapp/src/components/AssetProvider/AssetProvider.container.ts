@@ -47,7 +47,8 @@ const mapState = (state: RootState,
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onFetchAsset: (optionId: string) =>
-    dispatch(fetchAssetRequest(optionId))
+    dispatch(fetchAssetRequest(optionId)),
+
 })
 
 const mergeProps = (

@@ -8,6 +8,10 @@ import {
   FetchAssetRequestAction,
   fetchAssetSuccess,
   fetchAssetFailure,
+  COUNT_ASSET_REQUEST,
+  CountAssetRequestAction,
+  countAssetSuccess,
+  countAssetFailure
 
 } from './actions'
 import { VendorFactory } from '../vendor/VendorFactory'
@@ -22,7 +26,7 @@ import { Vendors } from '../vendor'
 export function* assetSaga() {
   yield takeEvery(FETCH_ASSETS_REQUEST, handleFetchAssetsRequest)
   yield takeEvery(FETCH_ASSET_REQUEST, handleFetchAssetRequest)
-  // yield takeEvery(TRANSFER_NFT_REQUEST, handleTransferNFTRequest)
+  yield takeEvery(COUNT_ASSET_REQUEST, handleCountAssetRequest)
 }
 
 function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
@@ -74,4 +78,23 @@ function* handleFetchAssetRequest(action: FetchAssetRequestAction) {
   }
 }
 
+function* handleCountAssetRequest(action: CountAssetRequestAction) {
+  const { optionId } = action.payload
+  try {
 
+    const { assetService } = VendorFactory.build(Vendors.DECENTRALAND)
+    if (assetService) {
+      const [assetCount]: AwaitFn<typeof assetService.countAsset> = yield call(() =>
+        assetService.countAsset(optionId))
+      yield put(countAssetSuccess(assetCount))
+
+    }
+
+    // const [nft, order]: AwaitFn<typeof nftService.fetchOne> = yield call(() =>
+    //   nftService.fetchOne(contractAddress, tokenId)
+    // )
+
+  } catch (error) {
+    yield put(countAssetFailure(optionId, error.message))
+  }
+}

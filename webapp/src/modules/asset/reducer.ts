@@ -18,6 +18,12 @@ import {
   FETCH_ASSET_REQUEST,
   FETCH_ASSET_SUCCESS,
   FETCH_ASSET_FAILURE,
+  CountAssetRequestAction,
+  CountAssetSuccessAction,
+  CountAssetFailureAction,
+  COUNT_ASSET_REQUEST,
+  COUNT_ASSET_SUCCESS,
+  COUNT_ASSET_FAILURE,
 } from './actions'
 
 export type AssetState = {
@@ -39,14 +45,18 @@ type AssetReducerAction =
   | FetchAssetsRequestAction
   | FetchAssetsSuccessAction
   | FetchAssetsFailureAction
+  | CountAssetRequestAction
+  | CountAssetSuccessAction
+  | CountAssetFailureAction
 
 export function assetReducer(
   state: AssetState = INITIAL_STATE,
   action: AssetReducerAction
-) {
+): AssetState {
   switch (action.type) {
     case FETCH_ASSETS_REQUEST:
     case FETCH_ASSET_REQUEST:
+    case COUNT_ASSET_REQUEST:
       {
         return {
           ...state,
@@ -55,6 +65,7 @@ export function assetReducer(
       }
     case FETCH_ASSETS_FAILURE:
     case FETCH_ASSET_FAILURE:
+    case COUNT_ASSET_FAILURE:
       {
         return {
           ...state,
@@ -87,6 +98,23 @@ export function assetReducer(
         }
       }
     }
+    case COUNT_ASSET_SUCCESS: {
+      const { assetcount } = action.payload
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        data: {
+          ...state.data,
+          [assetcount.OptionID]: {
+
+            ...state.data[assetcount.OptionID],
+            Count: assetcount.Count
+          }
+        },
+        error: null
+      }
+    }
+
     default:
       return state
   }

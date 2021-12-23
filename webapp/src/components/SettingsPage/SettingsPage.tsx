@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react'
-// import { Network } from '@dcl/schemas'
+import { Network } from '@dcl/schemas'
 import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 import { Footer } from 'decentraland-dapps/dist/containers'
 import { isMobile } from 'decentraland-dapps/dist/lib/utils'
 import {
   Page, Grid, Blockie,
-  //  Mana,
+  Mana,
   Loader, Form
 } from 'decentraland-ui'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -20,7 +20,9 @@ import { Navigation } from '../Navigation'
 import { Authorization } from './Authorization'
 import { Props } from './SettingsPage.types'
 import './SettingsPage.css'
-// import { Network } from '@dcl/schemas'
+import { Link } from 'react-router-dom'
+import { ChainId } from '../../modules/contract/types'
+
 
 
 
@@ -61,6 +63,20 @@ const SettingsPage = (props: Props) => {
 
   const hasEmptyAuthorizations =
     authorizations === undefined || Object.keys(authorizations).length === 0
+
+  var manaContent = [];
+  if (wallet) {
+    for (const [k, v] of Object.entries(wallet.networks)) {
+
+
+      manaContent.push(<Mana key={k}>
+        {parseInt(
+          v.mana.toFixed(0),
+          10
+        ).toLocaleString()}
+      </Mana>)
+    }
+  }
   return (
     <>
       <Navbar isFullscreen />
@@ -103,32 +119,64 @@ const SettingsPage = (props: Props) => {
               </Grid.Column>
             </Grid.Row>
 
-            {/* <Grid.Row>
+            <Grid.Row>
               <Grid.Column
                 className="left-column secondary-text"
                 computer={4}
                 mobile={16}
               >
-                {t('global.balance')}
+                {t('global.claimable_mars')}
               </Grid.Column>
               <Grid.Column computer={12} mobile={16}>
                 <div className="balance">
 
-                  
-                  <Mana inline>
-                    {wallet.networks[Network.ETHEREUM] ? parseInt(
-                      wallet.networks[Network.ETHEREUM].mana.toFixed(0),
-                      10
-                    ).toLocaleString() : parseInt(
-                      wallet.networks[Network.BSC].mana.toFixed(0),
-                      10
-                    ).toLocaleString()}
-                  </Mana>
-                  
+
+
+                  {wallet.claimable.toString()}
+
+                  <Link
+                    className="buy-more"
+                    to={locations.claim()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('settings_page.claim')}
+                  </Link>
+
+
+
                 </div>
               </Grid.Column>
-            </Grid.Row> */}
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column
+                className="left-column secondary-text"
+                computer={4}
+                mobile={16}
+              >
+                {t('global.balance_metamars')}
+              </Grid.Column>
+              <Grid.Column computer={12} mobile={16}>
+                <div className="balance">
 
+
+
+                  {wallet.networks[Network.BSC].metamars.toString()}
+
+                  <Link
+                    className="buy-more"
+                    to={locations.deposit()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('settings_page.deposit')}
+                  </Link>
+
+
+
+                </div>
+              </Grid.Column>
+            </Grid.Row>
             <Grid.Row>
               <Grid.Column
                 className="left-column secondary-text"
@@ -184,6 +232,22 @@ const SettingsPage = (props: Props) => {
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
                           />
+                          {wallet.chainId == ChainId.BSC_MAINNET ?
+                            <Authorization
+                              wallet={wallet}
+                              checked={hasAuthorization(
+                                authorizations!,
+                                contractAddressesAll[wallet.chainId].DepositGMars,
+                                contractAddressesAll[wallet.chainId].METAMARSToken,
+                                AuthorizationType.ALLOWANCE
+                              )}
+                              contractAddress={
+                                contractAddressesAll[wallet.chainId].DepositGMars
+                              }
+                              tokenContractAddress={contractAddressesAll[wallet.chainId].METAMARSToken}
+                              pendingTransactions={pendingAllowTransactions}
+                              onChange={onAllowToken}
+                            /> : null}
                         </div>
 
 

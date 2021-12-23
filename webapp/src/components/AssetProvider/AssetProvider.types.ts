@@ -7,6 +7,7 @@ import { Asset } from '../../modules/asset/types'
 //   FetchNFTRequestAction
 // } from '../../modules/nft/actions'
 import {
+
   fetchAssetRequest,
   FetchAssetRequestAction
 } from '../../modules/asset/actions'
@@ -19,6 +20,7 @@ export type Props = {
   // order: Order | null
   isLoading: boolean
   onFetchAsset: typeof fetchAssetRequest
+
   children: (
     asset: Asset | null,
     // order: Order | null,

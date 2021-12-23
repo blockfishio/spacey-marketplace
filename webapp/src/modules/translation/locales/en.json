@@ -28,7 +28,9 @@
     "building": "Building",
     "tower": "tower",
     "trap": "trap",
-    "network": "Network"
+    "network": "Network",
+    "claimable_mars": "Claimable MetaMars",
+    "balance_metamars": "Balance MetaMars"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -262,6 +264,30 @@
     "is_owner": "You are the owner of {name}.",
     "not_enough_spay": "You don't have enough SPAY to buy {name} for {amount}."
   },
+  "claim_page": {
+    "title": "Claim MetaMars",
+    "subtitle": "You are about to claim {amount} MetaMars.",
+    "claim": "Claim",
+    "amount": "Amount",
+    "claimable": "Claimable",
+    "price": "Price",
+    "proceed_anyways": "Proceed anyways",
+    "no_fingerprint": "Could not load fingerprint.",
+    "is_owner": "You are the owner of {name}.",
+    "not_enough_spay": "You don't have enough claimable MetaMars."
+  },
+  "deposit_page": {
+    "title": "Deposit GMars",
+    "subtitle": "You are about to deposit {amount} GMars.",
+    "deposit": "Deposit",
+    "amount": "Amount",
+    "balance": "MetaMars Balance",
+    "price": "Price",
+    "proceed_anyways": "Proceed anyways",
+    "no_fingerprint": "Could not load fingerprint.",
+    "is_owner": "You are the owner of {name}.",
+    "not_enough_metamars": "You don't have enough MetaMars."
+  },
   "bid_page": {
     "title": "Place a bid",
     "subtitle": "Set a price and expiration date for your bid on {name}.",
@@ -293,6 +319,8 @@
   "settings_page": {
     "authorizations": "Authorizations",
     "buy_more_mana": "BUY MORE",
+    "claim": "CLAIM",
+    "deposit": "DEPOSIT",
     "copy_address": "COPY ADDRESS",
     "copied": "COPIED ✔",
     "authorization_error": "We couldn't load your authorizations, please try again",

@@ -5,6 +5,7 @@ import {
   NFTsCountParams
 } from '../nft/types'
 import {
+  AssetCount,
   AssetsFetchParams,
 } from '../asset/types'
 import {
@@ -108,6 +109,9 @@ export interface AssetService {
   fetchOne: (
     optionId: string
   ) => Promise<readonly [Asset]>
+  countAsset: (
+    optionId: string
+  ) => Promise<readonly [AssetCount]>
   fetchTowerstats: (
     towerkey: string
   ) => Promise<readonly [TowerStats]>
@@ -120,5 +124,15 @@ export interface OwnerAssetService {
   // fetchOne: (
   //   optionId: string
   // ) => Promise<readonly [Asset]>
+
+}
+
+export interface ClaimMetamarsService {
+  claim: (amount: number,
+    fromAddress: string
+  ) => Promise<string>
+  deposit: (amount: number,
+    fromAddress: string
+  ) => Promise<string>
 
 }

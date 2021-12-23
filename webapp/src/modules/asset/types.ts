@@ -35,6 +35,12 @@ export type Asset = {
   Price?: string
   PriceUnit?: string
   OptionID: string
+  Count?: number
+}
+
+export type AssetCount = {
+  Count: number
+  OptionID: string
 }
 
 export type AssetsFetchParams = {

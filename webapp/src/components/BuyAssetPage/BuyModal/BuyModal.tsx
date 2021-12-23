@@ -42,6 +42,7 @@ const BuyPage = (props: Props) => {
     }
     // return false
     return wallet.networks[wallet.network].mana < +fromWei(asset.Price, 'ether') * quantity
+
   }
 
   const handleExecuteOrder = useCallback(() => {

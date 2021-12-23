@@ -6,7 +6,8 @@ import {
   OrderService,
   BidService,
   AssetService,
-  OwnerAssetService
+  OwnerAssetService,
+  ClaimMetamarsService
 } from './services'
 import { Vendors } from './types'
 
@@ -21,7 +22,8 @@ export class VendorFactory {
           new decentraland.OrderService(),
           new decentraland.BidService(),
           new decentraland.AssetService(),
-          new decentraland.OwnerAssetService()
+          new decentraland.OwnerAssetService(),
+          new decentraland.ClaimMetamarsService()
         )
 
       default:
@@ -38,6 +40,7 @@ export class Vendor<V extends Vendors> {
     public orderService: OrderService<V>,
     public bidService?: BidService<V>,
     public assetService?: AssetService,
-    public ownerassetService?: OwnerAssetService
+    public ownerassetService?: OwnerAssetService,
+    public claimMetamarsService?: ClaimMetamarsService
   ) { }
 }

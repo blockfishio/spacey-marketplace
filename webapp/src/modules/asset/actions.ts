@@ -1,6 +1,7 @@
 import { action } from 'typesafe-actions'
 import {
   Asset,
+  AssetCount,
   AssetsFetchOptions,
 
 } from './types'
@@ -63,5 +64,24 @@ export const fetchAssetFailure = (
 export type FetchAssetRequestAction = ReturnType<typeof fetchAssetRequest>
 export type FetchAssetSuccessAction = ReturnType<typeof fetchAssetSuccess>
 export type FetchAssetFailureAction = ReturnType<typeof fetchAssetFailure>
+
+
+export const COUNT_ASSET_REQUEST = '[Request] Count Asset'
+export const COUNT_ASSET_SUCCESS = '[Success] Count Asset'
+export const COUNT_ASSET_FAILURE = '[Failure] Count Asset'
+
+export const countAssetRequest = (optionId: string) =>
+  action(COUNT_ASSET_REQUEST, { optionId })
+export const countAssetSuccess = (assetcount: AssetCount) =>
+  action(COUNT_ASSET_SUCCESS, { assetcount })
+export const countAssetFailure = (
+
+  optionId: string,
+  error: string
+) => action(COUNT_ASSET_FAILURE, { optionId, error })
+
+export type CountAssetRequestAction = ReturnType<typeof countAssetRequest>
+export type CountAssetSuccessAction = ReturnType<typeof countAssetSuccess>
+export type CountAssetFailureAction = ReturnType<typeof countAssetFailure>
 
 
