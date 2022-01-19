@@ -9,7 +9,7 @@ import { SortDirection } from '../routing/types'
 import { Boardingpass } from './boardingpass/types'
 import { Building } from './building/types'
 import { Land } from './land/types'
-import { Tower } from './tower/types'
+import { Tower, TowerDetail } from './tower/types'
 import { Trap } from './trap/types'
 import { Network } from '@dcl/schemas'
 
@@ -72,6 +72,7 @@ export type NFT<V extends Vendors = Vendors.DECENTRALAND> = {
   vendor: Vendors
   data: Data<V>
   network?: Network
+  detail?: TowerDetail
 }
 
 export type NFTsFetchParams = {

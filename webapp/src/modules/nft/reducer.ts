@@ -16,7 +16,13 @@ import {
   FetchNFTsFailureAction,
   FETCH_NFTS_REQUEST,
   FETCH_NFTS_SUCCESS,
-  FETCH_NFTS_FAILURE
+  FETCH_NFTS_FAILURE,
+  FetchTowerDetailRequestAction,
+  FetchTowerDetailFailureAction,
+  FetchTowerDetailSuccessAction,
+  FETCH_TOWERDETAIL_REQUEST,
+  FETCH_TOWERDETAIL_SUCCESS,
+  FETCH_TOWERDETAIL_FAILURE
 } from './actions'
 
 export type NFTState = {
@@ -38,6 +44,9 @@ type NFTReducerAction =
   | FetchNFTsRequestAction
   | FetchNFTsSuccessAction
   | FetchNFTsFailureAction
+  | FetchTowerDetailRequestAction
+  | FetchTowerDetailSuccessAction
+  | FetchTowerDetailFailureAction
 
 export function nftReducer(
   state: NFTState = INITIAL_STATE,
@@ -45,13 +54,16 @@ export function nftReducer(
 ) {
   switch (action.type) {
     case FETCH_NFTS_REQUEST:
-    case FETCH_NFT_REQUEST: {
-      return {
-        ...state,
-        loading: loadingReducer(state.loading, action)
+    case FETCH_TOWERDETAIL_REQUEST:
+    case FETCH_NFT_REQUEST:
+      {
+        return {
+          ...state,
+          loading: loadingReducer(state.loading, action)
+        }
       }
-    }
     case FETCH_NFTS_FAILURE:
+    case FETCH_TOWERDETAIL_FAILURE:
     case FETCH_NFT_FAILURE: {
       return {
         ...state,
@@ -81,6 +93,20 @@ export function nftReducer(
             obj[nft.id] = nft
             return obj
           }, {} as Record<string, NFT>)
+        }
+      }
+    }
+    case FETCH_TOWERDETAIL_SUCCESS: {
+      const { nft, towerdetail } = action.payload
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        data: {
+          ...state.data,
+          [nft.id]: {
+            ...state.data[nft.id],
+            detail: towerdetail
+          }
         }
       }
     }

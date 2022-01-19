@@ -7,6 +7,7 @@ import { Order } from '../order/types'
 import { Account } from '../account/types'
 import { getNFTName } from './utils'
 import { NFT, NFTSortBy, NFTsFetchOptions, NFTsFetchParams } from './types'
+import { TowerDetail } from './tower/types'
 
 // Fetch NFTs
 
@@ -134,3 +135,24 @@ export const renameNFTFailure = (nft: NFT, ownername: string, error: string) =>
 export type RenameNFTRequestAction = ReturnType<typeof renameNFTRequest>
 export type RenameNFTSuccessAction = ReturnType<typeof renameNFTSuccess>
 export type RenameNFTFailureAction = ReturnType<typeof renameNFTFailure>
+
+
+
+
+//fetch Tower Detail
+export const FETCH_TOWERDETAIL_REQUEST = '[Request] Fetch Tower Detail'
+export const FETCH_TOWERDETAIL_SUCCESS = '[Success] Fetch Tower Detail'
+export const FETCH_TOWERDETAIL_FAILURE = '[Failure] Fetch Tower Detail'
+export const fetchTowerDetailRequest = (
+  nft: NFT) =>
+  action(FETCH_TOWERDETAIL_REQUEST, { nft })
+export const fetchTowerDetailSuccess = (nft: NFT, towerdetail: TowerDetail) =>
+  action(FETCH_TOWERDETAIL_SUCCESS, { nft, towerdetail })
+export const fetchTowerDetailFailure = (
+  nft: NFT,
+  error: string
+) => action(FETCH_TOWERDETAIL_FAILURE, { nft, error })
+
+export type FetchTowerDetailRequestAction = ReturnType<typeof fetchTowerDetailRequest>
+export type FetchTowerDetailSuccessAction = ReturnType<typeof fetchTowerDetailSuccess>
+export type FetchTowerDetailFailureAction = ReturnType<typeof fetchTowerDetailFailure>

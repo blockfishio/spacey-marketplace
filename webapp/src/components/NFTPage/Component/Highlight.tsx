@@ -7,7 +7,7 @@ import './Highlight.css'
 
 const Highlight = (props: Props) => {
   const { icon, name, description, onClick } = props
-  const classes = ['Highlight']
+  const classes = ['Component']
   if (onClick) {
     classes.push('clickable')
   }

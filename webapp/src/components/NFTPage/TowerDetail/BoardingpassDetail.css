@@ -1,16 +1,16 @@
-.WearableDetail .PageHeader {
+.TowerDetail .PageHeader {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.WearableDetail .Highlight .left > div {
+.TowerDetail .Component .left > div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px 30px;
 }
 
-.WearableDetail .rarity {
+.TowerDetail .rarity {
   font-size: 13px;
   line-height: 18px;
   border-radius: 5px;
@@ -26,81 +26,143 @@
   cursor: pointer;
 }
 
-.WearableDetail .Highlight .body_shape {
+.TowerDetail .Component .body_shape {
   background-image: url(../../../images//wearables/BodyShapeIcon.svg);
 }
 
-.WearableDetail .Highlight .earring {
+.TowerDetail .Component .earring {
   background-image: url(../../../images//wearables/EarringsIcon.svg);
 }
 
-.WearableDetail .Highlight .eyebrows {
+.TowerDetail .Component .eyebrows {
   background-image: url(../../../images//wearables/EyebrowIcon.svg);
 }
 
-.WearableDetail .Highlight .eyes {
+.TowerDetail .Component .eyes {
   background-image: url(../../../images//wearables/EyesIcon.svg);
 }
 
-.WearableDetail .Highlight .eyewear {
+.TowerDetail .Component .eyewear {
   background-image: url(../../../images//wearables/EyewearIcon.svg);
 }
 
-.WearableDetail .Highlight .facial_hair {
+.TowerDetail .Component .facial_hair {
   background-image: url(../../../images//wearables/FacilHairIcon.svg);
 }
 
-.WearableDetail .Highlight .feet {
+.TowerDetail .Component .feet {
   background-image: url(../../../images//wearables/FeetIcon.svg);
 }
 
-.WearableDetail .Highlight .hair {
+.TowerDetail .Component .hair {
   background-image: url(../../../images//wearables/HairIcon.svg);
 }
 
-.WearableDetail .Highlight .hat {
+.TowerDetail .Component .hat {
   background-image: url(../../../images//wearables/HatIcon.svg);
 }
 
-.WearableDetail .Highlight .helmet {
+.TowerDetail .Component .helmet {
   background-image: url(../../../images//wearables/HelmetIcon.svg);
 }
 
-.WearableDetail .Highlight .lower_body {
+.TowerDetail .Component .lower_body {
   background-image: url(../../../images//wearables/LowerBodyIcon.svg);
 }
 
-.WearableDetail .Highlight .mask {
+.TowerDetail .Component .mask {
   background-image: url(../../../images//wearables/MaskIcon.svg);
 }
 
-.WearableDetail .Highlight .mouth {
+.TowerDetail .Component .mouth {
   background-image: url(../../../images//wearables/MouthIcon.svg);
 }
 
-.WearableDetail .Highlight .tiara {
+.TowerDetail .Component .tiara {
   background-image: url(../../../images//wearables/TiaraIcon.svg);
 }
 
-.WearableDetail .Highlight .top_head {
+.TowerDetail .Component .top_head {
   background-image: url(../../../images//wearables/TopHeadIcon.svg);
 }
 
-.WearableDetail .Highlight .upper_body {
+.TowerDetail .Component .upper_body {
   background-image: url(../../../images//wearables/UpperBodyIcon.svg);
 }
 
-.WearableDetail .Highlight .left > .BaseMale {
+.TowerDetail .Component .left > .BaseMale {
   background-image: url(../../../images//wearables/MaleIcon.svg);
   background-size: 24px 24px;
 }
 
-.WearableDetail .Highlight .left > .BaseFemale {
+.TowerDetail .Component .left > .BaseFemale {
   background-image: url(../../../images//wearables/FemaleIcon.svg);
   background-size: 24px 24px;
 }
 
-.WearableDetail .Highlight .left > .Unisex {
+.TowerDetail .Component .left > .Unisex {
   background-image: url(../../../images//wearables/UnisexIcon.svg);
   background-size: 24px 24px;
+}
+
+.TowerDetail .Component .barrel.common {
+  background-image: url(../../../images//towers/Barrel_Common.svg);
+}
+.TowerDetail .Component .barrel.uncommon {
+  background-image: url(../../../images//towers/Barrel_Uncommon.svg);
+}
+.TowerDetail .Component .barrel.rare {
+  background-image: url(../../../images//towers/Barrel_Rare.svg);
+}
+.TowerDetail .Component .barrel.epic {
+  background-image: url(../../../images//towers/Barrel_Epic.svg);
+}
+.TowerDetail .Component .barrel.legendary {
+  background-image: url(../../../images//towers/Barrel_Legendary.svg);
+}
+
+.TowerDetail .Component .controller.common {
+  background-image: url(../../../images//towers/Controller_Common.svg);
+}
+.TowerDetail .Component .controller.uncommon {
+  background-image: url(../../../images//towers/Controller_Uncommon.svg);
+}
+.TowerDetail .Component .controller.rare {
+  background-image: url(../../../images//towers/Barrel_Rare.svg);
+}
+.TowerDetail .Component .controller.epic {
+  background-image: url(../../../images//towers/Controller_Epic.svg);
+}
+.TowerDetail .Component .controller.legendary {
+  background-image: url(../../../images//towers/Controller_Legendary.svg);
+}
+.TowerDetail .Component .enhancer.common {
+  background-image: url(../../../images//towers/Enhancer_Common.svg);
+}
+.TowerDetail .Component .enhancer.uncommon {
+  background-image: url(../../../images//towers/Enhancer_Uncommon.svg);
+}
+.TowerDetail .Component .enhancer.rare {
+  background-image: url(../../../images//towers/Barrel_Rare.svg);
+}
+.TowerDetail .Component .enhancer.epic {
+  background-image: url(../../../images//towers/Enhancer_Epic.svg);
+}
+.TowerDetail .Component .enhancer.legendary {
+  background-image: url(../../../images//towers/Enhancer_Legendary.svg);
+}
+.TowerDetail .Component .base.common {
+  background-image: url(../../../images//towers/Base_Common.svg);
+}
+.TowerDetail .Component .base.uncommon {
+  background-image: url(../../../images//towers/Base_Uncommon.svg);
+}
+.TowerDetail .Component .base.rare {
+  background-image: url(../../../images//towers/Barrel_Rare.svg);
+}
+.TowerDetail .Component .base.epic {
+  background-image: url(../../../images//towers/Base_Epic.svg);
+}
+.TowerDetail .Component .base.legendary {
+  background-image: url(../../../images//towers/Base_Legendary.svg);
 }

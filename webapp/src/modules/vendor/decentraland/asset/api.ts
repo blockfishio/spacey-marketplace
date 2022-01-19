@@ -56,6 +56,19 @@ class AssetAPI {
 
   }
 
+  fetchTowerDetails = async (towerid: string) => {
+    const towerstats = await fetch(API_VIRTUAL_URL + '/towerdetail/' + towerid, {
+      method: "GET",
+      headers: {
+        "Accept": "application/json"
+      }
+    }).then(response => {
+      return response.json()
+    })
+    return towerstats
+
+  }
+
 }
 
 

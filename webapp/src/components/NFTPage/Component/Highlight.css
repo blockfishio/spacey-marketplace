@@ -1,34 +1,38 @@
-.Highlight.clickable {
+.Component.clickable {
   cursor: pointer;
 }
 
-.Highlight .left {
+.Component .left {
   width: 48px;
   height: 48px;
   background-color: #37333d;
   border-radius: 8px;
 }
 
-.Highlight .right {
+.Component .right {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 12px;
 }
 
-.Highlight .name {
+.Component .name {
   font-size: 15px;
   line-height: 24px;
   font-weight: 600;
 }
 
-.Highlight .description {
+.Component .description {
   font-size: 15px;
   line-height: 24px;
   color: var(--secondary-text);
 }
 
-.Highlight .left > div {
+.Component .left > div {
   width: 100%;
   height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
 }

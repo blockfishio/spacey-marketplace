@@ -84,4 +84,8 @@ export type CountAssetRequestAction = ReturnType<typeof countAssetRequest>
 export type CountAssetSuccessAction = ReturnType<typeof countAssetSuccess>
 export type CountAssetFailureAction = ReturnType<typeof countAssetFailure>
 
+export const FETCH_TOWERDETAIL_REQUEST = '[Request] Fetch TowerDetail'
+export const FETCH_TOWERDETAIL_SUCCESS = '[Success] Fetch TowerDetail'
+export const FETCH_TOWERDETAIL_FAILURE = '[Failure] Fetch TowerDetail'
+
 

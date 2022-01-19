@@ -22,4 +22,3 @@ export function getBuildingName(building: Building): string {
   return buildingName[idx].toString()
 }
 
-

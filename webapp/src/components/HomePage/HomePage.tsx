@@ -40,7 +40,14 @@ const HomePage = (props: Props) => {
   ])
 
   const handleViewAll = useCallback(
-    (section: Section) => onNavigate(locations.offical({ section })),
+    (view: HomepageView) => {
+      if (view == View.COMMUNITY) {
+        onNavigate(locations.community({ section: Section.ALL }))
+      }
+      if (view == View.OFFICAL) {
+        onNavigate(locations.offical({ section: Section.ALL }))
+      }
+    },
     [onNavigate]
   )
 
@@ -93,7 +100,7 @@ const HomePage = (props: Props) => {
             nfts={homepagenft[view]}
             assets={homepageAsset[view]}
             isLoading={homepageLoadingnft[view] || homepageLoadingAsset[view]}
-            onViewAll={() => handleViewAll(sections[view])}
+            onViewAll={() => handleViewAll(view)}
           />
         ))}
       </Page>

@@ -20,8 +20,9 @@ export class VendorFactory {
           new decentraland.ContractService(),
           new decentraland.NFTService(),
           new decentraland.OrderService(),
-          new decentraland.BidService(),
           new decentraland.AssetService(),
+          new decentraland.BidService(),
+
           new decentraland.OwnerAssetService(),
           new decentraland.ClaimMetamarsService()
         )
@@ -38,8 +39,8 @@ export class Vendor<V extends Vendors> {
     public contractService: ContractService,
     public nftService: NFTService<V>,
     public orderService: OrderService<V>,
+    public assetService: AssetService,
     public bidService?: BidService<V>,
-    public assetService?: AssetService,
     public ownerassetService?: OwnerAssetService,
     public claimMetamarsService?: ClaimMetamarsService
   ) { }

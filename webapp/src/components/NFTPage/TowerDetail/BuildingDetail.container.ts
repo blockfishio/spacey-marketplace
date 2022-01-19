@@ -7,11 +7,13 @@ import {
   MapDispatch
 } from './BuildingDetail.types'
 import EstateDetail from './BuildingDetail'
+import { fetchTowerDetailRequest } from '../../../modules/nft/actions'
 
 const mapState = (_state: RootState): MapStateProps => ({})
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
-  onNavigate: path => dispatch(push(path))
+  onNavigate: path => dispatch(push(path)),
+  onFetchTowerDetail: towerid => dispatch(fetchTowerDetailRequest(towerid))
 })
 
 export default connect(mapState, mapDispatch)(EstateDetail)

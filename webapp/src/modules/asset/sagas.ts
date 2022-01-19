@@ -11,7 +11,8 @@ import {
   COUNT_ASSET_REQUEST,
   CountAssetRequestAction,
   countAssetSuccess,
-  countAssetFailure
+  countAssetFailure,
+
 
 } from './actions'
 import { VendorFactory } from '../vendor/VendorFactory'
@@ -27,6 +28,7 @@ export function* assetSaga() {
   yield takeEvery(FETCH_ASSETS_REQUEST, handleFetchAssetsRequest)
   yield takeEvery(FETCH_ASSET_REQUEST, handleFetchAssetRequest)
   yield takeEvery(COUNT_ASSET_REQUEST, handleCountAssetRequest)
+
 }
 
 function* handleFetchAssetsRequest(action: FetchAssetsRequestAction): any {
@@ -98,3 +100,5 @@ function* handleCountAssetRequest(action: CountAssetRequestAction) {
     yield put(countAssetFailure(optionId, error.message))
   }
 }
+
+

@@ -15,7 +15,7 @@ export const locations = {
   },
   community: (options?: SearchOptions) => {
     const params = getSearchParams(options)
-    return params ? `/connumity?${params.toString()}` : '/community'
+    return params ? `/community?${params.toString()}` : '/community'
   },
   offical: (options?: SearchOptions) => {
     const params = getSearchParams(options)

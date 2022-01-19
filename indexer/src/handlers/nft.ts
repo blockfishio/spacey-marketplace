@@ -261,7 +261,7 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
       nft.image = getBuildingImage(building)
       nft.thumbnail = getBuildingImage(building)
       nft.name = getBuildingName(building)
-      nft.searchText = nft.name
+      nft.searchText = toLowerCase(nft.name)
 
     } else {
       building = new Building(nft.id)
@@ -279,7 +279,7 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
       nft.image = getTowerImage(tower)
       nft.thumbnail = getTowerThumbnail(tower)
       nft.name = getTowerName(tower)
-      nft.searchText = nft.name
+      nft.searchText = toLowerCase(nft.name)
     } else {
       tower = new Tower(nft.id)
       tower.owner = nft.owner
@@ -296,7 +296,7 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
       nft.image = getTrapImage(trap)
       nft.thumbnail = getTrapThumbnail(trap)
       nft.name = getTrapName(trap)
-      nft.searchText = nft.name
+      nft.searchText = toLowerCase(nft.name)
     } else {
       trap = new Trap(nft.id)
       trap.owner = nft.owner

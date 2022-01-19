@@ -33,12 +33,12 @@ export const CommonRarity =
 
 export const RARITY_COLOR = [
   "#ffffff",
-  '#C0C0C0',
-  '#00FA9A',
-  '#00FFFF',
-  '#9400D3',
+  '#999999',
+  '#00AF38',
+  '#00A9CF',
+  '#cb35ff',
 
-  '#FF8C00'
+  '#ff6b00'
 ]
 
 export type Common = {

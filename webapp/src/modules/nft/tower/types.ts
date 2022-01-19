@@ -9,3 +9,16 @@ export type TowerStats = {
   AttackRange: string,
   Durability: string
 }
+
+export type TowerDetail = {
+  ID: number,
+  P1: TowerPart,
+  P2: TowerPart,
+  P3: TowerPart,
+  P4: TowerPart
+}
+
+export type TowerPart = {
+  Level: number,
+  Rarity: number
+}

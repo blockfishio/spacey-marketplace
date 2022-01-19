@@ -14,6 +14,10 @@ import {
   TransferNFTRequestAction,
   transferNFTSuccess,
   transferNFTFailure,
+  FETCH_TOWERDETAIL_REQUEST,
+  FetchTowerDetailRequestAction,
+  fetchTowerDetailSuccess,
+  fetchTowerDetailFailure,
 } from './actions'
 import { getAddress, getChainId } from '../wallet/selectors'
 import { locations } from '../routing/locations'
@@ -27,6 +31,7 @@ export function* nftSaga() {
   yield takeEvery(FETCH_NFTS_REQUEST, handleFetchNFTsRequest)
   yield takeEvery(FETCH_NFT_REQUEST, handleFetchNFTRequest)
   yield takeEvery(TRANSFER_NFT_REQUEST, handleTransferNFTRequest)
+  yield takeEvery(FETCH_TOWERDETAIL_REQUEST, handleFetchTowerDetailRequest)
 }
 
 function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
@@ -91,6 +96,22 @@ function* handleTransferNFTRequest(action: TransferNFTRequestAction) {
     yield put(push(locations.activity()))
   } catch (error) {
     yield put(transferNFTFailure(nft, address, error.message))
+  }
+}
+
+
+function* handleFetchTowerDetailRequest(action: FetchTowerDetailRequestAction) {
+  const { nft } = action.payload
+  try {
+    const { assetService } = VendorFactory.build(Vendors.DECENTRALAND)
+    const [towerdetail]: AwaitFn<typeof assetService.fetchTowerDetail> = yield call(() =>
+      assetService.fetchTowerDetail(nft.tokenId))
+    yield put(fetchTowerDetailSuccess(nft, towerdetail))
+
+
+
+  } catch (error) {
+    yield put(fetchTowerDetailFailure(nft, error.message))
   }
 }
 

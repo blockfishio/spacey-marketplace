@@ -28,7 +28,6 @@ export class AssetService implements AssetServiceInterface {
 
     const asset = this.toAsset(remoteAsset)
 
-    console.log(asset)
 
 
 
@@ -50,6 +49,15 @@ export class AssetService implements AssetServiceInterface {
   async fetchTowerstats(towerkey: string) {
     const towerstats = await assetAPI.fetchTowerStats(towerkey)
     return [towerstats] as const
+  }
+
+  async fetchTowerDetail(towerid: string) {
+    const towerDetail = await assetAPI.fetchTowerDetails(towerid)
+    const res = {
+      ...towerDetail,
+      ID: towerid
+    }
+    return [res] as const
   }
 
   toAsset(asset: AssetFragment): Asset {

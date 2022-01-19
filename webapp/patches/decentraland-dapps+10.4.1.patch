@@ -72,7 +72,7 @@ index c826445..96f63de 100644
      address: selectors_1.getAddress(state),
      isConnected: selectors_1.isConnected(state),
 diff --git a/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js b/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js
-index a23bdf6..4223859 100644
+index a23bdf6..65678c6 100644
 --- a/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js
 +++ b/node_modules/decentraland-dapps/dist/containers/Navbar/Navbar.js
 @@ -1,14 +1,14 @@
@@ -112,21 +112,24 @@ index a23bdf6..4223859 100644
  class Navbar extends React.PureComponent {
      constructor() {
          super(...arguments);
-@@ -32,12 +38,18 @@ class Navbar extends React.PureComponent {
+@@ -32,12 +38,22 @@ class Navbar extends React.PureComponent {
              return {
                  menu: {
                      marketplace: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.marketplace" }),
 -                    events: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.events" }),
 -                    agora: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.agora" }),
 -                    dao: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.dao" }),
--                    docs: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.docs" }),
--                    blog: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.blog" }),
--                    builder: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.builder" })
 +                    info: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.info" }),
 +                    getspay: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.getspay" }),
 +
 +                    community: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.community" }),
 +                    freeticket: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.freeticket" }),
++                    leaderboard: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.leaderboard" }),
+                     docs: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.docs" }),
+-                    blog: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.blog" }),
+-                    builder: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.builder" })
++                    news: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.news" }),
++                    careers: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.careers" }),
 +
 +                    // events: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.events" }),
 +                    // agora: React.createElement(utils_1.T, { id: "@dapps.navbar.menu.agora" }),
@@ -137,7 +140,7 @@ index a23bdf6..4223859 100644
                  },
                  account: {
                      connecting: React.createElement(utils_1.T, { id: "@dapps.navbar.account.connecting" }),
-@@ -45,9 +57,44 @@ class Navbar extends React.PureComponent {
+@@ -45,9 +61,44 @@ class Navbar extends React.PureComponent {
                  }
              };
          };
@@ -343,20 +346,27 @@ index fbc6866..ec92859 100644
              return 'https://etherscan.io';
      }
 diff --git a/node_modules/decentraland-dapps/dist/modules/translation/defaults/en.json b/node_modules/decentraland-dapps/dist/modules/translation/defaults/en.json
-index abba0ca..d6fe54d 100644
+index abba0ca..c8572ea 100644
 --- a/node_modules/decentraland-dapps/dist/modules/translation/defaults/en.json
 +++ b/node_modules/decentraland-dapps/dist/modules/translation/defaults/en.json
-@@ -28,9 +28,17 @@
+@@ -26,11 +26,22 @@
+                 "avatars": "Avatars",
+                 "agora": "Agora",
                  "blog": "Blog",
-                 "docs": "Docs",
+-                "docs": "Docs",
++                "docs": "Get Started",
                  "marketplace": "Marketplace",
 +                "info": "Info",
 +                "community": "Community",
++                "leaderboard": "Leaderboard",
 +                "freeticket": "Free Ticket",
 +                "getspay": "Get Spay",
                  "builder": "Builder",
                  "events": "Events",
-                 "dao": "DAO"
+-                "dao": "DAO"
++                "dao": "DAO",
++                "careers": "Careers",
++                "news": "News"
 +            },
 +            "wrongNetwork": {
 +                "header": "Wrong Network",

@@ -1,12 +1,11 @@
-import React, {
-  // useCallback 
-} from 'react'
+import React, { useEffect } from 'react'
 import {
   Container, Header,
   Popup
 } from 'decentraland-ui'
 import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 import {
+  CommonRarity,
   RARITY_COLOR,
 } from '../../../modules/nft/common/type'
 import { getNFTName } from '../../../modules/nft/utils'
@@ -26,22 +25,35 @@ import { Actions } from '../Actions'
 import { Network } from '../Network'
 
 // import { Status } from '../Status'
-// import { Highlight } from '../Highlight'
-// import { Components } from '../Components'
+
 import { Bids } from '../Bids'
 import { TransactionHistory } from '../TransactionHistory'
 import { Props } from './BuildingDetail.types'
 import './BoardingpassDetail.css'
 
+import { Components } from '../Components'
+import { Component } from '../Component'
+
 const WearableDetail = (props: Props) => {
   const { nft,
+    onFetchTowerDetail
     // onNavigate 
   } = props
+
+
+  useEffect(() => {
+    // if (!nft && contractAddress && tokenId) {
+    //   onFetchNFT(contractAddress, tokenId)
+    // }
+    if (!nft.detail) {
+      onFetchTowerDetail(nft)
+    }
+  }, [nft, onFetchTowerDetail])
+
   const building = nft.data.tower!
 
-
   return (
-    <div className="WearableDetail">
+    <div className="TowerDetail">
       <PageHeader>
         <NFTImage nft={nft} />
       </PageHeader>
@@ -73,34 +85,31 @@ const WearableDetail = (props: Props) => {
         />
         <Description text={building.description} />
         {/* <Row>
-          <Status /> </Row>
+          <Status /> </Row> */}
         <Components >
-          <Row>
-            <Highlight
-              icon={<div className={"earring"} />}
-              name={"Grants each attack a 10% chance to create an illusion of the target for 8 seconds.\nThe target will receive 120% damages of its illusion damage taken."}
-            />
-          </Row>
-          <Row>
-            <Highlight
-              icon={<div className={"earring"} />}
-              name={"Attack range + 100."}
-            /> </Row>
-          <Row>
-            <Highlight
-              icon={<div className={"earring"} />}
-              name={"Attack range + 100."}
-            />
-          </Row>
-          <Row>
-            <Highlight
-              icon={<div className={"earring"} />}
-              name={"Attack range + 100."}
-            />
-          </Row>
+
+          <Component
+            icon={<div className={"barrel " + CommonRarity[nft.detail ? nft.detail.P1.Rarity : 1]} />}
+            name={"Barrel"}
+          />
+          <Component
+            icon={<div className={"enhancer " + CommonRarity[nft.detail ? nft.detail.P2.Rarity : 1]} />}
+            name={"Enhacer"}
+          />
+
+          <Component
+            icon={<div className={"controller " + CommonRarity[nft.detail ? nft.detail.P3.Rarity : 1]} />}
+            name={"Controller"}
+          />
+          <Component
+            icon={<div className={"base " + CommonRarity[nft.detail ? nft.detail.P4.Rarity : 1]} />}
+            name={"Base"}
+          />
 
 
-        </Components> */}
+
+
+        </Components>
         <Row>
           <Column align="left" grow={true}>
             <Network asset={nft} />

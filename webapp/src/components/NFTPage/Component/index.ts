@@ -1,2 +1,2 @@
-import Highlight from './Highlight'
-export { Highlight }
+import Component from './Highlight'
+export { Component }

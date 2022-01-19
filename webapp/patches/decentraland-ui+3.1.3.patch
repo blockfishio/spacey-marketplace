@@ -229,7 +229,7 @@ index 636182d..3f91c51 100644
      };
      Mana.defaultProps = {
 diff --git a/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js b/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js
-index 9580baa..a8c8099 100644
+index 9580baa..c2c5442 100644
 --- a/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js
 +++ b/node_modules/decentraland-ui/dist/components/Navbar/Navbar.js
 @@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
@@ -241,7 +241,7 @@ index 9580baa..a8c8099 100644
          for (var s, i = 1, n = arguments.length; i < n; i++) {
              s = arguments[i];
              for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-@@ -62,12 +62,19 @@ var Navbar = /** @class */ (function (_super) {
+@@ -62,12 +62,24 @@ var Navbar = /** @class */ (function (_super) {
              return leftMenu;
          }
          return (React.createElement(React.Fragment, null,
@@ -252,11 +252,16 @@ index 9580baa..a8c8099 100644
 -            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'dao', href: "https://dao.decentraland.org" }, i18n.menu.dao),
 -            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'blog', href: "https://decentraland.org/blog" }, i18n.menu.blog)));
 +            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'marketplace', href: "https://market.spacey2025.com" }, i18n.menu.marketplace),
-+            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'info', href: "https://spacey2025.com/info" }, i18n.menu.info),
++            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'getstarted', href: "https://docs.spacey2025.com" }, i18n.menu.docs),
 +            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'getspay', href: "https://spacey2025.com/getspay" }, i18n.menu.getspay),
 +
-+            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'community', href: "https://spacey2025.com/community" }, i18n.menu.community),
-+            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'freeticket', href: "https://spacey2025.com/freeticket" }, i18n.menu.freeticket),
++            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'leaderboard', href: "https://reward.spacey2025.com" }, i18n.menu.leaderboard),
++
++            React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'info', href: "https://spacey2025.com/info" }, i18n.menu.info),
++
++
++
++
 +
 +            // React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'builder', href: "https://builder.decentraland.org" }, i18n.menu.builder),
 +            // React.createElement(semantic_ui_react_1.Menu.Item, { active: activePage === 'docs', href: "https://docs.decentraland.org" }, i18n.menu.docs),
@@ -267,7 +272,7 @@ index 9580baa..a8c8099 100644
      };
      Navbar.prototype.renderRightMenu = function () {
          var _a = this.props, rightMenu = _a.rightMenu, middleMenu = _a.middleMenu, isConnected = _a.isConnected, onClickAccount = _a.onClickAccount, mana = _a.mana, address = _a.address, isConnecting = _a.isConnecting, isSignIn = _a.isSignIn, i18n = _a.i18n, onSignIn = _a.onSignIn;
-@@ -115,11 +122,11 @@ var Navbar = /** @class */ (function (_super) {
+@@ -115,11 +127,11 @@ var Navbar = /** @class */ (function (_super) {
              React.createElement(Container_1.Container, null,
                  React.createElement("div", { className: "dcl navbar-menu" },
                      React.createElement(semantic_ui_react_1.Responsive, { as: semantic_ui_react_1.Menu, secondary: true, stackable: true, minWidth: semantic_ui_react_1.Responsive.onlyTablet.minWidth },

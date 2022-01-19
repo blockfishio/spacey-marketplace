@@ -124,6 +124,33 @@ dataSources:
         - event: OrderCancelled(bytes32,indexed uint256,indexed address,address)
           handler: handleOrderCancelled
 
+  #Blindbox
+  - kind: ethereum/contract
+    name: Blindbox
+    network: ropsten
+    source:
+      address: '0x254519A142151cb8d7c42798C8cE5a37d6712490'
+      abi: Blindbox
+      startBlock: 10000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/handlers/blindbox.ts
+      entities:
+        - Blindbox
+      abis:
+        - name: Blindbox
+          file: ./abis/Blindbox.json
+      eventHandlers:
+        - event: AssetPurchased(address,string,uint256)
+          handler: handleAssetPurchased
+        
+
+
+
+    
+
   # ---------------------------------------------------------
   # ENS -------------------------------------------------
   # ---------------------------------------------------------
@@ -149,33 +176,6 @@ dataSources:
   #         handler: handleNameRegistered
 
   
-
-# ---------------------------------------------------------
-  # BLINDBOXS ----------------------------------------------------
-  # ---------------------------------------------------------
-  - kind: ethereum/contract
-    name: Blindbox
-    network: ropsten
-    source:
-      address: '0x5897C3B8472f1c4069A2e9Bf5e6DAFF5237F7a04'
-      abi: Blindbox
-      startBlock: 11100000
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.3
-      language: wasm/assemblyscript
-      file: ./src/handlers/blindbox.ts
-      entities:
-        - Asset
-      abis:
-        - name: Blindbox
-          file: ./abis/Blindbox.json
-      eventHandlers:
-        - event: SetAssetPrice()
-          handler: handleSetAssetPrice
-
-
-
 
 # ---------------------------------------------------------
   # ASSETS ----------------------------------------------------

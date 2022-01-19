@@ -4,12 +4,13 @@ import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 
 // import { Row } from '../../Layout/Row'
 import './Components.css'
+import { Row } from '../../Layout/Row'
 
 const Components = (props: { children: React.ReactNode }) => {
   return (
-    <div className="Highlights">
+    <div className="Components">
       <Header sub>{t('components.title')}</Header>
-      {props.children}
+      <Row>{props.children}</Row>
     </div>
   )
 }

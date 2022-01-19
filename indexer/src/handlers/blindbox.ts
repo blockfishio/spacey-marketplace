@@ -1,22 +1,30 @@
-import { Address } from '@graphprotocol/graph-ts'
-// import { } from '../entities/'
-import { ERC721 } from '../entities/templates'
-import { buildCount } from '../modules/count'
+import { Blindbox } from '../entities/schema'
 import {
-  Asset
-
-} from '../data/addresses'
+  AssetPurchased
+} from '../entities/Blindbox/Blindbox'
 import * as categories from '../modules/category/categories'
 import * as addresses from '../data/addresses'
+import { buildCountFromBlindbox } from '../modules/count'
+import { BigInt } from '@graphprotocol/graph-ts'
 
-export function handleSetAssetPrice(_:): void {
-  let count = buildCount()
+export function handleAssetPurchased(event: AssetPurchased): void {
+  let recipient = event.params.recipient
+  let optionId = event.params.optionID
+  let quantity = event.params.quantity.toI32()
 
-  if (count.started == 0) {
-    ERC721.create(Address.fromString(Asset))
 
-    count.started = 1
+  for (let index = 0; index < quantity; index++) {
+    let count = buildCountFromBlindbox()
+    let blindboxTotal: i32 = count.blindboxTotal
+    let blindbox = new Blindbox(event.transaction.hash.toHexString())
+    blindbox.blockNumber = event.block.number
+    blindbox.txHash = event.transaction.hash
+    blindbox.createdAt = event.block.timestamp
+    blindbox.owner = recipient.toHex()
+    blindbox.optionId = optionId
+    blindbox.save()
     count.save()
+
   }
 }
 
