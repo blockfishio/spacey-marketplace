@@ -17,6 +17,18 @@ const graphByNetwork: Record<Network, string> = {
     process.env.GRAPH_NAME || 'blockfishio/marketplacebsctest'
 }
 
+const tokenByNetwork: Record<Network, string> = {
+  [Network.MAINNET]: process.env.ACCESS_TOKEN || '49cd415d97694506a87b985088eb99e6',
+  [Network.ROPSTEN]:
+    process.env.GRAPH_NAME || '6ecf0f5a3f864fed98cda2ff9a7b4226',
+  [Network.BSC]:
+    process.env.GRAPH_NAME || '49cd415d97694506a87b985088eb99e6',
+  [Network.BSCTEST]:
+    process.env.GRAPH_NAME || '49cd415d97694506a87b985088eb99e6'
+}
+
+
+
 // TODO: Handle ctrl+C
 async function deploy() {
   const network = getNetwork()
@@ -29,8 +41,11 @@ async function deploy() {
       '--ipfs',
       'https://api.thegraph.com/ipfs/',
       '--node',
-      'https://api.thegraph.com/deploy/'
+      'https://api.thegraph.com/deploy/',
+      '--access-token',
+      tokenByNetwork[network],
     ],
+
     {
       stdio: 'inherit'
     }

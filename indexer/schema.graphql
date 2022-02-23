@@ -22,7 +22,6 @@ type Count @entity {
   buildingTotal:Int!
   towerTotal:Int!
   trapTotal:Int!
-  blindboxTotal:Int!
   # assetTotal:Int!
 
 
@@ -161,6 +160,7 @@ type NFT @entity {
   subcategory:BigInt!
   owner: Account!
   tokenURI: String
+  minter:Account!
 
   orders: [Order!] @derivedFrom(field: "nft") # History of all orders. Should only ever be ONE open order. all others must be cancelled or sold
   bids: [Bid!] @derivedFrom(field: "nft") # History of all bids.
@@ -200,14 +200,7 @@ type NFT @entity {
  
 }
 
-type Blindbox @entity {
-  id:ID!
-  owner:String
-  blockNumber:BigInt
-  txHash:Bytes
-  optionId:String
-  createdAt: BigInt
-}
+
 
 
 type Account @entity {

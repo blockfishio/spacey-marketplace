@@ -60,7 +60,7 @@ export function buildCountFromNFT(nft: NFT): Count {
 export function buildCountFromOrder(order: Order): Count {
   let category = order.category
   let count = buildCount()
-  // count.orderTotal += 1
+  count.orderTotal += 1
 
   if (category == categories.BOARDINGPASS) {
     count.orderBoardingpass += 1

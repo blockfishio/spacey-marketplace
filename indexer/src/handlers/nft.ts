@@ -196,6 +196,7 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
 
   if (isMint(event)) {
     nft.createdAt = event.block.timestamp
+    nft.minter = event.params.to.toHex()
 
     // We're defaulting "Estate size" to one to allow the frontend to search for `searchEstateSize_gt: 0`,
     // necessary because thegraph doesn't support complex queries and we can't do `OR` operations

@@ -19,7 +19,7 @@ export const locations = {
   },
   offical: (options?: SearchOptions) => {
     const params = getSearchParams(options)
-    return params ? `/offical?${params.toString()}` : '/offical'
+    return params ? `/offical?${params.toString()}` : '/official'
   },
   currentAccount: (options?: SearchOptions) => {
     const params = getSearchParams(options)

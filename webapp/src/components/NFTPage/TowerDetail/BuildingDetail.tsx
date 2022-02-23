@@ -94,7 +94,7 @@ const WearableDetail = (props: Props) => {
           />
           <Component
             icon={<div className={"enhancer " + CommonRarity[nft.detail ? nft.detail.P2.Rarity : 1]} />}
-            name={"Enhacer"}
+            name={"Enhancer"}
           />
 
           <Component

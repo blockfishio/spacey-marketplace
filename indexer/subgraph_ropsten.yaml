@@ -122,35 +122,7 @@ dataSources:
         - event: OrderSuccessful(bytes32,indexed uint256,indexed address,address,uint256,indexed address)
           handler: handleOrderSuccessful
         - event: OrderCancelled(bytes32,indexed uint256,indexed address,address)
-          handler: handleOrderCancelled
-
-  #Blindbox
-  - kind: ethereum/contract
-    name: Blindbox
-    network: ropsten
-    source:
-      address: '0x254519A142151cb8d7c42798C8cE5a37d6712490'
-      abi: Blindbox
-      startBlock: 10000000
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.3
-      language: wasm/assemblyscript
-      file: ./src/handlers/blindbox.ts
-      entities:
-        - Blindbox
-      abis:
-        - name: Blindbox
-          file: ./abis/Blindbox.json
-      eventHandlers:
-        - event: AssetPurchased(address,string,uint256)
-          handler: handleAssetPurchased
-        
-
-
-
-    
-
+          handler: handleOrderCancelled   
   # ---------------------------------------------------------
   # ENS -------------------------------------------------
   # ---------------------------------------------------------
