@@ -4,6 +4,7 @@ import { ERC721, Transfer } from '../../entities/templates/ERC721/ERC721'
 import { Asset, DetailedTransfer } from '../../entities/templates/ERC721/Asset'
 import * as status from '../order/status'
 import * as addresses from '../../data/addresses'
+import { rarityText } from '../../data/nfts'
 
 export function isMint(event: DetailedTransfer): boolean {
   return event.params.from.toHexString() == addresses.Null
@@ -76,4 +77,9 @@ export function cancelActiveOrder(nft: NFT, now: BigInt): boolean {
     return true
   }
   return false
+}
+
+export function getRarityText(rarity: i32): string {
+  return rarityText[rarity].toString()
+
 }

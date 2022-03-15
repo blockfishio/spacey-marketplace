@@ -16,7 +16,7 @@ import {
   WearableRarity,
   WearableGender
 } from '../../../../modules/nft/wearable/types'
-import { NFTCategory } from '../../../../modules/nft/types'
+// import { NFTCategory } from '../../../../modules/nft/types'
 import { ContractName } from '../../../../modules/vendor/types'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { MAX_QUERY_SIZE } from '../../../../modules/vendor/decentraland/api'
@@ -68,12 +68,12 @@ const NFTFilters = (props: Props) => {
   if (wearableRarities.length > 0) {
     appliedFilters.push(t('nft_filters.rarity'))
   }
-  if (wearableGenders.length > 0) {
-    appliedFilters.push(t('nft_filters.gender'))
-  }
-  if (contracts.length > 0) {
-    appliedFilters.push(t('nft_filters.collection'))
-  }
+  // if (wearableGenders.length > 0) {
+  //   appliedFilters.push(t('nft_filters.gender'))
+  // }
+  // if (contracts.length > 0) {
+  //   appliedFilters.push(t('nft_filters.collection'))
+  // }
 
   const handleOnlyOnSaleChange = useCallback(
     (_, props: CheckboxProps) => {
@@ -98,7 +98,8 @@ const NFTFilters = (props: Props) => {
 
   const handleRaritiesChange = useCallback(
     (options: string[]) => {
-      onBrowse({ wearableRarities: options as WearableRarity[] })
+      const newOptions = options.map((option) => t(`wearable.rarity.${option}`).toLowerCase())
+      onBrowse({ wearableRarities: newOptions as WearableRarity[] })
     },
     [onBrowse]
   )
@@ -126,10 +127,10 @@ const NFTFilters = (props: Props) => {
     [search, onBrowse]
   )
 
-  const handleToggleFilterMenu = useCallback(
-    () => setShowFiltersMenu(!showFiltersMenu),
-    [showFiltersMenu, setShowFiltersMenu]
-  )
+  // const handleToggleFilterMenu = useCallback(
+  //   () => setShowFiltersMenu(!showFiltersMenu),
+  //   [showFiltersMenu, setShowFiltersMenu]
+  // )
 
   useEffect(() => setShowFiltersMenu(false), [category, setShowFiltersMenu])
 
@@ -202,18 +203,18 @@ const NFTFilters = (props: Props) => {
           </>
         )}
 
-        {category === NFTCategory.WEARABLE ? (
-          <Responsive
-            minWidth={Responsive.onlyTablet.minWidth}
-            className="open-filters-wrapper topbar-filter"
-            onClick={handleToggleFilterMenu}
-          >
-            <div
-              className={`open-filters ${showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
-                }`}
-            />
-          </Responsive>
-        ) : null}
+        {/* {category === NFTCategory.WEARABLE ? ( */}
+        {/* <Responsive
+          minWidth={Responsive.onlyTablet.minWidth}
+          className="open-filters-wrapper topbar-filter"
+          onClick={handleToggleFilterMenu}
+        >
+          <div
+            className={`open-filters ${showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
+              }`}
+          />
+        </Responsive> */}
+        {/* ) : null} */}
 
         <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
           <div
@@ -250,21 +251,21 @@ const NFTFilters = (props: Props) => {
         ) : null}
       </div>
 
-      {showFiltersMenu ? (
-        <Responsive
-          minWidth={Responsive.onlyTablet.minWidth}
-          className="filters"
-        >
-          <FiltersMenu
-            selectedCollection={contracts[0]}
-            selectedRarities={wearableRarities}
-            selectedGenders={wearableGenders}
-            onCollectionsChange={handleCollectionsChange}
-            onGendersChange={handleGendersChange}
-            onRaritiesChange={handleRaritiesChange}
-          />
-        </Responsive>
-      ) : null}
+      {/* {showFiltersMenu ? ( */}
+      <Responsive
+        minWidth={Responsive.onlyTablet.minWidth}
+        className="filters"
+      >
+        <FiltersMenu
+          selectedCollection={contracts[0]}
+          selectedRarities={wearableRarities}
+          selectedGenders={wearableGenders}
+          onCollectionsChange={handleCollectionsChange}
+          onGendersChange={handleGendersChange}
+          onRaritiesChange={handleRaritiesChange}
+        />
+      </Responsive>
+      {/* ) : null} */}
 
       <Modal
         className="FiltersModal"
@@ -273,16 +274,16 @@ const NFTFilters = (props: Props) => {
       >
         <Modal.Header>{t('nft_filters.filter')}</Modal.Header>
         <Modal.Content>
-          {category === NFTCategory.WEARABLE ? (
-            <FiltersMenu
-              selectedCollection={contracts[0]}
-              selectedRarities={wearableRarities}
-              selectedGenders={wearableGenders}
-              onCollectionsChange={handleCollectionsChange}
-              onGendersChange={handleGendersChange}
-              onRaritiesChange={handleRaritiesChange}
-            />
-          ) : null}
+          {/* {category === NFTCategory.WEARABLE ? ( */}
+          <FiltersMenu
+            selectedCollection={contracts[0]}
+            selectedRarities={wearableRarities}
+            selectedGenders={wearableGenders}
+            onCollectionsChange={handleCollectionsChange}
+            onGendersChange={handleGendersChange}
+            onRaritiesChange={handleRaritiesChange}
+          />
+          {/* ) : null} */}
           <div className="filter-row">
             <Header sub>{t('nft_filters.order_by')}</Header>
             <Dropdown

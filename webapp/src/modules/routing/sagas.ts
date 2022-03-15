@@ -98,6 +98,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
+  const rarities = searchOptions.wearableRarities
   const { search, onlyOnSale, isMap, address } = searchOptions
 
   const isLoadMore = (view === View.LOAD_MORE || view === View.OFFICAL_LOAD_MORE || view === View.COMMUNITY_LOAD_MORE)
@@ -124,7 +125,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           onlyOnSale,
           address,
           category,
-          search
+          search,
+          rarities
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -160,6 +162,8 @@ function* getNewSearchOptions(current: SearchOptions) {
     sortBy: yield select(getSortBy),
     search: yield select(getSearch),
     onlyOnSale: yield select(getOnlyOnSale),
+    wearableRarities: yield select(getWearableRarities),
+
     isMap: yield select(getIsMap),
     isFullscreen: yield select(getIsFullscreen)
   }

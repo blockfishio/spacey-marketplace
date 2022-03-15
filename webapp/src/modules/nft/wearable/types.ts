@@ -23,7 +23,7 @@ export enum WearableRarity {
   EPIC = 'epic',
   RARE = 'rare',
   UNCOMMON = 'uncommon',
-  COMMON = 'common'
+  COMMON = 'common',
 }
 
 export const RARITY_COLOR_LIGHT = {

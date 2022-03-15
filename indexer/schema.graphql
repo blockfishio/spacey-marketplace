@@ -192,6 +192,7 @@ type NFT @entity {
   searchIsLand: Boolean
 
   searchText: String
+  searchRarity:String
 
  
 

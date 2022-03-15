@@ -22,7 +22,6 @@ export function buildCount(): Count {
     count.buildingTotal = 0
     count.towerTotal = 0
     count.trapTotal = 0
-    count.blindboxTotal = 0
 
 
 
@@ -80,8 +79,4 @@ export function buildCountFromOrder(order: Order): Count {
   return count
 }
 
-export function buildCountFromBlindbox(): Count {
-  let count = buildCount()
-  count.blindboxTotal += 1
-  return count
-}
+

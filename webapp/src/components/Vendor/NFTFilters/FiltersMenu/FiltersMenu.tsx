@@ -2,54 +2,54 @@ import React, { useMemo } from 'react'
 import { t } from 'decentraland-dapps/dist/modules/translation/utils'
 import { Row } from 'decentraland-ui'
 
-import {
-  contractAddresses,
-  contractCategories,
-  contractSymbols
-} from '../../../../modules/contract/utils'
+// import {
+//   contractAddresses,
+//   contractCategories,
+//   contractSymbols
+// } from '../../../../modules/contract/utils'
 import {
   WearableRarity,
-  WearableGender
+  // WearableGender
 } from '../../../../modules/nft/wearable/types'
-import { NFTCategory } from '../../../../modules/nft/types'
-import { ContractName } from '../../../../modules/vendor/types'
+// import { NFTCategory } from '../../../../modules/nft/types'
+// import { ContractName } from '../../../../modules/vendor/types'
 import { ArrayFilter } from '../ArrayFilter'
-import { SelectFilter } from '../SelectFilter'
+// import { SelectFilter } from '../SelectFilter'
 import { Props } from './FiltersMenu.types'
 
 export const ALL_COLLECTIONS_FILTER_OPTION = 'all'
 
 const FiltersMenu = (props: Props) => {
   const {
-    selectedCollection,
+    // selectedCollection,
     selectedRarities,
-    selectedGenders,
-    onCollectionsChange,
+    // selectedGenders,
+    // onCollectionsChange,
     onRaritiesChange,
-    onGendersChange
+    // onGendersChange
   } = props
 
-  const collectionOptions = useMemo(() => {
-    const options = Object.keys(contractAddresses).filter(
-      (contractName: string) =>
-        contractCategories[contractAddresses[contractName as ContractName]] ===
-        NFTCategory.WEARABLE
-    ) as ContractName[]
-    return [
-      {
-        value: ALL_COLLECTIONS_FILTER_OPTION,
-        text: t('nft_filters.all_collections')
-      },
-      ...options.map(collection => ({
-        value: collection,
-        text: contractSymbols[contractAddresses[collection]]
-      }))
-    ]
-  }, [])
+  // const collectionOptions = useMemo(() => {
+  //   const options = Object.keys(contractAddresses).filter(
+  //     (contractName: string) =>
+  //       contractCategories[contractAddresses[contractName as ContractName]] ===
+  //       NFTCategory.WEARABLE
+  //   ) as ContractName[]
+  //   return [
+  //     {
+  //       value: ALL_COLLECTIONS_FILTER_OPTION,
+  //       text: t('nft_filters.all_collections')
+  //     },
+  //     ...options.map(collection => ({
+  //       value: collection,
+  //       text: contractSymbols[contractAddresses[collection]]
+  //     }))
+  //   ]
+  // }, [])
 
   const rarityOptions = useMemo(() => {
     const options = Object.values(WearableRarity)
-      .filter(x => x !== WearableRarity.COMMON && x !== WearableRarity.UNIQUE)
+      .filter(x => x !== WearableRarity.MYTHIC && x !== WearableRarity.UNIQUE)
       .reverse()
     return options.map(rarity => ({
       value: rarity,
@@ -57,24 +57,24 @@ const FiltersMenu = (props: Props) => {
     }))
   }, [])
 
-  const genderOptions = useMemo(() => {
-    const options = Object.values(WearableGender)
-    return options.map(gender => ({
-      value: gender,
-      text: t(`wearable.body_shape.${gender}`)
-    }))
-  }, [])
+  // const genderOptions = useMemo(() => {
+  //   const options = Object.values(WearableGender)
+  //   return options.map(gender => ({
+  //     value: gender,
+  //     text: t(`wearable.body_shape.${gender}`)
+  //   }))
+  // }, [])
 
   return (
     <>
-      <Row>
+      {/* <Row>
         <SelectFilter
           name={t('nft_filters.collection')}
           value={selectedCollection || ALL_COLLECTIONS_FILTER_OPTION}
           options={collectionOptions}
           onChange={onCollectionsChange}
         />
-      </Row>
+      </Row> */}
       <Row>
         <ArrayFilter
           name={t('nft_filters.rarity')}
@@ -82,12 +82,12 @@ const FiltersMenu = (props: Props) => {
           options={rarityOptions}
           onChange={onRaritiesChange}
         />
-        <ArrayFilter
+        {/* <ArrayFilter
           name={t('nft_filters.gender')}
           values={selectedGenders}
           options={genderOptions}
           onChange={onGendersChange}
-        />
+        /> */}
       </Row>
     </>
   )

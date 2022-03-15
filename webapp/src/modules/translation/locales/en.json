@@ -193,6 +193,11 @@
     "rarity": {
       "unique": "Unique",
       "mythic": "Mythic",
+      "legendary": "Legendary",
+      "epic": "Epic",
+      "rare": "Rare",
+      "uncommon": "Uncommon",
+      "common": "Common",
       "5": "Legendary",
       "4": "Epic",
       "3": "Rare",

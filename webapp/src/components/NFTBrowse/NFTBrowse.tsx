@@ -45,7 +45,7 @@ const NFTBrowse = (props: Props) => {
         vendor,
         view,
         address,
-        onlyOnSale: showOnSale
+        onlyOnSale: showOnSale,
       })
     }
   }, [viewInState, onFetchNFTsFromRoute])

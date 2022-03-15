@@ -106,6 +106,15 @@ class NFTAPI extends BaseAPI {
     if (params.search) {
       queryParams.set('search', params.search)
     }
+
+    if (params.rarities) {
+      for (const rarity of params.rarities) {
+        queryParams.append('itemRarity', rarity.toLowerCase())
+
+
+      }
+    }
+
     if (filters) {
 
       if (filters.isLand) {
@@ -117,7 +126,6 @@ class NFTAPI extends BaseAPI {
       else if (filters.isOffical === false) {
         queryParams.append('ownernot', OFFICAL_ADDRESS)
       }
-
 
 
       // if (filters.contracts) {

@@ -15,7 +15,8 @@ import {
   getNFTId,
   getTokenURI,
   cancelActiveOrder,
-  clearNFTOrderProperties
+  clearNFTOrderProperties,
+  getRarityText
 } from '../modules/nft'
 import { getCategory, getCategoryByIndex, getSubCategoryByIndex } from '../modules/category'
 // import { buildEstateFromNFT, getEstateImage } from '../modules/estate'
@@ -207,6 +208,7 @@ export function handleDetailedTransfer(event: DetailedTransfer): void {
     // nft.searchParcelIsInBounds = true
 
     nft.searchText = ''
+    nft.searchRarity = getRarityText(event.params.rarity)
 
     nft.searchIsLand = false
 

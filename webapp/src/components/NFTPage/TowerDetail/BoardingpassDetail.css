@@ -128,7 +128,7 @@
   background-image: url(../../../images//towers/Controller_Uncommon.svg);
 }
 .TowerDetail .Component .controller.rare {
-  background-image: url(../../../images//towers/Barrel_Rare.svg);
+  background-image: url(../../../images//towers/Controller_Rare.svg);
 }
 .TowerDetail .Component .controller.epic {
   background-image: url(../../../images//towers/Controller_Epic.svg);
@@ -158,7 +158,7 @@
   background-image: url(../../../images//towers/Base_Uncommon.svg);
 }
 .TowerDetail .Component .base.rare {
-  background-image: url(../../../images//towers/Barrel_Rare.svg);
+  background-image: url(../../../images//towers/Base_Rare.svg);
 }
 .TowerDetail .Component .base.epic {
   background-image: url(../../../images//towers/Base_Epic.svg);

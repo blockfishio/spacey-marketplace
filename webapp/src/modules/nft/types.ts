@@ -1,6 +1,6 @@
 import { Parcel } from './parcel/types'
 import { Estate } from './estate/types'
-import { Wearable } from './wearable/types'
+import { Wearable, WearableRarity } from './wearable/types'
 import { ENS } from './ens/types'
 import { View } from '../ui/types'
 import { NFTsFetchFilters } from '../vendor/nft/types'
@@ -84,6 +84,7 @@ export type NFTsFetchParams = {
   address?: string
   onlyOnSale?: boolean
   search?: string
+  rarities?: WearableRarity[]
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>
