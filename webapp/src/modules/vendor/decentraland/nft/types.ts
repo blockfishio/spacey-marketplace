@@ -1,5 +1,5 @@
 
-import { Network } from '@dcl/schemas'
+import { Network } from '@spacey2025/schemas'
 import { ContractName } from '../ContractService'
 import { NFT } from '../../../nft/types'
 import { Order } from '../../../order/types'

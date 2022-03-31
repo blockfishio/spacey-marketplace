@@ -1,6 +1,6 @@
 import { Address } from 'web3x-es/address'
 import { Eth } from 'web3x-es/eth'
-import { getConnectedProvider } from 'decentraland-dapps/dist/lib/eth'
+import { getConnectedProvider } from 'spacey-dapps/dist/lib/eth'
 import { MANA } from '../../contracts/MANA'
 import { contractAddresses } from '../contract/utils'
 import { getAddress } from '../wallet/selectors'

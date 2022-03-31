@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Page, Loader } from 'decentraland-ui'
+import { Page, Loader } from 'spacey-ui'
 
 import { locations } from '../../modules/routing/locations'
 import { VendorFactory } from '../../modules/vendor/VendorFactory'

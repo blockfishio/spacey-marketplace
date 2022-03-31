@@ -1,7 +1,7 @@
 import { NFT } from '../../../modules/nft/types'
 import { Bid } from '../../../modules/bid/types'
 import { Order } from '../../../modules/order/types'
-import { Network } from '@dcl/schemas'
+import { Network } from '@spacey2025/schemas'
 
 export type Props = {
   nft: NFT | null

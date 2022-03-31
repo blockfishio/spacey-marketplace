@@ -6,7 +6,7 @@ import {
 import {
   // Atlas,
   AtlasTile
-} from 'decentraland-ui'
+} from 'spacey-ui'
 // import { ATLAS_URL } from '../../modules/vendor/decentraland'
 import {
   FETCH_TILES_REQUEST,
@@ -18,7 +18,7 @@ import {
 import {
   ConnectWalletSuccessAction,
   CONNECT_WALLET_SUCCESS
-} from 'decentraland-dapps/dist/modules/wallet/actions'
+} from 'spacey-dapps/dist/modules/wallet/actions'
 import { fetchNFTsRequest } from '../nft/actions'
 import { Vendors } from '../vendor'
 import { VendorFactory, Vendor } from '../vendor/VendorFactory'

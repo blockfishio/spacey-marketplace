@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
-import { Header, Mana, Button } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Header, Mana, Button } from 'spacey-ui'
+import { T, t } from 'spacey-dapps/dist/modules/translation/utils'
 import { formatMANA } from '../../../lib/mana'
 import { locations } from '../../../modules/routing/locations'
 import { isPartner } from '../../../modules/vendor/utils'

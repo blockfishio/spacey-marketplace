@@ -1,6 +1,6 @@
 import { action } from 'typesafe-actions'
-import { ChainId } from '@dcl/schemas'
-import { buildTransactionPayload } from 'decentraland-dapps/dist//modules/transaction/utils'
+import { ChainId } from '@spacey2025/schemas'
+import { buildTransactionPayload } from 'spacey-dapps/dist//modules/transaction/utils'
 import { Authorizations, AuthorizationsRequest, Address } from './types'
 
 // Fetch authorization

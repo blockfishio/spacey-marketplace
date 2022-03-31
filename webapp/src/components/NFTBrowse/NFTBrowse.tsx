@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Container, Page, Responsive } from 'decentraland-ui'
+import { Container, Page, Responsive } from 'spacey-ui'
 
 // import { getDefaultOptionsByView } from '../../modules/routing/search'
 import { View } from '../../modules/ui/types'

@@ -11,7 +11,7 @@ import { Building } from './building/types'
 import { Land } from './land/types'
 import { Tower, TowerDetail } from './tower/types'
 import { Trap } from './trap/types'
-import { Network } from '@dcl/schemas'
+import { Network } from '@spacey2025/schemas'
 
 export enum NFTSortBy {
   NAME = 'name',

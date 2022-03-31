@@ -11,9 +11,10 @@ import { ContractService } from './ContractService'
 
 export class ClaimMetamarsService implements ClaimMetamarsServiceInterface {
   async claim(amount: number,
-    fromAddress: string
+    fromAddress: string,
+    chainId: ChainId
   ) {
-    const claimMetamars = await this.getClaimMetamarsContract(ChainId.BSC_MAINNET)
+    const claimMetamars = await this.getClaimMetamarsContract(chainId)
     if (!fromAddress) {
       throw new Error('Invalid address. Wallet must be connected.')
     }

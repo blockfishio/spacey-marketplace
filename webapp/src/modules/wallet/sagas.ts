@@ -1,5 +1,5 @@
 import { takeEvery, all, put, select } from 'redux-saga/effects'
-import { createWalletSaga } from 'decentraland-dapps/dist/modules/wallet/sagas'
+import { createWalletSaga } from 'spacey-dapps/dist/modules/wallet/sagas'
 import {
   ConnectWalletSuccessAction,
   CONNECT_WALLET_SUCCESS,
@@ -7,15 +7,15 @@ import {
   ChangeNetworkAction,
   CHANGE_ACCOUNT,
   CHANGE_NETWORK
-} from 'decentraland-dapps/dist/modules/wallet/actions'
-import { ChainId } from '@dcl/schemas'
-import { getChainId } from 'decentraland-dapps/dist/modules/wallet/selectors'
+} from 'spacey-dapps/dist/modules/wallet/actions'
+import { ChainId } from '@spacey2025/schemas'
+import { getChainId } from 'spacey-dapps/dist/modules/wallet/selectors'
 
 
 import { NFTCategory } from '../nft/types'
 import { fetchAuthorizationRequest } from '../authorization/actions'
 import { AuthorizationsRequest } from '../authorization/types'
-import { wsConnectRequest } from '../websocket/actions'
+// import { wsConnectRequest } from '../websocket/actions'
 
 import {
   // contractAddresses,
@@ -44,25 +44,31 @@ function* handleWallet(
 ) {
   const chainId: ChainId = yield select(getChainId)
 
-  const { address, providerType } = action.payload.wallet
+  const { address } = action.payload.wallet
 
   // const { MANAToken, Marketplace,
   //   AssetSale } = contractAddresses
+  console.log(chainId)
 
   const { MANAToken, Marketplace,
     AssetSale, DepositGMars, METAMARSToken } = contractAddressesAll[chainId]
 
   // TODO: VendorFactory.build().contractService.getAllowances()
   // TODO: VendorFactory.build().contractService.getApprovals()
-
   const authorization: AuthorizationsRequest = {
-    allowances: {
+    allowances: chainId == ChainId.BSC_MAINNET ? {
       [Marketplace]: [MANAToken],
       // [MarketplaceAdapter]: [MANAToken],
       // [Bids]: [MANAToken],
       [AssetSale]: [MANAToken],
       [DepositGMars]: [METAMARSToken],
-    },
+    } :
+      {
+        [Marketplace]: [MANAToken],
+        // [MarketplaceAdapter]: [MANAToken],
+        // [Bids]: [MANAToken],
+        [AssetSale]: [MANAToken],
+      },
     approvals: {
       [Marketplace]: Object.keys(contractCategoriesAll[chainId]).filter(
         key => contractCategoriesAll[chainId][key] !== NFTCategory.ART
@@ -71,5 +77,5 @@ function* handleWallet(
   }
 
   yield put(fetchAuthorizationRequest(address, authorization))
-  yield put(wsConnectRequest(address, providerType))
+  // yield put(wsConnectRequest(address, providerType))
 }

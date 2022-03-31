@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost'
 
-import { BaseAPI } from 'decentraland-dapps/dist/lib/api'
+import { BaseAPI } from 'spacey-dapps/dist/lib/api'
 import { NFTsFetchParams } from '../../../nft/types'
 import { ContractService } from '../ContractService'
 // import { contractAddressesAll } from '../../../contract/utils'

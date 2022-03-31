@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stats, Mana } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Stats, Mana } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { formatMANA } from '../../../lib/mana'
 import { formatDistanceToNow } from '../../../lib/date'

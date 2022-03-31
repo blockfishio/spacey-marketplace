@@ -2,9 +2,9 @@ import React, {
   useCallback,
   useEffect
 } from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { isMobile } from 'decentraland-dapps/dist/lib/utils'
-import { Page, Hero, Button } from 'decentraland-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
+import { isMobile } from 'spacey-dapps/dist/lib/utils'
+import { Page, Hero, Button } from 'spacey-ui'
 import { locations } from '../../modules/routing/locations'
 import { Vendors } from '../../modules/vendor/types'
 import { SortBy } from '../../modules/routing/types'

@@ -1,5 +1,5 @@
 import { NFT } from '../../../modules/nft/types'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Wallet } from 'spacey-dapps/dist/modules/wallet/types'
 import { Order } from '../../../modules/order/types'
 import { Authorizations } from '../../../modules/authorization/types'
 import { executeOrderRequest } from '../../../modules/order/actions'

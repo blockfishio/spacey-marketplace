@@ -1,4 +1,4 @@
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Wallet } from 'spacey-dapps/dist/modules/wallet/types'
 import { Authorizations } from '../../../modules/authorization/types'
 import { depositGMarsRequest } from '../../../modules/deposit/actions'
 

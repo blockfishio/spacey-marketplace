@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Modal, Button } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Modal, Button } from 'spacey-ui'
+import { T, t } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { isOwnedBy } from '../../../modules/nft/utils'
 import { locations } from '../../../modules/routing/locations'

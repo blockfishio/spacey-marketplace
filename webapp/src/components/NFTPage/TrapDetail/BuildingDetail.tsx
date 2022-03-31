@@ -4,8 +4,8 @@ import React, {
 import {
   Container, Header,
   Popup
-} from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+} from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import {
   RARITY_COLOR,
 } from '../../../modules/nft/common/type'

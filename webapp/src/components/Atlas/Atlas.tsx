@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Atlas as AtlasComponent, Color, Layer } from 'decentraland-ui'
+import { Atlas as AtlasComponent, Color, Layer } from 'spacey-ui'
 import { locations } from '../../modules/routing/locations'
 // import { contractAddresses } from '../../modules/contract/utils'
 // import { nftAPI } from '../../modules/vendor/decentraland/nft/api'

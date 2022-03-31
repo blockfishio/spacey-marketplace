@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
-import { Header, Table, Mana, Responsive } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Profile } from 'decentraland-dapps/dist/containers'
+import { Header, Table, Mana, Responsive } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
+import { Profile } from 'spacey-dapps/dist/containers'
 import dateFnsFormat from 'date-fns/format'
 
 import { locations } from '../../../modules/routing/locations'

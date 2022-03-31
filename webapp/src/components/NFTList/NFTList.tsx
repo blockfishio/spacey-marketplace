@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
-import { Card, Button, Loader } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Card, Button, Loader } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { getMaxQuerySize, MAX_PAGE, PAGE_SIZE } from '../../modules/vendor/api'
 import { NFTCard } from '../NFTCard'

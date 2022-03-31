@@ -1,5 +1,5 @@
 import React from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import { RARITY_COLOR } from '../../../modules/nft/common/type'
 
 import { Props } from './SMTTags.types'

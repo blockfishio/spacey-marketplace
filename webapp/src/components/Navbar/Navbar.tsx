@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
-import { Menu, Icon } from 'decentraland-ui'
-import { Navbar as BaseNavbar } from 'decentraland-dapps/dist/containers'
+import { Menu, Icon } from 'spacey-ui'
+import { Navbar as BaseNavbar } from 'spacey-dapps/dist/containers'
 
 import { locations } from '../../modules/routing/locations'
 import UserMenu from '../UserMenu'

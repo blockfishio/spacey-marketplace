@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Mana } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { TransactionLink, Profile } from 'decentraland-dapps/dist/containers'
+import { Mana } from 'spacey-ui'
+import { T, t } from 'spacey-dapps/dist/modules/translation/utils'
+import { TransactionLink, Profile } from 'spacey-dapps/dist/containers'
 
 import { contractSymbols } from '../../../modules/contract/utils'
 import { getNFTName } from '../../../modules/nft/utils'

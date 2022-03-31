@@ -97,13 +97,17 @@ const contractAddressesAll = {
 
   },
 
-  // [ChainId.BSC_TESTNET]: {
-  //   MANAToken: "0x8718a9E002A9c3EA453466eb5D8e6079e99F14A3",
-  //   Marketplace: '0x68e640fC786eEF03F04825Ed790B8d3B53272033',
-  //   AssetSale: '0x939F06c7237fBeAee33dE637730bA4E618d491b9',
-  //   Bids: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f',
-  //   SpaceY2025: '0x37C2c3727aF94eA607465Da8E6C631DDB3010eF8'
-  // }
+  [ChainId.BSC_TESTNET]: {
+    MANAToken: "0x13A637026dF26F846D55ACC52775377717345c06",
+    Marketplace: '0x513c944c42a1345E993aE026d5c4acE70d425879',
+    AssetSale: '0x0aC354FD5502572e1028428A29b7b5172d7a294C',
+    Bids: '0x250fa138c0a994799c7a49df3097dc71e37b3d6f',
+    SpaceY2025: '0x230185c3b02b897b89cb1e62717ad7772b8319da',
+    ClaimMetamars: '0xF0786A6D75Fbd3417DC9a3f5119088ddea4bf940',
+    DepositGMars: '0xF0786A6D75Fbd3417DC9a3f5119088ddea4bf940',
+    METAMARSToken: '0x67807B77D4e0215CA2362E9b668219e3A058C849'
+
+  },
 
 }
 
@@ -128,7 +132,7 @@ export class ContractService implements ContractServiceInterface {
 
   contractAddresses = contractAddresses
 
-  contractSymbolsAll = Object.keys(contractAddressesAll).reduce(function (res, chainId) {
+  contractSymbolsAll = Object.keys(contractAddressesAll).reduce(function(res, chainId) {
     const {
       MANAToken,
       Marketplace,
@@ -154,7 +158,7 @@ export class ContractService implements ContractServiceInterface {
   }, {})
 
 
-  contractNamesAll = Object.keys(contractAddressesAll).reduce(function (res, chainId) {
+  contractNamesAll = Object.keys(contractAddressesAll).reduce(function(res, chainId) {
     const {
       MANAToken,
       Marketplace,
@@ -180,7 +184,7 @@ export class ContractService implements ContractServiceInterface {
 
   }, {})
 
-  contractCategoriesAll = Object.keys(contractAddressesAll).reduce(function (res, chainId) {
+  contractCategoriesAll = Object.keys(contractAddressesAll).reduce(function(res, chainId) {
     const {
       SpaceY2025
     } = contractAddressesAll[parseInt(chainId) as ChainId]

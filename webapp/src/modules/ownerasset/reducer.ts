@@ -1,7 +1,7 @@
 import {
   LoadingState,
   loadingReducer
-} from 'decentraland-dapps/dist/modules/loading/reducer'
+} from 'spacey-dapps/dist/modules/loading/reducer'
 
 import { OwnerAsset, OwnerChest } from './types'
 import {

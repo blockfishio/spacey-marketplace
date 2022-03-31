@@ -1,5 +1,5 @@
 import React from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { BodyShape, RARITY_COLOR } from '../../../modules/nft/wearable/types'
 import { isUnisex, isGender } from '../../../modules/nft/wearable/utils'

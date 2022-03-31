@@ -1,5 +1,5 @@
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
+import { Wallet } from 'spacey-dapps/dist/modules/wallet/types'
 import {
   allowTokenRequest,
   approveTokenRequest

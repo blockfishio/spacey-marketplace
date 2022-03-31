@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { isLoadingType } from 'decentraland-dapps/dist/modules/loading/selectors'
+import { isLoadingType } from 'spacey-dapps/dist/modules/loading/selectors'
 import { RootState } from '../../modules/reducer'
 import { fetchAssetRequest, FETCH_ASSET_REQUEST } from '../../modules/asset/actions'
 // import { fetchAssetsRequest,FETCH_ASSETS_REQUEST} from '../../modules/asset/actions'

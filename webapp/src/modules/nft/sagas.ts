@@ -24,7 +24,7 @@ import { locations } from '../routing/locations'
 import { VendorFactory } from '../vendor/VendorFactory'
 // import { contractVendors } from '../contract/utils'
 import { AwaitFn } from '../types'
-import { ChainId } from '@dcl/schemas'
+import { ChainId } from '@spacey2025/schemas'
 import { Vendors } from '../vendor/types'
 
 export function* nftSaga() {

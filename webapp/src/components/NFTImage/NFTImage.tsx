@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { Loader } from 'decentraland-ui'
+import { Loader } from 'spacey-ui'
 import { LazyImage } from 'react-lazy-images'
 
 import { getSelection, getCenter } from '../../modules/nft/estate/utils'

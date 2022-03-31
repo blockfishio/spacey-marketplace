@@ -1,4 +1,4 @@
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
 
 export function hasTransactionPending(
   transactions: Transaction[],

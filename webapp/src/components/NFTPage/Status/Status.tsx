@@ -2,8 +2,8 @@ import React from 'react'
 import {
   // Header, 
   Stats
-} from 'decentraland-ui'
-// import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+} from 'spacey-ui'
+// import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import { Props } from './Status.types'
 import './Status.css'
 

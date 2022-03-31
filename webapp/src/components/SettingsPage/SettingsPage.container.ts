@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
-import { isPending as isTransactionPending } from 'decentraland-dapps/dist/modules/transaction/utils'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
+import { isPending as isTransactionPending } from 'spacey-dapps/dist/modules/transaction/utils'
 
 import { RootState } from '../../modules/reducer'
 import { getWallet, isConnecting } from '../../modules/wallet/selectors'
+import { getData as getClaimable } from '../../modules/claim/selectors'
 import {
   getData as getAuthorizationsData,
   isLoading as isLoadingAuthorization,
@@ -25,7 +26,7 @@ import SettingsPage from './SettingsPage'
 
 const mapState = (state: RootState): MapStateProps => {
   const wallet = getWallet(state)
-
+  const claimable = getClaimable(state)
   let authorizations = undefined
   let pendingAllowTransactions: Transaction[] = []
   let pendingApproveTransactions: Transaction[] = []
@@ -46,6 +47,7 @@ const mapState = (state: RootState): MapStateProps => {
   }
   return {
     wallet,
+    claimable,
     authorizations,
     pendingAllowTransactions,
     pendingApproveTransactions,

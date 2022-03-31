@@ -1,8 +1,35 @@
 import { action } from 'typesafe-actions'
-import { buildTransactionPayload } from 'decentraland-dapps/dist/modules/transaction/utils'
+import { buildTransactionPayload } from 'spacey-dapps/dist/modules/transaction/utils'
 
 
-import { ChainId } from '@dcl/schemas'
+import { ChainId } from '@spacey2025/schemas'
+import { Claimable } from './types'
+
+// Fetch Claimable 
+
+export const FETCH_CLAIMABLE_REQUEST = '[Request] Fetch Claimable'
+export const FETCH_CLAIMABLE_SUCCESS = '[Success] Fetch Claimable'
+export const FETCH_CLAIMABLE_FAILURE = '[Failure] Fetch Claimable'
+
+
+export const fetchClaimableSuccess = (
+  claimable: Claimable
+) =>
+  action(FETCH_CLAIMABLE_SUCCESS, {
+    claimable
+  })
+export const fetchClaimableFailure = (
+  error: string
+) => action(FETCH_CLAIMABLE_FAILURE, { error })
+
+export type FetchClaimableSuccessAction = ReturnType<typeof fetchClaimableSuccess>
+export type FetchClaimableFailureAction = ReturnType<typeof fetchClaimableFailure>
+
+
+
+
+
+
 
 // Claim Metamars 
 

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Address } from 'web3x-es/address'
-import { Badge, Row, Section, Header, Mana } from 'decentraland-ui'
-import { Profile } from 'decentraland-dapps/dist/containers'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Badge, Row, Section, Header, Mana } from 'spacey-ui'
+import { Profile } from 'spacey-dapps/dist/containers'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import { Props } from './Popup.types'
 import './Popup.css'
 
@@ -52,11 +52,10 @@ export default class Popup extends React.PureComponent<Props> {
             debounce={500}
           />
         </Section>
-
         {tile.price ? (
           <Section className="price">
             <Header sub>{t('nft_page.price')}</Header>
-            <Mana network={tile.network!}>{tile.price.toLocaleString()}</Mana>
+            <Mana network={tile.network}>{tile.price.toLocaleString()}</Mana>
           </Section>
         ) : null}
       </div>

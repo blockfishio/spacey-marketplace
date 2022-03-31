@@ -4,7 +4,7 @@ import React, {
 import {
   Container, Header,
   //  Popup
-} from 'decentraland-ui'
+} from 'spacey-ui'
 
 import { getNFTName } from '../../../modules/nft/utils'
 

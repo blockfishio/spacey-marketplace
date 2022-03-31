@@ -1,7 +1,7 @@
 import React from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import { Link } from 'react-router-dom'
-import { Card, Mana } from 'decentraland-ui'
+import { Card, Mana } from 'spacey-ui'
 
 import { formatMANA } from '../../lib/mana'
 // import { formatDistanceToNow } from '../../lib/date'

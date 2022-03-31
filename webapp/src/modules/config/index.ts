@@ -1,6 +1,6 @@
 import { contracts as contractInfo } from './contracts'
 const queryString = require('query-string')
-// import { getWorld } from '@dcl/schemas'
+// import { getWorld } from '@spacey2025/schemas'
 
 export const NETWORK_HZ = 10
 

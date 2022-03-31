@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, Header } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Container, Header } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { buildExplorerUrl } from '../../../modules/nft/parcel/utils'
 import { getNFTName } from '../../../modules/nft/utils'

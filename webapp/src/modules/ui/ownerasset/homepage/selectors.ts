@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { LoadingState } from 'decentraland-dapps/dist/modules/loading/reducer'
+import { LoadingState } from 'spacey-dapps/dist/modules/loading/reducer'
 
 import { AssetState } from '../../../asset/reducer'
 import { FETCH_ASSETS_REQUEST } from '../../../asset/actions'

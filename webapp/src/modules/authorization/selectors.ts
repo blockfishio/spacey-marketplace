@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
-import { isPending } from 'decentraland-dapps/dist/modules/transaction/utils'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+import { isPending } from 'spacey-dapps/dist/modules/transaction/utils'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
 import { RootState } from '../reducer'
 import { getTransactionsByType } from '../transaction/selectors'
 import { getAddress } from '../wallet/selectors'

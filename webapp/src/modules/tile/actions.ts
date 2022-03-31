@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions'
-import { AtlasTile } from 'decentraland-ui'
+import { AtlasTile } from 'spacey-ui'
 import { NFTsFetchParams, NFTSortBy } from '../nft/types'
 import { SortDirection } from '../routing/types'
 

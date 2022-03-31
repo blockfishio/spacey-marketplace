@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page } from 'decentraland-ui'
+import { Page } from 'spacey-ui'
 
 import { Vendors } from '../../modules/vendor/types'
 import { Navbar } from '../Navbar'

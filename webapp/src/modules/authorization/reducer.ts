@@ -1,11 +1,11 @@
 import {
   LoadingState,
   loadingReducer
-} from 'decentraland-dapps/dist/modules/loading/reducer'
+} from 'spacey-dapps/dist/modules/loading/reducer'
 import {
   FetchTransactionSuccessAction,
   FETCH_TRANSACTION_SUCCESS
-} from 'decentraland-dapps/dist/modules/transaction/actions'
+} from 'spacey-dapps/dist/modules/transaction/actions'
 
 import { Authorizations, Address } from './types'
 import {

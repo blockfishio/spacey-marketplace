@@ -1,5 +1,5 @@
 // import { NFTCategory } from '../nft/types'
-import { ChainId, Network } from '@dcl/schemas'
+import { ChainId, Network } from '@spacey2025/schemas'
 
 import { OrderStatus } from '../order/types'
 

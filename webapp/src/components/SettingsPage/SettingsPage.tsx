@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Network } from '@dcl/schemas'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Footer } from 'decentraland-dapps/dist/containers'
-import { isMobile } from 'decentraland-dapps/dist/lib/utils'
+// import { Network } from '@spacey2025/schemas'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
+import { Footer } from 'spacey-dapps/dist/containers'
+import { isMobile } from 'spacey-dapps/dist/lib/utils'
 import {
   Page, Grid, Blockie,
   Mana,
   Loader, Form
-} from 'decentraland-ui'
+} from 'spacey-ui'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { locations } from '../../modules/routing/locations'
@@ -31,6 +31,7 @@ import { ChainId } from '../../modules/contract/types'
 const SettingsPage = (props: Props) => {
   const {
     wallet,
+    claimable,
     authorizations,
     pendingAllowTransactions,
     pendingApproveTransactions,
@@ -77,6 +78,7 @@ const SettingsPage = (props: Props) => {
       </Mana>)
     }
   }
+
   return (
     <>
       <Navbar isFullscreen />
@@ -132,7 +134,7 @@ const SettingsPage = (props: Props) => {
 
 
 
-                  {wallet.claimable.toString()}
+                  {claimable?.networks[claimable.network].claimable}
 
                   <Link
                     className="buy-more"
@@ -161,8 +163,8 @@ const SettingsPage = (props: Props) => {
 
 
 
-                  {wallet.networks[Network.BSC].metamars.toString()}
-
+                  {/* {wallet.networks[Network.BSC].metamars.toString()} */}
+                  {0}
                   <Link
                     className="buy-more"
                     to={locations.deposit()}

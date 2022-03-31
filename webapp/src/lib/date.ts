@@ -1,4 +1,4 @@
-import { getCurrentLocale } from 'decentraland-dapps/dist/modules/translation/utils'
+import { getCurrentLocale } from 'spacey-dapps/dist/modules/translation/utils'
 import formatDistanceToNowI18N from 'date-fns/formatDistanceToNow'
 import en from 'date-fns/locale/en-US'
 import es from 'date-fns/locale/es'

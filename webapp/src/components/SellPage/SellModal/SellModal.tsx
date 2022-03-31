@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { fromWei } from 'web3x-es/utils'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t, T } from 'spacey-dapps/dist/modules/translation/utils'
 import dateFnsFormat from 'date-fns/format'
-import { Header, Form, Field, Button, Modal, Mana } from 'decentraland-ui'
+import { Header, Form, Field, Button, Modal, Mana } from 'spacey-ui'
 
 import { toMANA, fromMANA } from '../../../lib/mana'
 import {

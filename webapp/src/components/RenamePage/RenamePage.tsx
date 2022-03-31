@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Page, Header, Form, Field, Button } from 'decentraland-ui'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Page, Header, Form, Field, Button } from 'spacey-ui'
+import { t, T } from 'spacey-dapps/dist/modules/translation/utils'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Wallet } from '../Wallet'

@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react'
-// import { Network } from '@dcl/schemas'
+// import { Network } from '@spacey2025/schemas'
 // import { fromWei } from 'web3x-es/utils'
-import { Header, Form, Field, Button, Mana } from 'decentraland-ui'
+import { Header, Form, Field, Button, Mana } from 'spacey-ui'
 import { fromMANA } from '../../../lib/mana'
 
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { T, t } from 'spacey-dapps/dist/modules/translation/utils'
 import { locations } from '../../../modules/routing/locations'
 
 import { contractAddressesAll } from '../../../modules/contract/utils'
@@ -37,8 +37,8 @@ const BuyPage = (props: Props) => {
   const [quantity, setQuantity] = useState(0)
   const notEnoughMana = () => {
 
-    // return false
-    return wallet.networks[wallet.network].metamars < quantity
+    return false
+    // return wallet.networks[wallet.network].metamars < quantity
 
   }
 
@@ -128,7 +128,8 @@ const BuyPage = (props: Props) => {
             label={t('deposit_page.balance')}
             type="text"
             placeholder={1}
-            value={wallet.networks[wallet.network].metamars}
+            // value={wallet.networks[wallet.network].metamars}
+            value={0}
 
           />
 

@@ -1,4 +1,4 @@
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import { Parcel } from '../nft/parcel/types'
 import { Estate } from '../nft/estate/types'
 import { getId } from '../nft/parcel/utils'

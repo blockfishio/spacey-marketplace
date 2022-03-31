@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Page, Loader } from 'decentraland-ui'
-import { Profile } from 'decentraland-dapps/dist/containers'
+import { Page, Loader } from 'spacey-ui'
+import { Profile } from 'spacey-dapps/dist/containers'
 
 import { Navbar } from '../Navbar'
 import { PageHeader } from '../PageHeader'

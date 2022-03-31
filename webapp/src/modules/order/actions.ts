@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions'
-import { buildTransactionPayload } from 'decentraland-dapps/dist/modules/transaction/utils'
+import { buildTransactionPayload } from 'spacey-dapps/dist/modules/transaction/utils'
 import { fromWei } from 'web3x-es/utils'
 
 import { NFT } from '../nft/types'
@@ -9,7 +9,7 @@ import { getNFTName } from '../nft/utils'
 import { getAssetName } from '../asset/utils'
 
 import { formatMANA } from '../../lib/mana'
-import { ChainId } from '@dcl/schemas'
+import { ChainId } from '@spacey2025/schemas'
 import { contractAddresses } from '../contract/utils'
 
 // Create Order (aka Sell)

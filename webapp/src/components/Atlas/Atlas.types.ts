@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
-import { AtlasTile, AtlasProps } from 'decentraland-ui'
+import { AtlasTile, AtlasProps } from 'spacey-ui'
 import { NFT } from '../../modules/nft/types'
-import { Network } from '@dcl/schemas'
+import { Network } from '@spacey2025/schemas'
 
 
 export type Tile = AtlasTile & {

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
-import { walletReducer as wallet } from 'decentraland-dapps/dist/modules/wallet/reducer'
-import { translationReducer as translation } from 'decentraland-dapps/dist/modules/translation/reducer'
-import { storageReducer as storage } from 'decentraland-dapps/dist/modules/storage/reducer'
-import { transactionReducer as transaction } from 'decentraland-dapps/dist/modules/transaction/reducer'
-import { profileReducer as profile } from 'decentraland-dapps/dist/modules/profile/reducer'
+import { walletReducer as wallet } from 'spacey-dapps/dist/modules/wallet/reducer'
+import { translationReducer as translation } from 'spacey-dapps/dist/modules/translation/reducer'
+import { storageReducer as storage } from 'spacey-dapps/dist/modules/storage/reducer'
+import { transactionReducer as transaction } from 'spacey-dapps/dist/modules/transaction/reducer'
+import { profileReducer as profile } from 'spacey-dapps/dist/modules/profile/reducer'
 
 import { accountReducer as account } from './account/reducer'
 import { authorizationReducer as authorization } from './authorization/reducer'
@@ -18,6 +18,7 @@ import { proximityReducer as proximity } from './proximity/reducer'
 import { routingReducer as routing } from './routing/reducer'
 import { tileReducer as tile } from './tile/reducer'
 import { uiReducer as ui } from './ui/reducer'
+import { claimableReducer as claimable } from './claim/reducer'
 
 export const createRootReducer = (history: History) =>
   combineReducers({
@@ -37,7 +38,8 @@ export const createRootReducer = (history: History) =>
     storage,
     transaction,
     translation,
-    wallet
+    wallet,
+    claimable
   })
 
 export type RootState = ReturnType<ReturnType<typeof createRootReducer>>

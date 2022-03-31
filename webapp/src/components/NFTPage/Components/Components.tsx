@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Header } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 
 // import { Row } from '../../Layout/Row'
 import './Components.css'

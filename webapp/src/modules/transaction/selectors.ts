@@ -1,10 +1,10 @@
-import { getData } from 'decentraland-dapps/dist/modules/transaction/selectors'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+import { getData } from 'spacey-dapps/dist/modules/transaction/selectors'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
 import { RootState } from '../reducer'
 import { createSelector } from 'reselect'
 import { getAddress } from '../wallet/selectors'
 
-export * from 'decentraland-dapps/dist/modules/transaction/selectors'
+export * from 'spacey-dapps/dist/modules/transaction/selectors'
 
 export const getTransactionsByType = (
   state: RootState,

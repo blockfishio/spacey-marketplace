@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Loader, Mana, Icon } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Loader, Mana, Icon } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 import {
   isPending,
   getTransactionHref
-} from 'decentraland-dapps/dist/modules/transaction/utils'
+} from 'spacey-dapps/dist/modules/transaction/utils'
 import {
   TransactionStatus,
   Transaction
-} from 'decentraland-dapps/dist/modules/transaction/types'
+} from 'spacey-dapps/dist/modules/transaction/types'
 import { formatDistanceToNow } from '../../../../lib/date'
 import { locations } from '../../../../modules/routing/locations'
 // import { NFTImage } from '../../../NFTImage'

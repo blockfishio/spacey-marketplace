@@ -1,10 +1,10 @@
 import { all } from 'redux-saga/effects'
-import { createAnalyticsSaga } from 'decentraland-dapps/dist/modules/analytics/sagas'
-import { transactionSaga } from 'decentraland-dapps/dist/modules/transaction/sagas'
-// import { createProfileSaga } from 'decentraland-dapps/dist/modules/profile/sagas'
+import { createAnalyticsSaga } from 'spacey-dapps/dist/modules/analytics/sagas'
+import { transactionSaga } from 'spacey-dapps/dist/modules/transaction/sagas'
+// import { createProfileSaga } from 'spacey-dapps/dist/modules/profile/sagas'
 
 import { authorizationSaga } from './authorization/sagas'
-import { bidSaga } from './bid/sagas'
+// import { bidSaga } from './bid/sagas'
 import { nftSaga } from './nft/sagas'
 import { assetSaga } from './asset/sagas'
 import { ownerassetSaga } from './ownerasset/sagas'
@@ -30,7 +30,7 @@ export function* rootSaga() {
     analyticsSaga(),
     transactionSaga(),
     authorizationSaga(),
-    bidSaga(),
+    // bidSaga(),
     nftSaga(),
     assetSaga(),
     ownerassetSaga(),

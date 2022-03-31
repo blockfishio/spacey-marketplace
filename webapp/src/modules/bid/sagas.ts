@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router'
-import { ChainId } from '@dcl/schemas'
-import { getChainId } from 'decentraland-dapps/dist/modules/wallet/selectors'
+import { ChainId } from '@spacey2025/schemas'
+import { getChainId } from 'spacey-dapps/dist/modules/wallet/selectors'
 import { takeEvery, put, select, call } from 'redux-saga/effects'
 import {
   PLACE_BID_REQUEST,

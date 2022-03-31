@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Page, Header, Button, Modal } from 'decentraland-ui'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Page, Header, Button, Modal } from 'spacey-ui'
+import { t, T } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { locations } from '../../modules/routing/locations'
 import { Navigation } from '../Navigation'

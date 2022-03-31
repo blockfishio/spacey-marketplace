@@ -5,7 +5,7 @@
 
 
 
-import { BaseAPI } from 'decentraland-dapps/dist/lib/api'
+import { BaseAPI } from 'spacey-dapps/dist/lib/api'
 import { Order, OrderStatus } from '../../../order/types'
 import { NFT_SERVER_URL } from '../nft'
 

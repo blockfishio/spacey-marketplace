@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
-import { Network } from '@dcl/schemas'
-import { Header, Form, Field, Button } from 'decentraland-ui'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Network } from '@spacey2025/schemas'
+import { Header, Form, Field, Button } from 'spacey-ui'
+import { t, T } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { toMANA, fromMANA } from '../../../lib/mana'
 import { NFTAction } from '../../NFTAction'

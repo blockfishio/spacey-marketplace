@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Row } from 'decentraland-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
+import { Row } from 'spacey-ui'
 
 // import {
 //   contractAddresses,

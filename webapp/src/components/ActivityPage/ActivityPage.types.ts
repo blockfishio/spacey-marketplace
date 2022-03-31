@@ -1,9 +1,9 @@
 import { Dispatch } from 'redux'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
 import {
   clearTransactions,
   ClearTransactionsAction
-} from 'decentraland-dapps/dist/modules/transaction/actions'
+} from 'spacey-dapps/dist/modules/transaction/actions'
 
 export type Props = {
   address?: string

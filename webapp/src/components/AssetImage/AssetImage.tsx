@@ -1,5 +1,5 @@
 import React from 'react'
-import { Loader } from 'decentraland-ui'
+import { Loader } from 'spacey-ui'
 import { LazyImage } from 'react-lazy-images'
 
 

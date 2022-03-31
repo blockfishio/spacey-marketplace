@@ -2,8 +2,8 @@ import React, {
   // useState 
 } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Button } from 'spacey-ui'
+import { t } from 'spacey-dapps/dist/modules/translation/utils'
 
 import { locations } from '../../../modules/routing/locations'
 // import { VendorFactory } from '../../../modules/vendor'

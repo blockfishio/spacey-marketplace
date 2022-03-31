@@ -1,11 +1,11 @@
 import { Eth, SendTx } from 'web3x-es/eth'
 import { Address } from 'web3x-es/address'
 import { all, put, call, select, takeEvery } from 'redux-saga/effects'
-import { ChainId } from '@dcl/schemas'
+import { ChainId } from '@spacey2025/schemas'
 import { Provider } from 'decentraland-connect'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
-import { getConnectedProvider } from 'decentraland-dapps/dist/lib/eth'
-import { getChainId } from 'decentraland-dapps/dist/modules/wallet/selectors'
+import { Wallet } from 'spacey-dapps/dist/modules/wallet/types'
+import { getConnectedProvider } from 'spacey-dapps/dist/lib/eth'
+import { getChainId } from 'spacey-dapps/dist/modules/wallet/selectors'
 
 import { ERC20, ERC20TransactionReceipt } from '../../contracts/ERC20'
 import { ERC721, ERC721TransactionReceipt } from '../../contracts/ERC721'
@@ -63,7 +63,7 @@ function* handleFetchAuthorizationRequest(
             tokenContractAddress,
             contractAddress,
             address
-          ).then(allowance => allowance > 0)
+          ).then(allowance => allowance > 0).catch(() => false)
       ),
       getAuthorizations(
         payload.approvals,
@@ -73,7 +73,7 @@ function* handleFetchAuthorizationRequest(
             tokenContractAddress,
             contractAddress,
             address
-          )
+          ).catch(() => false)
       )
     ])
 

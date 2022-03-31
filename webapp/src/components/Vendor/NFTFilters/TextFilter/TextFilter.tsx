@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Header } from 'decentraland-ui'
+import { Header } from 'spacey-ui'
 
 import { useInput } from '../../../../lib/input'
 import { Props } from './TextFilter.types'

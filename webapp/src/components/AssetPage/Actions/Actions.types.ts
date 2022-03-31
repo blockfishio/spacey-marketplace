@@ -1,4 +1,4 @@
-// import { Wallet } from 'decentraland-dapps/dist/modules//wallet/types'
+// import { Wallet } from 'spacey-dapps/dist/modules//wallet/types'
 // import { NFT } from '../../../modules/nft/types'
 import { Asset } from '../../../modules/asset/types'
 // import { Order } from '../../../modules/order/types'

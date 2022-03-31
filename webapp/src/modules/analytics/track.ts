@@ -1,7 +1,7 @@
 import {
   EventName,
   GetPayload
-} from 'decentraland-dapps/dist/modules/analytics/types'
+} from 'spacey-dapps/dist/modules/analytics/types'
 import {
   FETCH_TRANSACTION_FAILURE,
   FIX_REVERTED_TRANSACTION,
@@ -9,9 +9,9 @@ import {
   FetchTransactionFailureAction,
   FixRevertedTransactionAction,
   ReplaceTransactionSuccessAction
-} from 'decentraland-dapps/dist/modules/transaction/actions'
-import { TransactionStatus } from 'decentraland-dapps/dist/modules/transaction/types'
-import { add } from 'decentraland-dapps/dist/modules/analytics/utils'
+} from 'spacey-dapps/dist/modules/transaction/actions'
+import { TransactionStatus } from 'spacey-dapps/dist/modules/transaction/types'
+import { add } from 'spacey-dapps/dist/modules/analytics/utils'
 import { PayloadAction } from 'typesafe-actions'
 import {
   EXECUTE_ORDER_SUCCESS,

@@ -1,8 +1,8 @@
 import { action } from 'typesafe-actions'
-import { buildTransactionPayload } from 'decentraland-dapps/dist/modules/transaction/utils'
+import { buildTransactionPayload } from 'spacey-dapps/dist/modules/transaction/utils'
 
 
-import { ChainId } from '@dcl/schemas'
+import { ChainId } from '@spacey2025/schemas'
 
 // Deposit GMars 
 

@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+import { Transaction } from 'spacey-dapps/dist/modules/transaction/types'
 import { Authorizations } from '../../modules/authorization/types'
 import {
   allowTokenRequest,
@@ -7,7 +7,7 @@ import {
   AllowTokenRequestAction,
   ApproveTokenRequestAction
 } from '../../modules/authorization/actions'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Wallet } from 'spacey-dapps/dist/modules/wallet/types'
 
 export enum AuthorizationType {
   ALLOWANCE = 'allowance',
