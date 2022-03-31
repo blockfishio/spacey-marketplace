@@ -15,6 +15,7 @@ import { Props } from './DepositModal.types'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { AuthorizationType } from '../../AuthorizationModal/AuthorizationModal.types'
 import { hasAuthorization } from '../../../modules/authorization/utils'
+import { ChainId, Network } from '@spacey2025/schemas'
 
 const BuyPage = (props: Props) => {
   const {
@@ -23,6 +24,7 @@ const BuyPage = (props: Props) => {
     authorizations,
 
     onNavigate,
+    metamars,
     wallet,
     onDepositGMars
   } = props
@@ -36,8 +38,7 @@ const BuyPage = (props: Props) => {
 
   const [quantity, setQuantity] = useState(0)
   const notEnoughMana = () => {
-
-    return false
+    return metamarsbalance < quantity
     // return wallet.networks[wallet.network].metamars < quantity
 
   }
@@ -46,11 +47,11 @@ const BuyPage = (props: Props) => {
     onDepositGMars(quantity)
   }, [quantity, onDepositGMars])
 
-  const contractAddresses = contractAddressesAll[wallet.chainId]
+  const chainId = metamars?.networks[metamars.network].chainId || ChainId.BSC_MAINNET
+  const network = metamars?.network || Network.BSC
+  const contractAddresses = contractAddressesAll[chainId]
   const depositAddress = contractAddresses.DepositGMars
-
-
-
+  const metamarsbalance = metamars?.networks[network].balance || 0
   const handleSubmit = useCallback(() => {
     if (
       hasAuthorization(
@@ -81,7 +82,7 @@ const BuyPage = (props: Props) => {
     notEnoughMana()
   const name = <b>name</b>
   const Price = (props: { price: string }) => (
-    <Mana network={wallet.network} inline>{props.price}</Mana>
+    <Mana network={network} inline>{props.price}</Mana>
   )
 
   let subtitle = null
@@ -129,7 +130,7 @@ const BuyPage = (props: Props) => {
             type="text"
             placeholder={1}
             // value={wallet.networks[wallet.network].metamars}
-            value={0}
+            value={metamarsbalance}
 
           />
 

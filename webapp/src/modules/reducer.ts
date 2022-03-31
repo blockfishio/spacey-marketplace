@@ -19,6 +19,8 @@ import { routingReducer as routing } from './routing/reducer'
 import { tileReducer as tile } from './tile/reducer'
 import { uiReducer as ui } from './ui/reducer'
 import { claimableReducer as claimable } from './claim/reducer'
+import { metamarsReducer as metamars } from './deposit/reducer'
+
 
 export const createRootReducer = (history: History) =>
   combineReducers({
@@ -39,7 +41,8 @@ export const createRootReducer = (history: History) =>
     transaction,
     translation,
     wallet,
-    claimable
+    claimable,
+    metamars
   })
 
 export type RootState = ReturnType<ReturnType<typeof createRootReducer>>

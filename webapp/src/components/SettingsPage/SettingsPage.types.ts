@@ -10,10 +10,12 @@ import {
   approveTokenRequest
 } from '../../modules/authorization/actions'
 import { Claimable } from '../../modules/claim/types'
+import { Metamars } from '../../modules/deposit/types'
 
 export type Props = {
   wallet: Wallet | null
   claimable: Claimable | null
+  metamars: Metamars | null
   authorizations: Authorizations | undefined
   pendingAllowTransactions: Transaction[]
   pendingApproveTransactions: Transaction[]
@@ -28,6 +30,7 @@ export type MapStateProps = Pick<
   Props,
   | 'wallet'
   | 'claimable'
+  | 'metamars'
   | 'authorizations'
   | 'pendingAllowTransactions'
   | 'pendingApproveTransactions'

@@ -28,9 +28,10 @@ export class ClaimMetamarsService implements ClaimMetamarsServiceInterface {
   }
 
   async deposit(amount: number,
-    fromAddress: string
+    fromAddress: string,
+    chainId: ChainId
   ) {
-    const depositGMars = await this.getDepositGMarsContract(ChainId.BSC_MAINNET)
+    const depositGMars = await this.getDepositGMarsContract(chainId)
     if (!fromAddress) {
       throw new Error('Invalid address. Wallet must be connected.')
     }

@@ -3,113 +3,56 @@ import {
   loadingReducer
 } from 'spacey-dapps/dist/modules/loading/reducer'
 import {
-  Order,
-  // ChestOrder 
+  Metamars
 } from './types'
 import {
-  FetchNFTsRequestAction,
-  FetchNFTsSuccessAction,
-  FetchNFTsFailureAction,
-  FETCH_NFTS_REQUEST,
-  FETCH_NFTS_SUCCESS,
-  FETCH_NFTS_FAILURE,
-  FetchNFTSuccessAction,
-  FETCH_NFT_SUCCESS
-} from '../nft/actions'
+  MetamarsBalanceSuccessAction,
+  MetamarsBalanceFailureAction,
+  METAMARS_BALANCE_SUCCESS,
+  METAMARS_BALANCE_FAILURE
+} from './actions'
 
-import {
-  FetchAssetsRequestAction,
-  FetchAssetsSuccessAction,
-  FetchAssetsFailureAction,
-  FETCH_ASSETS_REQUEST,
-  // FETCH_ASSETS_SUCCESS,
-  FETCH_ASSETS_FAILURE,
-  FetchAssetSuccessAction,
-  // FETCH_ASSET_SUCCESS
-} from '../asset/actions'
 
-export type OrderState = {
-  data: Record<string, Order>
+
+export type MetamarsState = {
+  data: Metamars | null
   loading: LoadingState
   error: string | null
 }
 
 const INITIAL_STATE = {
-  data: {},
+  data: null,
   loading: [],
   error: null
 }
 
-type OrderReducerAction =
-  | FetchNFTsRequestAction
-  | FetchNFTsSuccessAction
-  | FetchNFTsFailureAction
-  | FetchNFTSuccessAction
-  | FetchAssetsRequestAction
-  | FetchAssetsSuccessAction
-  | FetchAssetsFailureAction
-  | FetchAssetSuccessAction
+type MetamarsReducerAction =
+  | MetamarsBalanceSuccessAction
+  | MetamarsBalanceFailureAction
 
-export function orderReducer(
-  state: OrderState = INITIAL_STATE,
-  action: OrderReducerAction
-): OrderState {
+export function metamarsReducer(
+  state: MetamarsState = INITIAL_STATE,
+  action: MetamarsReducerAction
+): MetamarsState {
   switch (action.type) {
-    case FETCH_NFTS_REQUEST: {
+    case METAMARS_BALANCE_SUCCESS: {
+      const {
+        metamars
+      } = action.payload
       return {
         ...state,
-        loading: loadingReducer(state.loading, action)
-      }
-    }
-    case FETCH_NFTS_SUCCESS: {
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          ...action.payload.orders.reduce((obj, order) => {
-            obj[order.id] = order
-            return obj
-          }, {} as Record<string, Order>)
-        },
+        data: metamars,
         loading: loadingReducer(state.loading, action),
         error: null
       }
     }
-    case FETCH_NFTS_FAILURE: {
+    case METAMARS_BALANCE_FAILURE: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
         error: action.payload.error
       }
     }
-    case FETCH_NFT_SUCCESS: {
-      const { order } = action.payload
-      if (order) {
-        return {
-          ...state,
-          data: {
-            ...state.data,
-            [order.id]: order
-          }
-        }
-      }
-      return state
-    }
-    case FETCH_ASSETS_REQUEST: {
-      return {
-        ...state,
-        loading: loadingReducer(state.loading, action)
-      }
-    }
-
-    case FETCH_ASSETS_FAILURE: {
-      return {
-        ...state,
-        loading: loadingReducer(state.loading, action),
-        error: action.payload.error
-      }
-    }
-
 
 
     default:

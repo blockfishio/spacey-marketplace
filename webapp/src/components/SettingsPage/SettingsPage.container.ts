@@ -6,6 +6,8 @@ import { isPending as isTransactionPending } from 'spacey-dapps/dist/modules/tra
 import { RootState } from '../../modules/reducer'
 import { getWallet, isConnecting } from '../../modules/wallet/selectors'
 import { getData as getClaimable } from '../../modules/claim/selectors'
+import { getData as getMetamars } from '../../modules/deposit/selectors'
+
 import {
   getData as getAuthorizationsData,
   isLoading as isLoadingAuthorization,
@@ -27,6 +29,7 @@ import SettingsPage from './SettingsPage'
 const mapState = (state: RootState): MapStateProps => {
   const wallet = getWallet(state)
   const claimable = getClaimable(state)
+  const metamars = getMetamars(state)
   let authorizations = undefined
   let pendingAllowTransactions: Transaction[] = []
   let pendingApproveTransactions: Transaction[] = []
@@ -48,6 +51,7 @@ const mapState = (state: RootState): MapStateProps => {
   return {
     wallet,
     claimable,
+    metamars,
     authorizations,
     pendingAllowTransactions,
     pendingApproveTransactions,

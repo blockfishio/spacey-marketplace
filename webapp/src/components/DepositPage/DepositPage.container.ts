@@ -5,13 +5,17 @@ import {
   getAuthorizations,
   isLoading
 } from '../../modules/authorization/selectors'
+import {
+  getData as getMetamars
+} from '../../modules/deposit/selectors'
 import { depositGMarsRequest } from '../../modules/deposit/actions'
 import { MapStateProps, MapDispatchProps, MapDispatch } from './DepositPage.types'
 import BuyPage from './DepositPage'
 
 const mapState = (state: RootState): MapStateProps => ({
   authorizations: getAuthorizations(state),
-  isLoading: isLoading(state)
+  isLoading: isLoading(state),
+  metamars: getMetamars(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

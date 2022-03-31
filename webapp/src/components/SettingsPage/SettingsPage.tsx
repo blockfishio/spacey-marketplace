@@ -21,7 +21,7 @@ import { Authorization } from './Authorization'
 import { Props } from './SettingsPage.types'
 import './SettingsPage.css'
 import { Link } from 'react-router-dom'
-import { ChainId } from '../../modules/contract/types'
+// import { ChainId } from '../../modules/contract/types'
 
 
 
@@ -32,6 +32,7 @@ const SettingsPage = (props: Props) => {
   const {
     wallet,
     claimable,
+    metamars,
     authorizations,
     pendingAllowTransactions,
     pendingApproveTransactions,
@@ -162,9 +163,8 @@ const SettingsPage = (props: Props) => {
                 <div className="balance">
 
 
+                  {metamars?.networks[metamars.network].balance}
 
-                  {/* {wallet.networks[Network.BSC].metamars.toString()} */}
-                  {0}
                   <Link
                     className="buy-more"
                     to={locations.deposit()}
@@ -234,7 +234,8 @@ const SettingsPage = (props: Props) => {
                             pendingTransactions={pendingAllowTransactions}
                             onChange={onAllowToken}
                           />
-                          {wallet.chainId == ChainId.BSC_MAINNET ?
+                          {
+                            // wallet.chainId == ChainId.BSC_MAINNET ?
                             <Authorization
                               wallet={wallet}
                               checked={hasAuthorization(
@@ -249,7 +250,9 @@ const SettingsPage = (props: Props) => {
                               tokenContractAddress={contractAddressesAll[wallet.chainId].METAMARSToken}
                               pendingTransactions={pendingAllowTransactions}
                               onChange={onAllowToken}
-                            /> : null}
+                            />
+                            // : null
+                          }
                         </div>
 
 

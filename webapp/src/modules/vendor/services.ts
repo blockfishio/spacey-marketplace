@@ -133,10 +133,11 @@ export interface OwnerAssetService {
 export interface ClaimMetamarsService {
   claim: (amount: number,
     fromAddress: string,
-    chanId: ChainId
+    chainId: ChainId
   ) => Promise<string>
   deposit: (amount: number,
-    fromAddress: string
+    fromAddress: string,
+    chainId: ChainId
   ) => Promise<string>
 
 }

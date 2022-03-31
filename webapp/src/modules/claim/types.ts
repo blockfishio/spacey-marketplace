@@ -1,4 +1,3 @@
-// import { NFTCategory } from '../nft/types'
 import { ChainId, Network } from '@spacey2025/schemas'
 
 

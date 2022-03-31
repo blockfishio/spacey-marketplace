@@ -48,7 +48,6 @@ function* handleWallet(
 
   // const { MANAToken, Marketplace,
   //   AssetSale } = contractAddresses
-  console.log(chainId)
 
   const { MANAToken, Marketplace,
     AssetSale, DepositGMars, METAMARSToken } = contractAddressesAll[chainId]
@@ -68,6 +67,8 @@ function* handleWallet(
         // [MarketplaceAdapter]: [MANAToken],
         // [Bids]: [MANAToken],
         [AssetSale]: [MANAToken],
+        [DepositGMars]: [METAMARSToken],
+
       },
     approvals: {
       [Marketplace]: Object.keys(contractCategoriesAll[chainId]).filter(

@@ -11,7 +11,7 @@ import { Props } from './DepositPage.types'
 import './DepositPage.css'
 
 const BuyPage = (props: Props) => {
-  const { isLoading, onNavigate, onDepositGMars, authorizations } = props
+  const { isLoading, onNavigate, onDepositGMars, authorizations, metamars } = props
 
   return (
     <>
@@ -22,6 +22,7 @@ const BuyPage = (props: Props) => {
 
             <DepositModal
               wallet={wallet}
+              metamars={metamars}
 
               authorizations={authorizations}
               isLoading={isLoading}
